@@ -31,7 +31,7 @@ Errors
 Any error from libgit2 are raised as Git::Error objects.
 
 ```Ruby
-puts 'Attempting to open non-existant repo'
+puts 'Attempting to open nonexistent repo'
 begin
   repo = Git.repository_open('dne')
 rescue Git::Error => ex
@@ -262,7 +262,10 @@ end
 ```
 
 Objects
-SHAs and OIDs
+-------
+
+### SHAs and OIDs
+
 SHA-1 hashes are usually written as 40 characters of hexadecimal. These are converted to a binary representation internally, called git_oid, and there are routines for converting back and forth.
 
 ```Ruby
@@ -274,4 +277,44 @@ puts "Got oid #{oid} (#{oid.class})"
 Make a shortened printable string from an OID
 short = Git.oid_tostr_s(oid)[0..6]
 puts "Converted Git::Oid to short sha: #{short}"
+```
+
+### Lookups
+
+There are four kinds of objects in a Git repository – commits, trees, blobs, and tag annotations. Each type of object has an API for doing lookups.
+
+```Ruby
+repo = Git.repository_open("./sandbox/yargs")
+
+begin
+  oid = Git.oid_fromstr("a17678a74a41b8a649da1c1782fd63650be4b326")
+  commit = Git.commit_lookup(repo, oid)
+rescue Git::Error => ex
+  puts "Error looking up commit: #{ex.message}"
+  raise
+end
+
+begin
+  oid = Git.oid_fromstr("186fcd23ca6dc239b2d4e3c56981a76c6ad0c0bf")
+  tree = Git.tree_lookup(repo, oid)
+rescue Git::Error => ex
+  puts "Error looking up tree: #{ex.message}"
+  raise
+end
+
+begin
+  oid = Git.oid_fromstr("c815940f2e68aedd6870a5cc79f626f78385041f")
+  blob = Git.blob_lookup(repo, oid)
+rescue Git::Error => ex
+  puts "Error looking up blob: #{ex.message}"
+  raise
+end
+
+begin
+  oid = Git.oid_fromstr("e48f03632fea10a1af70889b39d27dd71c91eee8")
+  tag = Git.tag_lookup(repo, oid)
+rescue Git::Error => ex
+  puts "Error looking up tag: #{ex.message}"
+  raise
+end
 ```
