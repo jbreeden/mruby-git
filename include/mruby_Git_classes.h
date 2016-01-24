@@ -1,0 +1,972 @@
+#ifndef MRUBY_Git_CLASSES_HEADER
+#define MRUBY_Git_CLASSES_HEADER
+
+#define BIND_AnnotatedCommit_TYPE TRUE
+#define BIND_AnnotatedCommit_INITIALIZE FALSE
+
+#define BIND_Blame_TYPE TRUE
+#define BIND_Blame_INITIALIZE FALSE
+
+#define BIND_BlameHunk_TYPE TRUE
+#define BIND_BlameHunk_INITIALIZE FALSE
+#define BIND_BlameHunk_lines_in_hunk_FIELD_READER TRUE
+#define BIND_BlameHunk_lines_in_hunk_FIELD_WRITER TRUE
+#define BIND_BlameHunk_final_commit_id_FIELD_READER FALSE
+#define BIND_BlameHunk_final_commit_id_FIELD_WRITER TRUE
+#define BIND_BlameHunk_final_start_line_number_FIELD_READER TRUE
+#define BIND_BlameHunk_final_start_line_number_FIELD_WRITER TRUE
+#define BIND_BlameHunk_final_signature_FIELD_READER TRUE
+#define BIND_BlameHunk_final_signature_FIELD_WRITER TRUE
+#define BIND_BlameHunk_orig_commit_id_FIELD_READER FALSE
+#define BIND_BlameHunk_orig_commit_id_FIELD_WRITER TRUE
+#define BIND_BlameHunk_orig_path_FIELD_READER TRUE
+#define BIND_BlameHunk_orig_path_FIELD_WRITER TRUE
+#define BIND_BlameHunk_orig_start_line_number_FIELD_READER TRUE
+#define BIND_BlameHunk_orig_start_line_number_FIELD_WRITER TRUE
+#define BIND_BlameHunk_orig_signature_FIELD_READER TRUE
+#define BIND_BlameHunk_orig_signature_FIELD_WRITER TRUE
+#define BIND_BlameHunk_boundary_FIELD_READER TRUE
+#define BIND_BlameHunk_boundary_FIELD_WRITER TRUE
+
+#define BIND_BlameOptions_TYPE TRUE
+#define BIND_BlameOptions_INITIALIZE FALSE
+#define BIND_BlameOptions_version_FIELD_READER TRUE
+#define BIND_BlameOptions_version_FIELD_WRITER TRUE
+#define BIND_BlameOptions_flags_FIELD_READER TRUE
+#define BIND_BlameOptions_flags_FIELD_WRITER TRUE
+#define BIND_BlameOptions_min_match_characters_FIELD_READER TRUE
+#define BIND_BlameOptions_min_match_characters_FIELD_WRITER TRUE
+#define BIND_BlameOptions_newest_commit_FIELD_READER FALSE
+#define BIND_BlameOptions_newest_commit_FIELD_WRITER TRUE
+#define BIND_BlameOptions_oldest_commit_FIELD_READER FALSE
+#define BIND_BlameOptions_oldest_commit_FIELD_WRITER TRUE
+#define BIND_BlameOptions_min_line_FIELD_READER TRUE
+#define BIND_BlameOptions_min_line_FIELD_WRITER TRUE
+#define BIND_BlameOptions_max_line_FIELD_READER TRUE
+#define BIND_BlameOptions_max_line_FIELD_WRITER TRUE
+
+#define BIND_Blob_TYPE TRUE
+#define BIND_Blob_INITIALIZE FALSE
+
+#define BIND_BranchIterator_TYPE TRUE
+#define BIND_BranchIterator_INITIALIZE FALSE
+
+#define BIND_Buf_TYPE TRUE
+#define BIND_Buf_INITIALIZE FALSE
+#define BIND_Buf_ptr_FIELD_READER FALSE
+#define BIND_Buf_ptr_FIELD_WRITER FALSE
+#define BIND_Buf_asize_FIELD_READER TRUE
+#define BIND_Buf_asize_FIELD_WRITER TRUE
+#define BIND_Buf_size_FIELD_READER TRUE
+#define BIND_Buf_size_FIELD_WRITER TRUE
+
+#define BIND_Cert_TYPE TRUE
+#define BIND_Cert_INITIALIZE FALSE
+#define BIND_Cert_cert_type_FIELD_READER TRUE
+#define BIND_Cert_cert_type_FIELD_WRITER TRUE
+
+#define BIND_CertHostkey_TYPE TRUE
+#define BIND_CertHostkey_INITIALIZE FALSE
+#define BIND_CertHostkey_parent_FIELD_READER FALSE
+#define BIND_CertHostkey_parent_FIELD_WRITER TRUE
+#define BIND_CertHostkey_type_FIELD_READER TRUE
+#define BIND_CertHostkey_type_FIELD_WRITER TRUE
+#define BIND_CertHostkey_hash_md5_FIELD_READER FALSE
+#define BIND_CertHostkey_hash_md5_FIELD_WRITER FALSE
+#define BIND_CertHostkey_hash_sha1_FIELD_READER FALSE
+#define BIND_CertHostkey_hash_sha1_FIELD_WRITER FALSE
+
+#define BIND_CertX509_TYPE TRUE
+#define BIND_CertX509_INITIALIZE FALSE
+#define BIND_CertX509_parent_FIELD_READER FALSE
+#define BIND_CertX509_parent_FIELD_WRITER TRUE
+#define BIND_CertX509_data_FIELD_READER FALSE
+#define BIND_CertX509_data_FIELD_WRITER FALSE
+#define BIND_CertX509_len_FIELD_READER TRUE
+#define BIND_CertX509_len_FIELD_WRITER TRUE
+
+#define BIND_CheckoutOptions_TYPE TRUE
+#define BIND_CheckoutOptions_INITIALIZE FALSE
+#define BIND_CheckoutOptions_version_FIELD_READER TRUE
+#define BIND_CheckoutOptions_version_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_checkout_strategy_FIELD_READER TRUE
+#define BIND_CheckoutOptions_checkout_strategy_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_disable_filters_FIELD_READER TRUE
+#define BIND_CheckoutOptions_disable_filters_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_dir_mode_FIELD_READER TRUE
+#define BIND_CheckoutOptions_dir_mode_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_file_mode_FIELD_READER TRUE
+#define BIND_CheckoutOptions_file_mode_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_file_open_flags_FIELD_READER TRUE
+#define BIND_CheckoutOptions_file_open_flags_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_notify_flags_FIELD_READER TRUE
+#define BIND_CheckoutOptions_notify_flags_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_notify_cb_FIELD_READER FALSE
+#define BIND_CheckoutOptions_notify_cb_FIELD_WRITER FALSE
+#define BIND_CheckoutOptions_notify_payload_FIELD_READER FALSE
+#define BIND_CheckoutOptions_notify_payload_FIELD_WRITER FALSE
+#define BIND_CheckoutOptions_progress_cb_FIELD_READER FALSE
+#define BIND_CheckoutOptions_progress_cb_FIELD_WRITER FALSE
+#define BIND_CheckoutOptions_progress_payload_FIELD_READER FALSE
+#define BIND_CheckoutOptions_progress_payload_FIELD_WRITER FALSE
+#define BIND_CheckoutOptions_paths_FIELD_READER FALSE
+#define BIND_CheckoutOptions_paths_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_baseline_FIELD_READER TRUE
+#define BIND_CheckoutOptions_baseline_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_baseline_index_FIELD_READER TRUE
+#define BIND_CheckoutOptions_baseline_index_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_target_directory_FIELD_READER TRUE
+#define BIND_CheckoutOptions_target_directory_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_ancestor_label_FIELD_READER TRUE
+#define BIND_CheckoutOptions_ancestor_label_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_our_label_FIELD_READER TRUE
+#define BIND_CheckoutOptions_our_label_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_their_label_FIELD_READER TRUE
+#define BIND_CheckoutOptions_their_label_FIELD_WRITER TRUE
+#define BIND_CheckoutOptions_perfdata_cb_FIELD_READER FALSE
+#define BIND_CheckoutOptions_perfdata_cb_FIELD_WRITER FALSE
+#define BIND_CheckoutOptions_perfdata_payload_FIELD_READER FALSE
+#define BIND_CheckoutOptions_perfdata_payload_FIELD_WRITER FALSE
+
+#define BIND_CheckoutPerfdata_TYPE TRUE
+#define BIND_CheckoutPerfdata_INITIALIZE FALSE
+#define BIND_CheckoutPerfdata_mkdir_calls_FIELD_READER TRUE
+#define BIND_CheckoutPerfdata_mkdir_calls_FIELD_WRITER TRUE
+#define BIND_CheckoutPerfdata_stat_calls_FIELD_READER TRUE
+#define BIND_CheckoutPerfdata_stat_calls_FIELD_WRITER TRUE
+#define BIND_CheckoutPerfdata_chmod_calls_FIELD_READER TRUE
+#define BIND_CheckoutPerfdata_chmod_calls_FIELD_WRITER TRUE
+
+#define BIND_CherrypickOptions_TYPE TRUE
+#define BIND_CherrypickOptions_INITIALIZE FALSE
+#define BIND_CherrypickOptions_version_FIELD_READER TRUE
+#define BIND_CherrypickOptions_version_FIELD_WRITER TRUE
+#define BIND_CherrypickOptions_mainline_FIELD_READER TRUE
+#define BIND_CherrypickOptions_mainline_FIELD_WRITER TRUE
+#define BIND_CherrypickOptions_merge_opts_FIELD_READER FALSE
+#define BIND_CherrypickOptions_merge_opts_FIELD_WRITER TRUE
+#define BIND_CherrypickOptions_checkout_opts_FIELD_READER FALSE
+#define BIND_CherrypickOptions_checkout_opts_FIELD_WRITER TRUE
+
+#define BIND_CloneOptions_TYPE TRUE
+#define BIND_CloneOptions_INITIALIZE FALSE
+#define BIND_CloneOptions_version_FIELD_READER TRUE
+#define BIND_CloneOptions_version_FIELD_WRITER TRUE
+#define BIND_CloneOptions_checkout_opts_FIELD_READER FALSE
+#define BIND_CloneOptions_checkout_opts_FIELD_WRITER TRUE
+#define BIND_CloneOptions_fetch_opts_FIELD_READER FALSE
+#define BIND_CloneOptions_fetch_opts_FIELD_WRITER TRUE
+#define BIND_CloneOptions_bare_FIELD_READER TRUE
+#define BIND_CloneOptions_bare_FIELD_WRITER TRUE
+#define BIND_CloneOptions_local_FIELD_READER TRUE
+#define BIND_CloneOptions_local_FIELD_WRITER TRUE
+#define BIND_CloneOptions_checkout_branch_FIELD_READER TRUE
+#define BIND_CloneOptions_checkout_branch_FIELD_WRITER TRUE
+#define BIND_CloneOptions_repository_cb_FIELD_READER FALSE
+#define BIND_CloneOptions_repository_cb_FIELD_WRITER FALSE
+#define BIND_CloneOptions_repository_cb_payload_FIELD_READER FALSE
+#define BIND_CloneOptions_repository_cb_payload_FIELD_WRITER FALSE
+#define BIND_CloneOptions_remote_cb_FIELD_READER FALSE
+#define BIND_CloneOptions_remote_cb_FIELD_WRITER FALSE
+#define BIND_CloneOptions_remote_cb_payload_FIELD_READER FALSE
+#define BIND_CloneOptions_remote_cb_payload_FIELD_WRITER FALSE
+
+#define BIND_Commit_TYPE TRUE
+#define BIND_Commit_INITIALIZE FALSE
+
+#define BIND_Config_TYPE TRUE
+#define BIND_Config_INITIALIZE FALSE
+
+#define BIND_ConfigBackend_TYPE TRUE
+#define BIND_ConfigBackend_INITIALIZE FALSE
+
+#define BIND_ConfigEntry_TYPE TRUE
+#define BIND_ConfigEntry_INITIALIZE FALSE
+#define BIND_ConfigEntry_name_FIELD_READER TRUE
+#define BIND_ConfigEntry_name_FIELD_WRITER TRUE
+#define BIND_ConfigEntry_value_FIELD_READER TRUE
+#define BIND_ConfigEntry_value_FIELD_WRITER TRUE
+#define BIND_ConfigEntry_level_FIELD_READER TRUE
+#define BIND_ConfigEntry_level_FIELD_WRITER TRUE
+#define BIND_ConfigEntry_free_FIELD_READER FALSE
+#define BIND_ConfigEntry_free_FIELD_WRITER FALSE
+#define BIND_ConfigEntry_payload_FIELD_READER FALSE
+#define BIND_ConfigEntry_payload_FIELD_WRITER FALSE
+
+#define BIND_ConfigIterator_TYPE TRUE
+#define BIND_ConfigIterator_INITIALIZE FALSE
+
+#define BIND_Cred_TYPE TRUE
+#define BIND_Cred_INITIALIZE FALSE
+#define BIND_Cred_credtype_FIELD_READER TRUE
+#define BIND_Cred_credtype_FIELD_WRITER TRUE
+#define BIND_Cred_free_FIELD_READER FALSE
+#define BIND_Cred_free_FIELD_WRITER FALSE
+
+#define BIND_CredSshCustom_TYPE TRUE
+#define BIND_CredSshCustom_INITIALIZE FALSE
+#define BIND_CredSshCustom_parent_FIELD_READER FALSE
+#define BIND_CredSshCustom_parent_FIELD_WRITER TRUE
+#define BIND_CredSshCustom_username_FIELD_READER FALSE
+#define BIND_CredSshCustom_username_FIELD_WRITER FALSE
+#define BIND_CredSshCustom_publickey_FIELD_READER FALSE
+#define BIND_CredSshCustom_publickey_FIELD_WRITER FALSE
+#define BIND_CredSshCustom_publickey_len_FIELD_READER TRUE
+#define BIND_CredSshCustom_publickey_len_FIELD_WRITER TRUE
+#define BIND_CredSshCustom_sign_callback_FIELD_READER FALSE
+#define BIND_CredSshCustom_sign_callback_FIELD_WRITER FALSE
+#define BIND_CredSshCustom_payload_FIELD_READER FALSE
+#define BIND_CredSshCustom_payload_FIELD_WRITER FALSE
+
+#define BIND_CredSshInteractive_TYPE TRUE
+#define BIND_CredSshInteractive_INITIALIZE FALSE
+#define BIND_CredSshInteractive_parent_FIELD_READER FALSE
+#define BIND_CredSshInteractive_parent_FIELD_WRITER TRUE
+#define BIND_CredSshInteractive_username_FIELD_READER FALSE
+#define BIND_CredSshInteractive_username_FIELD_WRITER FALSE
+#define BIND_CredSshInteractive_prompt_callback_FIELD_READER FALSE
+#define BIND_CredSshInteractive_prompt_callback_FIELD_WRITER FALSE
+#define BIND_CredSshInteractive_payload_FIELD_READER FALSE
+#define BIND_CredSshInteractive_payload_FIELD_WRITER FALSE
+
+#define BIND_CredSshKey_TYPE TRUE
+#define BIND_CredSshKey_INITIALIZE FALSE
+#define BIND_CredSshKey_parent_FIELD_READER FALSE
+#define BIND_CredSshKey_parent_FIELD_WRITER TRUE
+#define BIND_CredSshKey_username_FIELD_READER FALSE
+#define BIND_CredSshKey_username_FIELD_WRITER FALSE
+#define BIND_CredSshKey_publickey_FIELD_READER FALSE
+#define BIND_CredSshKey_publickey_FIELD_WRITER FALSE
+#define BIND_CredSshKey_privatekey_FIELD_READER FALSE
+#define BIND_CredSshKey_privatekey_FIELD_WRITER FALSE
+#define BIND_CredSshKey_passphrase_FIELD_READER FALSE
+#define BIND_CredSshKey_passphrase_FIELD_WRITER FALSE
+
+#define BIND_CredUsername_TYPE TRUE
+#define BIND_CredUsername_INITIALIZE FALSE
+#define BIND_CredUsername_parent_FIELD_READER FALSE
+#define BIND_CredUsername_parent_FIELD_WRITER TRUE
+#define BIND_CredUsername_username_FIELD_READER FALSE
+#define BIND_CredUsername_username_FIELD_WRITER FALSE
+
+#define BIND_CredUserpassPayload_TYPE TRUE
+#define BIND_CredUserpassPayload_INITIALIZE FALSE
+#define BIND_CredUserpassPayload_username_FIELD_READER TRUE
+#define BIND_CredUserpassPayload_username_FIELD_WRITER TRUE
+#define BIND_CredUserpassPayload_password_FIELD_READER TRUE
+#define BIND_CredUserpassPayload_password_FIELD_WRITER TRUE
+
+#define BIND_CredUserpassPlaintext_TYPE TRUE
+#define BIND_CredUserpassPlaintext_INITIALIZE FALSE
+#define BIND_CredUserpassPlaintext_parent_FIELD_READER FALSE
+#define BIND_CredUserpassPlaintext_parent_FIELD_WRITER TRUE
+#define BIND_CredUserpassPlaintext_username_FIELD_READER FALSE
+#define BIND_CredUserpassPlaintext_username_FIELD_WRITER FALSE
+#define BIND_CredUserpassPlaintext_password_FIELD_READER FALSE
+#define BIND_CredUserpassPlaintext_password_FIELD_WRITER FALSE
+
+#define BIND_CvarMap_TYPE TRUE
+#define BIND_CvarMap_INITIALIZE FALSE
+#define BIND_CvarMap_cvar_type_FIELD_READER TRUE
+#define BIND_CvarMap_cvar_type_FIELD_WRITER TRUE
+#define BIND_CvarMap_str_match_FIELD_READER TRUE
+#define BIND_CvarMap_str_match_FIELD_WRITER TRUE
+#define BIND_CvarMap_map_value_FIELD_READER TRUE
+#define BIND_CvarMap_map_value_FIELD_WRITER TRUE
+
+#define BIND_DescribeFormatOptions_TYPE TRUE
+#define BIND_DescribeFormatOptions_INITIALIZE FALSE
+#define BIND_DescribeFormatOptions_version_FIELD_READER TRUE
+#define BIND_DescribeFormatOptions_version_FIELD_WRITER TRUE
+#define BIND_DescribeFormatOptions_abbreviated_size_FIELD_READER TRUE
+#define BIND_DescribeFormatOptions_abbreviated_size_FIELD_WRITER TRUE
+#define BIND_DescribeFormatOptions_always_use_long_format_FIELD_READER TRUE
+#define BIND_DescribeFormatOptions_always_use_long_format_FIELD_WRITER TRUE
+#define BIND_DescribeFormatOptions_dirty_suffix_FIELD_READER TRUE
+#define BIND_DescribeFormatOptions_dirty_suffix_FIELD_WRITER TRUE
+
+#define BIND_DescribeOptions_TYPE TRUE
+#define BIND_DescribeOptions_INITIALIZE FALSE
+#define BIND_DescribeOptions_version_FIELD_READER TRUE
+#define BIND_DescribeOptions_version_FIELD_WRITER TRUE
+#define BIND_DescribeOptions_max_candidates_tags_FIELD_READER TRUE
+#define BIND_DescribeOptions_max_candidates_tags_FIELD_WRITER TRUE
+#define BIND_DescribeOptions_describe_strategy_FIELD_READER TRUE
+#define BIND_DescribeOptions_describe_strategy_FIELD_WRITER TRUE
+#define BIND_DescribeOptions_pattern_FIELD_READER TRUE
+#define BIND_DescribeOptions_pattern_FIELD_WRITER TRUE
+#define BIND_DescribeOptions_only_follow_first_parent_FIELD_READER TRUE
+#define BIND_DescribeOptions_only_follow_first_parent_FIELD_WRITER TRUE
+#define BIND_DescribeOptions_show_commit_oid_as_fallback_FIELD_READER TRUE
+#define BIND_DescribeOptions_show_commit_oid_as_fallback_FIELD_WRITER TRUE
+
+#define BIND_DescribeResult_TYPE TRUE
+#define BIND_DescribeResult_INITIALIZE FALSE
+
+#define BIND_Diff_TYPE TRUE
+#define BIND_Diff_INITIALIZE FALSE
+
+#define BIND_DiffBinary_TYPE TRUE
+#define BIND_DiffBinary_INITIALIZE FALSE
+#define BIND_DiffBinary_old_file_FIELD_READER FALSE
+#define BIND_DiffBinary_old_file_FIELD_WRITER TRUE
+#define BIND_DiffBinary_new_file_FIELD_READER FALSE
+#define BIND_DiffBinary_new_file_FIELD_WRITER TRUE
+
+#define BIND_DiffBinaryFile_TYPE TRUE
+#define BIND_DiffBinaryFile_INITIALIZE FALSE
+#define BIND_DiffBinaryFile_type_FIELD_READER TRUE
+#define BIND_DiffBinaryFile_type_FIELD_WRITER TRUE
+#define BIND_DiffBinaryFile_data_FIELD_READER TRUE
+#define BIND_DiffBinaryFile_data_FIELD_WRITER TRUE
+#define BIND_DiffBinaryFile_datalen_FIELD_READER TRUE
+#define BIND_DiffBinaryFile_datalen_FIELD_WRITER TRUE
+#define BIND_DiffBinaryFile_inflatedlen_FIELD_READER TRUE
+#define BIND_DiffBinaryFile_inflatedlen_FIELD_WRITER TRUE
+
+#define BIND_DiffDelta_TYPE TRUE
+#define BIND_DiffDelta_INITIALIZE FALSE
+#define BIND_DiffDelta_status_FIELD_READER TRUE
+#define BIND_DiffDelta_status_FIELD_WRITER TRUE
+#define BIND_DiffDelta_flags_FIELD_READER TRUE
+#define BIND_DiffDelta_flags_FIELD_WRITER TRUE
+#define BIND_DiffDelta_similarity_FIELD_READER TRUE
+#define BIND_DiffDelta_similarity_FIELD_WRITER TRUE
+#define BIND_DiffDelta_nfiles_FIELD_READER TRUE
+#define BIND_DiffDelta_nfiles_FIELD_WRITER TRUE
+#define BIND_DiffDelta_old_file_FIELD_READER FALSE
+#define BIND_DiffDelta_old_file_FIELD_WRITER TRUE
+#define BIND_DiffDelta_new_file_FIELD_READER FALSE
+#define BIND_DiffDelta_new_file_FIELD_WRITER TRUE
+
+#define BIND_DiffFile_TYPE TRUE
+#define BIND_DiffFile_INITIALIZE FALSE
+#define BIND_DiffFile_id_FIELD_READER FALSE
+#define BIND_DiffFile_id_FIELD_WRITER TRUE
+#define BIND_DiffFile_path_FIELD_READER TRUE
+#define BIND_DiffFile_path_FIELD_WRITER TRUE
+#define BIND_DiffFile_size_FIELD_READER TRUE
+#define BIND_DiffFile_size_FIELD_WRITER TRUE
+#define BIND_DiffFile_flags_FIELD_READER TRUE
+#define BIND_DiffFile_flags_FIELD_WRITER TRUE
+#define BIND_DiffFile_mode_FIELD_READER TRUE
+#define BIND_DiffFile_mode_FIELD_WRITER TRUE
+
+#define BIND_DiffFindOptions_TYPE TRUE
+#define BIND_DiffFindOptions_INITIALIZE FALSE
+#define BIND_DiffFindOptions_version_FIELD_READER TRUE
+#define BIND_DiffFindOptions_version_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_flags_FIELD_READER TRUE
+#define BIND_DiffFindOptions_flags_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_rename_threshold_FIELD_READER TRUE
+#define BIND_DiffFindOptions_rename_threshold_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_rename_from_rewrite_threshold_FIELD_READER TRUE
+#define BIND_DiffFindOptions_rename_from_rewrite_threshold_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_copy_threshold_FIELD_READER TRUE
+#define BIND_DiffFindOptions_copy_threshold_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_break_rewrite_threshold_FIELD_READER TRUE
+#define BIND_DiffFindOptions_break_rewrite_threshold_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_rename_limit_FIELD_READER TRUE
+#define BIND_DiffFindOptions_rename_limit_FIELD_WRITER TRUE
+#define BIND_DiffFindOptions_metric_FIELD_READER TRUE
+#define BIND_DiffFindOptions_metric_FIELD_WRITER TRUE
+
+#define BIND_DiffFormatEmailOptions_TYPE TRUE
+#define BIND_DiffFormatEmailOptions_INITIALIZE FALSE
+#define BIND_DiffFormatEmailOptions_version_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_version_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_flags_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_flags_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_patch_no_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_patch_no_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_total_patches_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_total_patches_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_id_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_id_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_summary_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_summary_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_body_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_body_FIELD_WRITER TRUE
+#define BIND_DiffFormatEmailOptions_author_FIELD_READER TRUE
+#define BIND_DiffFormatEmailOptions_author_FIELD_WRITER TRUE
+
+#define BIND_DiffHunk_TYPE TRUE
+#define BIND_DiffHunk_INITIALIZE FALSE
+#define BIND_DiffHunk_old_start_FIELD_READER TRUE
+#define BIND_DiffHunk_old_start_FIELD_WRITER TRUE
+#define BIND_DiffHunk_old_lines_FIELD_READER TRUE
+#define BIND_DiffHunk_old_lines_FIELD_WRITER TRUE
+#define BIND_DiffHunk_new_start_FIELD_READER TRUE
+#define BIND_DiffHunk_new_start_FIELD_WRITER TRUE
+#define BIND_DiffHunk_new_lines_FIELD_READER TRUE
+#define BIND_DiffHunk_new_lines_FIELD_WRITER TRUE
+#define BIND_DiffHunk_header_len_FIELD_READER TRUE
+#define BIND_DiffHunk_header_len_FIELD_WRITER TRUE
+#define BIND_DiffHunk_header_FIELD_READER FALSE
+#define BIND_DiffHunk_header_FIELD_WRITER FALSE
+
+#define BIND_DiffLine_TYPE TRUE
+#define BIND_DiffLine_INITIALIZE FALSE
+#define BIND_DiffLine_origin_FIELD_READER TRUE
+#define BIND_DiffLine_origin_FIELD_WRITER TRUE
+#define BIND_DiffLine_old_lineno_FIELD_READER TRUE
+#define BIND_DiffLine_old_lineno_FIELD_WRITER TRUE
+#define BIND_DiffLine_new_lineno_FIELD_READER TRUE
+#define BIND_DiffLine_new_lineno_FIELD_WRITER TRUE
+#define BIND_DiffLine_num_lines_FIELD_READER TRUE
+#define BIND_DiffLine_num_lines_FIELD_WRITER TRUE
+#define BIND_DiffLine_content_len_FIELD_READER TRUE
+#define BIND_DiffLine_content_len_FIELD_WRITER TRUE
+#define BIND_DiffLine_content_offset_FIELD_READER TRUE
+#define BIND_DiffLine_content_offset_FIELD_WRITER TRUE
+#define BIND_DiffLine_content_FIELD_READER TRUE
+#define BIND_DiffLine_content_FIELD_WRITER TRUE
+
+#define BIND_DiffOptions_TYPE TRUE
+#define BIND_DiffOptions_INITIALIZE FALSE
+#define BIND_DiffOptions_version_FIELD_READER TRUE
+#define BIND_DiffOptions_version_FIELD_WRITER TRUE
+#define BIND_DiffOptions_flags_FIELD_READER TRUE
+#define BIND_DiffOptions_flags_FIELD_WRITER TRUE
+#define BIND_DiffOptions_ignore_submodules_FIELD_READER TRUE
+#define BIND_DiffOptions_ignore_submodules_FIELD_WRITER TRUE
+#define BIND_DiffOptions_pathspec_FIELD_READER FALSE
+#define BIND_DiffOptions_pathspec_FIELD_WRITER TRUE
+#define BIND_DiffOptions_notify_cb_FIELD_READER FALSE
+#define BIND_DiffOptions_notify_cb_FIELD_WRITER FALSE
+#define BIND_DiffOptions_progress_cb_FIELD_READER FALSE
+#define BIND_DiffOptions_progress_cb_FIELD_WRITER FALSE
+#define BIND_DiffOptions_payload_FIELD_READER FALSE
+#define BIND_DiffOptions_payload_FIELD_WRITER FALSE
+#define BIND_DiffOptions_context_lines_FIELD_READER TRUE
+#define BIND_DiffOptions_context_lines_FIELD_WRITER TRUE
+#define BIND_DiffOptions_interhunk_lines_FIELD_READER TRUE
+#define BIND_DiffOptions_interhunk_lines_FIELD_WRITER TRUE
+#define BIND_DiffOptions_id_abbrev_FIELD_READER TRUE
+#define BIND_DiffOptions_id_abbrev_FIELD_WRITER TRUE
+#define BIND_DiffOptions_max_size_FIELD_READER TRUE
+#define BIND_DiffOptions_max_size_FIELD_WRITER TRUE
+#define BIND_DiffOptions_old_prefix_FIELD_READER TRUE
+#define BIND_DiffOptions_old_prefix_FIELD_WRITER TRUE
+#define BIND_DiffOptions_new_prefix_FIELD_READER TRUE
+#define BIND_DiffOptions_new_prefix_FIELD_WRITER TRUE
+
+#define BIND_DiffSimilarityMetric_TYPE TRUE
+#define BIND_DiffSimilarityMetric_INITIALIZE FALSE
+#define BIND_DiffSimilarityMetric_file_signature_FIELD_READER FALSE
+#define BIND_DiffSimilarityMetric_file_signature_FIELD_WRITER FALSE
+#define BIND_DiffSimilarityMetric_buffer_signature_FIELD_READER FALSE
+#define BIND_DiffSimilarityMetric_buffer_signature_FIELD_WRITER FALSE
+#define BIND_DiffSimilarityMetric_free_signature_FIELD_READER FALSE
+#define BIND_DiffSimilarityMetric_free_signature_FIELD_WRITER FALSE
+#define BIND_DiffSimilarityMetric_similarity_FIELD_READER FALSE
+#define BIND_DiffSimilarityMetric_similarity_FIELD_WRITER FALSE
+#define BIND_DiffSimilarityMetric_payload_FIELD_READER FALSE
+#define BIND_DiffSimilarityMetric_payload_FIELD_WRITER FALSE
+
+#define BIND_DiffStats_TYPE TRUE
+#define BIND_DiffStats_INITIALIZE FALSE
+
+#define BIND_Error_TYPE TRUE
+#define BIND_Error_INITIALIZE FALSE
+#define BIND_Error_message_FIELD_READER FALSE
+#define BIND_Error_message_FIELD_WRITER FALSE
+#define BIND_Error_klass_FIELD_READER TRUE
+#define BIND_Error_klass_FIELD_WRITER TRUE
+
+#define BIND_FetchOptions_TYPE TRUE
+#define BIND_FetchOptions_INITIALIZE FALSE
+#define BIND_FetchOptions_version_FIELD_READER TRUE
+#define BIND_FetchOptions_version_FIELD_WRITER TRUE
+#define BIND_FetchOptions_callbacks_FIELD_READER FALSE
+#define BIND_FetchOptions_callbacks_FIELD_WRITER TRUE
+#define BIND_FetchOptions_prune_FIELD_READER TRUE
+#define BIND_FetchOptions_prune_FIELD_WRITER TRUE
+#define BIND_FetchOptions_update_fetchhead_FIELD_READER TRUE
+#define BIND_FetchOptions_update_fetchhead_FIELD_WRITER TRUE
+#define BIND_FetchOptions_download_tags_FIELD_READER TRUE
+#define BIND_FetchOptions_download_tags_FIELD_WRITER TRUE
+#define BIND_FetchOptions_custom_headers_FIELD_READER FALSE
+#define BIND_FetchOptions_custom_headers_FIELD_WRITER TRUE
+
+#define BIND_Filter_TYPE TRUE
+#define BIND_Filter_INITIALIZE FALSE
+
+#define BIND_FilterList_TYPE TRUE
+#define BIND_FilterList_INITIALIZE FALSE
+
+#define BIND_Index_TYPE TRUE
+#define BIND_Index_INITIALIZE FALSE
+
+#define BIND_IndexConflictIterator_TYPE TRUE
+#define BIND_IndexConflictIterator_INITIALIZE FALSE
+
+#define BIND_IndexEntry_TYPE TRUE
+#define BIND_IndexEntry_INITIALIZE FALSE
+#define BIND_IndexEntry_ctime_FIELD_READER FALSE
+#define BIND_IndexEntry_ctime_FIELD_WRITER TRUE
+#define BIND_IndexEntry_mtime_FIELD_READER FALSE
+#define BIND_IndexEntry_mtime_FIELD_WRITER TRUE
+#define BIND_IndexEntry_dev_FIELD_READER TRUE
+#define BIND_IndexEntry_dev_FIELD_WRITER TRUE
+#define BIND_IndexEntry_ino_FIELD_READER TRUE
+#define BIND_IndexEntry_ino_FIELD_WRITER TRUE
+#define BIND_IndexEntry_mode_FIELD_READER TRUE
+#define BIND_IndexEntry_mode_FIELD_WRITER TRUE
+#define BIND_IndexEntry_uid_FIELD_READER TRUE
+#define BIND_IndexEntry_uid_FIELD_WRITER TRUE
+#define BIND_IndexEntry_gid_FIELD_READER TRUE
+#define BIND_IndexEntry_gid_FIELD_WRITER TRUE
+#define BIND_IndexEntry_file_size_FIELD_READER TRUE
+#define BIND_IndexEntry_file_size_FIELD_WRITER TRUE
+#define BIND_IndexEntry_id_FIELD_READER FALSE
+#define BIND_IndexEntry_id_FIELD_WRITER TRUE
+#define BIND_IndexEntry_flags_FIELD_READER TRUE
+#define BIND_IndexEntry_flags_FIELD_WRITER TRUE
+#define BIND_IndexEntry_flags_extended_FIELD_READER TRUE
+#define BIND_IndexEntry_flags_extended_FIELD_WRITER TRUE
+#define BIND_IndexEntry_path_FIELD_READER TRUE
+#define BIND_IndexEntry_path_FIELD_WRITER TRUE
+
+#define BIND_IndexTime_TYPE TRUE
+#define BIND_IndexTime_INITIALIZE FALSE
+#define BIND_IndexTime_seconds_FIELD_READER TRUE
+#define BIND_IndexTime_seconds_FIELD_WRITER TRUE
+#define BIND_IndexTime_nanoseconds_FIELD_READER TRUE
+#define BIND_IndexTime_nanoseconds_FIELD_WRITER TRUE
+
+#define BIND_Indexer_TYPE TRUE
+#define BIND_Indexer_INITIALIZE FALSE
+
+#define BIND_MergeFileInput_TYPE TRUE
+#define BIND_MergeFileInput_INITIALIZE FALSE
+#define BIND_MergeFileInput_version_FIELD_READER TRUE
+#define BIND_MergeFileInput_version_FIELD_WRITER TRUE
+#define BIND_MergeFileInput_ptr_FIELD_READER TRUE
+#define BIND_MergeFileInput_ptr_FIELD_WRITER TRUE
+#define BIND_MergeFileInput_size_FIELD_READER TRUE
+#define BIND_MergeFileInput_size_FIELD_WRITER TRUE
+#define BIND_MergeFileInput_path_FIELD_READER TRUE
+#define BIND_MergeFileInput_path_FIELD_WRITER TRUE
+#define BIND_MergeFileInput_mode_FIELD_READER TRUE
+#define BIND_MergeFileInput_mode_FIELD_WRITER TRUE
+
+#define BIND_MergeFileOptions_TYPE TRUE
+#define BIND_MergeFileOptions_INITIALIZE FALSE
+#define BIND_MergeFileOptions_version_FIELD_READER TRUE
+#define BIND_MergeFileOptions_version_FIELD_WRITER TRUE
+#define BIND_MergeFileOptions_ancestor_label_FIELD_READER TRUE
+#define BIND_MergeFileOptions_ancestor_label_FIELD_WRITER TRUE
+#define BIND_MergeFileOptions_our_label_FIELD_READER TRUE
+#define BIND_MergeFileOptions_our_label_FIELD_WRITER TRUE
+#define BIND_MergeFileOptions_their_label_FIELD_READER TRUE
+#define BIND_MergeFileOptions_their_label_FIELD_WRITER TRUE
+#define BIND_MergeFileOptions_favor_FIELD_READER TRUE
+#define BIND_MergeFileOptions_favor_FIELD_WRITER TRUE
+#define BIND_MergeFileOptions_flags_FIELD_READER TRUE
+#define BIND_MergeFileOptions_flags_FIELD_WRITER TRUE
+
+#define BIND_MergeFileResult_TYPE TRUE
+#define BIND_MergeFileResult_INITIALIZE FALSE
+#define BIND_MergeFileResult_automergeable_FIELD_READER TRUE
+#define BIND_MergeFileResult_automergeable_FIELD_WRITER TRUE
+#define BIND_MergeFileResult_path_FIELD_READER TRUE
+#define BIND_MergeFileResult_path_FIELD_WRITER TRUE
+#define BIND_MergeFileResult_mode_FIELD_READER TRUE
+#define BIND_MergeFileResult_mode_FIELD_WRITER TRUE
+#define BIND_MergeFileResult_ptr_FIELD_READER TRUE
+#define BIND_MergeFileResult_ptr_FIELD_WRITER TRUE
+#define BIND_MergeFileResult_len_FIELD_READER TRUE
+#define BIND_MergeFileResult_len_FIELD_WRITER TRUE
+
+#define BIND_MergeOptions_TYPE TRUE
+#define BIND_MergeOptions_INITIALIZE FALSE
+#define BIND_MergeOptions_version_FIELD_READER TRUE
+#define BIND_MergeOptions_version_FIELD_WRITER TRUE
+#define BIND_MergeOptions_flags_FIELD_READER TRUE
+#define BIND_MergeOptions_flags_FIELD_WRITER TRUE
+#define BIND_MergeOptions_rename_threshold_FIELD_READER TRUE
+#define BIND_MergeOptions_rename_threshold_FIELD_WRITER TRUE
+#define BIND_MergeOptions_target_limit_FIELD_READER TRUE
+#define BIND_MergeOptions_target_limit_FIELD_WRITER TRUE
+#define BIND_MergeOptions_metric_FIELD_READER TRUE
+#define BIND_MergeOptions_metric_FIELD_WRITER TRUE
+#define BIND_MergeOptions_recursion_limit_FIELD_READER TRUE
+#define BIND_MergeOptions_recursion_limit_FIELD_WRITER TRUE
+#define BIND_MergeOptions_file_favor_FIELD_READER TRUE
+#define BIND_MergeOptions_file_favor_FIELD_WRITER TRUE
+#define BIND_MergeOptions_file_flags_FIELD_READER TRUE
+#define BIND_MergeOptions_file_flags_FIELD_WRITER TRUE
+
+#define BIND_MergeResult_TYPE TRUE
+#define BIND_MergeResult_INITIALIZE FALSE
+
+#define BIND_Note_TYPE TRUE
+#define BIND_Note_INITIALIZE FALSE
+
+#define BIND_NoteIterator_TYPE TRUE
+#define BIND_NoteIterator_INITIALIZE FALSE
+
+#define BIND_Object_TYPE TRUE
+#define BIND_Object_INITIALIZE FALSE
+
+#define BIND_Odb_TYPE TRUE
+#define BIND_Odb_INITIALIZE FALSE
+
+#define BIND_OdbBackend_TYPE TRUE
+#define BIND_OdbBackend_INITIALIZE FALSE
+
+#define BIND_OdbObject_TYPE TRUE
+#define BIND_OdbObject_INITIALIZE FALSE
+
+#define BIND_OdbStream_TYPE TRUE
+#define BIND_OdbStream_INITIALIZE FALSE
+#define BIND_OdbStream_backend_FIELD_READER TRUE
+#define BIND_OdbStream_backend_FIELD_WRITER TRUE
+#define BIND_OdbStream_mode_FIELD_READER TRUE
+#define BIND_OdbStream_mode_FIELD_WRITER TRUE
+#define BIND_OdbStream_hash_ctx_FIELD_READER FALSE
+#define BIND_OdbStream_hash_ctx_FIELD_WRITER FALSE
+#define BIND_OdbStream_declared_size_FIELD_READER TRUE
+#define BIND_OdbStream_declared_size_FIELD_WRITER TRUE
+#define BIND_OdbStream_received_bytes_FIELD_READER TRUE
+#define BIND_OdbStream_received_bytes_FIELD_WRITER TRUE
+#define BIND_OdbStream_read_FIELD_READER FALSE
+#define BIND_OdbStream_read_FIELD_WRITER FALSE
+#define BIND_OdbStream_write_FIELD_READER FALSE
+#define BIND_OdbStream_write_FIELD_WRITER FALSE
+#define BIND_OdbStream_finalize_write_FIELD_READER FALSE
+#define BIND_OdbStream_finalize_write_FIELD_WRITER FALSE
+#define BIND_OdbStream_free_FIELD_READER FALSE
+#define BIND_OdbStream_free_FIELD_WRITER FALSE
+
+#define BIND_OdbWritepack_TYPE TRUE
+#define BIND_OdbWritepack_INITIALIZE FALSE
+#define BIND_OdbWritepack_backend_FIELD_READER TRUE
+#define BIND_OdbWritepack_backend_FIELD_WRITER TRUE
+#define BIND_OdbWritepack_append_FIELD_READER FALSE
+#define BIND_OdbWritepack_append_FIELD_WRITER FALSE
+#define BIND_OdbWritepack_commit_FIELD_READER FALSE
+#define BIND_OdbWritepack_commit_FIELD_WRITER FALSE
+#define BIND_OdbWritepack_free_FIELD_READER FALSE
+#define BIND_OdbWritepack_free_FIELD_WRITER FALSE
+
+#define BIND_Oid_TYPE TRUE
+#define BIND_Oid_INITIALIZE FALSE
+#define BIND_Oid_id_FIELD_READER FALSE
+#define BIND_Oid_id_FIELD_WRITER FALSE
+
+#define BIND_OidShorten_TYPE TRUE
+#define BIND_OidShorten_INITIALIZE FALSE
+
+#define BIND_Oidarray_TYPE TRUE
+#define BIND_Oidarray_INITIALIZE FALSE
+#define BIND_Oidarray_ids_FIELD_READER TRUE
+#define BIND_Oidarray_ids_FIELD_WRITER TRUE
+#define BIND_Oidarray_count_FIELD_READER TRUE
+#define BIND_Oidarray_count_FIELD_WRITER TRUE
+
+#define BIND_Packbuilder_TYPE TRUE
+#define BIND_Packbuilder_INITIALIZE FALSE
+
+#define BIND_Patch_TYPE TRUE
+#define BIND_Patch_INITIALIZE FALSE
+
+#define BIND_Pathspec_TYPE TRUE
+#define BIND_Pathspec_INITIALIZE FALSE
+
+#define BIND_PathspecMatchList_TYPE TRUE
+#define BIND_PathspecMatchList_INITIALIZE FALSE
+
+#define BIND_Push_TYPE TRUE
+#define BIND_Push_INITIALIZE FALSE
+
+#define BIND_PushOptions_TYPE TRUE
+#define BIND_PushOptions_INITIALIZE FALSE
+#define BIND_PushOptions_version_FIELD_READER TRUE
+#define BIND_PushOptions_version_FIELD_WRITER TRUE
+#define BIND_PushOptions_pb_parallelism_FIELD_READER TRUE
+#define BIND_PushOptions_pb_parallelism_FIELD_WRITER TRUE
+#define BIND_PushOptions_callbacks_FIELD_READER FALSE
+#define BIND_PushOptions_callbacks_FIELD_WRITER TRUE
+#define BIND_PushOptions_custom_headers_FIELD_READER FALSE
+#define BIND_PushOptions_custom_headers_FIELD_WRITER TRUE
+
+#define BIND_PushUpdate_TYPE TRUE
+#define BIND_PushUpdate_INITIALIZE FALSE
+#define BIND_PushUpdate_src_refname_FIELD_READER FALSE
+#define BIND_PushUpdate_src_refname_FIELD_WRITER FALSE
+#define BIND_PushUpdate_dst_refname_FIELD_READER FALSE
+#define BIND_PushUpdate_dst_refname_FIELD_WRITER FALSE
+#define BIND_PushUpdate_src_FIELD_READER FALSE
+#define BIND_PushUpdate_src_FIELD_WRITER TRUE
+#define BIND_PushUpdate_dst_FIELD_READER FALSE
+#define BIND_PushUpdate_dst_FIELD_WRITER TRUE
+
+#define BIND_Rebase_TYPE TRUE
+#define BIND_Rebase_INITIALIZE FALSE
+
+#define BIND_RebaseOperation_TYPE TRUE
+#define BIND_RebaseOperation_INITIALIZE FALSE
+#define BIND_RebaseOperation_type_FIELD_READER TRUE
+#define BIND_RebaseOperation_type_FIELD_WRITER TRUE
+#define BIND_RebaseOperation_id_FIELD_READER FALSE
+#define BIND_RebaseOperation_exec_FIELD_READER TRUE
+#define BIND_RebaseOperation_exec_FIELD_WRITER TRUE
+
+#define BIND_RebaseOptions_TYPE TRUE
+#define BIND_RebaseOptions_INITIALIZE FALSE
+#define BIND_RebaseOptions_version_FIELD_READER TRUE
+#define BIND_RebaseOptions_version_FIELD_WRITER TRUE
+#define BIND_RebaseOptions_quiet_FIELD_READER TRUE
+#define BIND_RebaseOptions_quiet_FIELD_WRITER TRUE
+#define BIND_RebaseOptions_rewrite_notes_ref_FIELD_READER TRUE
+#define BIND_RebaseOptions_rewrite_notes_ref_FIELD_WRITER TRUE
+#define BIND_RebaseOptions_checkout_options_FIELD_READER TRUE
+#define BIND_RebaseOptions_checkout_options_FIELD_WRITER TRUE
+
+#define BIND_Refdb_TYPE TRUE
+#define BIND_Refdb_INITIALIZE FALSE
+
+#define BIND_RefdbBackend_TYPE TRUE
+#define BIND_RefdbBackend_INITIALIZE FALSE
+
+#define BIND_Reference_TYPE TRUE
+#define BIND_Reference_INITIALIZE FALSE
+
+#define BIND_ReferenceIterator_TYPE TRUE
+#define BIND_ReferenceIterator_INITIALIZE FALSE
+
+#define BIND_Reflog_TYPE TRUE
+#define BIND_Reflog_INITIALIZE FALSE
+
+#define BIND_ReflogEntry_TYPE TRUE
+#define BIND_ReflogEntry_INITIALIZE FALSE
+
+#define BIND_Refspec_TYPE TRUE
+#define BIND_Refspec_INITIALIZE FALSE
+
+#define BIND_Remote_TYPE TRUE
+#define BIND_Remote_INITIALIZE FALSE
+
+#define BIND_RemoteCallbacks_TYPE TRUE
+#define BIND_RemoteCallbacks_INITIALIZE FALSE
+#define BIND_RemoteCallbacks_version_FIELD_READER TRUE
+#define BIND_RemoteCallbacks_version_FIELD_WRITER TRUE
+#define BIND_RemoteCallbacks_sideband_progress_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_sideband_progress_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_completion_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_completion_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_credentials_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_credentials_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_certificate_check_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_certificate_check_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_transfer_progress_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_transfer_progress_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_update_tips_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_update_tips_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_pack_progress_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_pack_progress_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_push_transfer_progress_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_push_transfer_progress_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_push_update_reference_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_push_update_reference_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_push_negotiation_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_push_negotiation_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_transport_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_transport_FIELD_WRITER FALSE
+#define BIND_RemoteCallbacks_payload_FIELD_READER FALSE
+#define BIND_RemoteCallbacks_payload_FIELD_WRITER FALSE
+
+#define BIND_RemoteHead_TYPE TRUE
+#define BIND_RemoteHead_INITIALIZE FALSE
+#define BIND_RemoteHead_local_FIELD_READER TRUE
+#define BIND_RemoteHead_local_FIELD_WRITER TRUE
+#define BIND_RemoteHead_oid_FIELD_READER FALSE
+#define BIND_RemoteHead_oid_FIELD_WRITER TRUE
+#define BIND_RemoteHead_loid_FIELD_READER FALSE
+#define BIND_RemoteHead_loid_FIELD_WRITER TRUE
+#define BIND_RemoteHead_name_FIELD_READER FALSE
+#define BIND_RemoteHead_name_FIELD_WRITER FALSE
+#define BIND_RemoteHead_symref_target_FIELD_READER FALSE
+#define BIND_RemoteHead_symref_target_FIELD_WRITER FALSE
+
+#define BIND_Repository_TYPE TRUE
+#define BIND_Repository_INITIALIZE FALSE
+
+#define BIND_RepositoryInitOptions_TYPE TRUE
+#define BIND_RepositoryInitOptions_INITIALIZE FALSE
+#define BIND_RepositoryInitOptions_version_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_version_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_flags_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_flags_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_mode_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_mode_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_workdir_path_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_workdir_path_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_description_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_description_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_template_path_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_template_path_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_initial_head_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_initial_head_FIELD_WRITER TRUE
+#define BIND_RepositoryInitOptions_origin_url_FIELD_READER TRUE
+#define BIND_RepositoryInitOptions_origin_url_FIELD_WRITER TRUE
+
+#define BIND_RevertOptions_TYPE TRUE
+#define BIND_RevertOptions_INITIALIZE FALSE
+#define BIND_RevertOptions_version_FIELD_READER TRUE
+#define BIND_RevertOptions_version_FIELD_WRITER TRUE
+#define BIND_RevertOptions_mainline_FIELD_READER TRUE
+#define BIND_RevertOptions_mainline_FIELD_WRITER TRUE
+#define BIND_RevertOptions_merge_opts_FIELD_READER FALSE
+#define BIND_RevertOptions_merge_opts_FIELD_WRITER TRUE
+#define BIND_RevertOptions_checkout_opts_FIELD_READER FALSE
+#define BIND_RevertOptions_checkout_opts_FIELD_WRITER TRUE
+
+#define BIND_Revspec_TYPE TRUE
+#define BIND_Revspec_INITIALIZE FALSE
+#define BIND_Revspec_from_FIELD_READER TRUE
+#define BIND_Revspec_from_FIELD_WRITER TRUE
+#define BIND_Revspec_to_FIELD_READER TRUE
+#define BIND_Revspec_to_FIELD_WRITER TRUE
+#define BIND_Revspec_flags_FIELD_READER TRUE
+#define BIND_Revspec_flags_FIELD_WRITER TRUE
+
+#define BIND_Revwalk_TYPE TRUE
+#define BIND_Revwalk_INITIALIZE FALSE
+
+#define BIND_Signature_TYPE TRUE
+#define BIND_Signature_INITIALIZE FALSE
+#define BIND_Signature_name_FIELD_READER FALSE
+#define BIND_Signature_name_FIELD_WRITER FALSE
+#define BIND_Signature_email_FIELD_READER FALSE
+#define BIND_Signature_email_FIELD_WRITER FALSE
+#define BIND_Signature_when_FIELD_READER FALSE
+#define BIND_Signature_when_FIELD_WRITER TRUE
+
+#define BIND_StashApplyOptions_TYPE TRUE
+#define BIND_StashApplyOptions_INITIALIZE FALSE
+#define BIND_StashApplyOptions_version_FIELD_READER TRUE
+#define BIND_StashApplyOptions_version_FIELD_WRITER TRUE
+#define BIND_StashApplyOptions_flags_FIELD_READER TRUE
+#define BIND_StashApplyOptions_flags_FIELD_WRITER TRUE
+#define BIND_StashApplyOptions_checkout_options_FIELD_READER TRUE
+#define BIND_StashApplyOptions_checkout_options_FIELD_WRITER TRUE
+#define BIND_StashApplyOptions_progress_cb_FIELD_READER FALSE
+#define BIND_StashApplyOptions_progress_cb_FIELD_WRITER FALSE
+#define BIND_StashApplyOptions_progress_payload_FIELD_READER FALSE
+#define BIND_StashApplyOptions_progress_payload_FIELD_WRITER FALSE
+
+#define BIND_StatusEntry_TYPE TRUE
+#define BIND_StatusEntry_INITIALIZE FALSE
+#define BIND_StatusEntry_status_FIELD_READER TRUE
+#define BIND_StatusEntry_status_FIELD_WRITER TRUE
+#define BIND_StatusEntry_head_to_index_FIELD_READER TRUE
+#define BIND_StatusEntry_head_to_index_FIELD_WRITER TRUE
+#define BIND_StatusEntry_index_to_workdir_FIELD_READER TRUE
+#define BIND_StatusEntry_index_to_workdir_FIELD_WRITER TRUE
+
+#define BIND_StatusList_TYPE TRUE
+#define BIND_StatusList_INITIALIZE FALSE
+
+#define BIND_StatusOptions_TYPE TRUE
+#define BIND_StatusOptions_INITIALIZE FALSE
+#define BIND_StatusOptions_version_FIELD_READER TRUE
+#define BIND_StatusOptions_version_FIELD_WRITER TRUE
+#define BIND_StatusOptions_show_FIELD_READER TRUE
+#define BIND_StatusOptions_show_FIELD_WRITER TRUE
+#define BIND_StatusOptions_flags_FIELD_READER TRUE
+#define BIND_StatusOptions_flags_FIELD_WRITER TRUE
+#define BIND_StatusOptions_pathspec_FIELD_READER FALSE
+#define BIND_StatusOptions_pathspec_FIELD_WRITER TRUE
+
+#define BIND_Strarray_TYPE TRUE
+#define BIND_Strarray_INITIALIZE FALSE
+#define BIND_Strarray_strings_FIELD_READER FALSE
+#define BIND_Strarray_strings_FIELD_WRITER FALSE
+#define BIND_Strarray_count_FIELD_READER TRUE
+#define BIND_Strarray_count_FIELD_WRITER TRUE
+
+#define BIND_Submodule_TYPE TRUE
+#define BIND_Submodule_INITIALIZE FALSE
+
+#define BIND_SubmoduleUpdateOptions_TYPE TRUE
+#define BIND_SubmoduleUpdateOptions_INITIALIZE FALSE
+#define BIND_SubmoduleUpdateOptions_version_FIELD_READER TRUE
+#define BIND_SubmoduleUpdateOptions_version_FIELD_WRITER TRUE
+#define BIND_SubmoduleUpdateOptions_checkout_opts_FIELD_READER FALSE
+#define BIND_SubmoduleUpdateOptions_checkout_opts_FIELD_WRITER TRUE
+#define BIND_SubmoduleUpdateOptions_fetch_opts_FIELD_READER FALSE
+#define BIND_SubmoduleUpdateOptions_fetch_opts_FIELD_WRITER TRUE
+#define BIND_SubmoduleUpdateOptions_clone_checkout_strategy_FIELD_READER TRUE
+#define BIND_SubmoduleUpdateOptions_clone_checkout_strategy_FIELD_WRITER TRUE
+
+#define BIND_Tag_TYPE TRUE
+#define BIND_Tag_INITIALIZE FALSE
+
+#define BIND_Time_TYPE TRUE
+#define BIND_Time_INITIALIZE FALSE
+#define BIND_Time_time_FIELD_READER TRUE
+#define BIND_Time_time_FIELD_WRITER TRUE
+#define BIND_Time_offset_FIELD_READER TRUE
+#define BIND_Time_offset_FIELD_WRITER TRUE
+
+#define BIND_Transaction_TYPE TRUE
+#define BIND_Transaction_INITIALIZE FALSE
+
+#define BIND_TransferProgress_TYPE TRUE
+#define BIND_TransferProgress_INITIALIZE FALSE
+#define BIND_TransferProgress_total_objects_FIELD_READER TRUE
+#define BIND_TransferProgress_total_objects_FIELD_WRITER TRUE
+#define BIND_TransferProgress_indexed_objects_FIELD_READER TRUE
+#define BIND_TransferProgress_indexed_objects_FIELD_WRITER TRUE
+#define BIND_TransferProgress_received_objects_FIELD_READER TRUE
+#define BIND_TransferProgress_received_objects_FIELD_WRITER TRUE
+#define BIND_TransferProgress_local_objects_FIELD_READER TRUE
+#define BIND_TransferProgress_local_objects_FIELD_WRITER TRUE
+#define BIND_TransferProgress_total_deltas_FIELD_READER TRUE
+#define BIND_TransferProgress_total_deltas_FIELD_WRITER TRUE
+#define BIND_TransferProgress_indexed_deltas_FIELD_READER TRUE
+#define BIND_TransferProgress_indexed_deltas_FIELD_WRITER TRUE
+#define BIND_TransferProgress_received_bytes_FIELD_READER TRUE
+#define BIND_TransferProgress_received_bytes_FIELD_WRITER TRUE
+
+#define BIND_Transport_TYPE TRUE
+#define BIND_Transport_INITIALIZE FALSE
+
+#define BIND_Tree_TYPE TRUE
+#define BIND_Tree_INITIALIZE FALSE
+
+#define BIND_TreeEntry_TYPE TRUE
+#define BIND_TreeEntry_INITIALIZE FALSE
+
+#define BIND_Treebuilder_TYPE TRUE
+#define BIND_Treebuilder_INITIALIZE FALSE
+
+#define BIND_Writestream_TYPE TRUE
+#define BIND_Writestream_INITIALIZE FALSE
+#define BIND_Writestream_write_FIELD_READER FALSE
+#define BIND_Writestream_write_FIELD_WRITER FALSE
+#define BIND_Writestream_close_FIELD_READER FALSE
+#define BIND_Writestream_close_FIELD_WRITER FALSE
+#define BIND_Writestream_free_FIELD_READER FALSE
+#define BIND_Writestream_free_FIELD_WRITER FALSE
+
+#define BIND_ImaxdivT_TYPE TRUE
+#define BIND_ImaxdivT_INITIALIZE FALSE
+#define BIND_ImaxdivT_quot_FIELD_READER TRUE
+#define BIND_ImaxdivT_quot_FIELD_WRITER TRUE
+#define BIND_ImaxdivT_rem_FIELD_READER TRUE
+#define BIND_ImaxdivT_rem_FIELD_WRITER TRUE
+
+#define BIND_LIBSSH2SESSION_TYPE TRUE
+#define BIND_LIBSSH2SESSION_INITIALIZE FALSE
+
+#define BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE TRUE
+#define BIND_LIBSSH2USERAUTHKBDINTPROMPT_INITIALIZE FALSE
+
+#define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE TRUE
+#define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_INITIALIZE FALSE
+
+#endif

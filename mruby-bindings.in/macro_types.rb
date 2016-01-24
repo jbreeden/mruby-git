@@ -1,0 +1,5 @@
+CTypes.set_macro_type('LIBGIT2_VERSION', CTypes['int'])
+CTypes.set_macro_type('LIBGIT2_VER_MAJOR', CTypes['int'])
+CTypes.set_macro_type('LIBGIT2_VER_MINOR', CTypes['int'])
+CTypes.set_macro_type('LIBGIT2_VER_REVISION', CTypes['int'])
+CTypes.set_macro_type('LIBGIT2_VER_PATCH', CTypes['int'])
