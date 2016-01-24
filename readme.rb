@@ -1,3 +1,14 @@
+# mruby-git
+# =========
+#
+# Bindings to libgit2 for MRuby.
+# 
+# Tutorial
+# ========
+#
+# The following tutorial was taken from https://libgit2.github.com/docs/guides/101-samples/
+# and converted to match the MRuby api.
+#
 # Initialize the library
 # ----------------------
 # The library needs to keep some global state and initialize its dependencies. You must therefore initialize the library before working with it.
@@ -24,7 +35,7 @@ puts 'Attempting to open non-existant repo'
 begin
   repo = Git.repository_open('dne')
 rescue Git::Error => ex
-  puts "#{ex.class}: #{ex.message} (#{ex.klass})"
+  puts "#{ex.class}: #{ex.message}"
 else
   raise "Expected an error, but didn't catch one."
 end
@@ -237,35 +248,34 @@ repo = Git.repository_open_bare("sandbox/bare")
 # ```Ruby
 root = Git.repository_discover("./sandbox")
 puts "Root of ./sandbox is #{root.to_s}"
-…
 # ```
 #
 # ### Check If Repository
+# No convenience method for this yet. `repository_open` will throw. (TODO: Add `repository_exists?`)
 #
 # ```Ruby
-## Pass NULL for the output parameter to check for but not open the repo
-      # if (git_repository_open_ext(
-      #         NULL, "/tmp/…", GIT_REPOSITORY_OPEN_NO_SEARCH, NULL) == 0) {
-      #     /* directory looks like an openable repository */;
-      # }
-      # (git_repository_open_ext, git_repository_open_flag_t)
+begin
+  Git.repository_open("sandbox")
+rescue Git::Error => ex
+  puts ex.message
+end
 # ```
 #
+# Objects
+# SHAs and OIDs
+# SHA-1 hashes are usually written as 40 characters of hexadecimal. These are converted to a binary representation internally, called git_oid, and there are routines for converting back and forth.
+#
+# ```Ruby
+# Convert a SHA to an OID
+sha = "4a202b346bb0fb0db7eff3cffeb3c70babbd2045"
+oid = Git.oid_fromstr(sha)
+puts "Got oid #{oid} (#{oid.class})"
+
+# Make a shortened printable string from an OID
+short = Git.oid_tostr_s(oid)[0..6]
+puts "Converted Git::Oid to short sha: #{short}"
+# ```
 __END__
-
-Objects
-SHAs and OIDs
-SHA-1 hashes are usually written as 40 characters of hexadecimal. These are converted to a binary representation internally, called git_oid, and there are routines for converting back and forth.
-
-/* Convert a SHA to an OID */
-const char *sha = "4a202b346bb0fb0db7eff3cffeb3c70babbd2045";
-git_oid oid = 0;
-int error = git_oid_fromstr(&oid, sha);
-
-/* Make a shortened printable string from an OID */
-char shortsha[10] = {0};
-git_oid_tostr(shortsha, 9, &oid);
-(git_oid_fromstr, git_oid_tostr, git_oid_allocfmt)
 
 Lookups
 There are four kinds of objects in a Git repository – commits, trees, blobs, and tag annotations. Each type of object has an API for doing lookups.

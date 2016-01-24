@@ -2,10 +2,119 @@
 
 /* MRUBY_BINDING: header */
 /* sha: user_defined */
+
+static mrb_value
+mruby_git_last_error(mrb_state * mrb) {
+  const git_error * last_err = giterr_last();
+  if (last_err == NULL || last_err->klass == GITERR_NONE) {
+    return mrb_nil_value();
+  }
+  
+  struct RClass * err_class = NULL;
+  switch (last_err->klass) {
+    case GITERR_NOMEMORY:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "NoMemoryError");
+      break;
+    case GITERR_OS:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "OSError");
+      break;
+    case GITERR_INVALID:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "InvalidError");
+      break;
+    case GITERR_REFERENCE:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "ReferenceError");
+      break;
+    case GITERR_ZLIB:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "ZLibError");
+      break;
+    case GITERR_REPOSITORY:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "RepositoryError");
+      break;
+    case GITERR_CONFIG:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "ConfigError");
+      break;
+    case GITERR_REGEX:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "RegexError");
+      break;
+    case GITERR_ODB:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "ODBError");
+      break;
+    case GITERR_INDEX:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "IndexError");
+      break;
+    case GITERR_OBJECT:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "ObjectError");
+      break;
+    case GITERR_NET:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "NetError");
+      break;
+    case GITERR_TAG:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "TagError");
+      break;
+    case GITERR_TREE:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "TreeError");
+      break;
+    case GITERR_INDEXER:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "IndexerError");
+      break;
+    case GITERR_SSL:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "SSLError");
+      break;
+    case GITERR_SUBMODULE:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "SubmoduleError");
+      break;
+    case GITERR_THREAD:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "ThreadError");
+      break;
+    case GITERR_STASH:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "StashError");
+      break;
+    case GITERR_CHECKOUT:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "CheckoutError");
+      break;
+    case GITERR_FETCHHEAD:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "FetchHeadError");
+      break;
+    case GITERR_MERGE:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "MergeError");
+      break;
+    case GITERR_SSH:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "SSHError");
+      break;
+    case GITERR_FILTER:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "FilterError");
+      break;
+    case GITERR_REVERT:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "RevertError");
+      break;
+    case GITERR_CALLBACK:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "CallbackError");
+      break;
+    case GITERR_CHERRYPICK:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "CherrypickError");
+      break;
+    case GITERR_DESCRIBE:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "DescribeError");
+      break;
+    case GITERR_REBASE:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "RebaseError");
+      break;
+    case GITERR_FILESYSTEM:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "FileSystemError");
+      break;
+    default:
+      err_class = mrb_class_get_under(mrb, Git_module(mrb), "Error");
+  }
+
+  /* initialize the error */
+  return mrb_funcall(mrb, mrb_obj_value(err_class), "new", 1, mrb_str_new_cstr(mrb, last_err->message));
+}
+
 void raise_git_error(mrb_state * mrb) {
-  git_error * err = giterr_last();
-  mrb_value rb_err = mruby_box_git_error(mrb, err);
-  mrb_exc_raise(mrb, rb_err);
+  mrb_value err = mruby_git_last_error(mrb);
+  if (!mrb_nil_p(err)) {
+    mrb_exc_raise(mrb, err);
+  }
 }
 /* MRUBY_BINDING_END */
 
@@ -14603,7 +14712,7 @@ mrb_Git_git_oid_fromraw(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING: git_oid_fromstr */
 /* sha: 2bad8f4b514aa88fd95f491740122068d3e39ff99b22ccb865c37812dcf9f130 */
 #if BIND_git_oid_fromstr_FUNCTION
-#define git_oid_fromstr_REQUIRED_ARGC 2
+#define git_oid_fromstr_REQUIRED_ARGC 1
 #define git_oid_fromstr_OPTIONAL_ARGC 0
 /* git_oid_fromstr
  *
@@ -14620,23 +14729,15 @@ mrb_Git_git_oid_fromstr(mrb_state* mrb, mrb_value self) {
   char * native_str = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oz", &out, &native_str);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_oid * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_oid(out));
+  mrb_get_args(mrb, "z", &native_str);
 
   /* Invocation */
+  git_oid * native_out = (git_oid*)calloc(1, sizeof(git_oid));
   int native_return_value = git_oid_fromstr(native_out, native_str);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return mruby_giftwrap_git_oid(mrb, native_out);
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -15140,23 +15241,17 @@ mrb_Git_git_oid_tostr(mrb_state* mrb, mrb_value self) {
 mrb_value
 mrb_Git_git_oid_tostr_s(mrb_state* mrb, mrb_value self) {
   mrb_value oid;
-
-  /* Fetch the args */
   mrb_get_args(mrb, "o", &oid);
 
-  /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, oid, Oid_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: oid */
   const git_oid * native_oid = (mrb_nil_p(oid) ? NULL : mruby_unbox_git_oid(oid));
 
-  /* Invocation */
   char * native_return_value = git_oid_tostr_s(native_oid);
 
-  /* Box the return value */
   mrb_value return_value = native_return_value ==  NULL ? mrb_nil_value() : mrb_str_new_cstr(mrb, native_return_value);
   
   return return_value;
@@ -22367,11 +22462,7 @@ mrb_Git_git_repository_discover(mrb_state* mrb, mrb_value self) {
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
 
-  if (giterr_last() != NULL) {
-    raise_git_error(mrb);
-    return mrb_nil_value();
-  }
-
+  RAISE_GIT_ERROR();
   return out;
 }
 #endif
@@ -23293,11 +23384,7 @@ mrb_Git_git_repository_open_ext(mrb_state* mrb, mrb_value self) {
   /* Add out params to results */
   mrb_ary_push(mrb, results, out);
 
-  if (giterr_last() != NULL) {
-    raise_git_error(mrb);
-    return mrb_nil_value();
-  }
-
+  RAISE_GIT_ERROR();
   return results;
 }
 #endif
@@ -29921,12 +30008,7 @@ mrb_Git_giterr_clear(mrb_state* mrb, mrb_value self) {
 mrb_value
 mrb_Git_giterr_last(mrb_state* mrb, mrb_value self) {
   /* Invocation */
-  const git_error * native_return_value = giterr_last();
-
-  /* Box the return value */
-  mrb_value return_value = (native_return_value == NULL ? mrb_nil_value() : mruby_box_git_error(mrb, native_return_value));
-  
-  return return_value;
+  return mruby_git_last_error(mrb);
 }
 #endif
 /* MRUBY_BINDING_END */

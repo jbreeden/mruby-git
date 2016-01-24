@@ -54,7 +54,9 @@
 #define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
 #undef BIND_CredUserpassPayload_TYPE
 #define BIND_CredUserpassPayload_TYPE FALSE
-  
+#undef BIND_Error_TYPE
+#define BIND_Error_TYPE FALSE
+
 void raise_git_error(mrb_state * mrb);
 #define CLEAR_GIT_ERROR() giterr_clear();
 #define RAISE_GIT_ERROR() \
