@@ -1,17 +1,53 @@
-/*
+/* - MRUBY_BINDINGS_NO_CLOBBER -
  * git_buf
  * Defined in file buffer.h @ line 52
  */
 
 #include "mruby_Git.h"
 
+
+/** Excerpt from libgit2 header
+ * A data buffer for exporting data from libgit2
+ *
+ * Sometimes libgit2 wants to return an allocated data buffer to the
+ * caller and have the caller take responsibility for freeing that memory.
+ * This can be awkward if the caller does not have easy access to the same
+ * allocation functions that libgit2 is using.  In those cases, libgit2
+ * will fill in a `git_buf` and the caller can use `git_buf_free()` to
+ * release it when they are done.
+ *
+ * A `git_buf` may also be used for the caller to pass in a reference to
+ * a block of memory they hold.  In this case, libgit2 will not resize or
+ * free the memory, but will read from it as needed.
+ *
+ * A `git_buf` is a public structure with three fields:
+ *
+ * - `ptr` points to the start of the allocated memory.  If it is NULL,
+ *   then the `git_buf` is considered empty and libgit2 will feel free
+ *   to overwrite it with new data.
+ *
+ * - `size` holds the size (in bytes) of the data that is actually used.
+ *
+ * - `asize` holds the known total amount of allocated memory if the `ptr`
+ *    was allocated by libgit2.  It may be larger than `size`.  If `ptr`
+ *    was not allocated by libgit2 and should not be resized and/or freed,
+ *    then `asize` will be set to zero.
+ *
+ * Some APIs may occasionally do something slightly unusual with a buffer,
+ * such as setting `ptr` to a value that was passed in by the user.  In
+ * those cases, the behavior will be clearly documented by the API.
+ */
+ 
+/* IMPORTANT: GC INFORMATION 
+ * -------------------------
+ *
+ * The `asize` member communicates who owns the buffer. This lets us
+ * easily determine what to do on GC of the Ruby handle to the buffer.
+ * I wish all libraries did something like that.
+ */
+
+
 #if BIND_Buf_TYPE
-
-/* MRUBY_BINDING: header */
-/* sha: user_defined */
-
-/* MRUBY_BINDING_END */
-
 /*
  * Class Methods
  */
@@ -21,104 +57,17 @@
 #if BIND_Buf_INITIALIZE
 mrb_value
 mrb_Git_Buf_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_buf* native_object = (git_buf*)calloc(1, sizeof(git_buf));
   mruby_gift_git_buf_data_ptr(self, native_object);
+  git_buf_init(native_object, 0);
   return self;
 }
 #endif
 /* MRUBY_BINDING_END */
 
-/* MRUBY_BINDING: Buf::disown */
-/* sha: b6fba6f3939c5909e70e874bc00526c7a038c0a227e3ae21d3cd4eca70183c38 */
-mrb_value
-mrb_Git_Buf_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Buf.disown only accepts objects of type Git::Buf");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::belongs_to_ruby */
-/* sha: 614b7eeb1fe6a9c225804a8679bd70c8b12790bc99e68e6c61e1890c31641fcb */
-mrb_value
-mrb_Git_Buf_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Buf.belongs_to_ruby only accepts objects of type Git::Buf");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
-/* MRUBY_BINDING_END */
-
 /*
  * Fields
  */
-
-/* MRUBY_BINDING: Buf::ptr_reader */
-/* sha: 0c42592030259f8bf6d7d3ecba71a88154d466596f0a7d75c895ec695aa31d89 */
-#if BIND_Buf_ptr_FIELD_READER
-/* get_ptr
- *
- * Return Type: char *
- */
-mrb_value
-mrb_Git_Buf_get_ptr(mrb_state* mrb, mrb_value self) {
-  git_buf * native_self = mruby_unbox_git_buf(self);
-
-  char * native_ptr = native_self->ptr;
-
-  mrb_value ptr = TODO_mruby_box_char_PTR(mrb, native_ptr);
-
-  return ptr;
-}
-#endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::ptr_writer */
-/* sha: ccd9380f13089e645eddb60c440867e02156eb3bf7adcd033e30fd2071e0409e */
-#if BIND_Buf_ptr_FIELD_WRITER
-/* set_ptr
- *
- * Parameters:
- * - value: char *
- */
-mrb_value
-mrb_Git_Buf_set_ptr(mrb_state* mrb, mrb_value self) {
-  git_buf * native_self = mruby_unbox_git_buf(self);
-  mrb_value ptr;
-
-  mrb_get_args(mrb, "o", &ptr);
-
-  /* type checking */
-  TODO_type_check_char_PTR(ptr);
-
-  char * native_ptr = TODO_mruby_unbox_char_PTR(ptr);
-
-  native_self->ptr = native_ptr;
-  
-  mrb_value value_as_mrb_value;
-  mrb_get_args(mrb, "o", &value_as_mrb_value);
-  return value_as_mrb_value;
-}
-#endif
-/* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Buf::asize_reader */
 /* sha: c9103c448ca494fb57979dcf225872453d3775b1bc6a163182a7db5795e708dd */

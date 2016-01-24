@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffFile::initialize */
 /* sha: bba5ef32de5406edd1b26c3614a78c35ba7a96d2adeabc5b927a7a5e58a16987 */
 #if BIND_DiffFile_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffFile_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffFile::disown */
-/* sha: d03b30fbe4168774e3a1821a9d4cb844652302ba583a467cf9da0fa14a9db599 */
-mrb_value
-mrb_Git_DiffFile_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffFile.disown only accepts objects of type Git::DiffFile");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffFile::belongs_to_ruby */
-/* sha: 0f6b5c1784713de7d8ed41dbd66b42490358e5e974d9ec994212ea4c0905a4aa */
-mrb_value
-mrb_Git_DiffFile_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffFile.belongs_to_ruby only accepts objects of type Git::DiffFile");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_DiffFile_get_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::id_writer */
-/* sha: 68664832562d4f9a3914c72373f9b4fdcd3d2444a80b983e166766777f49cc92 */
+/* sha: 1245ce3bca4c90339813eab4c5478c222a9e2f6b81e2a16a37bb46dc0f01b2b7 */
 #if BIND_DiffFile_id_FIELD_WRITER
 /* set_id
  *
@@ -117,6 +75,7 @@ mrb_Git_DiffFile_set_id(mrb_state* mrb, mrb_value self) {
 
   native_self->id = native_id;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -145,7 +104,7 @@ mrb_Git_DiffFile_get_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::path_writer */
-/* sha: 9cd6ae052dc98d74776c4c2f0efe64d1c1e50d06b86ba080989e1b65d59cea73 */
+/* sha: 69f120a179051fb1dac9d3bb4db2d6a1b0faa68a4df84d9c5795b73f19408966 */
 #if BIND_DiffFile_path_FIELD_WRITER
 /* set_path
  *
@@ -161,6 +120,7 @@ mrb_Git_DiffFile_set_path(mrb_state* mrb, mrb_value self) {
 
   native_self->path = native_path;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -189,7 +149,7 @@ mrb_Git_DiffFile_get_size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::size_writer */
-/* sha: 98904741e91bdb1bfd9cce9bcb150b7b4ec51b2a014b40e4ed7c5a4b92df7800 */
+/* sha: e1f57aef0617befcf96754f37d14bc61d3ac90251a18e19bfd1e2905173e7893 */
 #if BIND_DiffFile_size_FIELD_WRITER
 /* set_size
  *
@@ -205,6 +165,7 @@ mrb_Git_DiffFile_set_size(mrb_state* mrb, mrb_value self) {
 
   native_self->size = native_size;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -233,7 +194,7 @@ mrb_Git_DiffFile_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::flags_writer */
-/* sha: 37ef813283735db616707fd83e08b320863df267883d3db0222fb0a829ddbb5c */
+/* sha: 9c85d0ec998d51cd4602282fd53daa88156669c5079756df1ffb54947db74be8 */
 #if BIND_DiffFile_flags_FIELD_WRITER
 /* set_flags
  *
@@ -249,6 +210,7 @@ mrb_Git_DiffFile_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -277,7 +239,7 @@ mrb_Git_DiffFile_get_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::mode_writer */
-/* sha: 2c4997c13f4e2e978e279480d96f85388d734ce4f52ced5d02bde7330190e629 */
+/* sha: c3544add8bca6f1a41953e47bdff0962ba7465a920783f8ad3a71edb3540d2c4 */
 #if BIND_DiffFile_mode_FIELD_WRITER
 /* set_mode
  *
@@ -293,6 +255,7 @@ mrb_Git_DiffFile_set_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->mode = native_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

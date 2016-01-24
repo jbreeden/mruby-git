@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffBinary::initialize */
 /* sha: 3812d1cd9e9c7d4b9649f1176ec2a244e257c1094f1dbe03824bf2a3c12ebbc3 */
 #if BIND_DiffBinary_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffBinary_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffBinary::disown */
-/* sha: 13d10953dd3b4ebc99c1ccb846227139900bfdcec3fe82c3e53dc63d2f98ac81 */
-mrb_value
-mrb_Git_DiffBinary_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffBinary.disown only accepts objects of type Git::DiffBinary");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffBinary::belongs_to_ruby */
-/* sha: d2930852cafe23e486deea841ea8aa9122dc547d9a80cd9e9c7e39ee243f97ec */
-mrb_value
-mrb_Git_DiffBinary_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffBinary.belongs_to_ruby only accepts objects of type Git::DiffBinary");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_DiffBinary_get_old_file(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinary::old_file_writer */
-/* sha: e1f984ebdba41ee806555e64d913ec33ee30d0bba4a1e988e30dca5c4d265280 */
+/* sha: 63ee00913aafa48d57341f94668a50ae4b7472361989194366bd88efaa1acf24 */
 #if BIND_DiffBinary_old_file_FIELD_WRITER
 /* set_old_file
  *
@@ -117,6 +75,7 @@ mrb_Git_DiffBinary_set_old_file(mrb_state* mrb, mrb_value self) {
 
   native_self->old_file = native_old_file;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -146,7 +105,7 @@ mrb_Git_DiffBinary_get_new_file(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinary::new_file_writer */
-/* sha: 8832733246062cf4ea4fc1dc53981b0dbedf071c1e3f0e264108283fcd7ffc9f */
+/* sha: 78d48ceb9d97dbcbfa47778c2c06eb6555ce55cc95dc8c197d86e8d42d3b8b23 */
 #if BIND_DiffBinary_new_file_FIELD_WRITER
 /* set_new_file
  *
@@ -170,6 +129,7 @@ mrb_Git_DiffBinary_set_new_file(mrb_state* mrb, mrb_value self) {
 
   native_self->new_file = native_new_file;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

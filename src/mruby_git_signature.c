@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Signature::initialize */
 /* sha: b69eaba0516a651120dd0dd2f16a4705ebf92a90954e786220980176b90d03f2 */
 #if BIND_Signature_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Signature_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Signature::disown */
-/* sha: ea53cb0391e3db1326af3a73eb1bf1dca48c810f0a8205a017051034d364707e */
-mrb_value
-mrb_Git_Signature_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Signature.disown only accepts objects of type Git::Signature");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Signature::belongs_to_ruby */
-/* sha: 3e726150593cc46dab14f82c49a19c8f2cd54f0eb292af00272fb2dd7744cc15 */
-mrb_value
-mrb_Git_Signature_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Signature.belongs_to_ruby only accepts objects of type Git::Signature");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Signature_get_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Signature::name_writer */
-/* sha: 24a70d9391d6b222372f40f4c11b508d53f3dfa572fa82784d5e71c704b732f1 */
+/* sha: 553537834c16260cbdde655530e079f19ddb23a5c9857c024e1e612e89333a31 */
 #if BIND_Signature_name_FIELD_WRITER
 /* set_name
  *
@@ -113,6 +71,7 @@ mrb_Git_Signature_set_name(mrb_state* mrb, mrb_value self) {
 
   native_self->name = native_name;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -141,7 +100,7 @@ mrb_Git_Signature_get_email(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Signature::email_writer */
-/* sha: 26da665e73360077d7381c2a3d7594d28c7b217a786f3f85bb66061e9b6ca2d0 */
+/* sha: 41336ce69f9af7c7b9c08d8c91036177ab97274727e032c8d9c23311aa116066 */
 #if BIND_Signature_email_FIELD_WRITER
 /* set_email
  *
@@ -162,6 +121,7 @@ mrb_Git_Signature_set_email(mrb_state* mrb, mrb_value self) {
 
   native_self->email = native_email;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -191,7 +151,7 @@ mrb_Git_Signature_get_when(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Signature::when_writer */
-/* sha: 36d512c1f683620a96fc572ed1f68c5333bd857b56d2fea4931348eb6139b38a */
+/* sha: 10257bc43ef4562521c9232762b5cc840be3ec3885b1ea61ca45663b58abd867 */
 #if BIND_Signature_when_FIELD_WRITER
 /* set_when
  *
@@ -215,6 +175,7 @@ mrb_Git_Signature_set_when(mrb_state* mrb, mrb_value self) {
 
   native_self->when = native_when;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

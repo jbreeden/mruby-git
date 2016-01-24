@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Revspec::initialize */
 /* sha: f2ed83e99eabe97852499885075f66ef029f5cbcc8f14686f7181cfe249a7d60 */
 #if BIND_Revspec_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Revspec_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Revspec::disown */
-/* sha: b3b2fb76461ad04ee2fadb75bc9fecb523753baf731391c0910eb902dd34b38e */
-mrb_value
-mrb_Git_Revspec_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Revspec.disown only accepts objects of type Git::Revspec");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Revspec::belongs_to_ruby */
-/* sha: 22d9a5ee4381baea20682c3a6d231ad904f6e6464a1ae9b6d88c078664755c97 */
-mrb_value
-mrb_Git_Revspec_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Revspec.belongs_to_ruby only accepts objects of type Git::Revspec");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Revspec_get_from(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revspec::from_writer */
-/* sha: b616a4a0c2794bc9b11015d4f208d24da65b04dc4243563e7af3e2fe15aba55a */
+/* sha: 9e43412bd18c17f786ed467bacd2dab980b9738bb7246a5ddc6131c0e85536b7 */
 #if BIND_Revspec_from_FIELD_WRITER
 /* set_from
  *
@@ -116,6 +74,7 @@ mrb_Git_Revspec_set_from(mrb_state* mrb, mrb_value self) {
 
   native_self->from = native_from;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -144,7 +103,7 @@ mrb_Git_Revspec_get_to(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revspec::to_writer */
-/* sha: 3eaa03897278e7074593b6cdd53738b6c7bb34d37feae97157519a0d25ced641 */
+/* sha: 2cb30c09ed3ccfee8816902b88b9c5504bba54432f77939480dd35d1eccfc6a0 */
 #if BIND_Revspec_to_FIELD_WRITER
 /* set_to
  *
@@ -168,6 +127,7 @@ mrb_Git_Revspec_set_to(mrb_state* mrb, mrb_value self) {
 
   native_self->to = native_to;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -196,7 +156,7 @@ mrb_Git_Revspec_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revspec::flags_writer */
-/* sha: c182f5e13a5ff6570c559ae3fab9a3cf8f294bf86b3e955f4cd92c24d33b86c2 */
+/* sha: b67184a5ba25fe4ec257d272112bf1ff56d7b597a8bf1c30c764f7461c67a65a */
 #if BIND_Revspec_flags_FIELD_WRITER
 /* set_flags
  *
@@ -212,6 +172,7 @@ mrb_Git_Revspec_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

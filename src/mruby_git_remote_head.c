@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: RemoteHead::initialize */
 /* sha: 6496cc56b6674963167cde27f7f05d23e7cd164de8ea510b6b498417b500c42c */
 #if BIND_RemoteHead_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_RemoteHead_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RemoteHead::disown */
-/* sha: fd157dd5be6b76704029eab6c1eefb07bacdcb9cd1c878e0207268535d25f842 */
-mrb_value
-mrb_Git_RemoteHead_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RemoteHead.disown only accepts objects of type Git::RemoteHead");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RemoteHead::belongs_to_ruby */
-/* sha: 0a903827f1ee6a87a94357ff99ca930c60ed7dc4dc82a4a38614b50cf984efc2 */
-mrb_value
-mrb_Git_RemoteHead_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RemoteHead.belongs_to_ruby only accepts objects of type Git::RemoteHead");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_RemoteHead_get_local(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::local_writer */
-/* sha: 4f3e48a7f355111b7dc1fb950e15dfbc40ab00187bf79d01af91165a344a133f */
+/* sha: ca583cc41d90b8e0505a51cf8c5cec997af78c7bed01cd004b5458d869602f50 */
 #if BIND_RemoteHead_local_FIELD_WRITER
 /* set_local
  *
@@ -108,6 +66,7 @@ mrb_Git_RemoteHead_set_local(mrb_state* mrb, mrb_value self) {
 
   native_self->local = native_local;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -137,7 +96,7 @@ mrb_Git_RemoteHead_get_oid(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::oid_writer */
-/* sha: a37a2eac31b58d94723b7cd6380d49dcbe974f02602b66a48cbc470057131196 */
+/* sha: fe46692e42f823717dd246a2deff638296278d160a88b5fa155b7c36323e680b */
 #if BIND_RemoteHead_oid_FIELD_WRITER
 /* set_oid
  *
@@ -161,6 +120,7 @@ mrb_Git_RemoteHead_set_oid(mrb_state* mrb, mrb_value self) {
 
   native_self->oid = native_oid;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -190,7 +150,7 @@ mrb_Git_RemoteHead_get_loid(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::loid_writer */
-/* sha: 2d9b59c27d5807100da9655bb34f3536496d8c92b7469131f03bc339d289dfbb */
+/* sha: e8eea98eaab2eb6b70c6b41b9e2466b2165fc7fa7821a299898d9089b9669ae4 */
 #if BIND_RemoteHead_loid_FIELD_WRITER
 /* set_loid
  *
@@ -214,6 +174,7 @@ mrb_Git_RemoteHead_set_loid(mrb_state* mrb, mrb_value self) {
 
   native_self->loid = native_loid;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -242,7 +203,7 @@ mrb_Git_RemoteHead_get_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::name_writer */
-/* sha: 1a2e2190cbce21daae38c15aa85d0ea2ae4b6fc03ed39ed63322052234566ca9 */
+/* sha: f7d9a227abc1ec0fe77ddb4fe3c7efd784c42afb27fd254b5dbb8ef15081c73f */
 #if BIND_RemoteHead_name_FIELD_WRITER
 /* set_name
  *
@@ -263,6 +224,7 @@ mrb_Git_RemoteHead_set_name(mrb_state* mrb, mrb_value self) {
 
   native_self->name = native_name;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -291,7 +253,7 @@ mrb_Git_RemoteHead_get_symref_target(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::symref_target_writer */
-/* sha: 2339d39592bfa9d270484a2030eede08f490f55830df04d04a764d8b8da06cf3 */
+/* sha: 83da6397615b39c21bfd2b91544b0e43298534d46c694d6b1425ec68453abaed */
 #if BIND_RemoteHead_symref_target_FIELD_WRITER
 /* set_symref_target
  *
@@ -312,6 +274,7 @@ mrb_Git_RemoteHead_set_symref_target(mrb_state* mrb, mrb_value self) {
 
   native_self->symref_target = native_symref_target;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

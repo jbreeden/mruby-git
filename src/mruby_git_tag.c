@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Tag::initialize */
 /* sha: 2dbd04e0b0de61482bf943f904f0a92f5cc4076ab8ca530b28b377145c806b54 */
 #if BIND_Tag_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Tag_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Tag::disown */
-/* sha: 4e39e606b9fd9136399fea97195f5fabe2035f8d91b3846ba2e302922f8a7446 */
-mrb_value
-mrb_Git_Tag_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Tag.disown only accepts objects of type Git::Tag");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Tag::belongs_to_ruby */
-/* sha: 1f05286351bf3efd806a10c0c7507b0ce478346623fc765ad0caa02cffa49182 */
-mrb_value
-mrb_Git_Tag_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Tag.belongs_to_ruby only accepts objects of type Git::Tag");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

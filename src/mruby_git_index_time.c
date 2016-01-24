@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: IndexTime::initialize */
 /* sha: e67c5781daa7343dd51804bc4f4cb18166679617ecfe12cf55e9871c5131f118 */
 #if BIND_IndexTime_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_IndexTime_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: IndexTime::disown */
-/* sha: 36387d4f61c90aaddc917c3638e916061118c46fbc77ff8978d2481f4f7c4b14 */
-mrb_value
-mrb_Git_IndexTime_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::IndexTime.disown only accepts objects of type Git::IndexTime");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: IndexTime::belongs_to_ruby */
-/* sha: 0fc584396ea962fcaf519ac1ce147b46a727daa38d9b1e31a72a534c1a59aae3 */
-mrb_value
-mrb_Git_IndexTime_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::IndexTime.belongs_to_ruby only accepts objects of type Git::IndexTime");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_IndexTime_get_seconds(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexTime::seconds_writer */
-/* sha: fcde10d404d907e4b5ec901520f5d8b8c446dab9c54d3066314e4be7ca80cf18 */
+/* sha: 192334d8bf3f59a8971985907055a156ee802426ec3dbea987e4d6000ed0446e */
 #if BIND_IndexTime_seconds_FIELD_WRITER
 /* set_seconds
  *
@@ -108,6 +66,7 @@ mrb_Git_IndexTime_set_seconds(mrb_state* mrb, mrb_value self) {
 
   native_self->seconds = native_seconds;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_IndexTime_get_nanoseconds(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexTime::nanoseconds_writer */
-/* sha: 2bf416bb911f72be167bd08aa5d6aa16340a4bf481d9fc445dc2ba42c4f943ca */
+/* sha: 97dc2620bcaffa39e7cfd2768cf5ba5b23f879bf91d28e2f93e3cdaac815c5f7 */
 #if BIND_IndexTime_nanoseconds_FIELD_WRITER
 /* set_nanoseconds
  *
@@ -152,6 +111,7 @@ mrb_Git_IndexTime_set_nanoseconds(mrb_state* mrb, mrb_value self) {
 
   native_self->nanoseconds = native_nanoseconds;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

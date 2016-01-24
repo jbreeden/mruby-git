@@ -126,7 +126,7 @@ end
   CTypes.define("#{type} **") do
     self.out_only = true
     self.type_name = type.sub('const ', '')
-    self.recv_template = "#{self.type_name} * %{value};"
+    self.recv_template = "#{self.type_name} * %{value} = NULL;"
     self.invocation_arg_template = "&%{value}"
     self.boxing_fn.invocation_template = "mrb_value %{as} = mruby_box_#{self.type_name}(mrb, %{box});"
   end
@@ -194,4 +194,61 @@ end
     self.boxing_fn.invocation_template = "mrb_value %{as} = %{box} == NULL ? mrb_nil_value() : mruby_giftwrap_#{type}(mrb, %{box});"
     self.out_only = true
   end
+end
+
+# Buffer configurations
+# ---------------------
+
+CTypes.define('out:git_buf *') do
+  self.out_only = true
+  self.type_name = "git_buf"
+  self.recv_template = <<-EOS
+git_buf * %{value} = (git_buf*)calloc(1, sizeof(git_buf));
+*%{value}) = GIT_BUF_INIT;
+EOS
+  self.invocation_arg_template = "&%{value}"
+  self.boxing_fn.invocation_template = "mrb_value %{as} = %{box} == NULL ? mrb_nil_value() : mruby_giftwrap_#{type}(mrb, %{box});"
+end
+
+# Table generated in `rake bindings:pry` shell with this line:
+# lib['ParmDecls'].select { |p| p['type']['type_name'].include?('git_buf') }.map { |p| [p['type']['type_name'], p['name'], p['function']] }
+[["git_buf *", "out", "git_blob_filtered_content"],
+  ["git_buf *", "out", "git_branch_upstream_name"],
+  ["git_buf *", "out", "git_branch_remote_name"],
+  ["git_buf *", "buf", "git_branch_upstream_remote"],
+  ["git_buf *", "buffer", "git_buf_free"],
+  ["git_buf *", "buffer", "git_buf_grow"],
+  ["git_buf *", "buffer", "git_buf_set"],
+  ["const git_buf *", "buf", "git_buf_is_binary"],
+  ["const git_buf *", "buf", "git_buf_contains_nul"],
+  ["git_buf *", "out", "git_commit_header_field"],
+  ["git_buf *", "out", "git_config_find_global"],
+  ["git_buf *", "out", "git_config_find_xdg"],
+  ["git_buf *", "out", "git_config_find_system"],
+  ["git_buf *", "out", "git_config_find_programdata"],
+  ["git_buf *", "out", "git_config_get_path"],
+  ["git_buf *", "out", "git_config_get_string_buf"],
+  ["git_buf *", "out", "git_config_parse_path"],
+  ["git_buf *", "out", "git_describe_format"],
+  ["git_buf *", "out", "git_diff_stats_to_buf"],
+  ["git_buf *", "out", "git_diff_format_email"],
+  ["git_buf *", "out", "git_diff_commit_as_email"],
+  ["git_buf *", "out", "git_filter_list_apply_to_data"],
+  ["git_buf *", "in", "git_filter_list_apply_to_data"],
+  ["git_buf *", "out", "git_filter_list_apply_to_file"],
+  ["git_buf *", "out", "git_filter_list_apply_to_blob"],
+  ["git_buf *", "data", "git_filter_list_stream_data"],
+  ["git_buf *", "out", "git_message_prettify"],
+  ["git_buf *", "out", "git_object_short_id"],
+  ["git_buf *", "buf", "git_packbuilder_write_buf"],
+  ["git_buf *", "out", "git_patch_to_buf"],
+  ["git_buf *", "out", "git_refspec_transform"],
+  ["git_buf *", "out", "git_refspec_rtransform"],
+  ["git_buf *", "out", "git_remote_default_branch"],
+  ["git_buf *", "out", "git_repository_discover"],
+  ["git_buf *", "out", "git_repository_message"],
+  ["git_buf *", "out", "git_submodule_resolve_url"]].each do |type, name, fn|
+  
+  
+  
 end

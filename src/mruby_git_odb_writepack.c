@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: OdbWritepack::initialize */
 /* sha: 513ee2f845d6b8400755b5e25da2a34bbaa4cd1c3395a365ab6e37432fa195c0 */
 #if BIND_OdbWritepack_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_OdbWritepack_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OdbWritepack::disown */
-/* sha: 55e74c4a52b855e8aaa17c13dfd33558b4b9d9e4785adc3052c0af5ca83cdfe0 */
-mrb_value
-mrb_Git_OdbWritepack_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OdbWritepack.disown only accepts objects of type Git::OdbWritepack");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OdbWritepack::belongs_to_ruby */
-/* sha: 6e7c77e360639546d71c5176d32e3c8750c950cf282ea62c9097d6ca52d10635 */
-mrb_value
-mrb_Git_OdbWritepack_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OdbWritepack.belongs_to_ruby only accepts objects of type Git::OdbWritepack");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_OdbWritepack_get_backend(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbWritepack::backend_writer */
-/* sha: 7819fc8139a1c3f8aae775ba9d7dfd03b3dc98cb0b41885c27da96cb8a790260 */
+/* sha: 57f56e073cbf8b659180dc41bb9d341caeb881056973a4faff6b7e8a501814ed */
 #if BIND_OdbWritepack_backend_FIELD_WRITER
 /* set_backend
  *
@@ -116,6 +74,7 @@ mrb_Git_OdbWritepack_set_backend(mrb_state* mrb, mrb_value self) {
 
   native_self->backend = native_backend;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -144,7 +103,7 @@ mrb_Git_OdbWritepack_get_append(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbWritepack::append_writer */
-/* sha: e2468c2e078ebfdfa3753c89d1ecbb4695ac209d6759887adf7ecba16c70d120 */
+/* sha: 377170637319a13899d94ac797091b7dabc9c3710b1937d6b32cdcf9cc026b5d */
 #if BIND_OdbWritepack_append_FIELD_WRITER
 /* set_append
  *
@@ -165,6 +124,7 @@ mrb_Git_OdbWritepack_set_append(mrb_state* mrb, mrb_value self) {
 
   native_self->append = native_append;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -193,7 +153,7 @@ mrb_Git_OdbWritepack_get_commit(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbWritepack::commit_writer */
-/* sha: b00057d2bb8a86bbd2bf823ba5eac3d0fe282c78d28adb1d3561d6101e635500 */
+/* sha: 23e68ce35bd7a49bc912b28bbf972a5461923d7b9bc448a9b9990c4b18c794b7 */
 #if BIND_OdbWritepack_commit_FIELD_WRITER
 /* set_commit
  *
@@ -214,6 +174,7 @@ mrb_Git_OdbWritepack_set_commit(mrb_state* mrb, mrb_value self) {
 
   native_self->commit = native_commit;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -242,7 +203,7 @@ mrb_Git_OdbWritepack_get_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbWritepack::free_writer */
-/* sha: 477f4fc7766ca455b255f8c6774e72749903e79f415172561862a1ead3b8ac31 */
+/* sha: 2d8cf36447e7683307275d1ef680d0407078afd895ffcd122b3b35ed3ec3b479 */
 #if BIND_OdbWritepack_free_FIELD_WRITER
 /* set_free
  *
@@ -263,6 +224,7 @@ mrb_Git_OdbWritepack_set_free(mrb_state* mrb, mrb_value self) {
 
   native_self->free = native_free;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

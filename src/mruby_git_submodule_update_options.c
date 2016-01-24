@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: SubmoduleUpdateOptions::initialize */
 /* sha: bd033825ac0994feb37a31ea29e21b93b8e5707f2b9f942ca896e6a75deda3d1 */
 #if BIND_SubmoduleUpdateOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_SubmoduleUpdateOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: SubmoduleUpdateOptions::disown */
-/* sha: 9d0b4bc00b6451921a4acc5788a8d689ad52f12dda3da822452397cf9a5e308b */
-mrb_value
-mrb_Git_SubmoduleUpdateOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::SubmoduleUpdateOptions.disown only accepts objects of type Git::SubmoduleUpdateOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: SubmoduleUpdateOptions::belongs_to_ruby */
-/* sha: 033e2763d1fd8477e081742fbeb402e24f7998a0eba505c811d0462700678d80 */
-mrb_value
-mrb_Git_SubmoduleUpdateOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::SubmoduleUpdateOptions.belongs_to_ruby only accepts objects of type Git::SubmoduleUpdateOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_SubmoduleUpdateOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: SubmoduleUpdateOptions::version_writer */
-/* sha: b211ace91271d8bf8bc4cd44845882c73816472f35c6fc4caec1795c666aa9e3 */
+/* sha: f22663f237e1878b7ee9ec3792dc477f9a67c51121361fdb61d83e6f2f60afee */
 #if BIND_SubmoduleUpdateOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_SubmoduleUpdateOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -137,7 +96,7 @@ mrb_Git_SubmoduleUpdateOptions_get_checkout_opts(mrb_state* mrb, mrb_value self)
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: SubmoduleUpdateOptions::checkout_opts_writer */
-/* sha: 5d78460f7d7214043d65f58861b0e1f0bd3af45aa0a7dd7e62f91a4d234abc9c */
+/* sha: 6e75448176db5f86ef54e791c607bbd9bde74a25f97ed06bec4a2285b126aa64 */
 #if BIND_SubmoduleUpdateOptions_checkout_opts_FIELD_WRITER
 /* set_checkout_opts
  *
@@ -161,6 +120,7 @@ mrb_Git_SubmoduleUpdateOptions_set_checkout_opts(mrb_state* mrb, mrb_value self)
 
   native_self->checkout_opts = native_checkout_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -190,7 +150,7 @@ mrb_Git_SubmoduleUpdateOptions_get_fetch_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: SubmoduleUpdateOptions::fetch_opts_writer */
-/* sha: 6cb1ba31befd756eb9474e4b56340e911993be2e5bc771d221fddd39ee603b51 */
+/* sha: 0ad1b4bbd57f4c92e397072f7d4b3b2dd96e0e221ee95696f97d07d3820fecf6 */
 #if BIND_SubmoduleUpdateOptions_fetch_opts_FIELD_WRITER
 /* set_fetch_opts
  *
@@ -214,6 +174,7 @@ mrb_Git_SubmoduleUpdateOptions_set_fetch_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->fetch_opts = native_fetch_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -242,7 +203,7 @@ mrb_Git_SubmoduleUpdateOptions_get_clone_checkout_strategy(mrb_state* mrb, mrb_v
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: SubmoduleUpdateOptions::clone_checkout_strategy_writer */
-/* sha: ac16f23dba5dcecb6c62059a63dbe1cc6c64fa64af4f45de13585a5756608bbe */
+/* sha: e8d0f935a178f2e8c62a55ea7208ecfc9e9d9443948e741b36cd5470fb602399 */
 #if BIND_SubmoduleUpdateOptions_clone_checkout_strategy_FIELD_WRITER
 /* set_clone_checkout_strategy
  *
@@ -258,6 +219,7 @@ mrb_Git_SubmoduleUpdateOptions_set_clone_checkout_strategy(mrb_state* mrb, mrb_v
 
   native_self->clone_checkout_strategy = native_clone_checkout_strategy;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

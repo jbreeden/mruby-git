@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DescribeFormatOptions::initialize */
 /* sha: 621ee19465b44cf2ddfaafb4271ee2ede62f48af69376d70c560fddff5c2c3cb */
 #if BIND_DescribeFormatOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DescribeFormatOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DescribeFormatOptions::disown */
-/* sha: 1498820ac5e7a75fe025e34e7838a1ee83db57b8903c323227f19d5bba20fd6a */
-mrb_value
-mrb_Git_DescribeFormatOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DescribeFormatOptions.disown only accepts objects of type Git::DescribeFormatOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DescribeFormatOptions::belongs_to_ruby */
-/* sha: 1b52371f94d771d23340ff50c1b91a7514c591d2f6624b5e267e7be04da4d3d7 */
-mrb_value
-mrb_Git_DescribeFormatOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DescribeFormatOptions.belongs_to_ruby only accepts objects of type Git::DescribeFormatOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DescribeFormatOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeFormatOptions::version_writer */
-/* sha: c0c3ef884520814a03ff5cda32512253d015924425f68f2d8a6789dc8c81eb01 */
+/* sha: 72bec461b8c6c2f5cfa048a5a008cb45ba10e99c48d90bd84a5e9c5ac693ee31 */
 #if BIND_DescribeFormatOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_DescribeFormatOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DescribeFormatOptions_get_abbreviated_size(mrb_state* mrb, mrb_value sel
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeFormatOptions::abbreviated_size_writer */
-/* sha: 916eacc255ff6c48f69969fae10fe5ee409ef5db33da3ee95d56c6d154a3843a */
+/* sha: b93025c1233378bacdb558370e5fc58c09575ab390dd3c9e769afcdf3f35dd41 */
 #if BIND_DescribeFormatOptions_abbreviated_size_FIELD_WRITER
 /* set_abbreviated_size
  *
@@ -152,6 +111,7 @@ mrb_Git_DescribeFormatOptions_set_abbreviated_size(mrb_state* mrb, mrb_value sel
 
   native_self->abbreviated_size = native_abbreviated_size;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DescribeFormatOptions_get_always_use_long_format(mrb_state* mrb, mrb_val
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeFormatOptions::always_use_long_format_writer */
-/* sha: fcf8ee1f68642744b0cc1638472658bddf2bf3824d3f6a7acd424cde0555e675 */
+/* sha: 54446a8e0b2b639757864d96d6ba5643df120fa146f25c1bc2dd693421787b3e */
 #if BIND_DescribeFormatOptions_always_use_long_format_FIELD_WRITER
 /* set_always_use_long_format
  *
@@ -196,6 +156,7 @@ mrb_Git_DescribeFormatOptions_set_always_use_long_format(mrb_state* mrb, mrb_val
 
   native_self->always_use_long_format = native_always_use_long_format;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DescribeFormatOptions_get_dirty_suffix(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeFormatOptions::dirty_suffix_writer */
-/* sha: 0009100f8a7a5ae5135240f0900a3a746ed24c32982d5026f1e8a3b7ec503ca2 */
+/* sha: 9472a17cd4da4f86b97ee0651d9c2563a7c70830b44256e90797a0bd58992df7 */
 #if BIND_DescribeFormatOptions_dirty_suffix_FIELD_WRITER
 /* set_dirty_suffix
  *
@@ -240,6 +201,7 @@ mrb_Git_DescribeFormatOptions_set_dirty_suffix(mrb_state* mrb, mrb_value self) {
 
   native_self->dirty_suffix = native_dirty_suffix;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

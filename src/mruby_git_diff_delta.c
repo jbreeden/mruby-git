@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffDelta::initialize */
 /* sha: 11b081dcde1a3e7b312bc3e0a03b79caad840f2578d03ac508e581c6e7e92918 */
 #if BIND_DiffDelta_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffDelta_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffDelta::disown */
-/* sha: aef1458cce19387ea5de8da778fe37da374a75dfce069cc1a603f79ddcc4ac2c */
-mrb_value
-mrb_Git_DiffDelta_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffDelta.disown only accepts objects of type Git::DiffDelta");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffDelta::belongs_to_ruby */
-/* sha: a1652fc6e146dd9d7280b10bb54ebd7b25598e2f3770ed696a4df00671230239 */
-mrb_value
-mrb_Git_DiffDelta_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffDelta.belongs_to_ruby only accepts objects of type Git::DiffDelta");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffDelta_get_status(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::status_writer */
-/* sha: 41ebcf4c1e62ba73e83e204971ddcb05b33f77ef6acf0e967e5d4d088afbacd4 */
+/* sha: 84528ad5270057bb68e1111e30329cb412f30966111bf70a30e1f1cb458e0c4c */
 #if BIND_DiffDelta_status_FIELD_WRITER
 /* set_status
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffDelta_set_status(mrb_state* mrb, mrb_value self) {
 
   native_self->status = native_status;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffDelta_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::flags_writer */
-/* sha: 29b1cd4bf817dccb83b190b56c69cd5e9627bffcf2533c422d17ef768e799b10 */
+/* sha: 16e912d725ffbe8a7bb638340990eafc3aafcf4377e8a000715087311c92b63c */
 #if BIND_DiffDelta_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffDelta_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffDelta_get_similarity(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::similarity_writer */
-/* sha: 5c7f3bed6f605abcf312b8e756da8ebd13381ea4ecfb9d362ba1d0f118718576 */
+/* sha: 625751cd9f906ec5b12120356e18bb8fdde3a6a23b5000ef8a7288da1fdc753e */
 #if BIND_DiffDelta_similarity_FIELD_WRITER
 /* set_similarity
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffDelta_set_similarity(mrb_state* mrb, mrb_value self) {
 
   native_self->similarity = native_similarity;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DiffDelta_get_nfiles(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::nfiles_writer */
-/* sha: 7ab15302dcc9edc41c8381076611275c8a15f7440134a1d016b5425c54036d80 */
+/* sha: 9e1ccb2323e8586ef40f775d003924b0e574e48358842bf89532f8eb176b0051 */
 #if BIND_DiffDelta_nfiles_FIELD_WRITER
 /* set_nfiles
  *
@@ -240,6 +201,7 @@ mrb_Git_DiffDelta_set_nfiles(mrb_state* mrb, mrb_value self) {
 
   native_self->nfiles = native_nfiles;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -269,7 +231,7 @@ mrb_Git_DiffDelta_get_old_file(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::old_file_writer */
-/* sha: 1106ae864e6353df7698e8e77a31b74f2f9d2762fea35fff766e093db629218d */
+/* sha: 4c8aa2876e5e155e309595feb65f013bab384e37a6a1a8bee421b35baac915e5 */
 #if BIND_DiffDelta_old_file_FIELD_WRITER
 /* set_old_file
  *
@@ -293,6 +255,7 @@ mrb_Git_DiffDelta_set_old_file(mrb_state* mrb, mrb_value self) {
 
   native_self->old_file = native_old_file;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -322,7 +285,7 @@ mrb_Git_DiffDelta_get_new_file(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::new_file_writer */
-/* sha: ced662a997dc3e6967de005c1a9d34b14a46c88686de6ef79eb04d3251aeb5d1 */
+/* sha: 3b9f5573bc1eca4db4a878e9943c575d51409aa346e974ca044e2fbd96b922ae */
 #if BIND_DiffDelta_new_file_FIELD_WRITER
 /* set_new_file
  *
@@ -346,6 +309,7 @@ mrb_Git_DiffDelta_set_new_file(mrb_state* mrb, mrb_value self) {
 
   native_self->new_file = native_new_file;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

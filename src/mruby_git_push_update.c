@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: PushUpdate::initialize */
 /* sha: 4521ae593fd5323504d283b6df5e056379f80303f39fa096d197a64c197f6d3c */
 #if BIND_PushUpdate_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_PushUpdate_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: PushUpdate::disown */
-/* sha: de1e47fc7af87ee132219869b8f33e3255a7dfc4ffb0f1b8b8ba88e90cf49dae */
-mrb_value
-mrb_Git_PushUpdate_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::PushUpdate.disown only accepts objects of type Git::PushUpdate");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: PushUpdate::belongs_to_ruby */
-/* sha: fce166593b552d1b06cc52cc1c1e8285bba5e672f18c187cc36f9776eb2aeb51 */
-mrb_value
-mrb_Git_PushUpdate_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::PushUpdate.belongs_to_ruby only accepts objects of type Git::PushUpdate");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_PushUpdate_get_src_refname(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushUpdate::src_refname_writer */
-/* sha: 47cf2815619ff3cac15cde38283bd5539a1eedf34f6c8a63ef18a3ed0fefde17 */
+/* sha: 9cb4a82a74dce5aa412cab81d4cf7a99f3d42a1d644aad65e7642f03c3783de5 */
 #if BIND_PushUpdate_src_refname_FIELD_WRITER
 /* set_src_refname
  *
@@ -113,6 +71,7 @@ mrb_Git_PushUpdate_set_src_refname(mrb_state* mrb, mrb_value self) {
 
   native_self->src_refname = native_src_refname;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -141,7 +100,7 @@ mrb_Git_PushUpdate_get_dst_refname(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushUpdate::dst_refname_writer */
-/* sha: b9428c58835136ab5293fc93ddbb326a182b0d51a30b86fce58d56fc1a46f829 */
+/* sha: 4ed4aa7cbe24efe6ba317fd878de087f3822dc1859c2cf1de0d6cbadbed95cb2 */
 #if BIND_PushUpdate_dst_refname_FIELD_WRITER
 /* set_dst_refname
  *
@@ -162,6 +121,7 @@ mrb_Git_PushUpdate_set_dst_refname(mrb_state* mrb, mrb_value self) {
 
   native_self->dst_refname = native_dst_refname;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -191,7 +151,7 @@ mrb_Git_PushUpdate_get_src(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushUpdate::src_writer */
-/* sha: 82918126fa39598b7030a3325e51cbfd9e88fb16aa5524343a3cb2511edaed93 */
+/* sha: b091a57deeee8e68e24de49e53d852a3c6fac492c4257ea64a8beb3d40c6e68f */
 #if BIND_PushUpdate_src_FIELD_WRITER
 /* set_src
  *
@@ -215,6 +175,7 @@ mrb_Git_PushUpdate_set_src(mrb_state* mrb, mrb_value self) {
 
   native_self->src = native_src;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -244,7 +205,7 @@ mrb_Git_PushUpdate_get_dst(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushUpdate::dst_writer */
-/* sha: 1fff54544310ab76715db350a7988a7085b86946d0b11b77070153451c1098d1 */
+/* sha: 31d86df130bfef61eb1d6efcf308d3b2fec93e50b53219f4e084e058dfe1447a */
 #if BIND_PushUpdate_dst_FIELD_WRITER
 /* set_dst
  *
@@ -268,6 +229,7 @@ mrb_Git_PushUpdate_set_dst(mrb_state* mrb, mrb_value self) {
 
   native_self->dst = native_dst;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

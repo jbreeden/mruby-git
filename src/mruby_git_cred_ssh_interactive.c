@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CredSshInteractive::initialize */
 /* sha: d8da9a8eb2c76a0114b4ad3ec89cf8af4a49e0ea2f72671372b9090bbef4771d */
 #if BIND_CredSshInteractive_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CredSshInteractive_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CredSshInteractive::disown */
-/* sha: b2c77144054ca15f588c3c29b1a36ffe694d789dc5a66726b0b16c35f4fc8a0d */
-mrb_value
-mrb_Git_CredSshInteractive_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CredSshInteractive.disown only accepts objects of type Git::CredSshInteractive");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CredSshInteractive::belongs_to_ruby */
-/* sha: fdf5caef2b694fc13c5898dd4b52e1c410b1d29e9feb1cbe812b043fbee431cb */
-mrb_value
-mrb_Git_CredSshInteractive_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CredSshInteractive.belongs_to_ruby only accepts objects of type Git::CredSshInteractive");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_CredSshInteractive_get_parent(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshInteractive::parent_writer */
-/* sha: 026325c0a3b4c7e39d48d7d0fbe62e4633d98b87b567c5dadc4f57b3fc49bd72 */
+/* sha: 690977629aa3679c4a18266c95c04493b61102d121a0b15c69b4a46cc2b6e5a0 */
 #if BIND_CredSshInteractive_parent_FIELD_WRITER
 /* set_parent
  *
@@ -117,6 +75,7 @@ mrb_Git_CredSshInteractive_set_parent(mrb_state* mrb, mrb_value self) {
 
   native_self->parent = native_parent;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -145,7 +104,7 @@ mrb_Git_CredSshInteractive_get_username(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshInteractive::username_writer */
-/* sha: 050e6f8f2ea5198453fff84ebb94d5acd44d826f21f7b46a4f0c2a8cf7a71cb5 */
+/* sha: 263d1f4ab048922856257a3da6466a92e11931e719a2c65368863b374d44e33d */
 #if BIND_CredSshInteractive_username_FIELD_WRITER
 /* set_username
  *
@@ -166,6 +125,7 @@ mrb_Git_CredSshInteractive_set_username(mrb_state* mrb, mrb_value self) {
 
   native_self->username = native_username;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -194,7 +154,7 @@ mrb_Git_CredSshInteractive_get_prompt_callback(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshInteractive::prompt_callback_writer */
-/* sha: 1d8ca54b1015663f206744e97883764caef2d3edcc806a362f26e6e470741e4f */
+/* sha: dc88a5171adf47b0d0e77893a63c5b5be36bbea25390b1b2433db70987f691a0 */
 #if BIND_CredSshInteractive_prompt_callback_FIELD_WRITER
 /* set_prompt_callback
  *
@@ -215,6 +175,7 @@ mrb_Git_CredSshInteractive_set_prompt_callback(mrb_state* mrb, mrb_value self) {
 
   native_self->prompt_callback = native_prompt_callback;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -243,7 +204,7 @@ mrb_Git_CredSshInteractive_get_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshInteractive::payload_writer */
-/* sha: 18c148e6827a51acabec675b873e910f80018e4150c6a01fe55c5c64838bac2f */
+/* sha: 33c4e5e526f1e3ae54bfcc5f5b49e493f4be97758e661df96fb6d9bd4278e143 */
 #if BIND_CredSshInteractive_payload_FIELD_WRITER
 /* set_payload
  *
@@ -264,6 +225,7 @@ mrb_Git_CredSshInteractive_set_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->payload = native_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

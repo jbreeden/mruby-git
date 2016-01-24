@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CheckoutOptions::initialize */
 /* sha: e51116998ebd0383b2115158a77bcac7150dca1de63a3727c70ed438527184b9 */
 #if BIND_CheckoutOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CheckoutOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CheckoutOptions::disown */
-/* sha: ea61662205719cb49d7c6c3fd414bde757f92d7693b6c696d05ceb9285b153c2 */
-mrb_value
-mrb_Git_CheckoutOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CheckoutOptions.disown only accepts objects of type Git::CheckoutOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CheckoutOptions::belongs_to_ruby */
-/* sha: 6f9eb666c4db8760aa493c29f6c65aff75b6724f36c04d61e10f2889f9b07832 */
-mrb_value
-mrb_Git_CheckoutOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CheckoutOptions.belongs_to_ruby only accepts objects of type Git::CheckoutOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_CheckoutOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::version_writer */
-/* sha: 1d4df9d8f5196423181b9e557dd92eb27b6737f078ee7d8c9b21edaca97dbe32 */
+/* sha: 55cef3fb53a54c90ab9dd444ee4cb5982b213bb56f0e10d13edb88315faa63fc */
 #if BIND_CheckoutOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_CheckoutOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_CheckoutOptions_get_checkout_strategy(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::checkout_strategy_writer */
-/* sha: 8fe2e2857bf38214903a0e45ab533acf5728cdc2e69ce75b71d27485da71a0a9 */
+/* sha: 3116a33dbc9fb1ef44ae8467333301ce2926894d543e8390ebb16b473f29affd */
 #if BIND_CheckoutOptions_checkout_strategy_FIELD_WRITER
 /* set_checkout_strategy
  *
@@ -152,6 +111,7 @@ mrb_Git_CheckoutOptions_set_checkout_strategy(mrb_state* mrb, mrb_value self) {
 
   native_self->checkout_strategy = native_checkout_strategy;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_CheckoutOptions_get_disable_filters(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::disable_filters_writer */
-/* sha: 27abd291ba850fb2dd62ae3bbe16f963dd815259709c18a85de98f29d946428a */
+/* sha: 71f50f040d4514e775d9fa0e07226387951b8787ea7839b598eb6f225a36b93a */
 #if BIND_CheckoutOptions_disable_filters_FIELD_WRITER
 /* set_disable_filters
  *
@@ -196,6 +156,7 @@ mrb_Git_CheckoutOptions_set_disable_filters(mrb_state* mrb, mrb_value self) {
 
   native_self->disable_filters = native_disable_filters;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_CheckoutOptions_get_dir_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::dir_mode_writer */
-/* sha: 95f628ff88aee5c86608d5dd6f3e2427a5cb509326315c142b831e57580c6075 */
+/* sha: ba66f3bfc81ed87da8e4a7e42e6b784f4aa05ee383b93d4318b2c0ceeb31fbb8 */
 #if BIND_CheckoutOptions_dir_mode_FIELD_WRITER
 /* set_dir_mode
  *
@@ -240,6 +201,7 @@ mrb_Git_CheckoutOptions_set_dir_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->dir_mode = native_dir_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_CheckoutOptions_get_file_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::file_mode_writer */
-/* sha: bd397e0f0530dbe59795695c118ad79d60352902c31aa792fed7bc6cbd781915 */
+/* sha: 569557c99d90230e1299fbacfc6b977833f6e31c51f847ec6281e4a52d93248e */
 #if BIND_CheckoutOptions_file_mode_FIELD_WRITER
 /* set_file_mode
  *
@@ -284,6 +246,7 @@ mrb_Git_CheckoutOptions_set_file_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->file_mode = native_file_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_CheckoutOptions_get_file_open_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::file_open_flags_writer */
-/* sha: 799ff88c3fd193dc06799a3f23f9ec55b3720f446d2452e560becbbd44aaf9a5 */
+/* sha: 0eb5db2d93983ccec63d0346944179604b44485e37006c20f5d6f876ed8e5426 */
 #if BIND_CheckoutOptions_file_open_flags_FIELD_WRITER
 /* set_file_open_flags
  *
@@ -328,6 +291,7 @@ mrb_Git_CheckoutOptions_set_file_open_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->file_open_flags = native_file_open_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -356,7 +320,7 @@ mrb_Git_CheckoutOptions_get_notify_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::notify_flags_writer */
-/* sha: 260e1f318c9495889ba5118c9c923c1dd277c29bb4c9b5a64cb557e8b5d473f1 */
+/* sha: bca4e3436e762bd6947211a376b0faa0ca536afe271ebdf4ba09faf43865c3ac */
 #if BIND_CheckoutOptions_notify_flags_FIELD_WRITER
 /* set_notify_flags
  *
@@ -372,6 +336,7 @@ mrb_Git_CheckoutOptions_set_notify_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->notify_flags = native_notify_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -400,7 +365,7 @@ mrb_Git_CheckoutOptions_get_notify_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::notify_cb_writer */
-/* sha: 3e2205a80c4c9bdc75756defb0edbc05a28ebc9ec3552f3721129782bee8cb05 */
+/* sha: bf249f4c2a1eac9e9fa17b29d4ffdf0711cf84bf1fb2f5204c022521ba8f2566 */
 #if BIND_CheckoutOptions_notify_cb_FIELD_WRITER
 /* set_notify_cb
  *
@@ -421,6 +386,7 @@ mrb_Git_CheckoutOptions_set_notify_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->notify_cb = native_notify_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -449,7 +415,7 @@ mrb_Git_CheckoutOptions_get_notify_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::notify_payload_writer */
-/* sha: 03f9ec46f0517cd62c3f1dcef2681218213919f124a3ff41f2f021b8117d3374 */
+/* sha: 26e879a4f5466f2530af22a3fe75cf53d716bdf608b18cbc2ec8670db7a87deb */
 #if BIND_CheckoutOptions_notify_payload_FIELD_WRITER
 /* set_notify_payload
  *
@@ -470,6 +436,7 @@ mrb_Git_CheckoutOptions_set_notify_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->notify_payload = native_notify_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -498,7 +465,7 @@ mrb_Git_CheckoutOptions_get_progress_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::progress_cb_writer */
-/* sha: 3dc55f28684228196001ee6270d232f4f084c94b659089cbb44b751c844e22c2 */
+/* sha: e77a37c250b0fd69f57c525a6554d2f729fab560bcc59ced01c2c8bfc5f43f01 */
 #if BIND_CheckoutOptions_progress_cb_FIELD_WRITER
 /* set_progress_cb
  *
@@ -519,6 +486,7 @@ mrb_Git_CheckoutOptions_set_progress_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->progress_cb = native_progress_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -547,7 +515,7 @@ mrb_Git_CheckoutOptions_get_progress_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::progress_payload_writer */
-/* sha: 9f320611a5cb370be68f2a45f4cff90578a3d3218797d127c51dd4b72faa444f */
+/* sha: a1f04eb1f23725f97f4445c18e142c1274439cb5d3a0568310e69c471e7b6390 */
 #if BIND_CheckoutOptions_progress_payload_FIELD_WRITER
 /* set_progress_payload
  *
@@ -568,6 +536,7 @@ mrb_Git_CheckoutOptions_set_progress_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->progress_payload = native_progress_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -597,7 +566,7 @@ mrb_Git_CheckoutOptions_get_paths(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::paths_writer */
-/* sha: f927cccd1abfa5928a3d6c91f95855d3aeb0d495203fd77546d1f47a0e6a96f7 */
+/* sha: 1351b5634f51b30bca7662922777e5114c5382071e513b6ac7f9dae017911bc0 */
 #if BIND_CheckoutOptions_paths_FIELD_WRITER
 /* set_paths
  *
@@ -621,6 +590,7 @@ mrb_Git_CheckoutOptions_set_paths(mrb_state* mrb, mrb_value self) {
 
   native_self->paths = native_paths;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -649,7 +619,7 @@ mrb_Git_CheckoutOptions_get_baseline(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::baseline_writer */
-/* sha: 015727f39273c6de71cfabfb2ebfabd1799b5208bdf0fbcfa8e6009fdb8907f8 */
+/* sha: 3c99ae37012af1e7b09cb8ffc8ea3e946826fda85efe008aa781e0d2508dac4f */
 #if BIND_CheckoutOptions_baseline_FIELD_WRITER
 /* set_baseline
  *
@@ -673,6 +643,7 @@ mrb_Git_CheckoutOptions_set_baseline(mrb_state* mrb, mrb_value self) {
 
   native_self->baseline = native_baseline;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -701,7 +672,7 @@ mrb_Git_CheckoutOptions_get_baseline_index(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::baseline_index_writer */
-/* sha: 9d33a94b85007f21948df3d8188bae2cc7a18e9ff3396f82d8416299d9808097 */
+/* sha: 640fcdb31692df84bd057b4aa34d4736877862923822ac3ace89f8e79f6e3222 */
 #if BIND_CheckoutOptions_baseline_index_FIELD_WRITER
 /* set_baseline_index
  *
@@ -725,6 +696,7 @@ mrb_Git_CheckoutOptions_set_baseline_index(mrb_state* mrb, mrb_value self) {
 
   native_self->baseline_index = native_baseline_index;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -753,7 +725,7 @@ mrb_Git_CheckoutOptions_get_target_directory(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::target_directory_writer */
-/* sha: 6b7a357f8dfb937469ef6adbc544b548bc8e41e23fbeff1344649fe9abb50b47 */
+/* sha: 2938b0dd32ed23b5da646d061db5847a376aa9a7890bbccca3e8043615f9874b */
 #if BIND_CheckoutOptions_target_directory_FIELD_WRITER
 /* set_target_directory
  *
@@ -769,6 +741,7 @@ mrb_Git_CheckoutOptions_set_target_directory(mrb_state* mrb, mrb_value self) {
 
   native_self->target_directory = native_target_directory;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -797,7 +770,7 @@ mrb_Git_CheckoutOptions_get_ancestor_label(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::ancestor_label_writer */
-/* sha: 0952d2abf710acc3d46f82c8429c0a65e2da7f160d4792c04487b0162ebfb9a9 */
+/* sha: e547232fe1bbee74683ba1ce54047a4adf9bc782eecc4f6d51c0d3efd8cff6e8 */
 #if BIND_CheckoutOptions_ancestor_label_FIELD_WRITER
 /* set_ancestor_label
  *
@@ -813,6 +786,7 @@ mrb_Git_CheckoutOptions_set_ancestor_label(mrb_state* mrb, mrb_value self) {
 
   native_self->ancestor_label = native_ancestor_label;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -841,7 +815,7 @@ mrb_Git_CheckoutOptions_get_our_label(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::our_label_writer */
-/* sha: e1a8fd67600491395b524341812f1031a6da684e2cea04f0958cd32f6965e23b */
+/* sha: eae825fb55d82bca4f8fd658b80faa596d687396a0289a52bee5c8ebae69bf0a */
 #if BIND_CheckoutOptions_our_label_FIELD_WRITER
 /* set_our_label
  *
@@ -857,6 +831,7 @@ mrb_Git_CheckoutOptions_set_our_label(mrb_state* mrb, mrb_value self) {
 
   native_self->our_label = native_our_label;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -885,7 +860,7 @@ mrb_Git_CheckoutOptions_get_their_label(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::their_label_writer */
-/* sha: 8e26a14c4e0b891274bf7bcb1405849e6f26eee966129ab94d806fc53ac82e99 */
+/* sha: 098b0984af016b60fdfaa6d440fdb1350691f90054462431090dd4973c970a1e */
 #if BIND_CheckoutOptions_their_label_FIELD_WRITER
 /* set_their_label
  *
@@ -901,6 +876,7 @@ mrb_Git_CheckoutOptions_set_their_label(mrb_state* mrb, mrb_value self) {
 
   native_self->their_label = native_their_label;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -929,7 +905,7 @@ mrb_Git_CheckoutOptions_get_perfdata_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::perfdata_cb_writer */
-/* sha: a8881ce66942324fdd4ccb16d889fef3e44f882f8a02f9973106d78ef5d32c75 */
+/* sha: 7b89f5da50b909ef713cae8eba94d630e94cf2f1f1ef0a5298aead7a9e05f903 */
 #if BIND_CheckoutOptions_perfdata_cb_FIELD_WRITER
 /* set_perfdata_cb
  *
@@ -950,6 +926,7 @@ mrb_Git_CheckoutOptions_set_perfdata_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->perfdata_cb = native_perfdata_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -978,7 +955,7 @@ mrb_Git_CheckoutOptions_get_perfdata_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::perfdata_payload_writer */
-/* sha: a8c4ea9cc4f3ea166bba1ad2ddb967b129a7191afb447efbe7e84020211a781c */
+/* sha: 4909fbd11188681d46523c1e3cffc6ae24fcbef1d7d05a45ec4b363e8ab6f2b7 */
 #if BIND_CheckoutOptions_perfdata_payload_FIELD_WRITER
 /* set_perfdata_payload
  *
@@ -999,6 +976,7 @@ mrb_Git_CheckoutOptions_set_perfdata_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->perfdata_payload = native_perfdata_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

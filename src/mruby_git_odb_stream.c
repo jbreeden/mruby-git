@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: OdbStream::initialize */
 /* sha: 80e8167378fe185ee03f81ceb84d5fc89077ebb5cfec34ae354d0cf08bdba067 */
 #if BIND_OdbStream_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_OdbStream_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OdbStream::disown */
-/* sha: 878455b16ed41139494c75d94d2096cbafc997ba0a9ecdbca50e7590e4058055 */
-mrb_value
-mrb_Git_OdbStream_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OdbStream.disown only accepts objects of type Git::OdbStream");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OdbStream::belongs_to_ruby */
-/* sha: e7fda771b66301506750b7c9d0f47c2b8e647597a6f506c7d21ecc899e8c8ce6 */
-mrb_value
-mrb_Git_OdbStream_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OdbStream.belongs_to_ruby only accepts objects of type Git::OdbStream");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_OdbStream_get_backend(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::backend_writer */
-/* sha: a76cc4cb2baa7798836596111009079a1af80c6cb6bad763deaf95ea2f4e2048 */
+/* sha: b07688451952e8770cf03fd438a11b0249e62f0d2438eec856f1d86bd82f417f */
 #if BIND_OdbStream_backend_FIELD_WRITER
 /* set_backend
  *
@@ -116,6 +74,7 @@ mrb_Git_OdbStream_set_backend(mrb_state* mrb, mrb_value self) {
 
   native_self->backend = native_backend;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -144,7 +103,7 @@ mrb_Git_OdbStream_get_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::mode_writer */
-/* sha: ff91a2ca034b437b43dcb6c6c6f3e59d70c9a97f7dda3381d86903c9d5389127 */
+/* sha: 86b9bfd877ebed1d39108aba5dae5cafb16d6ef6a42c58a160db8a9e4834405d */
 #if BIND_OdbStream_mode_FIELD_WRITER
 /* set_mode
  *
@@ -160,6 +119,7 @@ mrb_Git_OdbStream_set_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->mode = native_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -188,7 +148,7 @@ mrb_Git_OdbStream_get_hash_ctx(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::hash_ctx_writer */
-/* sha: c81d9d74d054715cecd230087165fc2dbb6f8f22e118f3e5397d5850f0562ac0 */
+/* sha: 33a710edcdff968b4358f43b138958258b0aab2f9665209f2f1a91330e31eb9a */
 #if BIND_OdbStream_hash_ctx_FIELD_WRITER
 /* set_hash_ctx
  *
@@ -209,6 +169,7 @@ mrb_Git_OdbStream_set_hash_ctx(mrb_state* mrb, mrb_value self) {
 
   native_self->hash_ctx = native_hash_ctx;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -237,7 +198,7 @@ mrb_Git_OdbStream_get_declared_size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::declared_size_writer */
-/* sha: 02708c3b8054a009eb6218c78dc65c49375fac907ea16901b4e9af1fed3fcf86 */
+/* sha: 23913a133365ea48d64ede3245c606dc1d86a6577b886f3ae69396181c3a0f04 */
 #if BIND_OdbStream_declared_size_FIELD_WRITER
 /* set_declared_size
  *
@@ -253,6 +214,7 @@ mrb_Git_OdbStream_set_declared_size(mrb_state* mrb, mrb_value self) {
 
   native_self->declared_size = native_declared_size;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -281,7 +243,7 @@ mrb_Git_OdbStream_get_received_bytes(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::received_bytes_writer */
-/* sha: d554dee5c27a4cd339392d6d0ce985ebe98fd38986652ff28c0657d4bd14c35a */
+/* sha: 0cf324bf9e51670d9fc98b7229c44ff808810d4e060ddee58db46452217cb917 */
 #if BIND_OdbStream_received_bytes_FIELD_WRITER
 /* set_received_bytes
  *
@@ -297,6 +259,7 @@ mrb_Git_OdbStream_set_received_bytes(mrb_state* mrb, mrb_value self) {
 
   native_self->received_bytes = native_received_bytes;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -325,7 +288,7 @@ mrb_Git_OdbStream_get_read(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::read_writer */
-/* sha: 3d4e76c8226c932e673d7f3d975a96e5b45f1ce32044894af5ea600e4ff3dffa */
+/* sha: 5be92caeae164e053364320c1e2486d351d443c94bd0e1a68f862af138115927 */
 #if BIND_OdbStream_read_FIELD_WRITER
 /* set_read
  *
@@ -346,6 +309,7 @@ mrb_Git_OdbStream_set_read(mrb_state* mrb, mrb_value self) {
 
   native_self->read = native_read;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -374,7 +338,7 @@ mrb_Git_OdbStream_get_write(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::write_writer */
-/* sha: cedae91f7bd9f408851320ff1d7c955ee61e270396dd41b8144efeb54fe3433f */
+/* sha: 3acc1bdd6af67930b695fc20f07ce641f4b50357ae420547b7e0c2aaa4538e44 */
 #if BIND_OdbStream_write_FIELD_WRITER
 /* set_write
  *
@@ -395,6 +359,7 @@ mrb_Git_OdbStream_set_write(mrb_state* mrb, mrb_value self) {
 
   native_self->write = native_write;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -423,7 +388,7 @@ mrb_Git_OdbStream_get_finalize_write(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::finalize_write_writer */
-/* sha: d32fcc9938ef2dc42c8989f64ada35a7e0f2a2930913b99d314b8559dfc55399 */
+/* sha: 65b2f6ddb4f32fab8729b9e53ebcdbbae1896f0188a2a2e7bf06e3683aeea114 */
 #if BIND_OdbStream_finalize_write_FIELD_WRITER
 /* set_finalize_write
  *
@@ -444,6 +409,7 @@ mrb_Git_OdbStream_set_finalize_write(mrb_state* mrb, mrb_value self) {
 
   native_self->finalize_write = native_finalize_write;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -472,7 +438,7 @@ mrb_Git_OdbStream_get_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::free_writer */
-/* sha: f75333f76bfa8ea2dc716b5c966c762a7a061bdfdbb31290b1814993bb1f690d */
+/* sha: 14d605f06f4c1f95fd3c2f1f60b6563d8570f0aa48bd9ea3dab437d0b027b7d6 */
 #if BIND_OdbStream_free_FIELD_WRITER
 /* set_free
  *
@@ -493,6 +459,7 @@ mrb_Git_OdbStream_set_free(mrb_state* mrb, mrb_value self) {
 
   native_self->free = native_free;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

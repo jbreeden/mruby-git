@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: TransferProgress::initialize */
 /* sha: bfd5800aabaac9a5156ee591a5baf6b488ba63f7704fd7e68a0fc2c2adbf213c */
 #if BIND_TransferProgress_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_TransferProgress_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: TransferProgress::disown */
-/* sha: f38bb2a4464471eed5f309b8eb6ea59bcef9e0d9e3fa135b848b7fabca8473e1 */
-mrb_value
-mrb_Git_TransferProgress_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::TransferProgress.disown only accepts objects of type Git::TransferProgress");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: TransferProgress::belongs_to_ruby */
-/* sha: 06af86b2ca5f526b4cf6c0087b21799ef14853e8f8bb199172d120d2acaf9e5f */
-mrb_value
-mrb_Git_TransferProgress_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::TransferProgress.belongs_to_ruby only accepts objects of type Git::TransferProgress");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_TransferProgress_get_total_objects(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::total_objects_writer */
-/* sha: 69c1992b5896d03629406207ba325f6a6b818ec9d1c31f86b3b80dd6946b2f08 */
+/* sha: 875e39864515c4073d4cb464e9b514ff20a68a5f1fa7d81a7a813f78c323ddfd */
 #if BIND_TransferProgress_total_objects_FIELD_WRITER
 /* set_total_objects
  *
@@ -108,6 +66,7 @@ mrb_Git_TransferProgress_set_total_objects(mrb_state* mrb, mrb_value self) {
 
   native_self->total_objects = native_total_objects;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_TransferProgress_get_indexed_objects(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::indexed_objects_writer */
-/* sha: 93a3fce56fae1fbed20dd91875a257fea45485c6f891b9793ecfad3e1d80f14d */
+/* sha: b02605ddf9695ded5952a5e0bb4e24f65a9a03845839d4acbbbae0b14c5971b9 */
 #if BIND_TransferProgress_indexed_objects_FIELD_WRITER
 /* set_indexed_objects
  *
@@ -152,6 +111,7 @@ mrb_Git_TransferProgress_set_indexed_objects(mrb_state* mrb, mrb_value self) {
 
   native_self->indexed_objects = native_indexed_objects;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_TransferProgress_get_received_objects(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::received_objects_writer */
-/* sha: 4d95fb40fd78c48dff4c50182dffb244db76fd9e88be98dc0764ffc4f8c55d49 */
+/* sha: f3132679f2a6cd33c21b675ec3ff33fc5fcc77d1ac871f74bc4fb0960972eefc */
 #if BIND_TransferProgress_received_objects_FIELD_WRITER
 /* set_received_objects
  *
@@ -196,6 +156,7 @@ mrb_Git_TransferProgress_set_received_objects(mrb_state* mrb, mrb_value self) {
 
   native_self->received_objects = native_received_objects;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_TransferProgress_get_local_objects(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::local_objects_writer */
-/* sha: f73b1f6c1d969f3d38ec14c210a1ff955d495c81b0c3445dd0bad9ed3a427b73 */
+/* sha: a84cc2bf80cf641809ae768bcf99032598a122385df890f09993d8757d3eb94b */
 #if BIND_TransferProgress_local_objects_FIELD_WRITER
 /* set_local_objects
  *
@@ -240,6 +201,7 @@ mrb_Git_TransferProgress_set_local_objects(mrb_state* mrb, mrb_value self) {
 
   native_self->local_objects = native_local_objects;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_TransferProgress_get_total_deltas(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::total_deltas_writer */
-/* sha: 54be05693c1439cda2ab045fe06456046fa06f92fb672a3e1eb9729c5513001d */
+/* sha: 2983c8e024e98a304119e2ca4a6e51ba7a77910986047c6c26d9ca32d8ca7a4e */
 #if BIND_TransferProgress_total_deltas_FIELD_WRITER
 /* set_total_deltas
  *
@@ -284,6 +246,7 @@ mrb_Git_TransferProgress_set_total_deltas(mrb_state* mrb, mrb_value self) {
 
   native_self->total_deltas = native_total_deltas;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_TransferProgress_get_indexed_deltas(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::indexed_deltas_writer */
-/* sha: 302385d35df9ade12038e49e364aeaa127ef033c1ce3c91d856756b6491f9a84 */
+/* sha: c011f866fb3f32ed49b29284be1a39b6d5dbed38e609d30bd7aef450d15015ac */
 #if BIND_TransferProgress_indexed_deltas_FIELD_WRITER
 /* set_indexed_deltas
  *
@@ -328,6 +291,7 @@ mrb_Git_TransferProgress_set_indexed_deltas(mrb_state* mrb, mrb_value self) {
 
   native_self->indexed_deltas = native_indexed_deltas;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -356,7 +320,7 @@ mrb_Git_TransferProgress_get_received_bytes(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::received_bytes_writer */
-/* sha: 0fc051e92072f9c15f6273c982efdb60d6275f14f9dbfe7d1a28efa2344bb000 */
+/* sha: c48e471fab7e6fbb6b393d0f15b91ad64bf4e48a02ba19451e60e2352255dd06 */
 #if BIND_TransferProgress_received_bytes_FIELD_WRITER
 /* set_received_bytes
  *
@@ -372,6 +336,7 @@ mrb_Git_TransferProgress_set_received_bytes(mrb_state* mrb, mrb_value self) {
 
   native_self->received_bytes = native_received_bytes;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

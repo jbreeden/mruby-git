@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: StatusList::initialize */
 /* sha: 1c369c1907f9a09656b94c9be555587a6fae5cdcdfb212526689c29157e29a74 */
 #if BIND_StatusList_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_StatusList_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StatusList::disown */
-/* sha: 55e87d230aadbc4bbf3ef371a62bf5cfaed6136f354a10b16a2b037cf91c3e39 */
-mrb_value
-mrb_Git_StatusList_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StatusList.disown only accepts objects of type Git::StatusList");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StatusList::belongs_to_ruby */
-/* sha: ad923add5e09172e463b43f23d33e74ca2f1ae7147d9c9ceb2f8088a9c487eff */
-mrb_value
-mrb_Git_StatusList_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StatusList.belongs_to_ruby only accepts objects of type Git::StatusList");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

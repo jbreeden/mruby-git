@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: MergeOptions::initialize */
 /* sha: f0538ce168fa411e7b788a3efc303ce9547f967f2532f264b8795ca83b10875e */
 #if BIND_MergeOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_MergeOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeOptions::disown */
-/* sha: 32ae0b233dd9b590c39e648ccdd7771c03db26f7151917eb386b2d2328f9b2de */
-mrb_value
-mrb_Git_MergeOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeOptions.disown only accepts objects of type Git::MergeOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeOptions::belongs_to_ruby */
-/* sha: 95e5d49310bec58938f9294006bd70c62b79a79c460cc2a32df047a35fb2a6b0 */
-mrb_value
-mrb_Git_MergeOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeOptions.belongs_to_ruby only accepts objects of type Git::MergeOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_MergeOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::version_writer */
-/* sha: 4ebad5bb6a24e60cf3f269f204f65bc8f42786cc9d462ae9cd3c3546f87c7d7d */
+/* sha: eb3e7bd23cfbf4e69afd91a7d0ab5b0df1992c33e51af2fc2cbfa7a2816f3d9c */
 #if BIND_MergeOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_MergeOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_MergeOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::flags_writer */
-/* sha: ee7dcb230bbd0c3332094443b19772b32fa759f8a6bb8773575c1c6be1029785 */
+/* sha: 06fe778206125d92494710f275e314de962a3c6e8c17a0e65a30ddd0ed313388 */
 #if BIND_MergeOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_MergeOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_MergeOptions_get_rename_threshold(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::rename_threshold_writer */
-/* sha: cfe59900996a5d9b0f8d081041313c32f9f2c1e20c0b91fef20a6cd1d486044f */
+/* sha: bca2d65bb2347d83de8b0e77f971416ece28de227e59a17f55fd425c6be092e5 */
 #if BIND_MergeOptions_rename_threshold_FIELD_WRITER
 /* set_rename_threshold
  *
@@ -196,6 +156,7 @@ mrb_Git_MergeOptions_set_rename_threshold(mrb_state* mrb, mrb_value self) {
 
   native_self->rename_threshold = native_rename_threshold;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_MergeOptions_get_target_limit(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::target_limit_writer */
-/* sha: 62863f61be6a9a888693050eee4847d9d99e96e71f7bc0682f1ad593e772aa0e */
+/* sha: c126781ed4b4abf149565b7ba5f08bd8b064d5564b8b344ce6dd279ca67e8e40 */
 #if BIND_MergeOptions_target_limit_FIELD_WRITER
 /* set_target_limit
  *
@@ -240,6 +201,7 @@ mrb_Git_MergeOptions_set_target_limit(mrb_state* mrb, mrb_value self) {
 
   native_self->target_limit = native_target_limit;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_MergeOptions_get_metric(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::metric_writer */
-/* sha: eddef712092c5ea1516f07a99f176aa642dcda7d0f57142077a25523c3b33764 */
+/* sha: 6c48b3eff5236942f5fb85535930a85506b177fb1252d3ef8938ccbe1dd2059d */
 #if BIND_MergeOptions_metric_FIELD_WRITER
 /* set_metric
  *
@@ -292,6 +254,7 @@ mrb_Git_MergeOptions_set_metric(mrb_state* mrb, mrb_value self) {
 
   native_self->metric = native_metric;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -320,7 +283,7 @@ mrb_Git_MergeOptions_get_recursion_limit(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::recursion_limit_writer */
-/* sha: 2c4858c1e5e77df0b8945a4272d466a1063806d9b5c63a1905e84bc7d4189d03 */
+/* sha: d5e91f779be8c2ce71af95410a38bf82ec01f8ab620d2e686542996b72ddf8bc */
 #if BIND_MergeOptions_recursion_limit_FIELD_WRITER
 /* set_recursion_limit
  *
@@ -336,6 +299,7 @@ mrb_Git_MergeOptions_set_recursion_limit(mrb_state* mrb, mrb_value self) {
 
   native_self->recursion_limit = native_recursion_limit;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -364,7 +328,7 @@ mrb_Git_MergeOptions_get_file_favor(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::file_favor_writer */
-/* sha: 1fc2f4d47cbb02878f0ac25f6382ae9bd10f1c4b0e0c1cc63cf87aee9f0d4e81 */
+/* sha: 32e1ab72f9749256272d35e473103c66ba919d20baa6090a3e7c75ba8911a310 */
 #if BIND_MergeOptions_file_favor_FIELD_WRITER
 /* set_file_favor
  *
@@ -380,6 +344,7 @@ mrb_Git_MergeOptions_set_file_favor(mrb_state* mrb, mrb_value self) {
 
   native_self->file_favor = native_file_favor;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -408,7 +373,7 @@ mrb_Git_MergeOptions_get_file_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::file_flags_writer */
-/* sha: 074784b4b58fad39e8bafa22ec9b07df35dd59c836ba6ccd13357f7571f7a2c5 */
+/* sha: 2c763104b82e0d85c90c808decfdd137e34d9e62d79c7e6a7e2abe12e5bcf689 */
 #if BIND_MergeOptions_file_flags_FIELD_WRITER
 /* set_file_flags
  *
@@ -424,6 +389,7 @@ mrb_Git_MergeOptions_set_file_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->file_flags = native_file_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

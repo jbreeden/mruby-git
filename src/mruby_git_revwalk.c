@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Revwalk::initialize */
 /* sha: 296b17b016f59731528d457c86ea9c8c1aa167da68765ccd06768214e2639722 */
 #if BIND_Revwalk_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Revwalk_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Revwalk::disown */
-/* sha: 2ffe015ea7795ad7ecbc5a953054b2ee799c50e47c99fb4f01d00b82d43e3008 */
-mrb_value
-mrb_Git_Revwalk_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Revwalk.disown only accepts objects of type Git::Revwalk");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Revwalk::belongs_to_ruby */
-/* sha: 9450be3ac02aec817acf594204a5292e5715c60ea106106f5473b6dba5843898 */
-mrb_value
-mrb_Git_Revwalk_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Revwalk.belongs_to_ruby only accepts objects of type Git::Revwalk");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

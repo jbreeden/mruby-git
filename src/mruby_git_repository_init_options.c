@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: RepositoryInitOptions::initialize */
 /* sha: 2802ab0a9acab6846c98229b1918e3c0b4ba1cbd396d49fcbb831d2739d05d12 */
 #if BIND_RepositoryInitOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_RepositoryInitOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RepositoryInitOptions::disown */
-/* sha: bbba50ad5f6275207bb633ef61e0f5023b76c6be8c7d9abc27a546c601827b99 */
-mrb_value
-mrb_Git_RepositoryInitOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RepositoryInitOptions.disown only accepts objects of type Git::RepositoryInitOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RepositoryInitOptions::belongs_to_ruby */
-/* sha: 5ff2dd4239ef57bc3833f3748cf3275bbe582ef44aa770f716c5f4b940b18796 */
-mrb_value
-mrb_Git_RepositoryInitOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RepositoryInitOptions.belongs_to_ruby only accepts objects of type Git::RepositoryInitOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_RepositoryInitOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::version_writer */
-/* sha: 80c9ff27c8df3619f07165dac8de04c91533204454ed34598ed913e49b1d9149 */
+/* sha: d798012a8c229a8001ee4cd76bbba3e4ecdad4a7c3b78c33db632797ed52e73d */
 #if BIND_RepositoryInitOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_RepositoryInitOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_RepositoryInitOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::flags_writer */
-/* sha: 515d2d3aa31610fa6aa1f7ea3b60dbab55185b057124c7da2510ce8fbec7d371 */
+/* sha: f0f7b8e22a3e9a60ce3dffb31da8a140822e84899cca9034f537202b0039abc5 */
 #if BIND_RepositoryInitOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_RepositoryInitOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_RepositoryInitOptions_get_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::mode_writer */
-/* sha: 66efbb7aa08c0b3dd0d17d2ca30bc882513ccbb172c011ee3e16d344f56a35e7 */
+/* sha: d95ab74f2688db34178c926219da9cba6b6f334fe5b31dee98675f71510a6a89 */
 #if BIND_RepositoryInitOptions_mode_FIELD_WRITER
 /* set_mode
  *
@@ -196,6 +156,7 @@ mrb_Git_RepositoryInitOptions_set_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->mode = native_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_RepositoryInitOptions_get_workdir_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::workdir_path_writer */
-/* sha: dd0cba6d6ada06e6e063b610fd229811127d1691d290f3e114d7724522879e3b */
+/* sha: 7b2781f3d0a36d2484c50507304140419f948874a1817fcaf266a9d4e11cc61d */
 #if BIND_RepositoryInitOptions_workdir_path_FIELD_WRITER
 /* set_workdir_path
  *
@@ -240,6 +201,7 @@ mrb_Git_RepositoryInitOptions_set_workdir_path(mrb_state* mrb, mrb_value self) {
 
   native_self->workdir_path = native_workdir_path;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_RepositoryInitOptions_get_description(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::description_writer */
-/* sha: c1068e561e9f92303911050249cc42f144a2fa607556fd081602f59de2eb5339 */
+/* sha: 95a41ce6a6d312ea41b08ee1b39a84623dc3676b467888e7629cb1cdde11c5f8 */
 #if BIND_RepositoryInitOptions_description_FIELD_WRITER
 /* set_description
  *
@@ -284,6 +246,7 @@ mrb_Git_RepositoryInitOptions_set_description(mrb_state* mrb, mrb_value self) {
 
   native_self->description = native_description;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_RepositoryInitOptions_get_template_path(mrb_state* mrb, mrb_value self) 
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::template_path_writer */
-/* sha: 7045d25671c620ecbc5b82827f17940ae7c8078522be8823fb741f4171ac34ad */
+/* sha: 93ba0934523beec7012ad495b4bf77afd21f678ad461eadc08276f38373382a2 */
 #if BIND_RepositoryInitOptions_template_path_FIELD_WRITER
 /* set_template_path
  *
@@ -328,6 +291,7 @@ mrb_Git_RepositoryInitOptions_set_template_path(mrb_state* mrb, mrb_value self) 
 
   native_self->template_path = native_template_path;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -356,7 +320,7 @@ mrb_Git_RepositoryInitOptions_get_initial_head(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::initial_head_writer */
-/* sha: 50a9a8a1efaf2bd508d8ba11464da8b2b50a950871032b2e9c06188d4a670433 */
+/* sha: 647c34214eba7f60d930fb82d220fbaac6d21d425c00d2f9abd35e4d58880d62 */
 #if BIND_RepositoryInitOptions_initial_head_FIELD_WRITER
 /* set_initial_head
  *
@@ -372,6 +336,7 @@ mrb_Git_RepositoryInitOptions_set_initial_head(mrb_state* mrb, mrb_value self) {
 
   native_self->initial_head = native_initial_head;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -400,7 +365,7 @@ mrb_Git_RepositoryInitOptions_get_origin_url(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::origin_url_writer */
-/* sha: eaf9c54f3d458e71852b426e3c77445c6149d047b35901abda1cb30fbe035751 */
+/* sha: 9fc9e2749172833244a0f26a8af4d4cadf0649e6d4d6507e1715de38e94ff1b7 */
 #if BIND_RepositoryInitOptions_origin_url_FIELD_WRITER
 /* set_origin_url
  *
@@ -416,6 +381,7 @@ mrb_Git_RepositoryInitOptions_set_origin_url(mrb_state* mrb, mrb_value self) {
 
   native_self->origin_url = native_origin_url;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Oid::initialize */
 /* sha: 12d76466c6425716858897d0f25a6c23d818852d09f0c6d25ee0c1f93a4a7703 */
 #if BIND_Oid_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Oid_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Oid::disown */
-/* sha: 4f4fff2a800baf99765118c1cfc08b3d2113de3a887455c6b725c8f045992ca8 */
-mrb_value
-mrb_Git_Oid_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Oid.disown only accepts objects of type Git::Oid");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Oid::belongs_to_ruby */
-/* sha: 269494403a0c2f7783c1a8dec1e95dfe7a2ca2aceb7d7f67187a0dce25821f70 */
-mrb_value
-mrb_Git_Oid_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Oid.belongs_to_ruby only accepts objects of type Git::Oid");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Oid_get_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oid::id_writer */
-/* sha: 3a0ddb66570165fa2498e91faf609cad0e4a7e8c22d546dc375fd9eca9aefda0 */
+/* sha: 21026e4c34c48b72449d371e4e3c8c5cf4e6f9f664dfda28e3eb472f0ef165a5 */
 #if BIND_Oid_id_FIELD_WRITER
 /* set_id
  *
@@ -113,6 +71,7 @@ mrb_Git_Oid_set_id(mrb_state* mrb, mrb_value self) {
 
   native_self->id = native_id;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

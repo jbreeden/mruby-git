@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Cred::initialize */
 /* sha: 3f52b517870d016c657addd4af0218d5efaedbafa9914e4418149f6de901ef50 */
 #if BIND_Cred_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Cred_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Cred::disown */
-/* sha: 957896ece78eb1346b9c39fa62632e1b4414214923b84b64ebd67f974f343802 */
-mrb_value
-mrb_Git_Cred_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Cred.disown only accepts objects of type Git::Cred");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Cred::belongs_to_ruby */
-/* sha: e486528f0baf2b0884ca00f7265f6148c6a8be3f72d2e406b48e60739303c537 */
-mrb_value
-mrb_Git_Cred_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Cred.belongs_to_ruby only accepts objects of type Git::Cred");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Cred_get_credtype(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cred::credtype_writer */
-/* sha: 93eefc3c8165244cdb11038aea950214e9e47986d7ae64e774fef69326cf35d1 */
+/* sha: 1ef4f69a0d219e40951bc7e25d71beded0312b95fe789c66514d61948ead4a55 */
 #if BIND_Cred_credtype_FIELD_WRITER
 /* set_credtype
  *
@@ -108,6 +66,7 @@ mrb_Git_Cred_set_credtype(mrb_state* mrb, mrb_value self) {
 
   native_self->credtype = native_credtype;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_Cred_get_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cred::free_writer */
-/* sha: 8e0ce8eef4e0a1d6502323b76c163b386fb7704f066cd1e14515fd8d59ecff38 */
+/* sha: 499bf2a547fc99b32ab53d4309fa628669d46d5844a81587b51328384f734a6c */
 #if BIND_Cred_free_FIELD_WRITER
 /* set_free
  *
@@ -157,6 +116,7 @@ mrb_Git_Cred_set_free(mrb_state* mrb, mrb_value self) {
 
   native_self->free = native_free;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

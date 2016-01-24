@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Cert::initialize */
 /* sha: 364eb2dfc0d86c0d9c4732b6e1ea4547ed15f615d7af578c03b395a669d02047 */
 #if BIND_Cert_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Cert_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Cert::disown */
-/* sha: 7fba43713976261dae1967cfb3c58fbbf91e18c62eaf2f86b674f87752253fd1 */
-mrb_value
-mrb_Git_Cert_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Cert.disown only accepts objects of type Git::Cert");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Cert::belongs_to_ruby */
-/* sha: 1cdefe6ac364a7ca8ac133ebf46e7617cb67d252130edf4c599a1697c70dfac9 */
-mrb_value
-mrb_Git_Cert_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Cert.belongs_to_ruby only accepts objects of type Git::Cert");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Cert_get_cert_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cert::cert_type_writer */
-/* sha: c1bb88e0374354def1f01a55315cce7707910e3490bd65532b09c72e3dd40dda */
+/* sha: 29f4bc992178931d71e5c727fbed848566d9d82a1917ed2f9ccbea0056704886 */
 #if BIND_Cert_cert_type_FIELD_WRITER
 /* set_cert_type
  *
@@ -108,6 +66,7 @@ mrb_Git_Cert_set_cert_type(mrb_state* mrb, mrb_value self) {
 
   native_self->cert_type = native_cert_type;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

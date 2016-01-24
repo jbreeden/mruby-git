@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: RebaseOperation::initialize */
 /* sha: 7d3e51a022350baa61289976b8cc4406b6a230d04696a7bf5db565cd5d61ca63 */
 #if BIND_RebaseOperation_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_RebaseOperation_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RebaseOperation::disown */
-/* sha: 09c1dd7d921d4bf5527d84982cdc2ebe3f8c211703d9bae175533632b17646b1 */
-mrb_value
-mrb_Git_RebaseOperation_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RebaseOperation.disown only accepts objects of type Git::RebaseOperation");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RebaseOperation::belongs_to_ruby */
-/* sha: 877d68004d2a03ce4b5d82564d29ecd50e10082a3c9345811bd972b52cc1358f */
-mrb_value
-mrb_Git_RebaseOperation_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RebaseOperation.belongs_to_ruby only accepts objects of type Git::RebaseOperation");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_RebaseOperation_get_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RebaseOperation::type_writer */
-/* sha: e39a1561c10557bc0cb94c123baa304083a2bb0ac37049714d61b8a71035bd9b */
+/* sha: 3a291785f382226390960c88f24219acb3699f6a1f2c7da67858dc342b895834 */
 #if BIND_RebaseOperation_type_FIELD_WRITER
 /* set_type
  *
@@ -108,6 +66,7 @@ mrb_Git_RebaseOperation_set_type(mrb_state* mrb, mrb_value self) {
 
   native_self->type = native_type;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -162,7 +121,7 @@ mrb_Git_RebaseOperation_get_exec(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RebaseOperation::exec_writer */
-/* sha: 695824b38e07a080097a9ebc3c227ad2fa16c958b72351477e41fa2e40af92b9 */
+/* sha: a92446749857892ee75bf4315afde801accc0f7db8e5ec49a0034c007cfc0251 */
 #if BIND_RebaseOperation_exec_FIELD_WRITER
 /* set_exec
  *
@@ -178,6 +137,7 @@ mrb_Git_RebaseOperation_set_exec(mrb_state* mrb, mrb_value self) {
 
   native_self->exec = native_exec;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffFindOptions::initialize */
 /* sha: a9a068422dd497068f0bbc10ba236ecb119c5fa943a6338028f6c07ebbeaa9e2 */
 #if BIND_DiffFindOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffFindOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffFindOptions::disown */
-/* sha: d80c01ad21586f996f96786a941734afb0c8b22d3d1fae18c23a71435ae93e64 */
-mrb_value
-mrb_Git_DiffFindOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffFindOptions.disown only accepts objects of type Git::DiffFindOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffFindOptions::belongs_to_ruby */
-/* sha: b669e6b0a4e0e6c78fd9e0b7aa2743b31596faa18d501d941713e214337497cc */
-mrb_value
-mrb_Git_DiffFindOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffFindOptions.belongs_to_ruby only accepts objects of type Git::DiffFindOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffFindOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::version_writer */
-/* sha: c567dc5cd5f25f69e3372b91baab572830ad9d85fba9bcc097566577911aab27 */
+/* sha: fc33d369880091d9d5f04f17739d5d1ac4baec572ce331580683eebe9f5795d2 */
 #if BIND_DiffFindOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffFindOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffFindOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::flags_writer */
-/* sha: c705901747db8577a3ee884164644a8b4fafa3141147d1b471de8fab2c013c01 */
+/* sha: 1ab3317a160ad18136c7d61da3c7bf508ada38a21cdcce8cecdb954310bcef41 */
 #if BIND_DiffFindOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffFindOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffFindOptions_get_rename_threshold(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::rename_threshold_writer */
-/* sha: 64cc752c8a1605c7b6d7fdab56c0fcda2dffa33470637872b75e94b7ff0433dc */
+/* sha: bdc0b9abaf1d6a7b5a772124fc23da822217a33465a9a6a6a836e82e60b88e2c */
 #if BIND_DiffFindOptions_rename_threshold_FIELD_WRITER
 /* set_rename_threshold
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffFindOptions_set_rename_threshold(mrb_state* mrb, mrb_value self) {
 
   native_self->rename_threshold = native_rename_threshold;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DiffFindOptions_get_rename_from_rewrite_threshold(mrb_state* mrb, mrb_va
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::rename_from_rewrite_threshold_writer */
-/* sha: 1e0e839efd16c3c817964315440cb643c74d0d7cb6437ddce824272384218f1c */
+/* sha: 8b2f1b50e17b81c6ec74147fa4af7f13affb5e55324923abccfc7656588bb837 */
 #if BIND_DiffFindOptions_rename_from_rewrite_threshold_FIELD_WRITER
 /* set_rename_from_rewrite_threshold
  *
@@ -240,6 +201,7 @@ mrb_Git_DiffFindOptions_set_rename_from_rewrite_threshold(mrb_state* mrb, mrb_va
 
   native_self->rename_from_rewrite_threshold = native_rename_from_rewrite_threshold;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_DiffFindOptions_get_copy_threshold(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::copy_threshold_writer */
-/* sha: f4144dcb7f3309a04a7865f4342590670ac105c005c682f26107ebaf21eb3a88 */
+/* sha: efe2d1e5849a996fb06ba159bbfc75fc8b63172f3d765949fc04f7efb72e14ec */
 #if BIND_DiffFindOptions_copy_threshold_FIELD_WRITER
 /* set_copy_threshold
  *
@@ -284,6 +246,7 @@ mrb_Git_DiffFindOptions_set_copy_threshold(mrb_state* mrb, mrb_value self) {
 
   native_self->copy_threshold = native_copy_threshold;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_DiffFindOptions_get_break_rewrite_threshold(mrb_state* mrb, mrb_value se
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::break_rewrite_threshold_writer */
-/* sha: 83d33375c074af315cb2ddf1ff84c61ea4f9ec4f3183bdc12750067c4947f34d */
+/* sha: 376d6a17703adcab0aeaa40509791690824595b115b967817f2f08848dc84ff1 */
 #if BIND_DiffFindOptions_break_rewrite_threshold_FIELD_WRITER
 /* set_break_rewrite_threshold
  *
@@ -328,6 +291,7 @@ mrb_Git_DiffFindOptions_set_break_rewrite_threshold(mrb_state* mrb, mrb_value se
 
   native_self->break_rewrite_threshold = native_break_rewrite_threshold;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -356,7 +320,7 @@ mrb_Git_DiffFindOptions_get_rename_limit(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::rename_limit_writer */
-/* sha: 04ba3b9d63f5660f4673259d9b485bc42a5712bf613973f0b1cc0443ee37142c */
+/* sha: 915737b8e7da442f480c67c07e62dac37ef937c605f55d64431e058ceabf30f6 */
 #if BIND_DiffFindOptions_rename_limit_FIELD_WRITER
 /* set_rename_limit
  *
@@ -372,6 +336,7 @@ mrb_Git_DiffFindOptions_set_rename_limit(mrb_state* mrb, mrb_value self) {
 
   native_self->rename_limit = native_rename_limit;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -400,7 +365,7 @@ mrb_Git_DiffFindOptions_get_metric(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::metric_writer */
-/* sha: 0e214fae44e2bf7caf74a38c2f242c0e7d643a32e0fe4cd89813e29eac2ba708 */
+/* sha: 8db7752bcd035056446fb28419eaeba81949c8192b7270bf67c5e82fd7b0bfe2 */
 #if BIND_DiffFindOptions_metric_FIELD_WRITER
 /* set_metric
  *
@@ -424,6 +389,7 @@ mrb_Git_DiffFindOptions_set_metric(mrb_state* mrb, mrb_value self) {
 
   native_self->metric = native_metric;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

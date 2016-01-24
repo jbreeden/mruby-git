@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: OdbObject::initialize */
 /* sha: 229087e9cfaf85bd62da0369875d12bb80a0c5459cd5bd16038100972a149a7f */
 #if BIND_OdbObject_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_OdbObject_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OdbObject::disown */
-/* sha: 9b8797d07df9835e2525d2619544827dda31178835ff802a5fbb90a62aa7b2ad */
-mrb_value
-mrb_Git_OdbObject_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OdbObject.disown only accepts objects of type Git::OdbObject");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OdbObject::belongs_to_ruby */
-/* sha: c3ba95e091e73ac58350107260221e4e899107531f0c81ff7b85bdc998fce90c */
-mrb_value
-mrb_Git_OdbObject_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OdbObject.belongs_to_ruby only accepts objects of type Git::OdbObject");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

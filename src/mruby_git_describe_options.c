@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DescribeOptions::initialize */
 /* sha: 14fe666162d3b27f41037f6409b6c4b3b8ffd3e0beeaca6334867cb4fab0d71a */
 #if BIND_DescribeOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DescribeOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DescribeOptions::disown */
-/* sha: c031ee9339e0f721e8a04a9e08daabd3c27cbde7bd0c7b2f44fcccab1b24343f */
-mrb_value
-mrb_Git_DescribeOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DescribeOptions.disown only accepts objects of type Git::DescribeOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DescribeOptions::belongs_to_ruby */
-/* sha: cd377813fc3f0c24df2117dd287dfdc9f4d11df7e7ae12b1975c25d0bd29e4b5 */
-mrb_value
-mrb_Git_DescribeOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DescribeOptions.belongs_to_ruby only accepts objects of type Git::DescribeOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DescribeOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::version_writer */
-/* sha: ebf6bd44ccc85b20fd05e886e4e32aa49eb5e580ff5b8e02e7fcbf5bffaf36d3 */
+/* sha: 12e237ad0fd76c12ba44f19d709a19da79937d6165115a867c96c3edd4546e06 */
 #if BIND_DescribeOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_DescribeOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DescribeOptions_get_max_candidates_tags(mrb_state* mrb, mrb_value self) 
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::max_candidates_tags_writer */
-/* sha: ef4c11c22fe154a4814c994ab885514b49cc50787081d7096c66cdb4e049572f */
+/* sha: e3f36760399a6ebb51bff28d3b306563c2765c50b79ea2adf91945300a303f1e */
 #if BIND_DescribeOptions_max_candidates_tags_FIELD_WRITER
 /* set_max_candidates_tags
  *
@@ -152,6 +111,7 @@ mrb_Git_DescribeOptions_set_max_candidates_tags(mrb_state* mrb, mrb_value self) 
 
   native_self->max_candidates_tags = native_max_candidates_tags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DescribeOptions_get_describe_strategy(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::describe_strategy_writer */
-/* sha: 31c1683a4218998e398d85945e1549d650f2063904e011a0084cb0b35f08f981 */
+/* sha: 9773fe95a64e19796825d0ee5e7a79f6aa708689a2a9a07de5b486c27e9996fc */
 #if BIND_DescribeOptions_describe_strategy_FIELD_WRITER
 /* set_describe_strategy
  *
@@ -196,6 +156,7 @@ mrb_Git_DescribeOptions_set_describe_strategy(mrb_state* mrb, mrb_value self) {
 
   native_self->describe_strategy = native_describe_strategy;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DescribeOptions_get_pattern(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::pattern_writer */
-/* sha: cca1565cbc4e09eb410eeaeae3af8e922e9e4860ad4af3b3965f143e739c5dd7 */
+/* sha: dc2f727b21d960ae9848b17b8c08baf23b488228e04c03b4a93ea4cc4772cbad */
 #if BIND_DescribeOptions_pattern_FIELD_WRITER
 /* set_pattern
  *
@@ -240,6 +201,7 @@ mrb_Git_DescribeOptions_set_pattern(mrb_state* mrb, mrb_value self) {
 
   native_self->pattern = native_pattern;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_DescribeOptions_get_only_follow_first_parent(mrb_state* mrb, mrb_value s
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::only_follow_first_parent_writer */
-/* sha: 3b8bc2e6f1a385bb465c0edfc13e9757fe38bc84cb45fa43f00665c97415d416 */
+/* sha: c40af208768b204e46494f64904b6860b99d05d6ed9b4cf5c3489ab444ba4c26 */
 #if BIND_DescribeOptions_only_follow_first_parent_FIELD_WRITER
 /* set_only_follow_first_parent
  *
@@ -284,6 +246,7 @@ mrb_Git_DescribeOptions_set_only_follow_first_parent(mrb_state* mrb, mrb_value s
 
   native_self->only_follow_first_parent = native_only_follow_first_parent;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_DescribeOptions_get_show_commit_oid_as_fallback(mrb_state* mrb, mrb_valu
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::show_commit_oid_as_fallback_writer */
-/* sha: b50b25b0584f6b50e699ad6865a28292421f90181dc17d7cd64822ecdf3ef25f */
+/* sha: fa24b39aef1c00dfa486f344233069e647c5916729454c6c71605f9108f46709 */
 #if BIND_DescribeOptions_show_commit_oid_as_fallback_FIELD_WRITER
 /* set_show_commit_oid_as_fallback
  *
@@ -328,6 +291,7 @@ mrb_Git_DescribeOptions_set_show_commit_oid_as_fallback(mrb_state* mrb, mrb_valu
 
   native_self->show_commit_oid_as_fallback = native_show_commit_oid_as_fallback;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

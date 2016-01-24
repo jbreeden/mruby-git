@@ -20,6 +20,7 @@ Git.libgit2_init
 # Any out parameters from the C API are returned in an array with the error code:
 #
 # ```Ruby
+puts 'Attempting to open non-existant repo'
 error, repo = Git.repository_open('dne')
 if error < 0
   e = Git.err_last
@@ -29,193 +30,232 @@ end
 #
 # Repositories
 # ------------
-# Init (Simple)
+# ### Init (Simple)
 #
 # ```Ruby
 ## With working directory:
+puts 'Create a repo with a working directory'
 error, repo = Git.repository_init("sandbox/wd", false)
 ## …or bare:
+puts 'Create a bare repo'
 error, repo = Git.repository_init("sandbox/bare", true)
 # ```
 #
-# Init (Options)
+# ### Init (Options)
 #
 # ```Ruby
 opts = Git::RepositoryInitOptions.new
 
-# ```Ruby 
-# Customize options
+## Customize options
 opts.flags |= Git::REPOSITORY_INIT_MKPATH # mkdir as needed to create repo */
 opts.description = "My repository has a custom description"
 
+puts "Making a repository in sandbox/no/parent (as with mkdir -p)"
 error, repo = Git.repository_init_ext("sandbox/no/parent", opts)
 
-__END__
-Clone (Simple)
-git_repository *repo = NULL;
-const char *url = "http://…";
-const char *path = "/tmp/…";
-int error = git_clone(&repo, url, path, NULL);
-(git_clone)
+# ```
+#
+# ### Clone (Simple)
+#
+# ```Ruby
+url = "http://github.com/jbreeden/yargs"
+path = "sandbox/yargs"
+opt = Git::CloneOptions.new
+puts "Cloning yargs repo"
+error, repo = Git.clone(url, path, opt)
+puts "Error cloning yargs" if error != 0
+# ```
 
-Clone (Progress)
-typedef struct { /* … */ } progress_data;
-int fetch_progress(
-            const git_transfer_progress *stats,
-            void *payload)
-{
-  progress_data *pd = (progress_data*)payload;
-  /* Do something with network transfer progress */
-}
+# ### Clone (Progress)
+# (Not yet supported)
+# ```Ruby
+## typedef struct { /* … */ } progress_data;
+## int fetch_progress(
+##             const git_transfer_progress *stats,
+##             void *payload)
+## {
+##   progress_data *pd = (progress_data*)payload;
+##   /* Do something with network transfer progress */
+## }
+## 
+## void checkout_progress(
+##             const char *path,
+##             size_t cur,
+##             size_t tot,
+##             void *payload)
+## {
+##   progress_data *pd = (progress_data*)payload;
+##   /* Do something with checkout progress */
+## }
+## 
+## /* … */
+## progress_data d = {0};
+## git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
+## 
+## clone_opts.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
+## clone_opts.checkout_opts.progress_cb = checkout_progress;
+## clone_opts.checkout_opts.progress_payload = &d;
+## clone_opts.checkout_opts = checkout_opts;
+## clone_opts.fetch_opts.callbacks.transfer_progress = fetch_progress;
+## clone_opts.fetch_opts.callbacks.payload = &d;
+## 
+## git_repository *repo = NULL;
+## int error = git_clone(&repo, url, path, &clone_opts);
+# ```
 
-void checkout_progress(
-            const char *path,
-            size_t cur,
-            size_t tot,
-            void *payload)
-{
-  progress_data *pd = (progress_data*)payload;
-  /* Do something with checkout progress */
-}
+# ### Clone (Custom repo and remote)
+# (Not yet supported)
+# ```Ruby
+## int create_repsitory(git_repository **out, const char *path, int bare, void *payload)
+## {
+##     int error;
+## 
+##     /*
+##      * We create the repository ourselves, libgit2 gives us the parameters it would
+##      * have used to create the repository. In this case we ignore the path passed
+##      * to git_clone() and put it under /tmp/
+##      */
+##     if ((error = git_repository_init(out, "/tmp/...", bare)) < 0)
+##         return error;
+## 
+##     /* Further customisation of the repository goes here */
+## 
+##     return 0;
+## }
+## 
+## int create_remote(git_remote **out, git_repository *repo, const char *name, const char *url, void *payload)
+## {
+##     int error;
+## 
+##     /*
+##      * Like above, we create the repository based on what libgit2 would have used
+##      * (which is what was passed to git_clone. We could use a different refspec
+##      * or name.
+##      */
+##     if ((error = git_remote_create(out, repo, name, url)) < 0)
+##         return error;
+## 
+##     /* Further customisation of the remote goes here */
+## 
+##     return 0;
+## }
+## 
+## git_repository *repo;
+## git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
+## clone_opts.repository_cb = create_repository;
+## clone_opts.remote_cb     = create_remote;
+## 
+## error = git_clone(&repo, url, path, &clone_opts);
+# ```
 
-/* … */
-progress_data d = {0};
-git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
+# ### Clone (Mirror)
+# (Not yet supported)
+# ```Ruby
+## int create_remote_mirror(git_remote **out, git_repository *repo, const char *name, const char *url, void *payload)
+## {
+##     int error;
+##     git_remote *remote;
+##     git_config *cfg;
+##     char *mirror_config;
+## 
+##     /* Create the repository with a mirror refspec */
+##     if ((error = git_remote_create_with_fetchspec(&remote, repo, name, url, "+refs/*:refs/*")) < 0)
+##         return error;
+## 
+##     /* Set the mirror setting to true on this remote  */
+##     if ((error = git_repository_config(&cfg, repo)) < 0)
+##         return error;
+## 
+##     if (asprintf(&mirror_config, "remote.%s.mirror", name) == -1) {
+##         giterr_set(GITERR_OS, "asprintf failed");
+##         git_config_free(cfg);
+##         return -1;
+##     }
+## 
+##     error = git_repository_set_bool(cfg, mirror_config, true);
+## 
+##     free(mirror_config);
+##     git_config_free(cfg);
+## 
+##     return error;
+## }
+## 
+## git_repository *repo = NULL;
+## git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
+## 
+## error = git_clone(&repo, url, path, &clone_opts);
+# ```
+#
+# ### Open (Simple)
+#
+# ```Ruby
+error, yargs_repo = Git.repository_open("sandbox/yargs")
+if error == 0
+  puts "Opened yargs repo #{yargs_repo}"
+else
+  puts "Failed to open yargs repo"
+end
+# ```
+#
+# ### Open (Options)
+#
+# ```Ruby
+## Open repository, walking up from given directory to find root
+error, repo = Git.repository_open_ext("sandbox", 0)
 
-clone_opts.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
-clone_opts.checkout_opts.progress_cb = checkout_progress;
-clone_opts.checkout_opts.progress_payload = &d;
-clone_opts.checkout_opts = checkout_opts;
-clone_opts.fetch_opts.callbacks.transfer_progress = fetch_progress;
-clone_opts.fetch_opts.callbacks.payload = &d;
-
-git_repository *repo = NULL;
-int error = git_clone(&repo, url, path, &clone_opts);
-(git_clone, git_clone_options)
-
-Clone (Custom repo and remote)
-int create_repsitory(git_repository **out, const char *path, int bare, void *payload)
-{
-    int error;
-
-    /*
-     * We create the repository ourselves, libgit2 gives us the parameters it would
-     * have used to create the repository. In this case we ignore the path passed
-     * to git_clone() and put it under /tmp/
-     */
-    if ((error = git_repository_init(out, "/tmp/...", bare)) < 0)
-        return error;
-
-    /* Further customisation of the repository goes here */
-
-    return 0;
-}
-
-int create_remote(git_remote **out, git_repository *repo, const char *name, const char *url, void *payload)
-{
-    int error;
-
-    /*
-     * Like above, we create the repository based on what libgit2 would have used
-     * (which is what was passed to git_clone. We could use a different refspec
-     * or name.
-     */
-    if ((error = git_remote_create(out, repo, name, url)) < 0)
-        return error;
-
-    /* Further customisation of the remote goes here */
-
-    return 0;
-}
-
-git_repository *repo;
-git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
-clone_opts.repository_cb = create_repository;
-clone_opts.remote_cb     = create_remote;
-
-error = git_clone(&repo, url, path, &clone_opts);
-(git_clone_into)
-
-Clone (Mirror)
-int create_remote_mirror(git_remote **out, git_repository *repo, const char *name, const char *url, void *payload)
-{
-    int error;
-    git_remote *remote;
-    git_config *cfg;
-    char *mirror_config;
-
-    /* Create the repository with a mirror refspec */
-    if ((error = git_remote_create_with_fetchspec(&remote, repo, name, url, "+refs/*:refs/*")) < 0)
-        return error;
-
-    /* Set the mirror setting to true on this remote  */
-    if ((error = git_repository_config(&cfg, repo)) < 0)
-        return error;
-
-    if (asprintf(&mirror_config, "remote.%s.mirror", name) == -1) {
-        giterr_set(GITERR_OS, "asprintf failed");
-        git_config_free(cfg);
-        return -1;
-    }
-
-    error = git_repository_set_bool(cfg, mirror_config, true);
-
-    free(mirror_config);
-    git_config_free(cfg);
-
-    return error;
-}
-
-git_repository *repo = NULL;
-git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
-
-error = git_clone(&repo, url, path, &clone_opts);
-(git_remote_create_with_fetchspec, git_repository_config, git_config_set_bool, git_clone)
-
-Open (Simple)
-git_repository *repo = NULL;
-int error = git_repository_open(&repo, "/tmp/…");
-(git_repository_open)
-
-Open (Options)
-int error;
-git_repository *repo = NULL;
-
-/* Open repository, walking up from given directory to find root */
-error = git_repository_open_ext(&repo, "/tmp/…", 0, NULL);
-
-/* Open repository in given directory (or fail if not a repository) */
-error = git_repository_open_ext(
-    &repo, "/tmp/…", GIT_REPOSITORY_OPEN_NO_SEARCH, NULL);
-
-/* Open repository with "ceiling" directories list to limit walking up */
-error = git_repository_open_ext(
-    &repo, "/home/acct/…, GIT_REPOSITORY_OPEN_CROSS_FS, "/tmp:/usr:/home");
-(git_repository_open_ext, git_repository_open_flag_t)
-
-Open (Bare)
-A fast way of opening a bare repository when the exact path is known.
-
-git_repository *repo = NULL;
-int error = git_repository_open_bare(&repo, "/var/data/…/repo.git");
-(git_repository_open_bare)
-
-Find Repository
-Check if a given path is inside a repository and return the repository root directory if found.
-
+## Open repository in given directory (or fail if not a repository)
+error, repo = Git.repository_open_ext("sandbox", Git::REPOSITORY_OPEN_NO_SEARCH)
+if error == 0
+  puts "Error: Opened sandbox, even though it's not a repo!"
+else
+  puts "Couldn't open ./sandox, as expected: #{Git.err_last.message}"
+end
+## GIT::REPOSITORY_OPEN_CROSS_FS - Unless this flag is set, open will not
+##   continue searching across filesystem boundaries (i.e. when `st_dev`
+##   changes from the `stat` system call)
+puts 'Open repository with "ceiling" directories list to limit walking up'
+error, repo = Git.repository_open_ext("#{Dir.pwd}/sandbox", Git::REPOSITORY_OPEN_CROSS_FS, "#{File.dirname(Dir.pwd)}:/other/dir");
+if error == 0
+  puts "Found & opened a repo containing #{Dir.pwd}/sandbox"
+else
+  puts "Error: #{Git.err_last.message}"
+end
+# ```
+#
+# ### Open (Bare)
+# A fast way of opening a bare repository when the exact path is known.
+#
+# ```Ruby
+error, repo = git_repository_open_bare("sandbox/bare")
+if error == 0
+  puts "Successfully opened bare repo"
+else
+  puts "Error: #{Git.err_last.message}"
+end
+# ```
+#
+# ### Find Repository
+# Check if a given path is inside a repository and return the repository root directory if found.
+# ```Ruby
 git_buf root = {0};
 int error = git_repository_discover(&root, "/tmp/…", 0, NULL);
 …
 git_buf_free(&root); /* returned path data must be freed after use */
 (git_repository_discover)
-
-Check If Repository
-/* Pass NULL for the output parameter to check for but not open the repo */
-if (git_repository_open_ext(
-        NULL, "/tmp/…", GIT_REPOSITORY_OPEN_NO_SEARCH, NULL) == 0) {
-    /* directory looks like an openable repository */;
-}
-(git_repository_open_ext, git_repository_open_flag_t)
+# ```
+#
+# ### Check If Repository
+#
+# ```Ruby
+## Pass NULL for the output parameter to check for but not open the repo
+      # if (git_repository_open_ext(
+      #         NULL, "/tmp/…", GIT_REPOSITORY_OPEN_NO_SEARCH, NULL) == 0) {
+      #     /* directory looks like an openable repository */;
+      # }
+      # (git_repository_open_ext, git_repository_open_flag_t)
+# ```
+#
+__END__
 
 Objects
 SHAs and OIDs

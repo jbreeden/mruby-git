@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Push::initialize */
 /* sha: 7b4f4c742b0a6fc3e9c74a270026e2e07785d60205dcaf37e8a11429e13a0514 */
 #if BIND_Push_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Push_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Push::disown */
-/* sha: ef90c789787737a53af9f729fa032caa472697ee96fd05c8ad5dafa097587faf */
-mrb_value
-mrb_Git_Push_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Push.disown only accepts objects of type Git::Push");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Push::belongs_to_ruby */
-/* sha: 5dfbad4e00d8819037a6f21f5ce621dca9cedfe8fc3343b8946fa00e77c8062a */
-mrb_value
-mrb_Git_Push_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Push.belongs_to_ruby only accepts objects of type Git::Push");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

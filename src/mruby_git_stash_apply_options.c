@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: StashApplyOptions::initialize */
 /* sha: 5edb9e9733c2c5becca76452f36af9a0d11e9d4ca128ad1560abc93be8f40238 */
 #if BIND_StashApplyOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_StashApplyOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StashApplyOptions::disown */
-/* sha: 7d0293277c098bc6d3eaf347816aa2278b94abc1766eba1fe0e62429b986de6c */
-mrb_value
-mrb_Git_StashApplyOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StashApplyOptions.disown only accepts objects of type Git::StashApplyOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StashApplyOptions::belongs_to_ruby */
-/* sha: 9ec78931838458b55ea50d00454decbf91491ef0cc54926bf0aa27da7b1c5100 */
-mrb_value
-mrb_Git_StashApplyOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StashApplyOptions.belongs_to_ruby only accepts objects of type Git::StashApplyOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_StashApplyOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StashApplyOptions::version_writer */
-/* sha: c3c49d4b4920675dd947afd4bf96ca972feb2c4b0e470f2ae7f25a023d729b15 */
+/* sha: 5e45737f3779c6c6f8ede77ab0c0d887aab6cfaa05fb7eff752c3de71c421aa1 */
 #if BIND_StashApplyOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_StashApplyOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_StashApplyOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StashApplyOptions::flags_writer */
-/* sha: 0c8cfffcb86a649cc1e36c9a519a568f8cf09b1d17bf4d5864c1d6163f12f71d */
+/* sha: 0c7393ac74f7562ab43eb8a205af4e86d18697f0246d5cdb4e1a1143b3b1fc07 */
 #if BIND_StashApplyOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_StashApplyOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -222,7 +182,7 @@ mrb_Git_StashApplyOptions_get_progress_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StashApplyOptions::progress_cb_writer */
-/* sha: fc62628d73b4ffc6685ca291f0998e174c6ae4e752f2b4f7455f0cf1db6418f8 */
+/* sha: d16f175be2033a5adc6422849ba9ba353e344d76adbff733b4b06f67c063aa19 */
 #if BIND_StashApplyOptions_progress_cb_FIELD_WRITER
 /* set_progress_cb
  *
@@ -243,6 +203,7 @@ mrb_Git_StashApplyOptions_set_progress_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->progress_cb = native_progress_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -271,7 +232,7 @@ mrb_Git_StashApplyOptions_get_progress_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StashApplyOptions::progress_payload_writer */
-/* sha: 0dbc33d978c47d4c047b46b44bd90f456c39846fe34a3a946db816726f7cdbc5 */
+/* sha: 4fa95ccbc043e8910c920f5abba04a99cc7bcbd092a5f3fe64c203c557c1b426 */
 #if BIND_StashApplyOptions_progress_payload_FIELD_WRITER
 /* set_progress_payload
  *
@@ -292,6 +253,7 @@ mrb_Git_StashApplyOptions_set_progress_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->progress_payload = native_progress_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

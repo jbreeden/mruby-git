@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffSimilarityMetric::initialize */
 /* sha: 2b891e9d37bd0773be4aa41625d2365ab0e0332faee13233c5871b9ca5e866f7 */
 #if BIND_DiffSimilarityMetric_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffSimilarityMetric_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffSimilarityMetric::disown */
-/* sha: 567303f7266f42444dfe99a56bcdfc3f42cc32cb5ccf074790d96b841ed282f8 */
-mrb_value
-mrb_Git_DiffSimilarityMetric_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffSimilarityMetric.disown only accepts objects of type Git::DiffSimilarityMetric");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffSimilarityMetric::belongs_to_ruby */
-/* sha: 6fb221babfae6bd6aaa116112797ff8cab3e555a10d11b9a80066fd7ec9075f6 */
-mrb_value
-mrb_Git_DiffSimilarityMetric_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffSimilarityMetric.belongs_to_ruby only accepts objects of type Git::DiffSimilarityMetric");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffSimilarityMetric_get_file_signature(mrb_state* mrb, mrb_value self) 
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::file_signature_writer */
-/* sha: 1df9e2517bdab499c68be35e5574d31a76caf2aab8c9b832a8caf0191776e8aa */
+/* sha: b3804faa33d035fb518f5c0587dcfb2d0d429c6034fffd6ade384e5b2975e6e9 */
 #if BIND_DiffSimilarityMetric_file_signature_FIELD_WRITER
 /* set_file_signature
  *
@@ -113,6 +71,7 @@ mrb_Git_DiffSimilarityMetric_set_file_signature(mrb_state* mrb, mrb_value self) 
 
   native_self->file_signature = native_file_signature;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -141,7 +100,7 @@ mrb_Git_DiffSimilarityMetric_get_buffer_signature(mrb_state* mrb, mrb_value self
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::buffer_signature_writer */
-/* sha: 06afc11d7e875f3fad7e9638996da57a78146c83d3fbb18b0d306456bf25d1aa */
+/* sha: f61438751d4692716011450320050747f5d0160a1937f5576723d95400da7fe9 */
 #if BIND_DiffSimilarityMetric_buffer_signature_FIELD_WRITER
 /* set_buffer_signature
  *
@@ -162,6 +121,7 @@ mrb_Git_DiffSimilarityMetric_set_buffer_signature(mrb_state* mrb, mrb_value self
 
   native_self->buffer_signature = native_buffer_signature;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -190,7 +150,7 @@ mrb_Git_DiffSimilarityMetric_get_free_signature(mrb_state* mrb, mrb_value self) 
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::free_signature_writer */
-/* sha: 4644d9eb6e336680962d3988a34c9413a3b44494a589e50d6afb8a65b741bc99 */
+/* sha: 53f9dcdb093c3d03f5f54aa61eb16c2a38fee50b39b0616824fe8effdd99c2e8 */
 #if BIND_DiffSimilarityMetric_free_signature_FIELD_WRITER
 /* set_free_signature
  *
@@ -211,6 +171,7 @@ mrb_Git_DiffSimilarityMetric_set_free_signature(mrb_state* mrb, mrb_value self) 
 
   native_self->free_signature = native_free_signature;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -239,7 +200,7 @@ mrb_Git_DiffSimilarityMetric_get_similarity(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::similarity_writer */
-/* sha: f7c0949a4d3eb2691119cdbd8edd9847b0ae7df2907975768fb6fcdfd705813b */
+/* sha: a81b0b6e0677a74cb86cc1b87e282cfa3c67a65916cc9c72587e7dcded1185a0 */
 #if BIND_DiffSimilarityMetric_similarity_FIELD_WRITER
 /* set_similarity
  *
@@ -260,6 +221,7 @@ mrb_Git_DiffSimilarityMetric_set_similarity(mrb_state* mrb, mrb_value self) {
 
   native_self->similarity = native_similarity;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -288,7 +250,7 @@ mrb_Git_DiffSimilarityMetric_get_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::payload_writer */
-/* sha: 386b07e2055f373fe32f4b6924006ab40ba4b6848b6e01fb93b353b48df2cc72 */
+/* sha: 66f702db29ff3fae4b63d821cc40517a8469190cdaf77056295cf90b3b866a14 */
 #if BIND_DiffSimilarityMetric_payload_FIELD_WRITER
 /* set_payload
  *
@@ -309,6 +271,7 @@ mrb_Git_DiffSimilarityMetric_set_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->payload = native_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

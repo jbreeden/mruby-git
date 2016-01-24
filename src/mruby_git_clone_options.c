@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CloneOptions::initialize */
 /* sha: be7c4a14a5c068ea7ba1290e4ed37ef3854fd87a13b1212fcd2187ef5ac0ba4c */
 #if BIND_CloneOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CloneOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CloneOptions::disown */
-/* sha: 3c5e6478d38af10bc52f928061d9e5f5cfd85a01d83eea79b4dc5b06ce4451b7 */
-mrb_value
-mrb_Git_CloneOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CloneOptions.disown only accepts objects of type Git::CloneOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CloneOptions::belongs_to_ruby */
-/* sha: 601c3f5d65e5d94ded702deb6266819a688914808d8bb2ac00065e6d0a991253 */
-mrb_value
-mrb_Git_CloneOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CloneOptions.belongs_to_ruby only accepts objects of type Git::CloneOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_CloneOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::version_writer */
-/* sha: 060d4fb1c33a80eef22932a2a1a3cc5a934b74454441c441e4e70c9da8c802eb */
+/* sha: d9e30d18cb4e9df34f013d109d3c10d591087b5a938297c5dd24edabac702795 */
 #if BIND_CloneOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_CloneOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -137,7 +96,7 @@ mrb_Git_CloneOptions_get_checkout_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::checkout_opts_writer */
-/* sha: 0351419816e2c6c8348b5c239dbadae81662fda9013404fd9f0a1c2c659c8f9b */
+/* sha: 5aae4fbcae6c4a5eef1294ccf7e5756a3315d8754e901133f05c984e5f1ac5d3 */
 #if BIND_CloneOptions_checkout_opts_FIELD_WRITER
 /* set_checkout_opts
  *
@@ -161,6 +120,7 @@ mrb_Git_CloneOptions_set_checkout_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->checkout_opts = native_checkout_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -190,7 +150,7 @@ mrb_Git_CloneOptions_get_fetch_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::fetch_opts_writer */
-/* sha: 13cf1b79f862541cf9704225955a3b59e3d45cea5dc9c0ad4ab3e0016ad60ef9 */
+/* sha: 44a51eb5a68f255babeb35733cf0290df294cb56dcb6794d15e1388bc30909d2 */
 #if BIND_CloneOptions_fetch_opts_FIELD_WRITER
 /* set_fetch_opts
  *
@@ -214,6 +174,7 @@ mrb_Git_CloneOptions_set_fetch_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->fetch_opts = native_fetch_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -242,7 +203,7 @@ mrb_Git_CloneOptions_get_bare(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::bare_writer */
-/* sha: f37566454d305e18b2957d3f8fdee3517df57f619ff9c7144b07646ae42459bf */
+/* sha: c9f486eb4e089bde593d651ebc551003d8fcfd1a7f22ebad1d010d45398d2670 */
 #if BIND_CloneOptions_bare_FIELD_WRITER
 /* set_bare
  *
@@ -258,6 +219,7 @@ mrb_Git_CloneOptions_set_bare(mrb_state* mrb, mrb_value self) {
 
   native_self->bare = native_bare;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -286,7 +248,7 @@ mrb_Git_CloneOptions_get_local(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::local_writer */
-/* sha: 3d49f7acf8c031ced23980d90787a34de2b6a2b98c355b601462ca20f6547e4c */
+/* sha: fb5da2688e17f07160ee790e258289c208762e359abba1baef47cb74c7f28260 */
 #if BIND_CloneOptions_local_FIELD_WRITER
 /* set_local
  *
@@ -302,6 +264,7 @@ mrb_Git_CloneOptions_set_local(mrb_state* mrb, mrb_value self) {
 
   native_self->local = native_local;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -330,7 +293,7 @@ mrb_Git_CloneOptions_get_checkout_branch(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::checkout_branch_writer */
-/* sha: c1cde3cf9e117469a40b672a5d85bbf3f4b36f23f0e5d10e4823b0a5b4abe4e9 */
+/* sha: 37fe9b24a32719567b799224b4ea5e113c5561027d82524368f22efd3d262631 */
 #if BIND_CloneOptions_checkout_branch_FIELD_WRITER
 /* set_checkout_branch
  *
@@ -346,6 +309,7 @@ mrb_Git_CloneOptions_set_checkout_branch(mrb_state* mrb, mrb_value self) {
 
   native_self->checkout_branch = native_checkout_branch;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -374,7 +338,7 @@ mrb_Git_CloneOptions_get_repository_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::repository_cb_writer */
-/* sha: ca39add19afba69d918bbdb1ac5698a49a234797d0bd70e6bb736e88507820d9 */
+/* sha: 1c7ee9f2e0d09886dbfb6b6049b71209d2d233df9fba7aa59789fb4164311a96 */
 #if BIND_CloneOptions_repository_cb_FIELD_WRITER
 /* set_repository_cb
  *
@@ -395,6 +359,7 @@ mrb_Git_CloneOptions_set_repository_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->repository_cb = native_repository_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -423,7 +388,7 @@ mrb_Git_CloneOptions_get_repository_cb_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::repository_cb_payload_writer */
-/* sha: 386388f216661e7e0ad05939d64f4c0f86d1d6666cb999ed622924a9ada8f03a */
+/* sha: 3db3cd8fd4061fbe67b7d1176f20fc16aeed717f3e9162982f02fbb8ba3cd934 */
 #if BIND_CloneOptions_repository_cb_payload_FIELD_WRITER
 /* set_repository_cb_payload
  *
@@ -444,6 +409,7 @@ mrb_Git_CloneOptions_set_repository_cb_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->repository_cb_payload = native_repository_cb_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -472,7 +438,7 @@ mrb_Git_CloneOptions_get_remote_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::remote_cb_writer */
-/* sha: 7c7e247c17ae67d8574e179c383ea5c9dd7f083709d4c6184dbc1ad98c4f8031 */
+/* sha: c53e329bfaf330c5f179d2a1cdc3fa0a9d9873eaaaa4bf65d2d65e245dcd8cef */
 #if BIND_CloneOptions_remote_cb_FIELD_WRITER
 /* set_remote_cb
  *
@@ -493,6 +459,7 @@ mrb_Git_CloneOptions_set_remote_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->remote_cb = native_remote_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -521,7 +488,7 @@ mrb_Git_CloneOptions_get_remote_cb_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::remote_cb_payload_writer */
-/* sha: a994530770b654fec0aef222b482eab25478342a960ffc5e6cc47def22c2ea1f */
+/* sha: 5e1c7d3d944abcba0de501abea04f3f97ca5b0774a876afb266e07cce7341fcc */
 #if BIND_CloneOptions_remote_cb_payload_FIELD_WRITER
 /* set_remote_cb_payload
  *
@@ -542,6 +509,7 @@ mrb_Git_CloneOptions_set_remote_cb_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->remote_cb_payload = native_remote_cb_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

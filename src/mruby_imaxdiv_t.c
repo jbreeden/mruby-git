@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: ImaxdivT::initialize */
 /* sha: 965b47ccbb430672401205938f3e372619738d26261e4e4f6cbcbc8e56a2719f */
 #if BIND_ImaxdivT_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_ImaxdivT_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: ImaxdivT::disown */
-/* sha: 9952728801207f775cd23f51a6003772c08ca30e43098d09ef233c4ad47eb5f8 */
-mrb_value
-mrb_Git_ImaxdivT_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::ImaxdivT.disown only accepts objects of type Git::ImaxdivT");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: ImaxdivT::belongs_to_ruby */
-/* sha: 9e92cf75516edf5382dda69bd49d922aa6aa0d3a77dc1204c8a69e2e9cac1954 */
-mrb_value
-mrb_Git_ImaxdivT_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::ImaxdivT.belongs_to_ruby only accepts objects of type Git::ImaxdivT");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_ImaxdivT_get_quot(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ImaxdivT::quot_writer */
-/* sha: 95af970f166c0ecd25b540228bc5e70ec1b46a434d19b698326c9de3bc536cfb */
+/* sha: 4199c16383e60557d9ffeeae96f05195318692085997f2a66f61c0b83f3399b9 */
 #if BIND_ImaxdivT_quot_FIELD_WRITER
 /* set_quot
  *
@@ -108,6 +66,7 @@ mrb_Git_ImaxdivT_set_quot(mrb_state* mrb, mrb_value self) {
 
   native_self->quot = native_quot;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_ImaxdivT_get_rem(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ImaxdivT::rem_writer */
-/* sha: cb0b9498929a51f7aee52900a6d56de675dc43ff89e123b05a0ec7e86a87589b */
+/* sha: af6da6fdbdb5dc98aa6a9f46729808de90c5d1b7e39b116c85e84ff410bc7649 */
 #if BIND_ImaxdivT_rem_FIELD_WRITER
 /* set_rem
  *
@@ -152,6 +111,7 @@ mrb_Git_ImaxdivT_set_rem(mrb_state* mrb, mrb_value self) {
 
   native_self->rem = native_rem;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

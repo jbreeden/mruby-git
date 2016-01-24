@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Treebuilder::initialize */
 /* sha: 8db8b71889ba67fe7cede0373478414dec695b0ca5973003bc56a9f2284a3d3a */
 #if BIND_Treebuilder_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Treebuilder_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Treebuilder::disown */
-/* sha: f0326b3b1eefdf6344bf65c2c1356fce394dc3e8b3f9fabaae0795946d31b3e7 */
-mrb_value
-mrb_Git_Treebuilder_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Treebuilder.disown only accepts objects of type Git::Treebuilder");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Treebuilder::belongs_to_ruby */
-/* sha: 537e0ea136700da6448047acf98b7831bdb1ffcaaeeb85f7313b8168cbba6bff */
-mrb_value
-mrb_Git_Treebuilder_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Treebuilder.belongs_to_ruby only accepts objects of type Git::Treebuilder");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

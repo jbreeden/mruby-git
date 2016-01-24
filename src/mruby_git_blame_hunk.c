@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: BlameHunk::initialize */
 /* sha: 19edbabf087e48f762d6982d40f65747923f7b0d4b7f2e874e3b3fdb9604629f */
 #if BIND_BlameHunk_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_BlameHunk_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: BlameHunk::disown */
-/* sha: a31bd13cc2d5127089b344be4bdd0a3361dfd14d9746f850f295dfc46bbe9382 */
-mrb_value
-mrb_Git_BlameHunk_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::BlameHunk.disown only accepts objects of type Git::BlameHunk");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: BlameHunk::belongs_to_ruby */
-/* sha: 18af378425e6dd4580713347503b392610f6b0169f1132cfb1f73cfb74f60cf6 */
-mrb_value
-mrb_Git_BlameHunk_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::BlameHunk.belongs_to_ruby only accepts objects of type Git::BlameHunk");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_BlameHunk_get_lines_in_hunk(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::lines_in_hunk_writer */
-/* sha: 29e9524ddade9640acca85fe41974e0956e5e8ef0490f10092c08c88acedb9b1 */
+/* sha: e138ef28e90b9b765ce8f29565654214fc50792cc0a2b8f98b423663e9cc78f0 */
 #if BIND_BlameHunk_lines_in_hunk_FIELD_WRITER
 /* set_lines_in_hunk
  *
@@ -108,6 +66,7 @@ mrb_Git_BlameHunk_set_lines_in_hunk(mrb_state* mrb, mrb_value self) {
 
   native_self->lines_in_hunk = native_lines_in_hunk;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -137,7 +96,7 @@ mrb_Git_BlameHunk_get_final_commit_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::final_commit_id_writer */
-/* sha: 7b280f88adc966587f28e633aae989d9589920020cd9dda101129f8dde1d8024 */
+/* sha: 09a87fcdd0d03db043afa84760e33ca3eb05cb5a29831249cd7c9e1dd474bcda */
 #if BIND_BlameHunk_final_commit_id_FIELD_WRITER
 /* set_final_commit_id
  *
@@ -161,6 +120,7 @@ mrb_Git_BlameHunk_set_final_commit_id(mrb_state* mrb, mrb_value self) {
 
   native_self->final_commit_id = native_final_commit_id;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -189,7 +149,7 @@ mrb_Git_BlameHunk_get_final_start_line_number(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::final_start_line_number_writer */
-/* sha: 1781d0c6a491eb3a40ad24bd6069489d183d304ecd419e26cf1fb72a978ebe03 */
+/* sha: 97fd7dea23ee31c369b5b032f18258ac3e360e37aa323bbc5c882a7b3dd53a15 */
 #if BIND_BlameHunk_final_start_line_number_FIELD_WRITER
 /* set_final_start_line_number
  *
@@ -205,6 +165,7 @@ mrb_Git_BlameHunk_set_final_start_line_number(mrb_state* mrb, mrb_value self) {
 
   native_self->final_start_line_number = native_final_start_line_number;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -233,7 +194,7 @@ mrb_Git_BlameHunk_get_final_signature(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::final_signature_writer */
-/* sha: 63c731d87c95d9ab4f048bd4b45ae9eaec95bbb2bf266f7205fc760399c55312 */
+/* sha: 4355ff362dbe05f726d40d73d909bd6abc3bf94c7c3698bc6327426bd07b7eea */
 #if BIND_BlameHunk_final_signature_FIELD_WRITER
 /* set_final_signature
  *
@@ -257,6 +218,7 @@ mrb_Git_BlameHunk_set_final_signature(mrb_state* mrb, mrb_value self) {
 
   native_self->final_signature = native_final_signature;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -286,7 +248,7 @@ mrb_Git_BlameHunk_get_orig_commit_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::orig_commit_id_writer */
-/* sha: b04fa66e94508f05e6505b604f15c6ca3f2fc77ad1ba777c5d78e8b121438a18 */
+/* sha: adcc6180e1a073866c1afa85a6aceea2bfb36b227f4d80bc6a4057b3354ba629 */
 #if BIND_BlameHunk_orig_commit_id_FIELD_WRITER
 /* set_orig_commit_id
  *
@@ -310,6 +272,7 @@ mrb_Git_BlameHunk_set_orig_commit_id(mrb_state* mrb, mrb_value self) {
 
   native_self->orig_commit_id = native_orig_commit_id;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -338,7 +301,7 @@ mrb_Git_BlameHunk_get_orig_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::orig_path_writer */
-/* sha: 7d90d04bca8f0fee0565e279d252e5b76ffc23a37c1234b18361d01f4d2c41d6 */
+/* sha: 3507c07929ae344e7970214f5b63677ee7aae457af00b875a3cb307bdd789bd3 */
 #if BIND_BlameHunk_orig_path_FIELD_WRITER
 /* set_orig_path
  *
@@ -354,6 +317,7 @@ mrb_Git_BlameHunk_set_orig_path(mrb_state* mrb, mrb_value self) {
 
   native_self->orig_path = native_orig_path;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -382,7 +346,7 @@ mrb_Git_BlameHunk_get_orig_start_line_number(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::orig_start_line_number_writer */
-/* sha: 6f78b64a9fa1e282494961a0a0da4313c34ee93df5fe835254cd660efb773d45 */
+/* sha: 7c9e32ec5aea5ec39f80f1c9a8c6c30ff0f7d857d531ef367fbaff3977e9e6b2 */
 #if BIND_BlameHunk_orig_start_line_number_FIELD_WRITER
 /* set_orig_start_line_number
  *
@@ -398,6 +362,7 @@ mrb_Git_BlameHunk_set_orig_start_line_number(mrb_state* mrb, mrb_value self) {
 
   native_self->orig_start_line_number = native_orig_start_line_number;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -426,7 +391,7 @@ mrb_Git_BlameHunk_get_orig_signature(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::orig_signature_writer */
-/* sha: 2adc2e25be8cd2486b13d5d7c08472f48da3d454bac4edcd09660ee51a2d580c */
+/* sha: 26b6a5e38c2dc0532ae7e94265f2564eb4adad436f815833a30910617af222f3 */
 #if BIND_BlameHunk_orig_signature_FIELD_WRITER
 /* set_orig_signature
  *
@@ -450,6 +415,7 @@ mrb_Git_BlameHunk_set_orig_signature(mrb_state* mrb, mrb_value self) {
 
   native_self->orig_signature = native_orig_signature;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -478,7 +444,7 @@ mrb_Git_BlameHunk_get_boundary(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::boundary_writer */
-/* sha: 5cce21e9c40152fe5868e9165d8f179e9ce6f57f9b5b505e029a14e9e4df1f01 */
+/* sha: a44c3c980099c001ccbbd5eef94b092fb8e9e11e12e074e5ef2580a35c54ec20 */
 #if BIND_BlameHunk_boundary_FIELD_WRITER
 /* set_boundary
  *
@@ -494,6 +460,7 @@ mrb_Git_BlameHunk_set_boundary(mrb_state* mrb, mrb_value self) {
 
   native_self->boundary = native_boundary;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

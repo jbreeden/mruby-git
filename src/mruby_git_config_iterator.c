@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: ConfigIterator::initialize */
 /* sha: 53604f7125930f86fabad34cdb7f5b8d7d699bb01880c4f5c6574017c35c1391 */
 #if BIND_ConfigIterator_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_ConfigIterator_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: ConfigIterator::disown */
-/* sha: 417ca4e5964c6ce04f4951c8f1b47c2920ba04bf62ad909dc6dbd153884c098e */
-mrb_value
-mrb_Git_ConfigIterator_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::ConfigIterator.disown only accepts objects of type Git::ConfigIterator");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: ConfigIterator::belongs_to_ruby */
-/* sha: eb05f1adbd726120766ef3ceb67d90405968b2c663f5a43c5b503484278ed59b */
-mrb_value
-mrb_Git_ConfigIterator_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::ConfigIterator.belongs_to_ruby only accepts objects of type Git::ConfigIterator");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CherrypickOptions::initialize */
 /* sha: 5518d48016f6f58a5d843d832c83b6b8f10a83b2513c572ce43d2733f4cca4de */
 #if BIND_CherrypickOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CherrypickOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CherrypickOptions::disown */
-/* sha: 48b36992c07a301fb2f41a7ab04e48119bfa207e66e58bd33135e9515203d610 */
-mrb_value
-mrb_Git_CherrypickOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CherrypickOptions.disown only accepts objects of type Git::CherrypickOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CherrypickOptions::belongs_to_ruby */
-/* sha: 9dde34231f3d020864a1d36da0f73e9c3550837c773366316b5b60ddf0e0539d */
-mrb_value
-mrb_Git_CherrypickOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CherrypickOptions.belongs_to_ruby only accepts objects of type Git::CherrypickOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_CherrypickOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CherrypickOptions::version_writer */
-/* sha: 29413e4de0372e63681149e4db97a0b128bba679517dcb42fba0ae9cd661663e */
+/* sha: 3fa28ebb63fca73bd23e78418724b3a06152960526ed5d1f69f574c99ea7ba37 */
 #if BIND_CherrypickOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_CherrypickOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_CherrypickOptions_get_mainline(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CherrypickOptions::mainline_writer */
-/* sha: db2b7e6b18531ace16976be7f2321dde0596b55c80649c05c4a7868c5d55b509 */
+/* sha: 37179fe926b510dadf4cdd5b063c3a9d4e7d980490364934643d107f49613e1b */
 #if BIND_CherrypickOptions_mainline_FIELD_WRITER
 /* set_mainline
  *
@@ -152,6 +111,7 @@ mrb_Git_CherrypickOptions_set_mainline(mrb_state* mrb, mrb_value self) {
 
   native_self->mainline = native_mainline;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -181,7 +141,7 @@ mrb_Git_CherrypickOptions_get_merge_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CherrypickOptions::merge_opts_writer */
-/* sha: ba20a590792dc304ed037954d0e8cb895acfc8d996f250b130b9b0cbd03c6d5c */
+/* sha: 6607e85a51f81810c56ae0526de324f57aef00a119902fda4a3d4e2bcfc0a9ea */
 #if BIND_CherrypickOptions_merge_opts_FIELD_WRITER
 /* set_merge_opts
  *
@@ -205,6 +165,7 @@ mrb_Git_CherrypickOptions_set_merge_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->merge_opts = native_merge_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -234,7 +195,7 @@ mrb_Git_CherrypickOptions_get_checkout_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CherrypickOptions::checkout_opts_writer */
-/* sha: 3d4b2b208895403d6fe3179f7b4da86757990a395a18df9001b1a7626c909272 */
+/* sha: b1307d6e01c059790b0e148c544a0fad5a7b96ef662efcbf495eda0c6f55de68 */
 #if BIND_CherrypickOptions_checkout_opts_FIELD_WRITER
 /* set_checkout_opts
  *
@@ -258,6 +219,7 @@ mrb_Git_CherrypickOptions_set_checkout_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->checkout_opts = native_checkout_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

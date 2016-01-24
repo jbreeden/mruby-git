@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffFormatEmailOptions::initialize */
 /* sha: aca18892fef0d35ee25727ac53eb411ab645e816c938a05489050ecc84ecd90e */
 #if BIND_DiffFormatEmailOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffFormatEmailOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffFormatEmailOptions::disown */
-/* sha: 69a17517663f891c21bc8424147c82bae08758969c6397544569e82dd7d682aa */
-mrb_value
-mrb_Git_DiffFormatEmailOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffFormatEmailOptions.disown only accepts objects of type Git::DiffFormatEmailOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffFormatEmailOptions::belongs_to_ruby */
-/* sha: 154cfab74a3e2ae6de1ea2d448fbf717153fc508b0f14707d8bbb693591f2aec */
-mrb_value
-mrb_Git_DiffFormatEmailOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffFormatEmailOptions.belongs_to_ruby only accepts objects of type Git::DiffFormatEmailOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffFormatEmailOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::version_writer */
-/* sha: 860cf90dc8076ca5c80f57fee0b295d6e9183a00bf5c77ea14c211162e01a9ac */
+/* sha: 2bdee1827e9d8f6584ee6e87a889209ef2f726543d5a5a4cf2b0d9f33c3cf142 */
 #if BIND_DiffFormatEmailOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffFormatEmailOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffFormatEmailOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::flags_writer */
-/* sha: b3724d3fef750fee9afc209535ff49fa1189f90ccc6ce60b9fb03721e73356ba */
+/* sha: b62bf023003cac4c452446da0dbf99957af372e9e5420a4942e9c944d73bbb80 */
 #if BIND_DiffFormatEmailOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffFormatEmailOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffFormatEmailOptions_get_patch_no(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::patch_no_writer */
-/* sha: 90bc1fdeb6920c6726f27c61c8ed02d0040205fd04a425003239b447c33ac207 */
+/* sha: 4353e8d86a7031693ddf3d87f0f97cf063e4e48ef73bc232653fa539d684dfe8 */
 #if BIND_DiffFormatEmailOptions_patch_no_FIELD_WRITER
 /* set_patch_no
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffFormatEmailOptions_set_patch_no(mrb_state* mrb, mrb_value self) {
 
   native_self->patch_no = native_patch_no;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DiffFormatEmailOptions_get_total_patches(mrb_state* mrb, mrb_value self)
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::total_patches_writer */
-/* sha: 9ead1040e8ccb13f35036875f985c36371e7ab9221fe6503f92276de4ca5a15d */
+/* sha: c9336e844752f4bee8b16a96bc0ff1fb063fe84f9a7e0780a7e2852f2f0099d0 */
 #if BIND_DiffFormatEmailOptions_total_patches_FIELD_WRITER
 /* set_total_patches
  *
@@ -240,6 +201,7 @@ mrb_Git_DiffFormatEmailOptions_set_total_patches(mrb_state* mrb, mrb_value self)
 
   native_self->total_patches = native_total_patches;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_DiffFormatEmailOptions_get_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::id_writer */
-/* sha: 54a822b2bfa3a78f9f7e4e4a3d6e9d6cd7d78139064058a741e20a40a9a5294d */
+/* sha: 6c86b106bfc549ef397d7f9f573e6626cef04080531512bb7a11fed1865a8687 */
 #if BIND_DiffFormatEmailOptions_id_FIELD_WRITER
 /* set_id
  *
@@ -292,6 +254,7 @@ mrb_Git_DiffFormatEmailOptions_set_id(mrb_state* mrb, mrb_value self) {
 
   native_self->id = native_id;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -320,7 +283,7 @@ mrb_Git_DiffFormatEmailOptions_get_summary(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::summary_writer */
-/* sha: b7fb6696a66a252fdf85e2f832f4b4a98ecba59ec33be4b42b5fa2b5b6178877 */
+/* sha: a95161658e908c76c9810813bb05f912c011e3d7073b0892a15ea788086d1868 */
 #if BIND_DiffFormatEmailOptions_summary_FIELD_WRITER
 /* set_summary
  *
@@ -336,6 +299,7 @@ mrb_Git_DiffFormatEmailOptions_set_summary(mrb_state* mrb, mrb_value self) {
 
   native_self->summary = native_summary;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -364,7 +328,7 @@ mrb_Git_DiffFormatEmailOptions_get_body(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::body_writer */
-/* sha: 7c079a77dece4499e407eaf9fbeae6ce759aedb2a9012bb8b2adbc17bcffbda6 */
+/* sha: 41c3e144499cd075513236e2d325ab622c8e3bb81c2233437aef46e2aebac81f */
 #if BIND_DiffFormatEmailOptions_body_FIELD_WRITER
 /* set_body
  *
@@ -380,6 +344,7 @@ mrb_Git_DiffFormatEmailOptions_set_body(mrb_state* mrb, mrb_value self) {
 
   native_self->body = native_body;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -408,7 +373,7 @@ mrb_Git_DiffFormatEmailOptions_get_author(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::author_writer */
-/* sha: b10d0952ba453f56db5223d04a3867b3c9e8d113430c732bb872e7a160e98c46 */
+/* sha: ddc79e5749409f594108ffe2a0ec59696b407623a8c8bc15e3603ce012431805 */
 #if BIND_DiffFormatEmailOptions_author_FIELD_WRITER
 /* set_author
  *
@@ -432,6 +397,7 @@ mrb_Git_DiffFormatEmailOptions_set_author(mrb_state* mrb, mrb_value self) {
 
   native_self->author = native_author;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

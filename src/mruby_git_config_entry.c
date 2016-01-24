@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: ConfigEntry::initialize */
 /* sha: ff419bc0b5ade479d7615a6fb7c35dd5c83f73f812c25b742662add10980817c */
 #if BIND_ConfigEntry_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_ConfigEntry_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: ConfigEntry::disown */
-/* sha: b6e5cde467197f2c538ead02e3eeac08ce6b00c5c104a5446233512ba74a2230 */
-mrb_value
-mrb_Git_ConfigEntry_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::ConfigEntry.disown only accepts objects of type Git::ConfigEntry");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: ConfigEntry::belongs_to_ruby */
-/* sha: 2e63d87dc8496254319473544bf49f11ebc258d2883a579885048fffa96d6a5a */
-mrb_value
-mrb_Git_ConfigEntry_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::ConfigEntry.belongs_to_ruby only accepts objects of type Git::ConfigEntry");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_ConfigEntry_get_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigEntry::name_writer */
-/* sha: 0bf7f8342896e57f1f7da907371180babf843c1c91efc3e23aeadc4c64cd7aa3 */
+/* sha: d115eb1ec29b95e17fe73464ac45f92a0a5499221eb7e5973ef3f298c473789b */
 #if BIND_ConfigEntry_name_FIELD_WRITER
 /* set_name
  *
@@ -108,6 +66,7 @@ mrb_Git_ConfigEntry_set_name(mrb_state* mrb, mrb_value self) {
 
   native_self->name = native_name;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_ConfigEntry_get_value(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigEntry::value_writer */
-/* sha: b0b872a54093f873b6c2072a162be0b71ea17d0b60ef4b3b897b4a60a3480bda */
+/* sha: f7dec00724bb5be8766cca97931c8bb335566d143cf65364e5179579ef61dfd5 */
 #if BIND_ConfigEntry_value_FIELD_WRITER
 /* set_value
  *
@@ -152,6 +111,7 @@ mrb_Git_ConfigEntry_set_value(mrb_state* mrb, mrb_value self) {
 
   native_self->value = native_value;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_ConfigEntry_get_level(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigEntry::level_writer */
-/* sha: cd1737492c2f12b13d242e1a29fbdd4850936a6548a9606e294e3c6eeba4610e */
+/* sha: f49156032efd4ef47826a9dce1116c0e240d7847d71f04939bf93df310342d7f */
 #if BIND_ConfigEntry_level_FIELD_WRITER
 /* set_level
  *
@@ -196,6 +156,7 @@ mrb_Git_ConfigEntry_set_level(mrb_state* mrb, mrb_value self) {
 
   native_self->level = native_level;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_ConfigEntry_get_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigEntry::free_writer */
-/* sha: 2b5e43d21914b47272c069662b5101c57a873f49333146617245c0cc4fed0d2a */
+/* sha: f61341fcd6acd87cb5db87553fb640d331251eee6ec3d50f9b2a664598f9f4e3 */
 #if BIND_ConfigEntry_free_FIELD_WRITER
 /* set_free
  *
@@ -245,6 +206,7 @@ mrb_Git_ConfigEntry_set_free(mrb_state* mrb, mrb_value self) {
 
   native_self->free = native_free;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -273,7 +235,7 @@ mrb_Git_ConfigEntry_get_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigEntry::payload_writer */
-/* sha: 25d8a43e703317f1f279904d4e7416e945bcb69f103091197f269eb9d899a4a5 */
+/* sha: 8bc85acefeff0c15735712204d12e368920ccba2591fab7daa441a0338f081a6 */
 #if BIND_ConfigEntry_payload_FIELD_WRITER
 /* set_payload
  *
@@ -294,6 +256,7 @@ mrb_Git_ConfigEntry_set_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->payload = native_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

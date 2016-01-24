@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CertHostkey::initialize */
 /* sha: f6e2cab2b76cfdc4ea599f6f216bb07b89181639ad13ac847d8d2d71c35afaf9 */
 #if BIND_CertHostkey_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CertHostkey_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CertHostkey::disown */
-/* sha: 3c8971aa782c77f921e8aedd3a7d291bd0deb118736b4096796b3867692ec5ff */
-mrb_value
-mrb_Git_CertHostkey_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CertHostkey.disown only accepts objects of type Git::CertHostkey");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CertHostkey::belongs_to_ruby */
-/* sha: b8b8ec670eb8029f5e066e3855e80bad6da3c7886e26ba5973b48c5245d9b06a */
-mrb_value
-mrb_Git_CertHostkey_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CertHostkey.belongs_to_ruby only accepts objects of type Git::CertHostkey");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_CertHostkey_get_parent(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertHostkey::parent_writer */
-/* sha: a279040d1815378537c80e11c93d8ca8128de44b77594dc6be10035aa6c678b1 */
+/* sha: 86d01881c73a1deb361530d1dc6e10fbc09505d7793248b6370f1020bb377bff */
 #if BIND_CertHostkey_parent_FIELD_WRITER
 /* set_parent
  *
@@ -117,6 +75,7 @@ mrb_Git_CertHostkey_set_parent(mrb_state* mrb, mrb_value self) {
 
   native_self->parent = native_parent;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -145,7 +104,7 @@ mrb_Git_CertHostkey_get_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertHostkey::type_writer */
-/* sha: 86e6296adb10cab67b3405c1e10f6b9e9d83292a2e29b53e3090727c38ea7149 */
+/* sha: 8fc2bc7b0b5105ba3c36b815ac1937c54580860a01fda55bd0fa494673935a55 */
 #if BIND_CertHostkey_type_FIELD_WRITER
 /* set_type
  *
@@ -161,6 +120,7 @@ mrb_Git_CertHostkey_set_type(mrb_state* mrb, mrb_value self) {
 
   native_self->type = native_type;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -189,7 +149,7 @@ mrb_Git_CertHostkey_get_hash_md5(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertHostkey::hash_md5_writer */
-/* sha: 77e7c23aeb6a20822138d1c78ec87ced3c2543e1dd54120b65ca103b85e447ba */
+/* sha: 508bb897ddb3fc6cf311c1c9f1755f51816fd5f632cd4140d9a410e15075a2dd */
 #if BIND_CertHostkey_hash_md5_FIELD_WRITER
 /* set_hash_md5
  *
@@ -210,6 +170,7 @@ mrb_Git_CertHostkey_set_hash_md5(mrb_state* mrb, mrb_value self) {
 
   native_self->hash_md5 = native_hash_md5;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -238,7 +199,7 @@ mrb_Git_CertHostkey_get_hash_sha1(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertHostkey::hash_sha1_writer */
-/* sha: 423d12098190dff78f8a46ed9fede57881eb3c6238c81a4c3eddd0679284f357 */
+/* sha: dd2e6ea856771fc57995104e8230f0560914a1b4a59e6ab5beee31cf629aa596 */
 #if BIND_CertHostkey_hash_sha1_FIELD_WRITER
 /* set_hash_sha1
  *
@@ -259,6 +220,7 @@ mrb_Git_CertHostkey_set_hash_sha1(mrb_state* mrb, mrb_value self) {
 
   native_self->hash_sha1 = native_hash_sha1;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

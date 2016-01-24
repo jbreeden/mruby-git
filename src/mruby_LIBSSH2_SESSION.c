@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: LIBSSH2SESSION::initialize */
 /* sha: fe6ccd17ed975a90ae0ca1eeb9f1950989f4a9fafcfabc5500119e86ca126dae */
 #if BIND_LIBSSH2SESSION_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_LIBSSH2SESSION_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: LIBSSH2SESSION::disown */
-/* sha: 45c071c3be6150791669b9e6bfd4b6899faef6e58791351a8b4fd8b3acc124c3 */
-mrb_value
-mrb_Git_LIBSSH2SESSION_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::LIBSSH2SESSION.disown only accepts objects of type Git::LIBSSH2SESSION");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: LIBSSH2SESSION::belongs_to_ruby */
-/* sha: d2cc7e5a61d6e6cbc92440214be02c8fcb6ce72f633fb6b62c3123387bcf4a58 */
-mrb_value
-mrb_Git_LIBSSH2SESSION_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::LIBSSH2SESSION.belongs_to_ruby only accepts objects of type Git::LIBSSH2SESSION");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

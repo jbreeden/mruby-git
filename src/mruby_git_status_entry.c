@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: StatusEntry::initialize */
 /* sha: fafd79ca2f0c5e0d4de9875f9d4b8ddbbbb479ff5304a19b46cb264c32af806d */
 #if BIND_StatusEntry_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_StatusEntry_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StatusEntry::disown */
-/* sha: 0a9b097d89a5a39f4b07d1447cc2b5e8deb992ab580077d1bb0e771e9c2bf55a */
-mrb_value
-mrb_Git_StatusEntry_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StatusEntry.disown only accepts objects of type Git::StatusEntry");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StatusEntry::belongs_to_ruby */
-/* sha: a1de977e389e0951c023912e601287d48d259d9736765ceb87c2676de33a1c0e */
-mrb_value
-mrb_Git_StatusEntry_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StatusEntry.belongs_to_ruby only accepts objects of type Git::StatusEntry");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_StatusEntry_get_status(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusEntry::status_writer */
-/* sha: a3abb3b564bf6ee725621d8fe1214b5279e4fe6f67a8baca4f8dca79f0b7ab8d */
+/* sha: d0a491df267d52e4de33db742d72e9145215d15a766df10a4f2fe848a2e6647f */
 #if BIND_StatusEntry_status_FIELD_WRITER
 /* set_status
  *
@@ -108,6 +66,7 @@ mrb_Git_StatusEntry_set_status(mrb_state* mrb, mrb_value self) {
 
   native_self->status = native_status;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_StatusEntry_get_head_to_index(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusEntry::head_to_index_writer */
-/* sha: 686e5f845fb703f3801de09c5ca12b5a7dbc06f924e6a326d40a5d6741fb18c9 */
+/* sha: 5fc64d06ac5b2fabf29c46f871f2fca74acaf67ea07c2d2439c288b45d5a3a05 */
 #if BIND_StatusEntry_head_to_index_FIELD_WRITER
 /* set_head_to_index
  *
@@ -160,6 +119,7 @@ mrb_Git_StatusEntry_set_head_to_index(mrb_state* mrb, mrb_value self) {
 
   native_self->head_to_index = native_head_to_index;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -188,7 +148,7 @@ mrb_Git_StatusEntry_get_index_to_workdir(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusEntry::index_to_workdir_writer */
-/* sha: 1931e4d536f4cb8a5458187e4ebbb75887feb81b6bd38883938f5ba62752dd6a */
+/* sha: b44c0ad0560ba94d2d69af01e6f2c0a801aff9bb3483de09910771e603227000 */
 #if BIND_StatusEntry_index_to_workdir_FIELD_WRITER
 /* set_index_to_workdir
  *
@@ -212,6 +172,7 @@ mrb_Git_StatusEntry_set_index_to_workdir(mrb_state* mrb, mrb_value self) {
 
   native_self->index_to_workdir = native_index_to_workdir;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

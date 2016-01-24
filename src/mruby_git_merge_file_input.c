@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: MergeFileInput::initialize */
 /* sha: 48c0ce18cbdd1769864da3df33be9b79a45faf46db9281b06eb7c21ca395dc7b */
 #if BIND_MergeFileInput_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_MergeFileInput_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeFileInput::disown */
-/* sha: 72cc1455778e592b5bf22b07e99c21c0a503cd44e0cf14365eea71f4b8e97da4 */
-mrb_value
-mrb_Git_MergeFileInput_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeFileInput.disown only accepts objects of type Git::MergeFileInput");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeFileInput::belongs_to_ruby */
-/* sha: f38a05bb82796bb8162206ab4416f0b84a643055ec05aac7c5b455590b87473c */
-mrb_value
-mrb_Git_MergeFileInput_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeFileInput.belongs_to_ruby only accepts objects of type Git::MergeFileInput");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_MergeFileInput_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileInput::version_writer */
-/* sha: f1f0bffd00a12da0c5110ec9d170236191f6948faeab1106e644d95c408adc8b */
+/* sha: c66a323542bee26528e7d51c403b95ef32d036ddebf453244f0d11f18fd6a741 */
 #if BIND_MergeFileInput_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_MergeFileInput_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_MergeFileInput_get_ptr(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileInput::ptr_writer */
-/* sha: 6fe243d41a34611c3490092aa12e59bb30061bc492aeb97019e2864c6860efdc */
+/* sha: f651f97b4c363a7c898b7e262e1fcca69d38b21181d739190e46161ef6808e90 */
 #if BIND_MergeFileInput_ptr_FIELD_WRITER
 /* set_ptr
  *
@@ -152,6 +111,7 @@ mrb_Git_MergeFileInput_set_ptr(mrb_state* mrb, mrb_value self) {
 
   native_self->ptr = native_ptr;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_MergeFileInput_get_size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileInput::size_writer */
-/* sha: 65f214381c4e0dfacd12018e397004ea4269276051a72a37ccd988651ca359f3 */
+/* sha: 10306498401fdcae16f3d7517d0fa2679deacadec8ff195d4e9986d219b39043 */
 #if BIND_MergeFileInput_size_FIELD_WRITER
 /* set_size
  *
@@ -196,6 +156,7 @@ mrb_Git_MergeFileInput_set_size(mrb_state* mrb, mrb_value self) {
 
   native_self->size = native_size;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_MergeFileInput_get_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileInput::path_writer */
-/* sha: 1a3b715c7569cd3e2570cac1f60632c4310d62b957a68925c90c9956015b0bf3 */
+/* sha: c98690bd1b6ae48d670ef62e669429efbe920915b401d91faed6db821cb027ea */
 #if BIND_MergeFileInput_path_FIELD_WRITER
 /* set_path
  *
@@ -240,6 +201,7 @@ mrb_Git_MergeFileInput_set_path(mrb_state* mrb, mrb_value self) {
 
   native_self->path = native_path;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_MergeFileInput_get_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileInput::mode_writer */
-/* sha: 93aeaf4a2f0fa0fa3a4d469d4c4a21c1d4fadaf8b89452e7de8a306261099464 */
+/* sha: 6ee2672ae43623d2cede39863ab649cc76d352a45c36724561696fe45c86f164 */
 #if BIND_MergeFileInput_mode_FIELD_WRITER
 /* set_mode
  *
@@ -284,6 +246,7 @@ mrb_Git_MergeFileInput_set_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->mode = native_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

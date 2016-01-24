@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Transaction::initialize */
 /* sha: 75bbd054c9e76b0411196038addbed521fdfc04dec2270e53404d094c89c65bd */
 #if BIND_Transaction_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Transaction_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Transaction::disown */
-/* sha: cab38d6d06edd37d2d2b2a00fb739cdb2928ad89ac419595632ed9432230cc87 */
-mrb_value
-mrb_Git_Transaction_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Transaction.disown only accepts objects of type Git::Transaction");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Transaction::belongs_to_ruby */
-/* sha: 2c6231594ddf4ad215620ffb9716b2d1646927bd33038f6f393c4b37ac606521 */
-mrb_value
-mrb_Git_Transaction_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Transaction.belongs_to_ruby only accepts objects of type Git::Transaction");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

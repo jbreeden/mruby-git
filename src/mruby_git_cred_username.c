@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CredUsername::initialize */
 /* sha: d53e15894e4afdb34e28472fefd2615d3647a950ba908672d6c0b008f7152e7d */
 #if BIND_CredUsername_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CredUsername_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CredUsername::disown */
-/* sha: 8b6bbcc926c6687e8f0642c913c7c34861facd292499a86ec4b7a0e95d16a988 */
-mrb_value
-mrb_Git_CredUsername_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CredUsername.disown only accepts objects of type Git::CredUsername");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CredUsername::belongs_to_ruby */
-/* sha: 722b24b85f58247a3ecdbef0d35a64685ec40a7f04e99f5beab9f88fb10c1516 */
-mrb_value
-mrb_Git_CredUsername_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CredUsername.belongs_to_ruby only accepts objects of type Git::CredUsername");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_CredUsername_get_parent(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredUsername::parent_writer */
-/* sha: a529e29f124e5a3aa643b8fbe13225be3f47aa280c8048f9ba121514d84ac05b */
+/* sha: 941e5c00ac09898fddf7b043e56179fa25659fd9178c45fd5a370714061791ed */
 #if BIND_CredUsername_parent_FIELD_WRITER
 /* set_parent
  *
@@ -117,6 +75,7 @@ mrb_Git_CredUsername_set_parent(mrb_state* mrb, mrb_value self) {
 
   native_self->parent = native_parent;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -145,7 +104,7 @@ mrb_Git_CredUsername_get_username(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredUsername::username_writer */
-/* sha: 59759756f6519c6ff84a65a002858e9a553020211a5a5ce9a973eb52d3d2a861 */
+/* sha: 7c43a63d38b60b3edf6ed753e11a560285a2f35cf0a680abaf2fdde0bb03bf5b */
 #if BIND_CredUsername_username_FIELD_WRITER
 /* set_username
  *
@@ -166,6 +125,7 @@ mrb_Git_CredUsername_set_username(mrb_state* mrb, mrb_value self) {
 
   native_self->username = native_username;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffOptions::initialize */
 /* sha: 6444d208fe57ee3ce092b6c0542423b366bff8b469129bcea915255e8322e104 */
 #if BIND_DiffOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffOptions::disown */
-/* sha: a67cfcdd937ec2322133564d6479f433570f7f3eef6a827340986958f41b0107 */
-mrb_value
-mrb_Git_DiffOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffOptions.disown only accepts objects of type Git::DiffOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffOptions::belongs_to_ruby */
-/* sha: 16ac0dfe16c63901261c82d473f5210424d4754eaec3e059196c38f8cf59f1ef */
-mrb_value
-mrb_Git_DiffOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffOptions.belongs_to_ruby only accepts objects of type Git::DiffOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::version_writer */
-/* sha: 0586183d7cc52beb802bdfb29c59212e560b0426e734acbfdef06e38527ae7a8 */
+/* sha: 2ecdfa56606b14e1b617e34d122452df505e21e4b83251b536169b61101f0a0f */
 #if BIND_DiffOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::flags_writer */
-/* sha: e503027a53e7de103d1f29f2342f1568858d8a58f37822fb00f8423d6aa2ae66 */
+/* sha: 132a9c54fd06ccaee870b00eca9185023d0b4e1e401c70682912c8fc2d2befe7 */
 #if BIND_DiffOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffOptions_get_ignore_submodules(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::ignore_submodules_writer */
-/* sha: 090b6556998b4adfd91fa7bdde7ddc65c3b7b95318f903a32518ee5600d14af2 */
+/* sha: 1bdbbe1aa05ad9a1d74cf4b6419cd48fbb49e72a96c4f33f9edab11dd8c2ef7e */
 #if BIND_DiffOptions_ignore_submodules_FIELD_WRITER
 /* set_ignore_submodules
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffOptions_set_ignore_submodules(mrb_state* mrb, mrb_value self) {
 
   native_self->ignore_submodules = native_ignore_submodules;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -225,7 +186,7 @@ mrb_Git_DiffOptions_get_pathspec(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::pathspec_writer */
-/* sha: b22d91e28f4bc198bec938d14b3991773f6a5e13a8fdc2539417183b668e1873 */
+/* sha: ad45aa6568e25ee830eec99a283bcfb3995d40e8f4516a3556fba2834d9419a6 */
 #if BIND_DiffOptions_pathspec_FIELD_WRITER
 /* set_pathspec
  *
@@ -249,6 +210,7 @@ mrb_Git_DiffOptions_set_pathspec(mrb_state* mrb, mrb_value self) {
 
   native_self->pathspec = native_pathspec;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -277,7 +239,7 @@ mrb_Git_DiffOptions_get_notify_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::notify_cb_writer */
-/* sha: bcf488b907491f6a1a0ef8e064c3edd0ae0a69252c65039b8d711e854c5ef6b0 */
+/* sha: d85997eee13b7d4f46d1889236bab703bd434e62f34215f34a3acc2b425097e1 */
 #if BIND_DiffOptions_notify_cb_FIELD_WRITER
 /* set_notify_cb
  *
@@ -298,6 +260,7 @@ mrb_Git_DiffOptions_set_notify_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->notify_cb = native_notify_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -326,7 +289,7 @@ mrb_Git_DiffOptions_get_progress_cb(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::progress_cb_writer */
-/* sha: dcb6872a1c5ae91a243597dec2082ae8100bcc7807133d952978faa33e6ec9c6 */
+/* sha: eef4798b2a363185c58485a4efb7437a455cbe5366d8278578ea54dc3952aa02 */
 #if BIND_DiffOptions_progress_cb_FIELD_WRITER
 /* set_progress_cb
  *
@@ -347,6 +310,7 @@ mrb_Git_DiffOptions_set_progress_cb(mrb_state* mrb, mrb_value self) {
 
   native_self->progress_cb = native_progress_cb;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -375,7 +339,7 @@ mrb_Git_DiffOptions_get_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::payload_writer */
-/* sha: 160369399d3ce6d20c10e121cff94b5cab6b0f2b0c1ab96d3a2031873fac51e2 */
+/* sha: d0594e587c0e5fd3848f935e444c3f942fa2b5dc96e2ccabea54358ad4fee815 */
 #if BIND_DiffOptions_payload_FIELD_WRITER
 /* set_payload
  *
@@ -396,6 +360,7 @@ mrb_Git_DiffOptions_set_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->payload = native_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -424,7 +389,7 @@ mrb_Git_DiffOptions_get_context_lines(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::context_lines_writer */
-/* sha: e63cc670c16e88206668723c2d098f8568754c09003f4e43b10daca716f1ef0b */
+/* sha: 14ecc0b03a00b16807885003d31c828d412db8da43fe7140cbedb90a44dc769d */
 #if BIND_DiffOptions_context_lines_FIELD_WRITER
 /* set_context_lines
  *
@@ -440,6 +405,7 @@ mrb_Git_DiffOptions_set_context_lines(mrb_state* mrb, mrb_value self) {
 
   native_self->context_lines = native_context_lines;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -468,7 +434,7 @@ mrb_Git_DiffOptions_get_interhunk_lines(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::interhunk_lines_writer */
-/* sha: 40d790b10f5d9dca1390236a5952806b9d645056a97b229327265583c5dcb0c4 */
+/* sha: 113c31555f7c42eb95602ad7ae6d559aaecf701faabe043e0836e006037a3dbc */
 #if BIND_DiffOptions_interhunk_lines_FIELD_WRITER
 /* set_interhunk_lines
  *
@@ -484,6 +450,7 @@ mrb_Git_DiffOptions_set_interhunk_lines(mrb_state* mrb, mrb_value self) {
 
   native_self->interhunk_lines = native_interhunk_lines;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -512,7 +479,7 @@ mrb_Git_DiffOptions_get_id_abbrev(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::id_abbrev_writer */
-/* sha: 859a8bc7a38d3ef5cdd18bfcb1069bf3eb5d4d73e162d892f3638f9a92381fbd */
+/* sha: 76839ed02fee9651444d5ae208c29f5c8be8bb284a9cf4e2a11b577d7aec2884 */
 #if BIND_DiffOptions_id_abbrev_FIELD_WRITER
 /* set_id_abbrev
  *
@@ -528,6 +495,7 @@ mrb_Git_DiffOptions_set_id_abbrev(mrb_state* mrb, mrb_value self) {
 
   native_self->id_abbrev = native_id_abbrev;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -556,7 +524,7 @@ mrb_Git_DiffOptions_get_max_size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::max_size_writer */
-/* sha: b1b642d75a29685ea96ffae4bf36501d39aada6f031fbf1012ce8b6e9606f310 */
+/* sha: 8b98252c2001245253cfefc77b6c218fbca6afd736bc2bb35eab626b0431b5c9 */
 #if BIND_DiffOptions_max_size_FIELD_WRITER
 /* set_max_size
  *
@@ -572,6 +540,7 @@ mrb_Git_DiffOptions_set_max_size(mrb_state* mrb, mrb_value self) {
 
   native_self->max_size = native_max_size;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -600,7 +569,7 @@ mrb_Git_DiffOptions_get_old_prefix(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::old_prefix_writer */
-/* sha: c65f441902b07aa0a018f2b1a0ad996260a77ae957898199c996382270d312bc */
+/* sha: ac1a1bafd9f082ed73ee354373009490358d2eb868eebc2aea73996d5f57ed3b */
 #if BIND_DiffOptions_old_prefix_FIELD_WRITER
 /* set_old_prefix
  *
@@ -616,6 +585,7 @@ mrb_Git_DiffOptions_set_old_prefix(mrb_state* mrb, mrb_value self) {
 
   native_self->old_prefix = native_old_prefix;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -644,7 +614,7 @@ mrb_Git_DiffOptions_get_new_prefix(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::new_prefix_writer */
-/* sha: 9fbfcc70a6acab94cb8c3959c7058daa2c2d9ddd85ffa117cf1f97241c0d4650 */
+/* sha: 912590a99446c4d304146f2eeab2f9f360d0c42f6eca3cbde4d870564031b72d */
 #if BIND_DiffOptions_new_prefix_FIELD_WRITER
 /* set_new_prefix
  *
@@ -660,6 +630,7 @@ mrb_Git_DiffOptions_set_new_prefix(mrb_state* mrb, mrb_value self) {
 
   native_self->new_prefix = native_new_prefix;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

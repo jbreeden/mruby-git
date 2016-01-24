@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Diff::initialize */
 /* sha: 2ac9bbed7d5a31218ac04d0f69fcddc9e3661051c0715482484ec764647f24ce */
 #if BIND_Diff_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Diff_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Diff::disown */
-/* sha: 3fd47fe8f15c9e3d34045a22c981d954b6d206c99c02f901b4481747cc8746d3 */
-mrb_value
-mrb_Git_Diff_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Diff.disown only accepts objects of type Git::Diff");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Diff::belongs_to_ruby */
-/* sha: 0f6e5f68a701b1c146c503d9407bc606d14ae36b5353add1ecdaa51dc98c98a4 */
-mrb_value
-mrb_Git_Diff_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Diff.belongs_to_ruby only accepts objects of type Git::Diff");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

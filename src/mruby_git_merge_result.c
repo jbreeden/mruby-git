@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: MergeResult::initialize */
 /* sha: 8a49d58d750b47d56151c4844b5bc05cbe3109055304c7c6585104434a2f93f5 */
 #if BIND_MergeResult_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_MergeResult_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeResult::disown */
-/* sha: 6a4a073ac9e258133e13335326e454e83652e382d1108d8d64b090a1060c9261 */
-mrb_value
-mrb_Git_MergeResult_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeResult.disown only accepts objects of type Git::MergeResult");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeResult::belongs_to_ruby */
-/* sha: 8e1f889743455f63228a997ecfc7ff2fd893f3ae445eb3a84fe3bd311aa84758 */
-mrb_value
-mrb_Git_MergeResult_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeResult.belongs_to_ruby only accepts objects of type Git::MergeResult");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

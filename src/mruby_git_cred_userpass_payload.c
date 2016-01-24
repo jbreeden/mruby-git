@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CredUserpassPayload::initialize */
 /* sha: 826940cac8bf3eb9ed577b50d392c899c4e8b8dc5f5151847c9eabd143cebd82 */
 #if BIND_CredUserpassPayload_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CredUserpassPayload_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CredUserpassPayload::disown */
-/* sha: e79bbfd997d852abfcc7a6850fe6da7e89f2e34f6fd08ee9a6b1faa486c22cf5 */
-mrb_value
-mrb_Git_CredUserpassPayload_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CredUserpassPayload.disown only accepts objects of type Git::CredUserpassPayload");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CredUserpassPayload::belongs_to_ruby */
-/* sha: 963a562844f1cce1501ca53d9edbbb74902cc1147d17e9da93bac905bd14e004 */
-mrb_value
-mrb_Git_CredUserpassPayload_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CredUserpassPayload.belongs_to_ruby only accepts objects of type Git::CredUserpassPayload");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_CredUserpassPayload_get_username(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredUserpassPayload::username_writer */
-/* sha: 497598d43448598dbe89b4b81432ec6e1d146c42ca1df2aadecacf12ff50d162 */
+/* sha: 5d733ca35f5b54ce94515b64ff4db4b9c2eb9e90bf1d0cb439c0885451a82982 */
 #if BIND_CredUserpassPayload_username_FIELD_WRITER
 /* set_username
  *
@@ -108,6 +66,7 @@ mrb_Git_CredUserpassPayload_set_username(mrb_state* mrb, mrb_value self) {
 
   native_self->username = native_username;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_CredUserpassPayload_get_password(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredUserpassPayload::password_writer */
-/* sha: 38cda5ac218a7ba7513b322aa9ecb609949f0f2b04eadcad5886fec9ed92ef36 */
+/* sha: 6155d0b786f8e55a8adc5923eccae1df1aa7896e9935ec2dac0b6e56663a4559 */
 #if BIND_CredUserpassPayload_password_FIELD_WRITER
 /* set_password
  *
@@ -152,6 +111,7 @@ mrb_Git_CredUserpassPayload_set_password(mrb_state* mrb, mrb_value self) {
 
   native_self->password = native_password;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

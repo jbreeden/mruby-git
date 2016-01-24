@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Strarray::initialize */
 /* sha: eaf79b948e1c6711babf15cafd80f718634f18c1e9d027f9c5f7e429d5ce55be */
 #if BIND_Strarray_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Strarray_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Strarray::disown */
-/* sha: 67e678a6c643453235d4af22d16037cd9eb9053184b511eb1697cf826ae85bdf */
-mrb_value
-mrb_Git_Strarray_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Strarray.disown only accepts objects of type Git::Strarray");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Strarray::belongs_to_ruby */
-/* sha: 80d9e5bfafa9083e34c0ac300823aa4eaa39903b07160b092335a28023036648 */
-mrb_value
-mrb_Git_Strarray_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Strarray.belongs_to_ruby only accepts objects of type Git::Strarray");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Strarray_get_strings(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Strarray::strings_writer */
-/* sha: d13342f079c9f5d3315c9e3432c0ac4a302a2ec2845bf24291e9ad4d18ad1abf */
+/* sha: 4d8e3b1f96ce6c5872c5b8aef413266dd4a2b428058fecc37529c49a7fc0a65c */
 #if BIND_Strarray_strings_FIELD_WRITER
 /* set_strings
  *
@@ -113,6 +71,7 @@ mrb_Git_Strarray_set_strings(mrb_state* mrb, mrb_value self) {
 
   native_self->strings = native_strings;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -141,7 +100,7 @@ mrb_Git_Strarray_get_count(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Strarray::count_writer */
-/* sha: 8edee159f7721d466384f17d04964dacb6d41631a630172e4c67b80defedf88f */
+/* sha: 3346e7ec3dcccf685b816476f61db4277cf260c9980f852252c46d3a59121761 */
 #if BIND_Strarray_count_FIELD_WRITER
 /* set_count
  *
@@ -157,6 +116,7 @@ mrb_Git_Strarray_set_count(mrb_state* mrb, mrb_value self) {
 
   native_self->count = native_count;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

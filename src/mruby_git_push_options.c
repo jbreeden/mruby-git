@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: PushOptions::initialize */
 /* sha: 9676fb4921367daa205c04315b0df3abd84e27e0f446739126d67b9236f58238 */
 #if BIND_PushOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_PushOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: PushOptions::disown */
-/* sha: 1e31823f6e67401b447209e43d2f55c7a36207e8fa84e16085ed1e6ddc3205c7 */
-mrb_value
-mrb_Git_PushOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::PushOptions.disown only accepts objects of type Git::PushOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: PushOptions::belongs_to_ruby */
-/* sha: bfd3f0834e424849502fa2346461f4843e8c8648b4d4321830b1342375603a2f */
-mrb_value
-mrb_Git_PushOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::PushOptions.belongs_to_ruby only accepts objects of type Git::PushOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_PushOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushOptions::version_writer */
-/* sha: acfdce4cae9da2f1bc86618742acf1cfeb6008384a89f86dc7e3e10e62b7545d */
+/* sha: 82f9e20edc32d72a217d0ee493b8cfa0321f289840bce2c0ba8f34bda4f4c5da */
 #if BIND_PushOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_PushOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_PushOptions_get_pb_parallelism(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushOptions::pb_parallelism_writer */
-/* sha: 047263bb1f104faeca0f7e9eefcdc9ad8eaefb6b0bd0acadc22b3c4798c53a52 */
+/* sha: d963fcbb66e985f2c24d4000030ed2e0042c2472fb14178584debf656e71a1a3 */
 #if BIND_PushOptions_pb_parallelism_FIELD_WRITER
 /* set_pb_parallelism
  *
@@ -152,6 +111,7 @@ mrb_Git_PushOptions_set_pb_parallelism(mrb_state* mrb, mrb_value self) {
 
   native_self->pb_parallelism = native_pb_parallelism;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -181,7 +141,7 @@ mrb_Git_PushOptions_get_callbacks(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushOptions::callbacks_writer */
-/* sha: b9d4195cbb6fa3447270ace02d65c8e379f387891e13fdbfab4c70ea38c25e8d */
+/* sha: 7971244cdc685a310dc0c3a4654cf236bc19c2460a897a6c1806092e4d3f3a5f */
 #if BIND_PushOptions_callbacks_FIELD_WRITER
 /* set_callbacks
  *
@@ -205,6 +165,7 @@ mrb_Git_PushOptions_set_callbacks(mrb_state* mrb, mrb_value self) {
 
   native_self->callbacks = native_callbacks;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -234,7 +195,7 @@ mrb_Git_PushOptions_get_custom_headers(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushOptions::custom_headers_writer */
-/* sha: 9e7f53d8efcf5ad442bef5b897931cef3a6ee2dcfb4bb10dee8c4fa1e021fd3c */
+/* sha: 518ac78e1359935d55e2277ca924d710a434b44feb32c4e3f3afa041b76279ec */
 #if BIND_PushOptions_custom_headers_FIELD_WRITER
 /* set_custom_headers
  *
@@ -258,6 +219,7 @@ mrb_Git_PushOptions_set_custom_headers(mrb_state* mrb, mrb_value self) {
 
   native_self->custom_headers = native_custom_headers;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: OidShorten::initialize */
 /* sha: f4d20d0b85fc4645994c297de2794768dc7cc5c383f55135d0e0a1480c9de796 */
 #if BIND_OidShorten_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_OidShorten_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OidShorten::disown */
-/* sha: 178e46ee8ca7fdb8b1aef8ffe130d0eef2a3ad29c29a1861f3be37b87768bd4c */
-mrb_value
-mrb_Git_OidShorten_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OidShorten.disown only accepts objects of type Git::OidShorten");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: OidShorten::belongs_to_ruby */
-/* sha: c66f02f1c7a15706c7e09256a29a9bc63617b8dd3b4919ffc1824bad141a0a62 */
-mrb_value
-mrb_Git_OidShorten_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::OidShorten.belongs_to_ruby only accepts objects of type Git::OidShorten");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

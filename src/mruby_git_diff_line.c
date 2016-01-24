@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffLine::initialize */
 /* sha: 7756958bb0c9de9e15a259e9387ebe1cb4aea1b5fccbd94d8bb02a1026030fb8 */
 #if BIND_DiffLine_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffLine_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffLine::disown */
-/* sha: cd8855d7f099f1d6ca5754ead6d423cfd5e1b757da8eef302c87246f2a56628a */
-mrb_value
-mrb_Git_DiffLine_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffLine.disown only accepts objects of type Git::DiffLine");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffLine::belongs_to_ruby */
-/* sha: 19969b84a1d188e2bbea3e790665fc679f4c9734a7c774c8a41dc0f8c1773354 */
-mrb_value
-mrb_Git_DiffLine_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffLine.belongs_to_ruby only accepts objects of type Git::DiffLine");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffLine_get_origin(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::origin_writer */
-/* sha: f24206c11be8472b95c0820f474884226976cd340bad2f0ebcddd89af44dfcbb */
+/* sha: cfacdb72764bbd7a7ac292f523319b8abe30a04fadf2aa1980fac94ac254e8ee */
 #if BIND_DiffLine_origin_FIELD_WRITER
 /* set_origin
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffLine_set_origin(mrb_state* mrb, mrb_value self) {
 
   native_self->origin = native_origin;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffLine_get_old_lineno(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::old_lineno_writer */
-/* sha: c702e21440ac9953dbaafa2363a02552331ac45d2b2e521c9c6e76e904dd9421 */
+/* sha: 341d772bdec5ab1bfe285e086b71c682b0e9d7e4e8bfe5713e64b98a3ef10d9e */
 #if BIND_DiffLine_old_lineno_FIELD_WRITER
 /* set_old_lineno
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffLine_set_old_lineno(mrb_state* mrb, mrb_value self) {
 
   native_self->old_lineno = native_old_lineno;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffLine_get_new_lineno(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::new_lineno_writer */
-/* sha: cf35cb783e78b04aa61703063a4d29a0bcea0943c2c510d5f23446c70a1fde75 */
+/* sha: 012fc2bf057738b83774ff2115e199ef6d810ca27386cf213beaca9446757ee4 */
 #if BIND_DiffLine_new_lineno_FIELD_WRITER
 /* set_new_lineno
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffLine_set_new_lineno(mrb_state* mrb, mrb_value self) {
 
   native_self->new_lineno = native_new_lineno;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DiffLine_get_num_lines(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::num_lines_writer */
-/* sha: f263a20ca96f7d5d28062463fe5965d9cd6ff1cd6d6561b0e5ab5a2d21b7f552 */
+/* sha: 38e38f0b1d4cf201ec10708370aaa6c7560b1cd0566cf37771d50095e1100f47 */
 #if BIND_DiffLine_num_lines_FIELD_WRITER
 /* set_num_lines
  *
@@ -240,6 +201,7 @@ mrb_Git_DiffLine_set_num_lines(mrb_state* mrb, mrb_value self) {
 
   native_self->num_lines = native_num_lines;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_DiffLine_get_content_len(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::content_len_writer */
-/* sha: c15f03b6d93c9633a08979232e8c6d8e17fcac03e9d603e2645c475597655b75 */
+/* sha: 53c5c23139ce74867352b6bd7221b34282eb3a10099d960e8bf9ebaacf1bc871 */
 #if BIND_DiffLine_content_len_FIELD_WRITER
 /* set_content_len
  *
@@ -284,6 +246,7 @@ mrb_Git_DiffLine_set_content_len(mrb_state* mrb, mrb_value self) {
 
   native_self->content_len = native_content_len;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_DiffLine_get_content_offset(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::content_offset_writer */
-/* sha: 5f9ea1e8301cc60184540030c43f337a663bc46e0ae49d06e3348fceab5d54df */
+/* sha: 657b5d4b423d1f6e5c07d242b18e7529f246bdb723613014c87b243480974be0 */
 #if BIND_DiffLine_content_offset_FIELD_WRITER
 /* set_content_offset
  *
@@ -328,6 +291,7 @@ mrb_Git_DiffLine_set_content_offset(mrb_state* mrb, mrb_value self) {
 
   native_self->content_offset = native_content_offset;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -356,7 +320,7 @@ mrb_Git_DiffLine_get_content(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::content_writer */
-/* sha: 618d4b30304ee258f61ab4b04f7fc668d2efb9c31c4c8e9ba15430478d6b67a0 */
+/* sha: 0c7bf48f29c01a2b5374f18a654f11b73358f7fe82be6fb7e5e766e9412623e4 */
 #if BIND_DiffLine_content_FIELD_WRITER
 /* set_content
  *
@@ -372,6 +336,7 @@ mrb_Git_DiffLine_set_content(mrb_state* mrb, mrb_value self) {
 
   native_self->content = native_content;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

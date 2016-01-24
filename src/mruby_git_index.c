@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Index::initialize */
 /* sha: be497f9284ae55f511f2a519ce4403bcd313a654fcdd315c99834100aa61bcff */
 #if BIND_Index_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Index_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Index::disown */
-/* sha: 177182c85b7d6f6e21d0e03491752e770d9af28f173a0566c7c4cd91be5fd471 */
-mrb_value
-mrb_Git_Index_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Index.disown only accepts objects of type Git::Index");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Index::belongs_to_ruby */
-/* sha: fec0521915e284b8e0c5a6954834ff121ad29f9e7ba50998d6bed5f791ca8243 */
-mrb_value
-mrb_Git_Index_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Index.belongs_to_ruby only accepts objects of type Git::Index");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

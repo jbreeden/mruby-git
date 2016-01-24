@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Error::initialize */
 /* sha: ec6358c65f6e254e041b66449ce07c8fd4a00243ea7b0a892884f2839fca5b59 */
 #if BIND_Error_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Error_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Error::disown */
-/* sha: e0a5802473a5478d6ccb0cdb8e7c4a6fc0a5cd72b1ecf0045caffaef92f7b6d5 */
-mrb_value
-mrb_Git_Error_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Error.disown only accepts objects of type Git::Error");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Error::belongs_to_ruby */
-/* sha: 9b4a087ee506405a744632981309c6d6f86c4adffb0fe8884e062eaea7679030 */
-mrb_value
-mrb_Git_Error_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Error.belongs_to_ruby only accepts objects of type Git::Error");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Error_get_message(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Error::message_writer */
-/* sha: 47084aaf16e69a4a95da50b496de1f1b26829dd59701d9c551f85a1dd4369a22 */
+/* sha: d026d357a829734c17cdc48d26ecb35cffe1984c88146ba50eea983040869ca9 */
 #if BIND_Error_message_FIELD_WRITER
 /* set_message
  *
@@ -113,6 +71,7 @@ mrb_Git_Error_set_message(mrb_state* mrb, mrb_value self) {
 
   native_self->message = native_message;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -141,7 +100,7 @@ mrb_Git_Error_get_klass(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Error::klass_writer */
-/* sha: 619900fd7c7f9ff0a2c230ac3712118ff2cf41da7b2807adbd127591a2778607 */
+/* sha: d30bbd8c585c222cdfe24fbf8ad53558bcfacab54fc8539592a16e1063f66b14 */
 #if BIND_Error_klass_FIELD_WRITER
 /* set_klass
  *
@@ -157,6 +116,7 @@ mrb_Git_Error_set_klass(mrb_state* mrb, mrb_value self) {
 
   native_self->klass = native_klass;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

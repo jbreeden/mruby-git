@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: BlameOptions::initialize */
 /* sha: f21a64432007669025b3709a123c7cf4f66538dc3ac9c43d1e9e4630266b0aeb */
 #if BIND_BlameOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_BlameOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: BlameOptions::disown */
-/* sha: f224ca83c9d7cb34aef61af4d9127655ca5769151f1eeda9eade74f6e1641ec6 */
-mrb_value
-mrb_Git_BlameOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::BlameOptions.disown only accepts objects of type Git::BlameOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: BlameOptions::belongs_to_ruby */
-/* sha: f17e5fc5cf92fa6dfb77b1b836bc3417883e4c102ecd4d9c4072d3fd8e0b4bcb */
-mrb_value
-mrb_Git_BlameOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::BlameOptions.belongs_to_ruby only accepts objects of type Git::BlameOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_BlameOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::version_writer */
-/* sha: 7b7e8d283d6db0d3a644b128499d484086264167e9fe7d2eb7feb8e03a3384c9 */
+/* sha: 79f5cf0bf28540da4ec81bd1b266a85e174ff9af228f1c586dedac4bc0b46807 */
 #if BIND_BlameOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_BlameOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_BlameOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::flags_writer */
-/* sha: d36572f3e394ae76070fa4611e9af0477a85502ac4c810cb754cb9e7d4eed98b */
+/* sha: 6692a1da37278f6c0dcadfd0179cc694f28108eae33ade7c32590c99fbab22ca */
 #if BIND_BlameOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -152,6 +111,7 @@ mrb_Git_BlameOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_BlameOptions_get_min_match_characters(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::min_match_characters_writer */
-/* sha: aeab50d1183453b705cb5afef12d69dbe84efb67288ca4acd3335ad8372f1b95 */
+/* sha: af65219eec684e6785c781a6ba42d096ffb72575d455485bf822276125484b5b */
 #if BIND_BlameOptions_min_match_characters_FIELD_WRITER
 /* set_min_match_characters
  *
@@ -196,6 +156,7 @@ mrb_Git_BlameOptions_set_min_match_characters(mrb_state* mrb, mrb_value self) {
 
   native_self->min_match_characters = native_min_match_characters;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -225,7 +186,7 @@ mrb_Git_BlameOptions_get_newest_commit(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::newest_commit_writer */
-/* sha: 1d40eed6b0753af07eb5a7d412e19254389c4df15174f712f140e56cbbba194a */
+/* sha: 71ddfc57771575667a666f7d310ce5592f4f89613c508c70f3dc5220471d331b */
 #if BIND_BlameOptions_newest_commit_FIELD_WRITER
 /* set_newest_commit
  *
@@ -249,6 +210,7 @@ mrb_Git_BlameOptions_set_newest_commit(mrb_state* mrb, mrb_value self) {
 
   native_self->newest_commit = native_newest_commit;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -278,7 +240,7 @@ mrb_Git_BlameOptions_get_oldest_commit(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::oldest_commit_writer */
-/* sha: 71a249267133956a667ae413b31ef8ec2b217fb237b9556fcfbf8860bc09f359 */
+/* sha: 17dced3a7ae0cd3d5d64ceaebf7424d9d8474c132dcc2e554c24fbbe150e0b41 */
 #if BIND_BlameOptions_oldest_commit_FIELD_WRITER
 /* set_oldest_commit
  *
@@ -302,6 +264,7 @@ mrb_Git_BlameOptions_set_oldest_commit(mrb_state* mrb, mrb_value self) {
 
   native_self->oldest_commit = native_oldest_commit;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -330,7 +293,7 @@ mrb_Git_BlameOptions_get_min_line(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::min_line_writer */
-/* sha: bea9f0de833eabb624d33f8f247a69bd5e77bdf02365c955c4f5c7511cd266b2 */
+/* sha: be7c6dfe16a253e9b0e479bb406c2d324e71c0ee3141455969609ff908dfa006 */
 #if BIND_BlameOptions_min_line_FIELD_WRITER
 /* set_min_line
  *
@@ -346,6 +309,7 @@ mrb_Git_BlameOptions_set_min_line(mrb_state* mrb, mrb_value self) {
 
   native_self->min_line = native_min_line;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -374,7 +338,7 @@ mrb_Git_BlameOptions_get_max_line(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::max_line_writer */
-/* sha: 40dc1bafcf6d95d69db78c99c64fbb4a68eeb451253b9fea47dbfda4249d16b7 */
+/* sha: ed966f59197383f9d45f281706cadea0c5e3570f5be91a4b5b6eb3425f707576 */
 #if BIND_BlameOptions_max_line_FIELD_WRITER
 /* set_max_line
  *
@@ -390,6 +354,7 @@ mrb_Git_BlameOptions_set_max_line(mrb_state* mrb, mrb_value self) {
 
   native_self->max_line = native_max_line;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Packbuilder::initialize */
 /* sha: bf7f5a55966fcb993e3850333c32141b91bd76e5b6840e3bdffa2d5ffc0d68df */
 #if BIND_Packbuilder_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Packbuilder_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Packbuilder::disown */
-/* sha: e426ac714958f6cd4fb31f7ff545e589548119fdd8ac97514f6f169be3931ffe */
-mrb_value
-mrb_Git_Packbuilder_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Packbuilder.disown only accepts objects of type Git::Packbuilder");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Packbuilder::belongs_to_ruby */
-/* sha: 5378b28b6e60648c25d7d415d5d162d3d17e3e51db43d9125a5a3160d841b4d9 */
-mrb_value
-mrb_Git_Packbuilder_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Packbuilder.belongs_to_ruby only accepts objects of type Git::Packbuilder");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

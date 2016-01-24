@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Pathspec::initialize */
 /* sha: 88e8c7ef0600eca11635264f3f7ca51bf5dff95a484f6e816f2d02bbaea819fb */
 #if BIND_Pathspec_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Pathspec_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Pathspec::disown */
-/* sha: 29db6a3e4a8405a7c9ebbf1d7a04d62d46d48cec0e01169aa3d50d89581ca6f8 */
-mrb_value
-mrb_Git_Pathspec_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Pathspec.disown only accepts objects of type Git::Pathspec");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Pathspec::belongs_to_ruby */
-/* sha: d00547262ad86538cd93d5298d72ce4751a8654ee7d8494961663816315a1ccd */
-mrb_value
-mrb_Git_Pathspec_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Pathspec.belongs_to_ruby only accepts objects of type Git::Pathspec");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

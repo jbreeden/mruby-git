@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: StatusOptions::initialize */
 /* sha: fb85e2b297d91acd74c67fd56ff1ccba8f73550e99443be1b2c0f256cefd4031 */
 #if BIND_StatusOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_StatusOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StatusOptions::disown */
-/* sha: da9729474331a201be13734590691a60a6d15a277910be4ab2d62a62f32bbf9c */
-mrb_value
-mrb_Git_StatusOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StatusOptions.disown only accepts objects of type Git::StatusOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: StatusOptions::belongs_to_ruby */
-/* sha: 6215b44af321a26b6942449cffdb54d9ee1c7f20422de9802299fd98fff5b2f4 */
-mrb_value
-mrb_Git_StatusOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::StatusOptions.belongs_to_ruby only accepts objects of type Git::StatusOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_StatusOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusOptions::version_writer */
-/* sha: 17b86d6d07c9f1c6bf9c8c580c6c89e1db78372ec50210b9e289a713fd487d83 */
+/* sha: 30e15a91cac3801f27bdb596ef6390d9383406b86915a92e3dee970da7d42718 */
 #if BIND_StatusOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_StatusOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_StatusOptions_get_show(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusOptions::show_writer */
-/* sha: 12698897c29a6ef83369443365015371614cb60baef30b3aee94ba4843432642 */
+/* sha: 8a299a61ac47b33db637034969f62a5bca82fad7c86ce597dd7255e8a6833bd3 */
 #if BIND_StatusOptions_show_FIELD_WRITER
 /* set_show
  *
@@ -152,6 +111,7 @@ mrb_Git_StatusOptions_set_show(mrb_state* mrb, mrb_value self) {
 
   native_self->show = native_show;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_StatusOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusOptions::flags_writer */
-/* sha: fc830241f476b55410116a2df7a5db3983d6ea9aa2370c745e5801697160aace */
+/* sha: 17b3bc9b4f524f67c61af64751d6ee175f37f8e478ff043422e257cd7aee29dc */
 #if BIND_StatusOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -196,6 +156,7 @@ mrb_Git_StatusOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_StatusOptions_get_pathspec(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusOptions::pathspec_writer */
-/* sha: d06e571aef32f0a629ce0a88b82c69e3b07cd9c4aa37fe90d9ff48561854bdf9 */
+/* sha: 68677f7f31e47da0364993841077ae1226e873f5d3f814b085c056e1a261ec7b */
 #if BIND_StatusOptions_pathspec_FIELD_WRITER
 /* set_pathspec
  *
@@ -248,6 +209,7 @@ mrb_Git_StatusOptions_set_pathspec(mrb_state* mrb, mrb_value self) {
 
   native_self->pathspec = native_pathspec;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

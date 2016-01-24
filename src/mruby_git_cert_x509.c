@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CertX509::initialize */
 /* sha: 4ca03902d06da892fab100579051c63c38127864553648fc21fc1aefcdfae3ee */
 #if BIND_CertX509_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CertX509_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CertX509::disown */
-/* sha: ded28f4965626ff15c877fad573e534ade845d6cfc3c7f3bdd648318f72852db */
-mrb_value
-mrb_Git_CertX509_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CertX509.disown only accepts objects of type Git::CertX509");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CertX509::belongs_to_ruby */
-/* sha: c3170c162412c1e9d0a1cb0db710b9440ce0ed0015ad099adfa752ad914cd9e8 */
-mrb_value
-mrb_Git_CertX509_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CertX509.belongs_to_ruby only accepts objects of type Git::CertX509");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_CertX509_get_parent(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertX509::parent_writer */
-/* sha: 1e3a2e8f37ac13bd52585a2eb07c3089708ee48a8ee4347ceb6a637307961bb0 */
+/* sha: 8edf2a9030c026d603042095bd8ac2fe3e00c4487099aa8d6914bc5e189e0044 */
 #if BIND_CertX509_parent_FIELD_WRITER
 /* set_parent
  *
@@ -117,6 +75,7 @@ mrb_Git_CertX509_set_parent(mrb_state* mrb, mrb_value self) {
 
   native_self->parent = native_parent;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -145,7 +104,7 @@ mrb_Git_CertX509_get_data(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertX509::data_writer */
-/* sha: a48995c7bcc688ea377882a739924a25d8d19147afebf00b86be0803825c9ec1 */
+/* sha: 474295d831e3590d40aa93a745602e6134fdb92a981932fb8c3416d07132a0fb */
 #if BIND_CertX509_data_FIELD_WRITER
 /* set_data
  *
@@ -166,6 +125,7 @@ mrb_Git_CertX509_set_data(mrb_state* mrb, mrb_value self) {
 
   native_self->data = native_data;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -194,7 +154,7 @@ mrb_Git_CertX509_get_len(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertX509::len_writer */
-/* sha: a9419c76560e0506a419498586bda7c314daa704b9ab7bb337f2311a8b462bfb */
+/* sha: 0f56033669393849d5e328b8512e2d187a5720a691ff52c1ecc2f16325259bd2 */
 #if BIND_CertX509_len_FIELD_WRITER
 /* set_len
  *
@@ -210,6 +170,7 @@ mrb_Git_CertX509_set_len(mrb_state* mrb, mrb_value self) {
 
   native_self->len = native_len;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

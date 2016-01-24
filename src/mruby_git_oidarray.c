@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Oidarray::initialize */
 /* sha: 9c869e8e32aae409e024aa32cc6ec471a09da02679664ded5ec7ccef808021da */
 #if BIND_Oidarray_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Oidarray_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Oidarray::disown */
-/* sha: 8cd583d2d5c8aae7a4a2d6ee4104403800e0b9d44674e18146bc5092518bd38d */
-mrb_value
-mrb_Git_Oidarray_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Oidarray.disown only accepts objects of type Git::Oidarray");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Oidarray::belongs_to_ruby */
-/* sha: 075c5c8dc22d691837eb968008de0b17bba5e3d2f87f6b22634940e1b6d2b080 */
-mrb_value
-mrb_Git_Oidarray_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Oidarray.belongs_to_ruby only accepts objects of type Git::Oidarray");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Oidarray_get_ids(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oidarray::ids_writer */
-/* sha: 516bb4671cda7bbccec386dd472db98d42ee29428c0e65aeda923ba6b4906ef9 */
+/* sha: 4f2c968a07b31e3a29899237b39f1b54a76e75cd84f35921512b512c6eafdbbc */
 #if BIND_Oidarray_ids_FIELD_WRITER
 /* set_ids
  *
@@ -116,6 +74,7 @@ mrb_Git_Oidarray_set_ids(mrb_state* mrb, mrb_value self) {
 
   native_self->ids = native_ids;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -144,7 +103,7 @@ mrb_Git_Oidarray_get_count(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oidarray::count_writer */
-/* sha: f59008918f6e48e80bc1659b471fb562c059e5a4d9d4ef8767c4aab14554d22a */
+/* sha: 44f2a4d5d83ad540ff4f8ecc8c90889dd115d20d6bb43f0b421699b05264d21c */
 #if BIND_Oidarray_count_FIELD_WRITER
 /* set_count
  *
@@ -160,6 +119,7 @@ mrb_Git_Oidarray_set_count(mrb_state* mrb, mrb_value self) {
 
   native_self->count = native_count;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

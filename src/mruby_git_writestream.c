@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Writestream::initialize */
 /* sha: b148e59daaa000617c34e03a5f520d62c6b727193e3d007696d38ab1a534faf0 */
 #if BIND_Writestream_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Writestream_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Writestream::disown */
-/* sha: 6b78f7f22bf47a6fc82cf122563008bb638070e8dd793a1c01bff151cae2b5be */
-mrb_value
-mrb_Git_Writestream_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Writestream.disown only accepts objects of type Git::Writestream");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Writestream::belongs_to_ruby */
-/* sha: 677cbff90a5e3426bd50a950bc4ff97717a029ebce8bf90129f3543eba2ed2f3 */
-mrb_value
-mrb_Git_Writestream_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Writestream.belongs_to_ruby only accepts objects of type Git::Writestream");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Writestream_get_write(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Writestream::write_writer */
-/* sha: 8ade12c4b0ed41c4d2e1ac7e23a578f99026fe452ae1b8f5d625df4af714d65f */
+/* sha: 7fa4a01b7073608afecf63cba593c8a1dbd54a3e5dd570398c91929cd4461c84 */
 #if BIND_Writestream_write_FIELD_WRITER
 /* set_write
  *
@@ -113,6 +71,7 @@ mrb_Git_Writestream_set_write(mrb_state* mrb, mrb_value self) {
 
   native_self->write = native_write;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -141,7 +100,7 @@ mrb_Git_Writestream_get_close(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Writestream::close_writer */
-/* sha: 2ddc29e468b0cdd4a5d77ba34e6248db138f7b8b02cb62366d67589c17d74830 */
+/* sha: 01fec06abce9ab57f98e3d3ef2b6901da750c77f2309afb63d1cb9061ea69e12 */
 #if BIND_Writestream_close_FIELD_WRITER
 /* set_close
  *
@@ -162,6 +121,7 @@ mrb_Git_Writestream_set_close(mrb_state* mrb, mrb_value self) {
 
   native_self->close = native_close;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -190,7 +150,7 @@ mrb_Git_Writestream_get_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Writestream::free_writer */
-/* sha: 6d1269bba5bd5c7ffec24ef70804b4bbb3993b1b074eeab2c2ee448ddee2327a */
+/* sha: 06bba8ea7ca333f7c9ac82553f0431cd597f47de5c7fa9aa60fc66b134685461 */
 #if BIND_Writestream_free_FIELD_WRITER
 /* set_free
  *
@@ -211,6 +171,7 @@ mrb_Git_Writestream_set_free(mrb_state* mrb, mrb_value self) {
 
   native_self->free = native_free;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

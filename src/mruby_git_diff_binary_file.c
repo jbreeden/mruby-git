@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffBinaryFile::initialize */
 /* sha: ff2e0085cacf7bf97ddf8a7d304247c566d467893cbdf68718a936491a3412fb */
 #if BIND_DiffBinaryFile_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffBinaryFile_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffBinaryFile::disown */
-/* sha: 00932fe6909d2e1a1b54e177e4959e9a4c6400082746062d32200c556639e100 */
-mrb_value
-mrb_Git_DiffBinaryFile_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffBinaryFile.disown only accepts objects of type Git::DiffBinaryFile");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffBinaryFile::belongs_to_ruby */
-/* sha: 6fa513037102d0eabfad35cd739207d08b7e6d5b728572bfc77aafadc3671d46 */
-mrb_value
-mrb_Git_DiffBinaryFile_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffBinaryFile.belongs_to_ruby only accepts objects of type Git::DiffBinaryFile");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffBinaryFile_get_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinaryFile::type_writer */
-/* sha: c84314b00686d6e056f73decd315eb2399cfbcab9c45221addfe7c6e9473c1b6 */
+/* sha: 90ed5c7d1761b53a2d47364bab50b14ae0646d615be9180ea86c0db71985e8cb */
 #if BIND_DiffBinaryFile_type_FIELD_WRITER
 /* set_type
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffBinaryFile_set_type(mrb_state* mrb, mrb_value self) {
 
   native_self->type = native_type;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffBinaryFile_get_data(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinaryFile::data_writer */
-/* sha: 55d203d3d7f91205f16b7a65ab291841a5628e36caf76353a73d7c8f3f4023a4 */
+/* sha: 8ce65e7dbe31455c963d7fcea7485ea029bcac360b94a930b3f21b99093aa1b8 */
 #if BIND_DiffBinaryFile_data_FIELD_WRITER
 /* set_data
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffBinaryFile_set_data(mrb_state* mrb, mrb_value self) {
 
   native_self->data = native_data;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffBinaryFile_get_datalen(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinaryFile::datalen_writer */
-/* sha: d93939279f074dc50528ece47620deae063da2a638f4464e74f6fafd4cebb6f1 */
+/* sha: d1e0085ffd5108b86ffed4c637deac28172b09654504489fedfd0c77a6cbeb05 */
 #if BIND_DiffBinaryFile_datalen_FIELD_WRITER
 /* set_datalen
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffBinaryFile_set_datalen(mrb_state* mrb, mrb_value self) {
 
   native_self->datalen = native_datalen;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DiffBinaryFile_get_inflatedlen(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinaryFile::inflatedlen_writer */
-/* sha: aa6c168278a514365750b3fb5cf1fc7b71d17231d89a747dcf7d1bbcce95e5d9 */
+/* sha: 31d9583038f1897e099a2259437523813f0318ab7c08784dbeab527484ab67ab */
 #if BIND_DiffBinaryFile_inflatedlen_FIELD_WRITER
 /* set_inflatedlen
  *
@@ -240,6 +201,7 @@ mrb_Git_DiffBinaryFile_set_inflatedlen(mrb_state* mrb, mrb_value self) {
 
   native_self->inflatedlen = native_inflatedlen;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

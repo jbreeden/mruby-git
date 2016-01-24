@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: NoteIterator::initialize */
 /* sha: d0cd88bf7cb7aaa7dc0cdd4dbf0b627d31b8e3eccb2ab181a9081ea5eb4cb546 */
 #if BIND_NoteIterator_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_NoteIterator_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: NoteIterator::disown */
-/* sha: e8325ea16b6b97317fab8a01c554652826d8ae3a508f032f4642ac07da49cd5a */
-mrb_value
-mrb_Git_NoteIterator_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::NoteIterator.disown only accepts objects of type Git::NoteIterator");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: NoteIterator::belongs_to_ruby */
-/* sha: bad7e2a51ffc710dd4fb4e414da2a51cd4986e27a84fd643a0c5624febdb373e */
-mrb_value
-mrb_Git_NoteIterator_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::NoteIterator.belongs_to_ruby only accepts objects of type Git::NoteIterator");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 

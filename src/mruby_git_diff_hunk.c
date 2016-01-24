@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: DiffHunk::initialize */
 /* sha: 12727d7cc4d3630612bc018a53cd3cbcc9f7479d3cd5fc22314789b4552d8379 */
 #if BIND_DiffHunk_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_DiffHunk_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffHunk::disown */
-/* sha: 683fba985260096a949d946cddd60cc92b5bd638e5eb50ccf25d6f6abbda1a4d */
-mrb_value
-mrb_Git_DiffHunk_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffHunk.disown only accepts objects of type Git::DiffHunk");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: DiffHunk::belongs_to_ruby */
-/* sha: 060a0dc6e878dad00301e34cb2837cf0273d70a11ecf8511b25001e11c4d4f8d */
-mrb_value
-mrb_Git_DiffHunk_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::DiffHunk.belongs_to_ruby only accepts objects of type Git::DiffHunk");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_DiffHunk_get_old_start(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::old_start_writer */
-/* sha: c598f8fbd94d95314bd1c371da876e38353d0422019ef063a6d9332a77723315 */
+/* sha: 1a9d76bb5b1c45c2820843125fa89ab141152c194590fbf2061e13051156a7dc */
 #if BIND_DiffHunk_old_start_FIELD_WRITER
 /* set_old_start
  *
@@ -108,6 +66,7 @@ mrb_Git_DiffHunk_set_old_start(mrb_state* mrb, mrb_value self) {
 
   native_self->old_start = native_old_start;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_DiffHunk_get_old_lines(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::old_lines_writer */
-/* sha: 258fb85ea6a4f7030128072049201eae96873c4ca08a2cfa5607c1fdca9f2e94 */
+/* sha: 75a95ad5b5b42d5dc2384276836b0997f2548449eefa3562278d2928361adfe5 */
 #if BIND_DiffHunk_old_lines_FIELD_WRITER
 /* set_old_lines
  *
@@ -152,6 +111,7 @@ mrb_Git_DiffHunk_set_old_lines(mrb_state* mrb, mrb_value self) {
 
   native_self->old_lines = native_old_lines;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_DiffHunk_get_new_start(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::new_start_writer */
-/* sha: c3e0ee5fd2607b03be594a65ffa333f87fde4b0881323ca0e306b2d987ee32e9 */
+/* sha: 53df93e6a69aa3417215878177d2e9da555558457a384a8f534d54ebaecec908 */
 #if BIND_DiffHunk_new_start_FIELD_WRITER
 /* set_new_start
  *
@@ -196,6 +156,7 @@ mrb_Git_DiffHunk_set_new_start(mrb_state* mrb, mrb_value self) {
 
   native_self->new_start = native_new_start;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_DiffHunk_get_new_lines(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::new_lines_writer */
-/* sha: 3beca961447e661774a1acec3e44799e80d211a1435fb79bd52a84b94506a455 */
+/* sha: 3b239fbfae4c8794a3fb611d6722c5182527c96f6b87539d7256451cef4e1e9e */
 #if BIND_DiffHunk_new_lines_FIELD_WRITER
 /* set_new_lines
  *
@@ -240,6 +201,7 @@ mrb_Git_DiffHunk_set_new_lines(mrb_state* mrb, mrb_value self) {
 
   native_self->new_lines = native_new_lines;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_DiffHunk_get_header_len(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::header_len_writer */
-/* sha: 45bb1d4f6bbc7453bb938f1bc43724dc90e624e59e91dc305ddea3dd65d6f686 */
+/* sha: 1e9d56e03a28907393ae2d3152956f558c2f0e601559d68671d87dac44e50c1d */
 #if BIND_DiffHunk_header_len_FIELD_WRITER
 /* set_header_len
  *
@@ -284,6 +246,7 @@ mrb_Git_DiffHunk_set_header_len(mrb_state* mrb, mrb_value self) {
 
   native_self->header_len = native_header_len;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_DiffHunk_get_header(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::header_writer */
-/* sha: f776010c53e32dda4269bbbdb062b167c2911b7b0a6390ab8f8fa6cb07ce36c6 */
+/* sha: c8311817bd1f1fa3e14f0bd0a7bff2aff947c0f969a99dd9a9c6dc0b69283aff */
 #if BIND_DiffHunk_header_FIELD_WRITER
 /* set_header
  *
@@ -333,6 +296,7 @@ mrb_Git_DiffHunk_set_header(mrb_state* mrb, mrb_value self) {
 
   native_self->header = native_header;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

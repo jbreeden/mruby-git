@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: IndexEntry::initialize */
 /* sha: ea6d93e723572c65437333934737dd74c51a9b660e18cc65277d2f86cb4ea012 */
 #if BIND_IndexEntry_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_IndexEntry_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: IndexEntry::disown */
-/* sha: 651ada5cdab02c513ac6b3501decbdbcbcfe59de3f33f711ed415622bddad0a9 */
-mrb_value
-mrb_Git_IndexEntry_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::IndexEntry.disown only accepts objects of type Git::IndexEntry");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: IndexEntry::belongs_to_ruby */
-/* sha: 950db18083ec69f59defa327382839d86df828889ab145114e406d52d9a98ad5 */
-mrb_value
-mrb_Git_IndexEntry_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::IndexEntry.belongs_to_ruby only accepts objects of type Git::IndexEntry");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -93,7 +51,7 @@ mrb_Git_IndexEntry_get_ctime(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::ctime_writer */
-/* sha: 76fc9310caf810d1c312f15248ed49ec49d3106633e4b690f29445a8ac1483c7 */
+/* sha: a19513af2d3af57a3c1348cec30439b77f308a44a29ce4e7b7a2aadcec8e4693 */
 #if BIND_IndexEntry_ctime_FIELD_WRITER
 /* set_ctime
  *
@@ -117,6 +75,7 @@ mrb_Git_IndexEntry_set_ctime(mrb_state* mrb, mrb_value self) {
 
   native_self->ctime = native_ctime;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -146,7 +105,7 @@ mrb_Git_IndexEntry_get_mtime(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::mtime_writer */
-/* sha: 788a151932171309206f236e01bb69903da1509abd86da9208b8182df53f5b04 */
+/* sha: 9e61dc66bed23f1fbcb9126e1ec7e42d4e2ef960eea8b9dd69d4cab996743afb */
 #if BIND_IndexEntry_mtime_FIELD_WRITER
 /* set_mtime
  *
@@ -170,6 +129,7 @@ mrb_Git_IndexEntry_set_mtime(mrb_state* mrb, mrb_value self) {
 
   native_self->mtime = native_mtime;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -198,7 +158,7 @@ mrb_Git_IndexEntry_get_dev(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::dev_writer */
-/* sha: f5fdc9b6159a4e4509eace62904c413e7722c072c95aee2e77593b693c26f92e */
+/* sha: 27bd79269010f4af91cbfd504f648df2c86f99bf7dd1d6b27d1b32410898de80 */
 #if BIND_IndexEntry_dev_FIELD_WRITER
 /* set_dev
  *
@@ -214,6 +174,7 @@ mrb_Git_IndexEntry_set_dev(mrb_state* mrb, mrb_value self) {
 
   native_self->dev = native_dev;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -242,7 +203,7 @@ mrb_Git_IndexEntry_get_ino(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::ino_writer */
-/* sha: c45ee83ea98ef64fba80e528f4a2b9e5fb34569e0405da26650d53aec35e1623 */
+/* sha: 48bfff4493a0246d8ef08c55e7380f706bdc5488f36407a45f58b641be29f408 */
 #if BIND_IndexEntry_ino_FIELD_WRITER
 /* set_ino
  *
@@ -258,6 +219,7 @@ mrb_Git_IndexEntry_set_ino(mrb_state* mrb, mrb_value self) {
 
   native_self->ino = native_ino;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -286,7 +248,7 @@ mrb_Git_IndexEntry_get_mode(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::mode_writer */
-/* sha: 23ab510d95684c8c04b1a5cafaab311d24aed5646e27cd092b974ece5ed7e08e */
+/* sha: e4f2949d0f73897b2a10b6ce737e5468b93ce2999b38ac8873310661feb5bd02 */
 #if BIND_IndexEntry_mode_FIELD_WRITER
 /* set_mode
  *
@@ -302,6 +264,7 @@ mrb_Git_IndexEntry_set_mode(mrb_state* mrb, mrb_value self) {
 
   native_self->mode = native_mode;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -330,7 +293,7 @@ mrb_Git_IndexEntry_get_uid(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::uid_writer */
-/* sha: afdc6755e9a2cb05f31af23216cb766057a29190c4d1465e86a1a2b5f18e12ec */
+/* sha: f46b544f3e5be3a2e36d50fb1e14efbb266f07ff9507dc927ab482dd7eda1866 */
 #if BIND_IndexEntry_uid_FIELD_WRITER
 /* set_uid
  *
@@ -346,6 +309,7 @@ mrb_Git_IndexEntry_set_uid(mrb_state* mrb, mrb_value self) {
 
   native_self->uid = native_uid;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -374,7 +338,7 @@ mrb_Git_IndexEntry_get_gid(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::gid_writer */
-/* sha: 26a45523564e63c2400d18b256cea83ec44f9381a3746c6b6704c456a21270eb */
+/* sha: bac317b7e853236a37cea4522550d6f43c9d6419453fca38e1bbe1ea51da98f3 */
 #if BIND_IndexEntry_gid_FIELD_WRITER
 /* set_gid
  *
@@ -390,6 +354,7 @@ mrb_Git_IndexEntry_set_gid(mrb_state* mrb, mrb_value self) {
 
   native_self->gid = native_gid;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -418,7 +383,7 @@ mrb_Git_IndexEntry_get_file_size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::file_size_writer */
-/* sha: 948e1dca5eb273a59b1301bc491b86a3da13a890d36527254d33379ec5aa2dce */
+/* sha: 7d188b7a97ccc64c1a9a38d05634115ebf4f7afdc77db654a8e025bf4b7d3d21 */
 #if BIND_IndexEntry_file_size_FIELD_WRITER
 /* set_file_size
  *
@@ -434,6 +399,7 @@ mrb_Git_IndexEntry_set_file_size(mrb_state* mrb, mrb_value self) {
 
   native_self->file_size = native_file_size;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -463,7 +429,7 @@ mrb_Git_IndexEntry_get_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::id_writer */
-/* sha: b18e6683772886c241c96edadeacfd2c66c19fb2898dbb4802d5baaacafc8fc1 */
+/* sha: 9d4489eb22917955b4d04b6b9d96097ef51332bec5c4b53c60f7cfa9e682ea32 */
 #if BIND_IndexEntry_id_FIELD_WRITER
 /* set_id
  *
@@ -487,6 +453,7 @@ mrb_Git_IndexEntry_set_id(mrb_state* mrb, mrb_value self) {
 
   native_self->id = native_id;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -515,7 +482,7 @@ mrb_Git_IndexEntry_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::flags_writer */
-/* sha: ec075ed82caf1dca4771efdda0f465ccafb30435bd3dbb56cd6f11ceefa53917 */
+/* sha: 535ee557c5b71b864e8a0211f83637aff0462d1b3991725b59bb8e4edb94669c */
 #if BIND_IndexEntry_flags_FIELD_WRITER
 /* set_flags
  *
@@ -531,6 +498,7 @@ mrb_Git_IndexEntry_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -559,7 +527,7 @@ mrb_Git_IndexEntry_get_flags_extended(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::flags_extended_writer */
-/* sha: f64739a07beb2b1b180922bcf39bbea977213ea539876da537b465fb120260df */
+/* sha: 839a0131f4f52e0b53df85ac97a3b4f92f5bd55d84c45f2b96bce3b8f06698f8 */
 #if BIND_IndexEntry_flags_extended_FIELD_WRITER
 /* set_flags_extended
  *
@@ -575,6 +543,7 @@ mrb_Git_IndexEntry_set_flags_extended(mrb_state* mrb, mrb_value self) {
 
   native_self->flags_extended = native_flags_extended;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -603,7 +572,7 @@ mrb_Git_IndexEntry_get_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexEntry::path_writer */
-/* sha: 0d4f2482248ce0e4c93b05c8d3fd5fa6fb8f804a9b010b6bf6c370e99d553d71 */
+/* sha: 59e511f3744acd3122c22b76219ddee270e9c2b0f58dc979fa804bd5baf83fe6 */
 #if BIND_IndexEntry_path_FIELD_WRITER
 /* set_path
  *
@@ -619,6 +588,7 @@ mrb_Git_IndexEntry_set_path(mrb_state* mrb, mrb_value self) {
 
   native_self->path = native_path;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

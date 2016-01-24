@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: FetchOptions::initialize */
 /* sha: 5f7d0f937fab4efdf7832d82addcc682b7ee552958737ea6551f968c51ca7f91 */
 #if BIND_FetchOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_FetchOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: FetchOptions::disown */
-/* sha: 9d513f1439f4606cf369c837b34bf8ab870f576a0c6d7c62906fd8cce1c9aa8c */
-mrb_value
-mrb_Git_FetchOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::FetchOptions.disown only accepts objects of type Git::FetchOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: FetchOptions::belongs_to_ruby */
-/* sha: 0dc0c695fef45434e238bfed4eb7709a0c95f7e7782e01ffdf96ff58baf9449c */
-mrb_value
-mrb_Git_FetchOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::FetchOptions.belongs_to_ruby only accepts objects of type Git::FetchOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_FetchOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::version_writer */
-/* sha: 20bfd4e18a2f37fd6d3451f9e716ca7505fb64e2a7619a789faa6513216135a3 */
+/* sha: 872e9be938cb0139708ad437b7d1a70b21f51fcd3d29fde7b14016227996a849 */
 #if BIND_FetchOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_FetchOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -137,7 +96,7 @@ mrb_Git_FetchOptions_get_callbacks(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::callbacks_writer */
-/* sha: 9130031ebef0228fdfbc505d644aded612544d70685fabe726865e11fd4efc14 */
+/* sha: 80e5143f51bb1c898cd452f1aab43729b721079ef8141bf374ba067c098bc10f */
 #if BIND_FetchOptions_callbacks_FIELD_WRITER
 /* set_callbacks
  *
@@ -161,6 +120,7 @@ mrb_Git_FetchOptions_set_callbacks(mrb_state* mrb, mrb_value self) {
 
   native_self->callbacks = native_callbacks;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -189,7 +149,7 @@ mrb_Git_FetchOptions_get_prune(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::prune_writer */
-/* sha: 1abead41790572dacf76dc65ed0db039a8c5e32b8882ecffffb820dbd4e67162 */
+/* sha: 31f5bc1d12f9a9286e56ddf21ebc8a1989ada522634396bb31ca3d464e90abb6 */
 #if BIND_FetchOptions_prune_FIELD_WRITER
 /* set_prune
  *
@@ -205,6 +165,7 @@ mrb_Git_FetchOptions_set_prune(mrb_state* mrb, mrb_value self) {
 
   native_self->prune = native_prune;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -233,7 +194,7 @@ mrb_Git_FetchOptions_get_update_fetchhead(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::update_fetchhead_writer */
-/* sha: 25365b762cb9ca5baa93d748ff37f5218db5415185f53abb49725b2b831b09ac */
+/* sha: cc7295daad5aed2a2a7462b95c98ef264e6e2cd7b1c76e54d00dd976dbd6290f */
 #if BIND_FetchOptions_update_fetchhead_FIELD_WRITER
 /* set_update_fetchhead
  *
@@ -249,6 +210,7 @@ mrb_Git_FetchOptions_set_update_fetchhead(mrb_state* mrb, mrb_value self) {
 
   native_self->update_fetchhead = native_update_fetchhead;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -277,7 +239,7 @@ mrb_Git_FetchOptions_get_download_tags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::download_tags_writer */
-/* sha: 8ad38bcaf4ad69c66f0fa4f5cd3a7660e943bbb3854ccde75d6b7cea3d5a903b */
+/* sha: 5bb4e326f8fcaa6d52fe899632ba31a8691dd0e14f08ff2b7dd4a6080490053e */
 #if BIND_FetchOptions_download_tags_FIELD_WRITER
 /* set_download_tags
  *
@@ -293,6 +255,7 @@ mrb_Git_FetchOptions_set_download_tags(mrb_state* mrb, mrb_value self) {
 
   native_self->download_tags = native_download_tags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -322,7 +285,7 @@ mrb_Git_FetchOptions_get_custom_headers(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::custom_headers_writer */
-/* sha: b466b4bcf81d762d614a039324742971d1ba31f59a86b9f836c8674e9ffb4b51 */
+/* sha: 0251d0dd7db46b3e7419d721126d42fd536f9400185d0f3f36ba8e5abee0b365 */
 #if BIND_FetchOptions_custom_headers_FIELD_WRITER
 /* set_custom_headers
  *
@@ -346,6 +309,7 @@ mrb_Git_FetchOptions_set_custom_headers(mrb_state* mrb, mrb_value self) {
 
   native_self->custom_headers = native_custom_headers;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

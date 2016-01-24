@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: RevertOptions::initialize */
 /* sha: e47034713b7e34bedd7009d6623226edef12348ed3e75ff5a6b011afa36c94b6 */
 #if BIND_RevertOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_RevertOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RevertOptions::disown */
-/* sha: f3e8b023ce5d03613af4afb663619bb0f8e980f0a5a2d2c5b0d02beac7c55794 */
-mrb_value
-mrb_Git_RevertOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RevertOptions.disown only accepts objects of type Git::RevertOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RevertOptions::belongs_to_ruby */
-/* sha: 1fc4007a81e85ab0e595e7a4dac2c5291e2162bcde6a7de155653fd1d8b8197b */
-mrb_value
-mrb_Git_RevertOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RevertOptions.belongs_to_ruby only accepts objects of type Git::RevertOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_RevertOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RevertOptions::version_writer */
-/* sha: d7af938a4fd18855817f9153b69e53a2a7b311d939c3ad9e659922778b2e7b91 */
+/* sha: 58499b05f2a1352ae5a6f320dae16b0ae10cb4fc955604e05f7e98aa887d3fc9 */
 #if BIND_RevertOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_RevertOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_RevertOptions_get_mainline(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RevertOptions::mainline_writer */
-/* sha: d9b098039281bb06cf4aecdeaf45d3daf0d1a537ae690228e6d6ff22c97ae312 */
+/* sha: a14eb2c9beff65b5765fa18104f3aa7e2bf089a3409dde52882fbd272ce812b3 */
 #if BIND_RevertOptions_mainline_FIELD_WRITER
 /* set_mainline
  *
@@ -152,6 +111,7 @@ mrb_Git_RevertOptions_set_mainline(mrb_state* mrb, mrb_value self) {
 
   native_self->mainline = native_mainline;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -181,7 +141,7 @@ mrb_Git_RevertOptions_get_merge_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RevertOptions::merge_opts_writer */
-/* sha: 20b58a71a352c30aa448aa3ca9d2d31e68e0378ff9df3300867b77e27ee10dd3 */
+/* sha: 7b9e05bee86b1a329b699436e48962aa0bc67744606e303d3849ff4d509c1864 */
 #if BIND_RevertOptions_merge_opts_FIELD_WRITER
 /* set_merge_opts
  *
@@ -205,6 +165,7 @@ mrb_Git_RevertOptions_set_merge_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->merge_opts = native_merge_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -234,7 +195,7 @@ mrb_Git_RevertOptions_get_checkout_opts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RevertOptions::checkout_opts_writer */
-/* sha: dc4c979941b90d1ef70fedf8e846f519b019c7f6825a420875ddc55d70695a4f */
+/* sha: 4e8528a29190623ecca111b2813cd37f8cc27d5f037a805e7831d76226ab270c */
 #if BIND_RevertOptions_checkout_opts_FIELD_WRITER
 /* set_checkout_opts
  *
@@ -258,6 +219,7 @@ mrb_Git_RevertOptions_set_checkout_opts(mrb_state* mrb, mrb_value self) {
 
   native_self->checkout_opts = native_checkout_opts;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

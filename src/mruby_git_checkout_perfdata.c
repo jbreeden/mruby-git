@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CheckoutPerfdata::initialize */
 /* sha: 4a25d8177fcd234c456fa438a901424eba6096c5fdb339501f05168103175766 */
 #if BIND_CheckoutPerfdata_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CheckoutPerfdata_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CheckoutPerfdata::disown */
-/* sha: 0b573e965a11526b6040c0c7bbd253f42095d8218317d2f95a6d76787b504e31 */
-mrb_value
-mrb_Git_CheckoutPerfdata_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CheckoutPerfdata.disown only accepts objects of type Git::CheckoutPerfdata");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CheckoutPerfdata::belongs_to_ruby */
-/* sha: 3440cd8de77076ce98f4c7c0d644efa5174abc2b524d8df180177986d7b8807e */
-mrb_value
-mrb_Git_CheckoutPerfdata_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CheckoutPerfdata.belongs_to_ruby only accepts objects of type Git::CheckoutPerfdata");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_CheckoutPerfdata_get_mkdir_calls(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutPerfdata::mkdir_calls_writer */
-/* sha: fe1263e66d2c87aa732bed775c7ee13cc4081ef1368c5ac59f30a7ae515b52fe */
+/* sha: 2e22b04351f8b946f2115ca4b7243f3d4a450dd17842a25c78b32710441346ed */
 #if BIND_CheckoutPerfdata_mkdir_calls_FIELD_WRITER
 /* set_mkdir_calls
  *
@@ -108,6 +66,7 @@ mrb_Git_CheckoutPerfdata_set_mkdir_calls(mrb_state* mrb, mrb_value self) {
 
   native_self->mkdir_calls = native_mkdir_calls;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_CheckoutPerfdata_get_stat_calls(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutPerfdata::stat_calls_writer */
-/* sha: 1a901236f4104f81c98c984380c76cc3643d76ee7c719b9f3d50a674a9741a49 */
+/* sha: 0e3f4d5f608b75fc91e06cc55be7c6363d14e146f089f63699a8ea19792a4c8f */
 #if BIND_CheckoutPerfdata_stat_calls_FIELD_WRITER
 /* set_stat_calls
  *
@@ -152,6 +111,7 @@ mrb_Git_CheckoutPerfdata_set_stat_calls(mrb_state* mrb, mrb_value self) {
 
   native_self->stat_calls = native_stat_calls;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_CheckoutPerfdata_get_chmod_calls(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutPerfdata::chmod_calls_writer */
-/* sha: 12b3ac5ca5d67795496d59e8b96e2a780380dc9a56b038a7340390cea7cec927 */
+/* sha: 10e9bc58a5e9e140b1c165c49c607141dc925356974a15cf7b3bd0a8a2300579 */
 #if BIND_CheckoutPerfdata_chmod_calls_FIELD_WRITER
 /* set_chmod_calls
  *
@@ -196,6 +156,7 @@ mrb_Git_CheckoutPerfdata_set_chmod_calls(mrb_state* mrb, mrb_value self) {
 
   native_self->chmod_calls = native_chmod_calls;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

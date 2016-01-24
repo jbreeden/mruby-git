@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: MergeFileOptions::initialize */
 /* sha: 7628f57e2554b343ee5161944e137970d19f76bba26298a5be53ba741a97ce1f */
 #if BIND_MergeFileOptions_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_MergeFileOptions_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeFileOptions::disown */
-/* sha: 9b34215be1e11c4b723d35ffa8e21e4d05bba77717be27220c650b12664ed4b2 */
-mrb_value
-mrb_Git_MergeFileOptions_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeFileOptions.disown only accepts objects of type Git::MergeFileOptions");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: MergeFileOptions::belongs_to_ruby */
-/* sha: 7e38d21f038ec719f3dc6ec17acbbec02a596f0aec0d4cf049bc26ef4848a3a2 */
-mrb_value
-mrb_Git_MergeFileOptions_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::MergeFileOptions.belongs_to_ruby only accepts objects of type Git::MergeFileOptions");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_MergeFileOptions_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileOptions::version_writer */
-/* sha: a0af2af2197ebd501471097dd03edbe2de1052b813873e36a5b4b826bb34da61 */
+/* sha: 5b4a07865554a82b29482169dff1e7fa42ca2dddbc489d214f1f56e0f5c44f69 */
 #if BIND_MergeFileOptions_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_MergeFileOptions_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_MergeFileOptions_get_ancestor_label(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileOptions::ancestor_label_writer */
-/* sha: bc19279e24d777be0513eeabbe9ab44bb4c7fec2d1c2d528f36be624d6aa4665 */
+/* sha: 525c7a7ea8eaf01acf5899909159a91858801e205f5b3683d1a7055e12477e55 */
 #if BIND_MergeFileOptions_ancestor_label_FIELD_WRITER
 /* set_ancestor_label
  *
@@ -152,6 +111,7 @@ mrb_Git_MergeFileOptions_set_ancestor_label(mrb_state* mrb, mrb_value self) {
 
   native_self->ancestor_label = native_ancestor_label;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_MergeFileOptions_get_our_label(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileOptions::our_label_writer */
-/* sha: f6fe034bc3a3deb7b365c7a8ae679a5c8bf80294a605c96ca501911e899ec45d */
+/* sha: c290bc794fd09ec2e0b2350dc0389589f94c33c5687230aa1e61f3232863834e */
 #if BIND_MergeFileOptions_our_label_FIELD_WRITER
 /* set_our_label
  *
@@ -196,6 +156,7 @@ mrb_Git_MergeFileOptions_set_our_label(mrb_state* mrb, mrb_value self) {
 
   native_self->our_label = native_our_label;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -224,7 +185,7 @@ mrb_Git_MergeFileOptions_get_their_label(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileOptions::their_label_writer */
-/* sha: 905d8fc0a7cf7ae08a9c771acfec64f6583980674f3f742f4028bab55c323801 */
+/* sha: a93ee667bcbd6a1640d250869eaeb76ccdf570570caafbb84be1f18ac94325d0 */
 #if BIND_MergeFileOptions_their_label_FIELD_WRITER
 /* set_their_label
  *
@@ -240,6 +201,7 @@ mrb_Git_MergeFileOptions_set_their_label(mrb_state* mrb, mrb_value self) {
 
   native_self->their_label = native_their_label;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -268,7 +230,7 @@ mrb_Git_MergeFileOptions_get_favor(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileOptions::favor_writer */
-/* sha: d3166e8cc68c75687f6ff3fc168229ecaffe10d1665f55e9ae83b9e938989841 */
+/* sha: 277b7d866b950961186ed6408b91fa8db2fed14d0afb2a49c8ab7a34e3579261 */
 #if BIND_MergeFileOptions_favor_FIELD_WRITER
 /* set_favor
  *
@@ -284,6 +246,7 @@ mrb_Git_MergeFileOptions_set_favor(mrb_state* mrb, mrb_value self) {
 
   native_self->favor = native_favor;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -312,7 +275,7 @@ mrb_Git_MergeFileOptions_get_flags(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileOptions::flags_writer */
-/* sha: 2ddb053e8321b410a74ec226bad63431d064d0edf1e1f00c19a98fb92b9a0432 */
+/* sha: c9a6ef836650abf3aa41a1e155fe71e21e1d079b35e52b44643db6967cb5a057 */
 #if BIND_MergeFileOptions_flags_FIELD_WRITER
 /* set_flags
  *
@@ -328,6 +291,7 @@ mrb_Git_MergeFileOptions_set_flags(mrb_state* mrb, mrb_value self) {
 
   native_self->flags = native_flags;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

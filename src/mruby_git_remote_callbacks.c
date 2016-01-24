@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: RemoteCallbacks::initialize */
 /* sha: ecc2779a23609af677b8bc436a02f788ad59b2a8db864b9de0a6cb58f69bef3f */
 #if BIND_RemoteCallbacks_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_RemoteCallbacks_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RemoteCallbacks::disown */
-/* sha: c67fae7e0e9f5890c3747837b3f16bdf489cf5d409e94c32a8b84546a200a386 */
-mrb_value
-mrb_Git_RemoteCallbacks_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RemoteCallbacks.disown only accepts objects of type Git::RemoteCallbacks");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: RemoteCallbacks::belongs_to_ruby */
-/* sha: 329f1569eb9976f0fd30c81e0d93fe0b6560582825d9c217a8b909893c185d3c */
-mrb_value
-mrb_Git_RemoteCallbacks_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::RemoteCallbacks.belongs_to_ruby only accepts objects of type Git::RemoteCallbacks");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_RemoteCallbacks_get_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::version_writer */
-/* sha: d932fe8434e95ba928b148729ab4d0e33edb6f23e8e4e7fca5227ad05547c36f */
+/* sha: 74ce93e303fd150bdce74a9158eaa92abf2020fa0f58cc37216cadf066402f5f */
 #if BIND_RemoteCallbacks_version_FIELD_WRITER
 /* set_version
  *
@@ -108,6 +66,7 @@ mrb_Git_RemoteCallbacks_set_version(mrb_state* mrb, mrb_value self) {
 
   native_self->version = native_version;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_RemoteCallbacks_get_sideband_progress(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::sideband_progress_writer */
-/* sha: 162e7f432633ea84077172dc11019cbcc36b2dd85acaa71e2711572ca6747f1a */
+/* sha: 572d3d95ec6dd503c138e8fceaa16f7598e4f28a6d7904feb37293b98348a73a */
 #if BIND_RemoteCallbacks_sideband_progress_FIELD_WRITER
 /* set_sideband_progress
  *
@@ -157,6 +116,7 @@ mrb_Git_RemoteCallbacks_set_sideband_progress(mrb_state* mrb, mrb_value self) {
 
   native_self->sideband_progress = native_sideband_progress;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -185,7 +145,7 @@ mrb_Git_RemoteCallbacks_get_completion(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::completion_writer */
-/* sha: 994f1deb23ed4e299f417ed1a035293fc26c02889643bcb80b15db0f9866f809 */
+/* sha: 17a6a7322d0a873ef6ba806d27ebbe24e3d5007938f6fd325b461fe964db19bf */
 #if BIND_RemoteCallbacks_completion_FIELD_WRITER
 /* set_completion
  *
@@ -206,6 +166,7 @@ mrb_Git_RemoteCallbacks_set_completion(mrb_state* mrb, mrb_value self) {
 
   native_self->completion = native_completion;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -234,7 +195,7 @@ mrb_Git_RemoteCallbacks_get_credentials(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::credentials_writer */
-/* sha: 4a6f3cd385055e00f4818d1a9fbdc7ccab9f973c963758fe32442ee688048ccd */
+/* sha: 0596b24fae46c0e01e2440353aefc044acdf36c952bc26d8aade294ec9d4d951 */
 #if BIND_RemoteCallbacks_credentials_FIELD_WRITER
 /* set_credentials
  *
@@ -255,6 +216,7 @@ mrb_Git_RemoteCallbacks_set_credentials(mrb_state* mrb, mrb_value self) {
 
   native_self->credentials = native_credentials;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -283,7 +245,7 @@ mrb_Git_RemoteCallbacks_get_certificate_check(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::certificate_check_writer */
-/* sha: 4539133eecac0ee8eea93e6b0d3f2d4f9cb3589eb43610fb20b5b7ab064b9ba2 */
+/* sha: 1139043b057058f63016dec2696933faa665c5c6894dd1ed8ecda8b1c6496482 */
 #if BIND_RemoteCallbacks_certificate_check_FIELD_WRITER
 /* set_certificate_check
  *
@@ -304,6 +266,7 @@ mrb_Git_RemoteCallbacks_set_certificate_check(mrb_state* mrb, mrb_value self) {
 
   native_self->certificate_check = native_certificate_check;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -332,7 +295,7 @@ mrb_Git_RemoteCallbacks_get_transfer_progress(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::transfer_progress_writer */
-/* sha: 3f0e70f8ac1f9be4f1b2deb78b7b69deba8c7ac603711cf147e074a577572a1f */
+/* sha: 338a7265e3a686c2e5ca15a5bdb99d7729495969c5cfb49aaf722c71a9c236e3 */
 #if BIND_RemoteCallbacks_transfer_progress_FIELD_WRITER
 /* set_transfer_progress
  *
@@ -353,6 +316,7 @@ mrb_Git_RemoteCallbacks_set_transfer_progress(mrb_state* mrb, mrb_value self) {
 
   native_self->transfer_progress = native_transfer_progress;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -381,7 +345,7 @@ mrb_Git_RemoteCallbacks_get_update_tips(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::update_tips_writer */
-/* sha: 0c059e480d6fc2b0ef98aa8f103e930e86de598d3d46807962d405ba42ddb0af */
+/* sha: ec0f5236bb0dd53e82bbb60b6ba6b12596cf15f9a5ed9e3459d8b68b33d2b3c6 */
 #if BIND_RemoteCallbacks_update_tips_FIELD_WRITER
 /* set_update_tips
  *
@@ -402,6 +366,7 @@ mrb_Git_RemoteCallbacks_set_update_tips(mrb_state* mrb, mrb_value self) {
 
   native_self->update_tips = native_update_tips;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -430,7 +395,7 @@ mrb_Git_RemoteCallbacks_get_pack_progress(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::pack_progress_writer */
-/* sha: b029e097d37b330c61db911ebba3361a7b32deb5cf41672b0725f8a67ad7ddd8 */
+/* sha: 7b413c02ac120cb106f7d55de1f89c67cae51732fe922c093d67bbc99cb80f34 */
 #if BIND_RemoteCallbacks_pack_progress_FIELD_WRITER
 /* set_pack_progress
  *
@@ -451,6 +416,7 @@ mrb_Git_RemoteCallbacks_set_pack_progress(mrb_state* mrb, mrb_value self) {
 
   native_self->pack_progress = native_pack_progress;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -479,7 +445,7 @@ mrb_Git_RemoteCallbacks_get_push_transfer_progress(mrb_state* mrb, mrb_value sel
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::push_transfer_progress_writer */
-/* sha: cf9fa44860e86cf1110727e0ba737de0b7b197f604ea32c992177f500745ab19 */
+/* sha: ad779145092e34853ec12e26b931b5e3b7dba5f23775de0a8d4a045b6c6d24b2 */
 #if BIND_RemoteCallbacks_push_transfer_progress_FIELD_WRITER
 /* set_push_transfer_progress
  *
@@ -500,6 +466,7 @@ mrb_Git_RemoteCallbacks_set_push_transfer_progress(mrb_state* mrb, mrb_value sel
 
   native_self->push_transfer_progress = native_push_transfer_progress;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -528,7 +495,7 @@ mrb_Git_RemoteCallbacks_get_push_update_reference(mrb_state* mrb, mrb_value self
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::push_update_reference_writer */
-/* sha: a899d4e25ba754f7c16e57dc813e1de44fe07e96d3c09ce56f542f40b9637980 */
+/* sha: c78771fb53f5b44f41b658b50850a0b9c803ff86b64cbc65281a3f9f01afe1a0 */
 #if BIND_RemoteCallbacks_push_update_reference_FIELD_WRITER
 /* set_push_update_reference
  *
@@ -549,6 +516,7 @@ mrb_Git_RemoteCallbacks_set_push_update_reference(mrb_state* mrb, mrb_value self
 
   native_self->push_update_reference = native_push_update_reference;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -577,7 +545,7 @@ mrb_Git_RemoteCallbacks_get_push_negotiation(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::push_negotiation_writer */
-/* sha: 66214906629445c11ca53f869ac3226c1b73194dd8aafa035e369e73c6eab831 */
+/* sha: def0b5edbdf158c100686794252ab5b1e477441ea5ea28f25a034f62a7e222b4 */
 #if BIND_RemoteCallbacks_push_negotiation_FIELD_WRITER
 /* set_push_negotiation
  *
@@ -598,6 +566,7 @@ mrb_Git_RemoteCallbacks_set_push_negotiation(mrb_state* mrb, mrb_value self) {
 
   native_self->push_negotiation = native_push_negotiation;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -626,7 +595,7 @@ mrb_Git_RemoteCallbacks_get_transport(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::transport_writer */
-/* sha: 43de6ed18c49c9d101219cc71feb9199d3828c947e1c4f450d14bf517ee95724 */
+/* sha: bf3fcf186a959fc1f0861a583227364e74534c82666024cadb2e8871884dc440 */
 #if BIND_RemoteCallbacks_transport_FIELD_WRITER
 /* set_transport
  *
@@ -647,6 +616,7 @@ mrb_Git_RemoteCallbacks_set_transport(mrb_state* mrb, mrb_value self) {
 
   native_self->transport = native_transport;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -675,7 +645,7 @@ mrb_Git_RemoteCallbacks_get_payload(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::payload_writer */
-/* sha: 572651d1afdb6ccc1e5d84d8bce08610af6f877dbec075f2a525bf5fe53ec1ef */
+/* sha: e0f91c8afef05b7130a92fab9510b74ac1c284d8669caa9a1fba66e7765d9016 */
 #if BIND_RemoteCallbacks_payload_FIELD_WRITER
 /* set_payload
  *
@@ -696,6 +666,7 @@ mrb_Git_RemoteCallbacks_set_payload(mrb_state* mrb, mrb_value self) {
 
   native_self->payload = native_payload;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

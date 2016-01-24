@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: Time::initialize */
 /* sha: dfae0af4f24b81fe9008f635871711e06bac1c153c244aaf28971a0f5681f534 */
 #if BIND_Time_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_Time_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Time::disown */
-/* sha: e740e0590408c4e8b09fbfa900522e26f2a43d33b93561da0182e7bc11971f97 */
-mrb_value
-mrb_Git_Time_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Time.disown only accepts objects of type Git::Time");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Time::belongs_to_ruby */
-/* sha: d19ca134f9970d03d61597414d8028931bd0f496c4265ef864bb36076ad2a9d1 */
-mrb_value
-mrb_Git_Time_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::Time.belongs_to_ruby only accepts objects of type Git::Time");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_Time_get_time(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Time::time_writer */
-/* sha: 6909fa5f2e692f16b6a1b996b64e51d06b368f389e2b104e74115bfd4f49be67 */
+/* sha: c76020404b26dbe1463f19287297a39ef8794540d2d434ac60f172b4a317350a */
 #if BIND_Time_time_FIELD_WRITER
 /* set_time
  *
@@ -108,6 +66,7 @@ mrb_Git_Time_set_time(mrb_state* mrb, mrb_value self) {
 
   native_self->time = native_time;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_Time_get_offset(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Time::offset_writer */
-/* sha: 9b341f3d6ebf96b1339b33ed7fecc176709e51a0615fd6a13f88e9b6cb4be98b */
+/* sha: 9aac7a4557307be32ad12b1b5944e29e47ca77d532705ef630ebeebd5e904d93 */
 #if BIND_Time_offset_FIELD_WRITER
 /* set_offset
  *
@@ -152,6 +111,7 @@ mrb_Git_Time_set_offset(mrb_state* mrb, mrb_value self) {
 
   native_self->offset = native_offset;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;

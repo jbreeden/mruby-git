@@ -12,10 +12,6 @@
 
 /* MRUBY_BINDING_END */
 
-/*
- * Class Methods
- */
-
 /* MRUBY_BINDING: CvarMap::initialize */
 /* sha: 607bb54d56598ae88bf91534359702dd150ea9273864c4c2565a44b543a84ce8 */
 #if BIND_CvarMap_INITIALIZE
@@ -27,44 +23,6 @@ mrb_Git_CvarMap_initialize(mrb_state* mrb, mrb_value self) {
   return self;
 }
 #endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CvarMap::disown */
-/* sha: 7a8db6b0da05816839405082d9869dbac71a3b91722ddbb322aa519278891dd5 */
-mrb_value
-mrb_Git_CvarMap_disown(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CvarMap.disown only accepts objects of type Git::CvarMap");
-    return mrb_nil_value();
-  }
-
-  ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby = FALSE;
-
-  return mrb_nil_value();
-}
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: CvarMap::belongs_to_ruby */
-/* sha: 8f439f1228c29f0089403958fdad9f70c77391c796c120dcd010ea62200f5e7f */
-mrb_value
-mrb_Git_CvarMap_belongs_to_ruby(mrb_state* mrb, mrb_value self) {
-  mrb_value ruby_object;
-  mrb_get_args(mrb, "o", &ruby_object);
-
-  if (!mrb_obj_is_kind_of(mrb, ruby_object, mrb_class_ptr(self))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Git::CvarMap.belongs_to_ruby only accepts objects of type Git::CvarMap");
-    return mrb_nil_value();
-  }
-
-  if ( ((mruby_to_native_ref*)(DATA_PTR(ruby_object)))->belongs_to_ruby ) {
-    return mrb_true_value();
-  } else {
-    return mrb_false_value();
-  }
-}
 /* MRUBY_BINDING_END */
 
 /*
@@ -92,7 +50,7 @@ mrb_Git_CvarMap_get_cvar_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CvarMap::cvar_type_writer */
-/* sha: afb144ebd82fab1eb29c516b6a3740dcffd3261b6e9a9154e011b01fdff5ef01 */
+/* sha: abd0f9f2c7356732be3fed9f49bbf29a7761158c9ac1b121782eb8f04eae6881 */
 #if BIND_CvarMap_cvar_type_FIELD_WRITER
 /* set_cvar_type
  *
@@ -108,6 +66,7 @@ mrb_Git_CvarMap_set_cvar_type(mrb_state* mrb, mrb_value self) {
 
   native_self->cvar_type = native_cvar_type;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -136,7 +95,7 @@ mrb_Git_CvarMap_get_str_match(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CvarMap::str_match_writer */
-/* sha: fee3872290d3480d614128f404adfefc242cb776efcf97393031edff2c157605 */
+/* sha: bbacbf9855b715919e1085cc507880c90390e01b017ed7080d553589935afb24 */
 #if BIND_CvarMap_str_match_FIELD_WRITER
 /* set_str_match
  *
@@ -152,6 +111,7 @@ mrb_Git_CvarMap_set_str_match(mrb_state* mrb, mrb_value self) {
 
   native_self->str_match = native_str_match;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
@@ -180,7 +140,7 @@ mrb_Git_CvarMap_get_map_value(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CvarMap::map_value_writer */
-/* sha: 623981d0b0d583f0b1994e025a9206d86fea34b9a7d5bf1890b8007112bb06c6 */
+/* sha: 3ee0bff909515e5f7696a5ac2f6deecd1bc1e7cd07e80c86b32ff6edddb2990a */
 #if BIND_CvarMap_map_value_FIELD_WRITER
 /* set_map_value
  *
@@ -196,6 +156,7 @@ mrb_Git_CvarMap_set_map_value(mrb_state* mrb, mrb_value self) {
 
   native_self->map_value = native_map_value;
   
+  /* Hacky way to return whatever was passed in. Mirrors typical assignment semantics. */
   mrb_value value_as_mrb_value;
   mrb_get_args(mrb, "o", &value_as_mrb_value);
   return value_as_mrb_value;
