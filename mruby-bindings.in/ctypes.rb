@@ -772,5 +772,12 @@ git_odb_write_pack
 git_packbuilder_write_buf
 git_refdb_compress
 ].each do |fn|
+  CTypes.set_fn_header(fn, "giterr_clear();");
+  CTypes.set_fn_footer(fn, <<-EOS);
+if (giterr_last() != NULL) {
+  raise_git_error(mrb);
+  return mrb_nil_value();
+}
+EOS
   CTypes.set_fn_return_type(fn, CTypes['ignore'])
 end

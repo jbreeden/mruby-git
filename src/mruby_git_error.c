@@ -136,7 +136,7 @@ void mrb_Git_Error_init(mrb_state* mrb) {
 
 /* MRUBY_BINDING: Error::class_definition */
 /* sha: a2e83b058d8c75ee56c40a66762ea3b58bb292ca4e91ae99b7b924a97e0d1767 */
-  struct RClass* Error_class = mrb_define_class_under(mrb, Git_module(mrb), "Error", mrb->object_class);
+  struct RClass* Error_class = mrb_define_class_under(mrb, Git_module(mrb), "Error", mrb->eStandardError_class);
   MRB_SET_INSTANCE_TT(Error_class, MRB_TT_DATA);
 /* MRUBY_BINDING_END */
 
