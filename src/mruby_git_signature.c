@@ -205,12 +205,10 @@ void mrb_Git_Signature_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Signature::class_method_definitions */
-/* sha: d45f874d8bfe3b4d61f16b7013ba0e4cf67763a5141af492dda7c132aefce577 */
+/* sha: d263781fc7861c47065b9cb115df67b20bd3e03338a1921d4214c657a5e5ff1b */
 #if BIND_Signature_INITIALIZE
   mrb_define_method(mrb, Signature_class, "initialize", mrb_Git_Signature_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Signature_class, "disown", mrb_Git_Signature_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Signature_class, "belongs_to_ruby?", mrb_Git_Signature_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Signature::pre_attr_definitions */

@@ -419,12 +419,10 @@ void mrb_Git_MergeOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::class_method_definitions */
-/* sha: b88f047bf6a87ff6723b6ded04f3bbe19e05ccd2edb40dd82c7a8e9c664b67fd */
+/* sha: fffec9396a2b2a1dd81baf827b3f930d7d676d57bd14564fc265ee3b2996040e */
 #if BIND_MergeOptions_INITIALIZE
   mrb_define_method(mrb, MergeOptions_class, "initialize", mrb_Git_MergeOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, MergeOptions_class, "disown", mrb_Git_MergeOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, MergeOptions_class, "belongs_to_ruby?", mrb_Git_MergeOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeOptions::pre_attr_definitions */

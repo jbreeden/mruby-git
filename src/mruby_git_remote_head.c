@@ -304,12 +304,10 @@ void mrb_Git_RemoteHead_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::class_method_definitions */
-/* sha: 82104f00014fb4c2759c2333f37990961095a132274d676faa5441355c6e9f95 */
+/* sha: c0ba4dda48b852ed23d894ef7ddd90e9bedf57ad9632d07e9de8e12708fc0c4f */
 #if BIND_RemoteHead_INITIALIZE
   mrb_define_method(mrb, RemoteHead_class, "initialize", mrb_Git_RemoteHead_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, RemoteHead_class, "disown", mrb_Git_RemoteHead_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, RemoteHead_class, "belongs_to_ruby?", mrb_Git_RemoteHead_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteHead::pre_attr_definitions */

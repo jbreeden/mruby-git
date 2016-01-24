@@ -305,12 +305,10 @@ void mrb_Git_CredSshKey_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshKey::class_method_definitions */
-/* sha: 0c9c076b3f8304a4faeab1267f8435142d43e8ff71ca717343c16eb9aca1c70a */
+/* sha: f9ed9bd424c3496705b19c347636ab8fb17b44a1b656f3c3796591f17e20922f */
 #if BIND_CredSshKey_INITIALIZE
   mrb_define_method(mrb, CredSshKey_class, "initialize", mrb_Git_CredSshKey_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CredSshKey_class, "disown", mrb_Git_CredSshKey_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CredSshKey_class, "belongs_to_ruby?", mrb_Git_CredSshKey_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshKey::pre_attr_definitions */

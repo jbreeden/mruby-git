@@ -489,12 +489,10 @@ void mrb_Git_OdbStream_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::class_method_definitions */
-/* sha: 166ce369f44bb8a7ae742524439888d9aed7a06bfeab3fe24572b902a59f25de */
+/* sha: 8732b40c5d1b19b6a8a40bad826460f98bb2640c034a237eb7c059b102461228 */
 #if BIND_OdbStream_INITIALIZE
   mrb_define_method(mrb, OdbStream_class, "initialize", mrb_Git_OdbStream_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, OdbStream_class, "disown", mrb_Git_OdbStream_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, OdbStream_class, "belongs_to_ruby?", mrb_Git_OdbStream_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbStream::pre_attr_definitions */

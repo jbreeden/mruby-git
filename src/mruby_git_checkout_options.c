@@ -1006,12 +1006,10 @@ void mrb_Git_CheckoutOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::class_method_definitions */
-/* sha: f8d28733a6297245f859d331e62c16dfdca6fd5ad2871f00777ec117b25a6174 */
+/* sha: d5043c5acd118a987cc37fb26ce5b4c82c9af4608d74f54cac68a147a8183fba */
 #if BIND_CheckoutOptions_INITIALIZE
   mrb_define_method(mrb, CheckoutOptions_class, "initialize", mrb_Git_CheckoutOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CheckoutOptions_class, "disown", mrb_Git_CheckoutOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CheckoutOptions_class, "belongs_to_ruby?", mrb_Git_CheckoutOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CheckoutOptions::pre_attr_definitions */

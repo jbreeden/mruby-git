@@ -149,12 +149,10 @@ void mrb_Git_Oidarray_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oidarray::class_method_definitions */
-/* sha: eb53876f195181233b17be90ea00cab448243f19642e0690c1ea9808965191b3 */
+/* sha: c25fce615eba911c1c54f5b6ee03cc523284accfeb9bf9c9eac63bc06fcbba3d */
 #if BIND_Oidarray_INITIALIZE
   mrb_define_method(mrb, Oidarray_class, "initialize", mrb_Git_Oidarray_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Oidarray_class, "disown", mrb_Git_Oidarray_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Oidarray_class, "belongs_to_ruby?", mrb_Git_Oidarray_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oidarray::pre_attr_definitions */

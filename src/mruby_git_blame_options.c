@@ -384,12 +384,10 @@ void mrb_Git_BlameOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::class_method_definitions */
-/* sha: 2494dc076c086c9e5bd5ecff14282a779c3c3c45a5a4149d3d5f0d1768c0703d */
+/* sha: 832d76ee1446cd4fa67f88a0319d5a059791a982d2173988d8894268c4616d89 */
 #if BIND_BlameOptions_INITIALIZE
   mrb_define_method(mrb, BlameOptions_class, "initialize", mrb_Git_BlameOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, BlameOptions_class, "disown", mrb_Git_BlameOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, BlameOptions_class, "belongs_to_ruby?", mrb_Git_BlameOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameOptions::pre_attr_definitions */

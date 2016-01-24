@@ -59,7 +59,6 @@ mrb_value
 mrb_Git_Buf_initialize(mrb_state* mrb, mrb_value self) {
   git_buf* native_object = (git_buf*)calloc(1, sizeof(git_buf));
   mruby_gift_git_buf_data_ptr(self, native_object);
-  git_buf_init(native_object, 0);
   return self;
 }
 #endif
@@ -183,8 +182,6 @@ void mrb_Git_Buf_init(mrb_state* mrb) {
 #if BIND_Buf_INITIALIZE
   mrb_define_method(mrb, Buf_class, "initialize", mrb_Git_Buf_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Buf_class, "disown", mrb_Git_Buf_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Buf_class, "belongs_to_ruby?", mrb_Git_Buf_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Buf::pre_attr_definitions */

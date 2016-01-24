@@ -47,12 +47,10 @@ void mrb_Git_IndexConflictIterator_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexConflictIterator::class_method_definitions */
-/* sha: 77316ba1798f3ba0262cfe64c5426a984dc75b6e2888cfcc218b8f5a908e5c75 */
+/* sha: dfee048d9ea4d90a0897f48296c1c137e85afc5abcd0739ea0c33dae439e6e65 */
 #if BIND_IndexConflictIterator_INITIALIZE
   mrb_define_method(mrb, IndexConflictIterator_class, "initialize", mrb_Git_IndexConflictIterator_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, IndexConflictIterator_class, "disown", mrb_Git_IndexConflictIterator_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, IndexConflictIterator_class, "belongs_to_ruby?", mrb_Git_IndexConflictIterator_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexConflictIterator::pre_attr_definitions */

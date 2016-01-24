@@ -47,12 +47,10 @@ void mrb_Git_Reflog_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Reflog::class_method_definitions */
-/* sha: 7856a93ef5bf73f8f5a30f48d9f1da5d00283a1f825acce327a82cf83ca0aeec */
+/* sha: 6cc9106188d2cdd978965a39a2a2d71a17c4a03c823bdb69c1f56370a8b6758a */
 #if BIND_Reflog_INITIALIZE
   mrb_define_method(mrb, Reflog_class, "initialize", mrb_Git_Reflog_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Reflog_class, "disown", mrb_Git_Reflog_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Reflog_class, "belongs_to_ruby?", mrb_Git_Reflog_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Reflog::pre_attr_definitions */

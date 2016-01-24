@@ -47,12 +47,10 @@ void mrb_Git_Note_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Note::class_method_definitions */
-/* sha: 03cfc3415728a2bd15ab00d69edefd7a6c69fc22d839f3632175686b6a918124 */
+/* sha: 4602c4840d655b7e410a9489fae6e86a76e01109a8ab07c49490aeefe8685809 */
 #if BIND_Note_INITIALIZE
   mrb_define_method(mrb, Note_class, "initialize", mrb_Git_Note_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Note_class, "disown", mrb_Git_Note_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Note_class, "belongs_to_ruby?", mrb_Git_Note_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Note::pre_attr_definitions */

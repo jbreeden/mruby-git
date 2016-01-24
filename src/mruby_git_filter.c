@@ -47,12 +47,10 @@ void mrb_Git_Filter_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Filter::class_method_definitions */
-/* sha: 28f009c88c00a2881059ccf3dc1213ff1e1cd6c1c997ba17f7efec87ddc2cf9f */
+/* sha: 49b98def183ffcd3eeb48ef48c56f1b00a4cbe1301995355a7b82788b5dbd1e2 */
 #if BIND_Filter_INITIALIZE
   mrb_define_method(mrb, Filter_class, "initialize", mrb_Git_Filter_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Filter_class, "disown", mrb_Git_Filter_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Filter_class, "belongs_to_ruby?", mrb_Git_Filter_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Filter::pre_attr_definitions */

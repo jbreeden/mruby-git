@@ -696,12 +696,10 @@ void mrb_Git_RemoteCallbacks_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::class_method_definitions */
-/* sha: fd548cfa8b20f3d3f328625ecb67ec0076cf5fb33e2af87db89fd4dc61b98d9c */
+/* sha: a9f28db9b6191c377e6cc0056bc7059edfbb8ae0bf9c9131e6053b7e2455f060 */
 #if BIND_RemoteCallbacks_INITIALIZE
   mrb_define_method(mrb, RemoteCallbacks_class, "initialize", mrb_Git_RemoteCallbacks_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, RemoteCallbacks_class, "disown", mrb_Git_RemoteCallbacks_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, RemoteCallbacks_class, "belongs_to_ruby?", mrb_Git_RemoteCallbacks_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RemoteCallbacks::pre_attr_definitions */

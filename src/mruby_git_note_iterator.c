@@ -47,12 +47,10 @@ void mrb_Git_NoteIterator_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: NoteIterator::class_method_definitions */
-/* sha: 5443464e0407ef3d0e61c9cbc22d4c03037c522f713c7734ea683eee16085621 */
+/* sha: e21e6dd1d07e8b78dee1238d973fddcc836bc7db574418eb5e4e8b4eef5ed69d */
 #if BIND_NoteIterator_INITIALIZE
   mrb_define_method(mrb, NoteIterator_class, "initialize", mrb_Git_NoteIterator_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, NoteIterator_class, "disown", mrb_Git_NoteIterator_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, NoteIterator_class, "belongs_to_ruby?", mrb_Git_NoteIterator_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: NoteIterator::pre_attr_definitions */

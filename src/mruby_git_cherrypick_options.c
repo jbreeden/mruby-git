@@ -249,12 +249,10 @@ void mrb_Git_CherrypickOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CherrypickOptions::class_method_definitions */
-/* sha: 28a51760810ef2ad414a08b7f46117fb33e8bef25a0058ff83ee8cedb2cca372 */
+/* sha: 2d72b051a28b270ebeea7eff8a5771d031a0b32238fbb706e4e91003be810d6f */
 #if BIND_CherrypickOptions_INITIALIZE
   mrb_define_method(mrb, CherrypickOptions_class, "initialize", mrb_Git_CherrypickOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CherrypickOptions_class, "disown", mrb_Git_CherrypickOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CherrypickOptions_class, "belongs_to_ruby?", mrb_Git_CherrypickOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CherrypickOptions::pre_attr_definitions */

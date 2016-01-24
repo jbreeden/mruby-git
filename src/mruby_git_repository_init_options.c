@@ -411,12 +411,10 @@ void mrb_Git_RepositoryInitOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::class_method_definitions */
-/* sha: f6703c07d02cea8017a545576f8527e89365e10f47a2a1c11000b1b8265586da */
+/* sha: 56350acde1b7e872082cdedb8c2efc96863faf3bff2c58b3edb454eaa6e65de9 */
 #if BIND_RepositoryInitOptions_INITIALIZE
   mrb_define_method(mrb, RepositoryInitOptions_class, "initialize", mrb_Git_RepositoryInitOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, RepositoryInitOptions_class, "disown", mrb_Git_RepositoryInitOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, RepositoryInitOptions_class, "belongs_to_ruby?", mrb_Git_RepositoryInitOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RepositoryInitOptions::pre_attr_definitions */

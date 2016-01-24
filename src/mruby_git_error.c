@@ -146,12 +146,10 @@ void mrb_Git_Error_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Error::class_method_definitions */
-/* sha: ccb74b916b4263a037ea2ee289b01e73babd67f9d7a032804a3f96c821aa2956 */
+/* sha: 88e5a560f236616fced8b03bd4fa82212020027f9bcd08a3d7111baade7e1d11 */
 #if BIND_Error_INITIALIZE
   mrb_define_method(mrb, Error_class, "initialize", mrb_Git_Error_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Error_class, "disown", mrb_Git_Error_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Error_class, "belongs_to_ruby?", mrb_Git_Error_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Error::pre_attr_definitions */

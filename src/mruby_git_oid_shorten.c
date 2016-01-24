@@ -47,12 +47,10 @@ void mrb_Git_OidShorten_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OidShorten::class_method_definitions */
-/* sha: 2373c98f504be083cf9151463b790fefefc380f9de72237b1e6433d70e8488fa */
+/* sha: f6023374c80ba1c7539f0ad67c56d891feb708633962cd80f697b54fb18b5b27 */
 #if BIND_OidShorten_INITIALIZE
   mrb_define_method(mrb, OidShorten_class, "initialize", mrb_Git_OidShorten_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, OidShorten_class, "disown", mrb_Git_OidShorten_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, OidShorten_class, "belongs_to_ruby?", mrb_Git_OidShorten_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OidShorten::pre_attr_definitions */

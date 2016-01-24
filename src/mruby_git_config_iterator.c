@@ -47,12 +47,10 @@ void mrb_Git_ConfigIterator_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigIterator::class_method_definitions */
-/* sha: 2d575b2b3f23d0f7ee27ab2ed7361e4cd658079daf37f317150fa4f8a4024d95 */
+/* sha: 009b456d7ed69a7ff82576310c80675488fb627bfa7d6495950ff55f06743180 */
 #if BIND_ConfigIterator_INITIALIZE
   mrb_define_method(mrb, ConfigIterator_class, "initialize", mrb_Git_ConfigIterator_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, ConfigIterator_class, "disown", mrb_Git_ConfigIterator_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, ConfigIterator_class, "belongs_to_ruby?", mrb_Git_ConfigIterator_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ConfigIterator::pre_attr_definitions */

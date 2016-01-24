@@ -101,12 +101,10 @@ void mrb_Git_Oid_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oid::class_method_definitions */
-/* sha: 862e6eb95355e8bc991709a255d9ea19f05a519d0539d75e70c21a5af98a0813 */
+/* sha: 3f4d365ebebb0d159c0b4cf3d0bfeb4e224bcd465e1c067885f13e19b1487645 */
 #if BIND_Oid_INITIALIZE
   mrb_define_method(mrb, Oid_class, "initialize", mrb_Git_Oid_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Oid_class, "disown", mrb_Git_Oid_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Oid_class, "belongs_to_ruby?", mrb_Git_Oid_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Oid::pre_attr_definitions */

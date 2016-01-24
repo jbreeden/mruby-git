@@ -47,12 +47,10 @@ void mrb_Git_Submodule_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Submodule::class_method_definitions */
-/* sha: edae68b7b024871518eef68f7e4849762b211e46f273a03560ae5034d402d379 */
+/* sha: 49b9862696dc940437f14bebb57b5460f105ea16622abd5666b33b56297e9599 */
 #if BIND_Submodule_INITIALIZE
   mrb_define_method(mrb, Submodule_class, "initialize", mrb_Git_Submodule_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Submodule_class, "disown", mrb_Git_Submodule_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Submodule_class, "belongs_to_ruby?", mrb_Git_Submodule_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Submodule::pre_attr_definitions */

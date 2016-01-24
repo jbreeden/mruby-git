@@ -276,12 +276,10 @@ void mrb_Git_MergeFileResult_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileResult::class_method_definitions */
-/* sha: f287cb34ae60795d72f2ba6dbed25acfc017cb09bc2c742864086e8ab37b0a40 */
+/* sha: 3d1ab4fa4d1e3484c573d1fd46d4867ddd9845b2e34b90d4052607235999fe19 */
 #if BIND_MergeFileResult_INITIALIZE
   mrb_define_method(mrb, MergeFileResult_class, "initialize", mrb_Git_MergeFileResult_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, MergeFileResult_class, "disown", mrb_Git_MergeFileResult_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, MergeFileResult_class, "belongs_to_ruby?", mrb_Git_MergeFileResult_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: MergeFileResult::pre_attr_definitions */

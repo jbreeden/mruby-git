@@ -321,12 +321,10 @@ void mrb_Git_DescribeOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::class_method_definitions */
-/* sha: f294722afb53496c28ef74c499679545fb3ba94ecd56c5ecce1961590aaa9cf6 */
+/* sha: eb5298a06e854631b2439dfaeb25ca001bca6eba2136c49930deb5f1cd3c5fd4 */
 #if BIND_DescribeOptions_INITIALIZE
   mrb_define_method(mrb, DescribeOptions_class, "initialize", mrb_Git_DescribeOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DescribeOptions_class, "disown", mrb_Git_DescribeOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DescribeOptions_class, "belongs_to_ruby?", mrb_Git_DescribeOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeOptions::pre_attr_definitions */

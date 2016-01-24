@@ -419,12 +419,10 @@ void mrb_Git_DiffFindOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::class_method_definitions */
-/* sha: b7dd4add85553bbdf7a74a622113dc08b599b8474fab9c866aab20fd5f4b6c06 */
+/* sha: ee964ca1640fa110140089e1035061aae6e3b0cc2e38d5be2b298d36f06f1bb9 */
 #if BIND_DiffFindOptions_INITIALIZE
   mrb_define_method(mrb, DiffFindOptions_class, "initialize", mrb_Git_DiffFindOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffFindOptions_class, "disown", mrb_Git_DiffFindOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffFindOptions_class, "belongs_to_ruby?", mrb_Git_DiffFindOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFindOptions::pre_attr_definitions */

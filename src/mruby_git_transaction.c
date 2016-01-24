@@ -47,12 +47,10 @@ void mrb_Git_Transaction_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Transaction::class_method_definitions */
-/* sha: 64a1e396b35b81360ccae3dd38e84544bc969a891e6027071c2a218d9c939a81 */
+/* sha: f43b76a5e22f4ff5b98923511883c83faafb919f8527989ea6aa0925e9b11e36 */
 #if BIND_Transaction_INITIALIZE
   mrb_define_method(mrb, Transaction_class, "initialize", mrb_Git_Transaction_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Transaction_class, "disown", mrb_Git_Transaction_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Transaction_class, "belongs_to_ruby?", mrb_Git_Transaction_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Transaction::pre_attr_definitions */

@@ -47,12 +47,10 @@ void mrb_Git_Patch_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Patch::class_method_definitions */
-/* sha: d6bcefbff0c7bb21d099cbd5ded25170bc31f7805280a103e46e91c15b877ecf */
+/* sha: ef9c44c2bf9e1d98880290b1b22afc97c3972117944a801025f76a321e9bb770 */
 #if BIND_Patch_INITIALIZE
   mrb_define_method(mrb, Patch_class, "initialize", mrb_Git_Patch_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Patch_class, "disown", mrb_Git_Patch_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Patch_class, "belongs_to_ruby?", mrb_Git_Patch_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Patch::pre_attr_definitions */

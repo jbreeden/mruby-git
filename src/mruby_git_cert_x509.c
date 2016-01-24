@@ -200,12 +200,10 @@ void mrb_Git_CertX509_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertX509::class_method_definitions */
-/* sha: be70d9ee5dd1e0b2127e7a458440fddc3db971d9ce1c34a1c58f01cee0abbac8 */
+/* sha: 785778fd089fb02cec0d357e5b393a378481818ea3c131d75d92718544cd3b8e */
 #if BIND_CertX509_INITIALIZE
   mrb_define_method(mrb, CertX509_class, "initialize", mrb_Git_CertX509_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CertX509_class, "disown", mrb_Git_CertX509_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CertX509_class, "belongs_to_ruby?", mrb_Git_CertX509_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertX509::pre_attr_definitions */

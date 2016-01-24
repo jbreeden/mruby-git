@@ -283,12 +283,10 @@ void mrb_Git_StashApplyOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StashApplyOptions::class_method_definitions */
-/* sha: 97a751ba24d6f9e431583482df08fb3705151251478796d13f06606e9649e111 */
+/* sha: ca6b8042692f691788595437e5f62635fc274465387084ea7f922463be0f0ca8 */
 #if BIND_StashApplyOptions_INITIALIZE
   mrb_define_method(mrb, StashApplyOptions_class, "initialize", mrb_Git_StashApplyOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, StashApplyOptions_class, "disown", mrb_Git_StashApplyOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, StashApplyOptions_class, "belongs_to_ruby?", mrb_Git_StashApplyOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StashApplyOptions::pre_attr_definitions */

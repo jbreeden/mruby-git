@@ -47,12 +47,10 @@ void mrb_Git_LIBSSH2SESSION_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: LIBSSH2SESSION::class_method_definitions */
-/* sha: 011d9e1d0ddfd2e9208e73aa23c12b102375f155fe918e921fa97ddc02970671 */
+/* sha: 4dd1d4ded2e16d8d003e8b19bc79b53c469216a9615a47ba09ed22078f234d0d */
 #if BIND_LIBSSH2SESSION_INITIALIZE
   mrb_define_method(mrb, LIBSSH2SESSION_class, "initialize", mrb_Git_LIBSSH2SESSION_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, LIBSSH2SESSION_class, "disown", mrb_Git_LIBSSH2SESSION_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, LIBSSH2SESSION_class, "belongs_to_ruby?", mrb_Git_LIBSSH2SESSION_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: LIBSSH2SESSION::pre_attr_definitions */

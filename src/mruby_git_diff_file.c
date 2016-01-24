@@ -285,12 +285,10 @@ void mrb_Git_DiffFile_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::class_method_definitions */
-/* sha: c10612dc46b9e1cb04f6cd55f5b22730e547065e1c0cd59d9cf4c04ab13a6de8 */
+/* sha: 088aa5bf8023daa4f739d29841ae6c2b42930307b1e0746b79f0ccf754b7d4b2 */
 #if BIND_DiffFile_INITIALIZE
   mrb_define_method(mrb, DiffFile_class, "initialize", mrb_Git_DiffFile_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffFile_class, "disown", mrb_Git_DiffFile_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffFile_class, "belongs_to_ruby?", mrb_Git_DiffFile_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFile::pre_attr_definitions */

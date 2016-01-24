@@ -326,12 +326,10 @@ void mrb_Git_DiffHunk_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::class_method_definitions */
-/* sha: e90becffe5972fae157370bdf79ba6c3c9e74bc206351b54a233b844bb1b4ea5 */
+/* sha: 7798838db4d7df3ba2b482d5a533b270a5296ac909a15a70c5a6e3151c84e771 */
 #if BIND_DiffHunk_INITIALIZE
   mrb_define_method(mrb, DiffHunk_class, "initialize", mrb_Git_DiffHunk_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffHunk_class, "disown", mrb_Git_DiffHunk_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffHunk_class, "belongs_to_ruby?", mrb_Git_DiffHunk_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffHunk::pre_attr_definitions */

@@ -47,12 +47,10 @@ void mrb_Git_ReferenceIterator_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ReferenceIterator::class_method_definitions */
-/* sha: 56b9b75f3e90658b9fd44814400d24035c9952915ea366450d154b57cfcb5b3f */
+/* sha: b6b89a5140bd2307ae4451795e8a2b701af60e41afe62e43661e2a9636f8bac0 */
 #if BIND_ReferenceIterator_INITIALIZE
   mrb_define_method(mrb, ReferenceIterator_class, "initialize", mrb_Git_ReferenceIterator_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, ReferenceIterator_class, "disown", mrb_Git_ReferenceIterator_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, ReferenceIterator_class, "belongs_to_ruby?", mrb_Git_ReferenceIterator_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ReferenceIterator::pre_attr_definitions */

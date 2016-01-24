@@ -47,12 +47,10 @@ void mrb_Git_Revwalk_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revwalk::class_method_definitions */
-/* sha: bd2201c2a2d3a963043d3dd9ee1d95e8f8287bdfa35ceca7112fd6ba14e23201 */
+/* sha: aa524290ee951060db1b923db3dd333e562ab7544dd1741b39d30636498a7c40 */
 #if BIND_Revwalk_INITIALIZE
   mrb_define_method(mrb, Revwalk_class, "initialize", mrb_Git_Revwalk_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Revwalk_class, "disown", mrb_Git_Revwalk_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Revwalk_class, "belongs_to_ruby?", mrb_Git_Revwalk_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revwalk::pre_attr_definitions */

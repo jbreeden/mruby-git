@@ -47,12 +47,10 @@ void mrb_Git_Tag_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Tag::class_method_definitions */
-/* sha: d9d10cd5d16c58606932b70f7154ccdb5293e56029c1c388cb5470af42a0ba85 */
+/* sha: b8bbb60d9a1432a83eca4f375dca80fde4b4f05c2b92408342f7a399b4fdc1e0 */
 #if BIND_Tag_INITIALIZE
   mrb_define_method(mrb, Tag_class, "initialize", mrb_Git_Tag_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Tag_class, "disown", mrb_Git_Tag_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Tag_class, "belongs_to_ruby?", mrb_Git_Tag_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Tag::pre_attr_definitions */

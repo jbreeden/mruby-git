@@ -239,12 +239,10 @@ void mrb_Git_StatusOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusOptions::class_method_definitions */
-/* sha: 2149b90462d7f3232576eee401e2dbb36e98ec1865a6dacbbc6dd9c1de7e5ade */
+/* sha: e321091193b803bd3ada4d1364c08f7e1d57c5ff6ce50c27790d3100490bdde9 */
 #if BIND_StatusOptions_INITIALIZE
   mrb_define_method(mrb, StatusOptions_class, "initialize", mrb_Git_StatusOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, StatusOptions_class, "disown", mrb_Git_StatusOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, StatusOptions_class, "belongs_to_ruby?", mrb_Git_StatusOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusOptions::pre_attr_definitions */

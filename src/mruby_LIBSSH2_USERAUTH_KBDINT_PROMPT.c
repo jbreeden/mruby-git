@@ -47,12 +47,10 @@ void mrb_Git_LIBSSH2USERAUTHKBDINTPROMPT_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: LIBSSH2USERAUTHKBDINTPROMPT::class_method_definitions */
-/* sha: 2488eb00e74db9840c3ec08a1b9a81fc1c3e4cee76a6d6d58d603d82bce2c0e4 */
+/* sha: 03b5098df07968f90078004e9416220bdbdf1bd59f182c572708896033de7b1b */
 #if BIND_LIBSSH2USERAUTHKBDINTPROMPT_INITIALIZE
   mrb_define_method(mrb, LIBSSH2USERAUTHKBDINTPROMPT_class, "initialize", mrb_Git_LIBSSH2USERAUTHKBDINTPROMPT_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, LIBSSH2USERAUTHKBDINTPROMPT_class, "disown", mrb_Git_LIBSSH2USERAUTHKBDINTPROMPT_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, LIBSSH2USERAUTHKBDINTPROMPT_class, "belongs_to_ruby?", mrb_Git_LIBSSH2USERAUTHKBDINTPROMPT_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: LIBSSH2USERAUTHKBDINTPROMPT::pre_attr_definitions */

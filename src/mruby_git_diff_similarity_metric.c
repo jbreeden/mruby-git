@@ -301,12 +301,10 @@ void mrb_Git_DiffSimilarityMetric_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::class_method_definitions */
-/* sha: 9c75163260393d0f227538b30cb4d85cf7b4cbee6b7b09954f61227d3a843cb0 */
+/* sha: a41da9266af0387213c8bfae7e7ce43597c5645419a35643383aef128c602bfb */
 #if BIND_DiffSimilarityMetric_INITIALIZE
   mrb_define_method(mrb, DiffSimilarityMetric_class, "initialize", mrb_Git_DiffSimilarityMetric_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffSimilarityMetric_class, "disown", mrb_Git_DiffSimilarityMetric_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffSimilarityMetric_class, "belongs_to_ruby?", mrb_Git_DiffSimilarityMetric_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffSimilarityMetric::pre_attr_definitions */

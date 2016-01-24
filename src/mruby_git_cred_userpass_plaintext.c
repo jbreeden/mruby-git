@@ -205,12 +205,10 @@ void mrb_Git_CredUserpassPlaintext_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredUserpassPlaintext::class_method_definitions */
-/* sha: 8f9859ec03d6f04bc29a0650b018db6b2db32efa3e990af879ab868df628efe0 */
+/* sha: 05ab4b7d25d7a24ce4013b445d180d87ff0e91b65b9e652856ebb0407a769d44 */
 #if BIND_CredUserpassPlaintext_INITIALIZE
   mrb_define_method(mrb, CredUserpassPlaintext_class, "initialize", mrb_Git_CredUserpassPlaintext_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CredUserpassPlaintext_class, "disown", mrb_Git_CredUserpassPlaintext_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CredUserpassPlaintext_class, "belongs_to_ruby?", mrb_Git_CredUserpassPlaintext_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredUserpassPlaintext::pre_attr_definitions */

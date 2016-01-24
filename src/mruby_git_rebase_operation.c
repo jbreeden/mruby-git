@@ -167,12 +167,10 @@ void mrb_Git_RebaseOperation_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RebaseOperation::class_method_definitions */
-/* sha: fc41e8ac760a636c7607340b6bcd83a2308897a8039adac2d7c2220e74768e09 */
+/* sha: 2b5f4d520c04cd9807033fc6bfc1f4f0128f044865045ae1f19e584c029e5561 */
 #if BIND_RebaseOperation_INITIALIZE
   mrb_define_method(mrb, RebaseOperation_class, "initialize", mrb_Git_RebaseOperation_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, RebaseOperation_class, "disown", mrb_Git_RebaseOperation_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, RebaseOperation_class, "belongs_to_ruby?", mrb_Git_RebaseOperation_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RebaseOperation::pre_attr_definitions */

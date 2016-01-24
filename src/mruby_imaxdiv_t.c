@@ -141,12 +141,10 @@ void mrb_Git_ImaxdivT_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ImaxdivT::class_method_definitions */
-/* sha: c8f2b4d3f617efb3c46055860dfe08a8c7e31795ba74341bf57ede32c788b9eb */
+/* sha: 3111abe50c3f966f8bf8ccf294cd682ae2b60e4522fd05a8b49d768e72763b2a */
 #if BIND_ImaxdivT_INITIALIZE
   mrb_define_method(mrb, ImaxdivT_class, "initialize", mrb_Git_ImaxdivT_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, ImaxdivT_class, "disown", mrb_Git_ImaxdivT_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, ImaxdivT_class, "belongs_to_ruby?", mrb_Git_ImaxdivT_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: ImaxdivT::pre_attr_definitions */

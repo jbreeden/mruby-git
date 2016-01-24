@@ -366,12 +366,10 @@ void mrb_Git_DiffLine_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::class_method_definitions */
-/* sha: de72e6599ac3e61e00834f6f5aeea51fb1bba036c1a148e9e7ffa28fe340506b */
+/* sha: 563f84f820ed8456abe2d5bc8021046b5740fd03a4fac47c72f516eb053c74f6 */
 #if BIND_DiffLine_INITIALIZE
   mrb_define_method(mrb, DiffLine_class, "initialize", mrb_Git_DiffLine_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffLine_class, "disown", mrb_Git_DiffLine_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffLine_class, "belongs_to_ruby?", mrb_Git_DiffLine_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffLine::pre_attr_definitions */

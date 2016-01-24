@@ -141,12 +141,10 @@ void mrb_Git_IndexTime_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexTime::class_method_definitions */
-/* sha: 921429fbda3a140205cbefa060f1f0f274daf218e842a50cfcf6553195925a40 */
+/* sha: 8210754dd717dc4870e149c499504d1f70f8a97e52d015630ec9dad88ef56913 */
 #if BIND_IndexTime_INITIALIZE
   mrb_define_method(mrb, IndexTime_class, "initialize", mrb_Git_IndexTime_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, IndexTime_class, "disown", mrb_Git_IndexTime_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, IndexTime_class, "belongs_to_ruby?", mrb_Git_IndexTime_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: IndexTime::pre_attr_definitions */

@@ -47,12 +47,10 @@ void mrb_Git_FilterList_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FilterList::class_method_definitions */
-/* sha: bbb43e66332526beae981c59594ed7042b3d50469d627b9708a754b8736d9164 */
+/* sha: 2f46f3cd8a6c90f99f2f3f23228c8919621a1381e05f63828eb7e51abe91a269 */
 #if BIND_FilterList_INITIALIZE
   mrb_define_method(mrb, FilterList_class, "initialize", mrb_Git_FilterList_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, FilterList_class, "disown", mrb_Git_FilterList_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, FilterList_class, "belongs_to_ruby?", mrb_Git_FilterList_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FilterList::pre_attr_definitions */

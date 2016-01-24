@@ -96,12 +96,10 @@ void mrb_Git_Cert_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cert::class_method_definitions */
-/* sha: 5367d6e22e33395b6117461d6974eeed5f95e32ee275bcd9adf79b871657b51f */
+/* sha: 6f67838bce57fa3b223e4fcccc98cf90d6122f337a27555f528236ecc418f380 */
 #if BIND_Cert_INITIALIZE
   mrb_define_method(mrb, Cert_class, "initialize", mrb_Git_Cert_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Cert_class, "disown", mrb_Git_Cert_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Cert_class, "belongs_to_ruby?", mrb_Git_Cert_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cert::pre_attr_definitions */

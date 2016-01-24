@@ -47,12 +47,10 @@ void mrb_Git_Transport_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Transport::class_method_definitions */
-/* sha: 8b42e93a732b4cc8efc42310a8b9af41c8b7aca44cac67f386bbc5e14fe768c0 */
+/* sha: b31e8be95b99f201896f5f4e95712a55771cab7665419fd7992f46c336f61e40 */
 #if BIND_Transport_INITIALIZE
   mrb_define_method(mrb, Transport_class, "initialize", mrb_Git_Transport_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Transport_class, "disown", mrb_Git_Transport_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Transport_class, "belongs_to_ruby?", mrb_Git_Transport_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Transport::pre_attr_definitions */

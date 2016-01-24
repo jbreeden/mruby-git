@@ -47,12 +47,10 @@ void mrb_Git_Commit_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Commit::class_method_definitions */
-/* sha: f8b4cde92ea11d8a8cf4d383009a0cf3a37a53425e975f6a8fe7d9bce9077943 */
+/* sha: fa831e780551150700094fafbe1611046181160384e17e3407a382ecafeab2c4 */
 #if BIND_Commit_INITIALIZE
   mrb_define_method(mrb, Commit_class, "initialize", mrb_Git_Commit_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Commit_class, "disown", mrb_Git_Commit_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Commit_class, "belongs_to_ruby?", mrb_Git_Commit_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Commit::pre_attr_definitions */

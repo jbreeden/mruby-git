@@ -47,12 +47,10 @@ void mrb_Git_TreeEntry_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TreeEntry::class_method_definitions */
-/* sha: 40aae4e130576270b69fd97927aa9dd9758cabc9ba508d71494d9c0cffeac38e */
+/* sha: cd2b3f879788d17ffe538a527aae7772866e6ea588d8fa404759271bc8ae485f */
 #if BIND_TreeEntry_INITIALIZE
   mrb_define_method(mrb, TreeEntry_class, "initialize", mrb_Git_TreeEntry_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, TreeEntry_class, "disown", mrb_Git_TreeEntry_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, TreeEntry_class, "belongs_to_ruby?", mrb_Git_TreeEntry_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TreeEntry::pre_attr_definitions */

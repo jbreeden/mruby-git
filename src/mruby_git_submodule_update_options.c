@@ -249,12 +249,10 @@ void mrb_Git_SubmoduleUpdateOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: SubmoduleUpdateOptions::class_method_definitions */
-/* sha: 42b8151bc2f3b3f69de5e79362d541f0f5b96d68bff3734ecad2f19c35516655 */
+/* sha: 3a59cc924684fb996a233ba800fe677c85c45fd172c302d6a5892e2c055ece04 */
 #if BIND_SubmoduleUpdateOptions_INITIALIZE
   mrb_define_method(mrb, SubmoduleUpdateOptions_class, "initialize", mrb_Git_SubmoduleUpdateOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, SubmoduleUpdateOptions_class, "disown", mrb_Git_SubmoduleUpdateOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, SubmoduleUpdateOptions_class, "belongs_to_ruby?", mrb_Git_SubmoduleUpdateOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: SubmoduleUpdateOptions::pre_attr_definitions */

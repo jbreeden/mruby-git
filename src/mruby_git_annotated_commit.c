@@ -47,12 +47,10 @@ void mrb_Git_AnnotatedCommit_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: AnnotatedCommit::class_method_definitions */
-/* sha: e59237bbb6c72036f51e5ebdf8ff26a7df3a7dc57b1db43273283df3e3a9ef56 */
+/* sha: e5be649c37f7bf2e110604acfe91e0c8fde5c2f2e4aa051ccebcc9380c9fe9f8 */
 #if BIND_AnnotatedCommit_INITIALIZE
   mrb_define_method(mrb, AnnotatedCommit_class, "initialize", mrb_Git_AnnotatedCommit_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, AnnotatedCommit_class, "disown", mrb_Git_AnnotatedCommit_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, AnnotatedCommit_class, "belongs_to_ruby?", mrb_Git_AnnotatedCommit_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: AnnotatedCommit::pre_attr_definitions */

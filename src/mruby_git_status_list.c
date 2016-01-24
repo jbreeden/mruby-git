@@ -47,12 +47,10 @@ void mrb_Git_StatusList_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusList::class_method_definitions */
-/* sha: c5468a812c4f88da3772db3df3e2e6b0b850dd0802c40a3b1dd6685e59b35913 */
+/* sha: baf504f98f008f9a1e34551e10ca94ce9b3fd53c96e6e1a3dd22adb935a91c72 */
 #if BIND_StatusList_INITIALIZE
   mrb_define_method(mrb, StatusList_class, "initialize", mrb_Git_StatusList_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, StatusList_class, "disown", mrb_Git_StatusList_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, StatusList_class, "belongs_to_ruby?", mrb_Git_StatusList_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: StatusList::pre_attr_definitions */

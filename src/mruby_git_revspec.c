@@ -202,12 +202,10 @@ void mrb_Git_Revspec_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revspec::class_method_definitions */
-/* sha: 6abe71a7e9a38fa4bcea6d7b30147124c4c3536f0deec5131e2f71a35bfcc035 */
+/* sha: 8edcd1d365219fa6ef3ca2718b391e9b30483632f2c031004a91236ea94b6b24 */
 #if BIND_Revspec_INITIALIZE
   mrb_define_method(mrb, Revspec_class, "initialize", mrb_Git_Revspec_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Revspec_class, "disown", mrb_Git_Revspec_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Revspec_class, "belongs_to_ruby?", mrb_Git_Revspec_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Revspec::pre_attr_definitions */

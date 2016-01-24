@@ -45,7 +45,7 @@ mrb_Git_git_annotated_commit_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_annotated_commit_from_fetchhead */
-/* sha: d731a8725f62fe926b78bd708fda2e83bcb98f67ad9ffeafe9f973c3aa3eb981 */
+/* sha: a0f8ad1790a5710b853b4157873a8a8fcf940c59c9728144a901d88d052a9da0 */
 #if BIND_git_annotated_commit_from_fetchhead_FUNCTION
 #define git_annotated_commit_from_fetchhead_REQUIRED_ARGC 4
 #define git_annotated_commit_from_fetchhead_OPTIONAL_ARGC 0
@@ -60,7 +60,6 @@ mrb_Git_git_annotated_commit_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_annotated_commit_from_fetchhead(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_annotated_commit * native_out = NULL;
   mrb_value repo;
   char * native_branch_name = NULL;
@@ -89,23 +88,16 @@ mrb_Git_git_annotated_commit_from_fetchhead(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_annotated_commit_from_fetchhead(&native_out, native_repo, native_branch_name, native_remote_url, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_annotated_commit(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_annotated_commit_from_ref */
-/* sha: 47b4eddfbe5779ba24281ace84907adc4962f5fbb1f57105b6182a4a2a2ff392 */
+/* sha: 952a5dfe5b5f342d6ccea100d76b1f8839087752a2d325344935d0efed778cfc */
 #if BIND_git_annotated_commit_from_ref_FUNCTION
 #define git_annotated_commit_from_ref_REQUIRED_ARGC 2
 #define git_annotated_commit_from_ref_OPTIONAL_ARGC 0
@@ -118,7 +110,6 @@ mrb_Git_git_annotated_commit_from_fetchhead(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_annotated_commit_from_ref(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_annotated_commit * native_out = NULL;
   mrb_value repo;
   mrb_value ref;
@@ -145,23 +136,16 @@ mrb_Git_git_annotated_commit_from_ref(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_annotated_commit_from_ref(&native_out, native_repo, native_ref);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_annotated_commit(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_annotated_commit_from_revspec */
-/* sha: aa4c867d8c1e67df7d6e5b16baa8842f10ded91266f5ea0d834a5d48a38b0da0 */
+/* sha: 127ece75cc2938c16651e023decd777ee5b2b9fa9e7a718d53889cbe7586929b */
 #if BIND_git_annotated_commit_from_revspec_FUNCTION
 #define git_annotated_commit_from_revspec_REQUIRED_ARGC 2
 #define git_annotated_commit_from_revspec_OPTIONAL_ARGC 0
@@ -174,7 +158,6 @@ mrb_Git_git_annotated_commit_from_ref(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_annotated_commit_from_revspec(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_annotated_commit * native_out = NULL;
   mrb_value repo;
   char * native_revspec = NULL;
@@ -194,17 +177,10 @@ mrb_Git_git_annotated_commit_from_revspec(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_annotated_commit_from_revspec(&native_out, native_repo, native_revspec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_annotated_commit(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -248,7 +224,7 @@ mrb_Git_git_annotated_commit_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_annotated_commit_lookup */
-/* sha: bdb5fa73462952a3ff620ae2f3392aaf70a2a7f6afa4341de82fd4d003d6cb95 */
+/* sha: 8637905786250fe1fb1ca48fcd8209ad8c3e6847bd268a3c1ff2667c8943d683 */
 #if BIND_git_annotated_commit_lookup_FUNCTION
 #define git_annotated_commit_lookup_REQUIRED_ARGC 2
 #define git_annotated_commit_lookup_OPTIONAL_ARGC 0
@@ -261,7 +237,6 @@ mrb_Git_git_annotated_commit_id(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_annotated_commit_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_annotated_commit * native_out = NULL;
   mrb_value repo;
   mrb_value id;
@@ -288,23 +263,16 @@ mrb_Git_git_annotated_commit_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_annotated_commit_lookup(&native_out, native_repo, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_annotated_commit(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_attr_add_macro */
-/* sha: 7543cd3acd0b38de12163fe6f9daec36846d330567d26545ad4c111beffdc97b */
+/* sha: 1100484ad8a435db81dc7d463dce953ea41ede62ea2742ddcd7d8dfc5fb8353e */
 #if BIND_git_attr_add_macro_FUNCTION
 #define git_attr_add_macro_REQUIRED_ARGC 3
 #define git_attr_add_macro_OPTIONAL_ARGC 0
@@ -337,10 +305,7 @@ mrb_Git_git_attr_add_macro(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_attr_add_macro(native_repo, native_name, native_values);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -381,7 +346,7 @@ mrb_Git_git_attr_cache_flush(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_attr_foreach */
-/* sha: 72ba832edb7d2cc392fb97a681b0b7d37eb09c374155699c470ff6f0f89b200f */
+/* sha: 413e0188f61adb5eb9bb923844386045abaa27147d7af6665b874ea0f71605f8 */
 #if BIND_git_attr_foreach_FUNCTION
 #define git_attr_foreach_REQUIRED_ARGC 5
 #define git_attr_foreach_OPTIONAL_ARGC 0
@@ -426,16 +391,13 @@ mrb_Git_git_attr_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_attr_foreach(native_repo, native_flags, native_path, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_attr_get */
-/* sha: 873d346196793083e49d3a7aa77882a80301027efaa3d0205dfa8278bed90637 */
+/* sha: 185e4b9d0aa1c47686c0218bae2fc54672787a46b569dbaba14a520d30a12c3d */
 #if BIND_git_attr_get_FUNCTION
 #define git_attr_get_REQUIRED_ARGC 4
 #define git_attr_get_OPTIONAL_ARGC 0
@@ -450,7 +412,6 @@ mrb_Git_git_attr_foreach(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_attr_get(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   char * native_value_out = NULL;
   mrb_value repo;
   mrb_int native_flags;
@@ -472,23 +433,16 @@ mrb_Git_git_attr_get(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_attr_get(&native_value_out, native_repo, native_flags, native_path, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: value_out */
   mrb_value value_out = native_value_out ==  NULL ? mrb_nil_value() : mrb_str_new_cstr(mrb, native_value_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, value_out);
-
-  return results;
+  return value_out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_attr_get_many */
-/* sha: 1e2e0a961ed6ae7590f38bb48ae9698345aed18e28b504de37271c0af158ef04 */
+/* sha: a6c8e7e7af76527565f6aae4444bfb42d40e8228488da1d14f480abae806bafe */
 #if BIND_git_attr_get_many_FUNCTION
 #define git_attr_get_many_REQUIRED_ARGC 6
 #define git_attr_get_many_OPTIONAL_ARGC 0
@@ -535,10 +489,7 @@ mrb_Git_git_attr_get_many(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_attr_get_many(native_values_out, native_repo, native_flags, native_path, native_num_attr, native_names);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -573,7 +524,7 @@ mrb_Git_git_attr_value(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blame_buffer */
-/* sha: cee8939246c0b1a0fd9bc751830f73514b08b653cbb514a36cf957ff3598379f */
+/* sha: bfd006b689cce4cd9431793728e181ffc967e40e35d458ee0f40574873d7f9ae */
 #if BIND_git_blame_buffer_FUNCTION
 #define git_blame_buffer_REQUIRED_ARGC 3
 #define git_blame_buffer_OPTIONAL_ARGC 0
@@ -587,7 +538,6 @@ mrb_Git_git_attr_value(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_blame_buffer(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_blame * native_out = NULL;
   mrb_value reference;
   char * native_buffer = NULL;
@@ -608,23 +558,16 @@ mrb_Git_git_blame_buffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blame_buffer(&native_out, native_reference, native_buffer, native_buffer_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_blame(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blame_file */
-/* sha: 0b1e3198028f2e4fe4ffc30b1b152118b80a2574ad51676caf113597c04634eb */
+/* sha: cf55a875d90d72807c86e08cfbf8402f3b28a44fcdbef1398f5c52e4e66e5310 */
 #if BIND_git_blame_file_FUNCTION
 #define git_blame_file_REQUIRED_ARGC 3
 #define git_blame_file_OPTIONAL_ARGC 0
@@ -638,7 +581,6 @@ mrb_Git_git_blame_buffer(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_blame_file(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_blame * native_out = NULL;
   mrb_value repo;
   char * native_path = NULL;
@@ -666,17 +608,10 @@ mrb_Git_git_blame_file(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blame_file(&native_out, native_repo, native_path, native_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_blame(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -835,7 +770,7 @@ mrb_Git_git_blame_get_hunk_count(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blame_init_options */
-/* sha: c09da1e3b03fbca34883d10e2ce0cd83b518cc46e9e7c73b6c199ac3f6441da8 */
+/* sha: f92993916c7fbd51557a6bff90b1f446ed1e2768b79b30be73d0653d94094c0c */
 #if BIND_git_blame_init_options_FUNCTION
 #define git_blame_init_options_REQUIRED_ARGC 2
 #define git_blame_init_options_OPTIONAL_ARGC 0
@@ -866,16 +801,13 @@ mrb_Git_git_blame_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blame_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_frombuffer */
-/* sha: eea93e56dc8f3ad24e5142cd1d003b95479703315ed27af20183fd8029bf9046 */
+/* sha: dd25e2b593eb4147ea4fcfc59fb11fdf14b93fd364d0573386a57ff30a7e6ed0 */
 #if BIND_git_blob_create_frombuffer_FUNCTION
 #define git_blob_create_frombuffer_REQUIRED_ARGC 3
 #define git_blob_create_frombuffer_OPTIONAL_ARGC 0
@@ -915,16 +847,13 @@ mrb_Git_git_blob_create_frombuffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_frombuffer(native_id, native_repo, RSTRING_PTR(native_buffer), RSTRING_LEN(native_buffer));
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_fromchunks */
-/* sha: bd22aa83b59d4437c85e70fc2b2fc663fcd614e8ec72fed4227b1db6aec47dd4 */
+/* sha: c9ea0c0bac33b252e2f82ef74dea1611086ec38b472604c33a76b22ad6835ee9 */
 #if BIND_git_blob_create_fromchunks_FUNCTION
 #define git_blob_create_fromchunks_REQUIRED_ARGC 5
 #define git_blob_create_fromchunks_OPTIONAL_ARGC 0
@@ -976,16 +905,13 @@ mrb_Git_git_blob_create_fromchunks(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_fromchunks(native_id, native_repo, native_hintpath, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_fromdisk */
-/* sha: ab1d4208c3fa2b85e6fc951b49f5fb7eb2720c02363e93904115e5aaf69307c7 */
+/* sha: 91e50df5cf1de1127f0ef3aa95033a338dbcd842740e0ababe4c7ec87b4933da */
 #if BIND_git_blob_create_fromdisk_FUNCTION
 #define git_blob_create_fromdisk_REQUIRED_ARGC 3
 #define git_blob_create_fromdisk_OPTIONAL_ARGC 0
@@ -1025,16 +951,13 @@ mrb_Git_git_blob_create_fromdisk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_fromdisk(native_id, native_repo, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_fromworkdir */
-/* sha: 555fd5fc7f4cfd4eaf7cabd2dc93ebe72dc2ddf471aed6c9b68ad3f1a7a4cb93 */
+/* sha: cf1e495253aabb370a68e4fb4421a2fb8d29e4976286be2f0dbaca293126683a */
 #if BIND_git_blob_create_fromworkdir_FUNCTION
 #define git_blob_create_fromworkdir_REQUIRED_ARGC 3
 #define git_blob_create_fromworkdir_OPTIONAL_ARGC 0
@@ -1074,23 +997,19 @@ mrb_Git_git_blob_create_fromworkdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_fromworkdir(native_id, native_repo, native_relative_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_filtered_content */
-/* sha: 5325b33841e227bb9fa48bf1cff1a82bd0b03b8ca9bcc67138195514f0086e11 */
+/* sha: 2dd94d39b94f1aecbd26472125ea31fd97b3e36547e46358ace2eb88e1f4836e */
 #if BIND_git_blob_filtered_content_FUNCTION
-#define git_blob_filtered_content_REQUIRED_ARGC 4
+#define git_blob_filtered_content_REQUIRED_ARGC 3
 #define git_blob_filtered_content_OPTIONAL_ARGC 0
 /* git_blob_filtered_content
  *
  * Parameters:
- * - out: git_buf *
  * - blob: git_blob *
  * - as_path: const char *
  * - check_for_binary_data: int
@@ -1098,26 +1017,19 @@ mrb_Git_git_blob_create_fromworkdir(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_blob_filtered_content(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value blob;
   char * native_as_path = NULL;
   mrb_int native_check_for_binary_data;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozi", &out, &blob, &native_as_path, &native_check_for_binary_data);
+  mrb_get_args(mrb, "ozi", &blob, &native_as_path, &native_check_for_binary_data);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, blob, Blob_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Blob expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: blob */
   git_blob * native_blob = (mrb_nil_p(blob) ? NULL : mruby_unbox_git_blob(blob));
@@ -1125,10 +1037,10 @@ mrb_Git_git_blob_filtered_content(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_filtered_content(native_out, native_blob, native_as_path, native_check_for_binary_data);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -1207,7 +1119,7 @@ mrb_Git_git_blob_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_is_binary */
-/* sha: bf56e27efde75443e7e8f460ed857f3e015b5731b43706d4e6b22761d2cb0b03 */
+/* sha: 00a17bf21c068e00ec7becfa8a6869010640a43614f486b16fe3465cfd52f956 */
 #if BIND_git_blob_is_binary_FUNCTION
 #define git_blob_is_binary_REQUIRED_ARGC 1
 #define git_blob_is_binary_OPTIONAL_ARGC 0
@@ -1237,7 +1149,7 @@ mrb_Git_git_blob_is_binary(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_blob_is_binary(native_blob);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -1245,7 +1157,7 @@ mrb_Git_git_blob_is_binary(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_lookup */
-/* sha: b7947ad10a555ee9e201f1a100b93151e6099be5e533e0568c54ef0329ec88db */
+/* sha: d0347b0fd5c58e50da3b624d93b79d0d7c91daf8028fc6f1377ff760367550b8 */
 #if BIND_git_blob_lookup_FUNCTION
 #define git_blob_lookup_REQUIRED_ARGC 2
 #define git_blob_lookup_OPTIONAL_ARGC 0
@@ -1258,7 +1170,6 @@ mrb_Git_git_blob_is_binary(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_blob_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_blob * native_blob = NULL;
   mrb_value repo;
   mrb_value id;
@@ -1285,23 +1196,16 @@ mrb_Git_git_blob_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_lookup(&native_blob, native_repo, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: blob */
   mrb_value blob = native_blob == NULL ? mrb_nil_value() : mruby_giftwrap_git_blob(mrb, native_blob);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, blob);
-
-  return results;
+  return blob;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_lookup_prefix */
-/* sha: 47597f6c99b849dacbf820507d0634d3308b89542ab2d392c114e770e949b55b */
+/* sha: cb14b480e72dfcb32b54f191cc4d587a6d0a788440736327f333fd02f8f5860a */
 #if BIND_git_blob_lookup_prefix_FUNCTION
 #define git_blob_lookup_prefix_REQUIRED_ARGC 3
 #define git_blob_lookup_prefix_OPTIONAL_ARGC 0
@@ -1315,7 +1219,6 @@ mrb_Git_git_blob_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_blob_lookup_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_blob * native_blob = NULL;
   mrb_value repo;
   mrb_value id;
@@ -1343,17 +1246,10 @@ mrb_Git_git_blob_lookup_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_lookup_prefix(&native_blob, native_repo, native_id, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: blob */
   mrb_value blob = native_blob == NULL ? mrb_nil_value() : mruby_giftwrap_git_blob(mrb, native_blob);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, blob);
-
-  return results;
+  return blob;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -1473,7 +1369,7 @@ mrb_Git_git_blob_rawsize(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_create */
-/* sha: 2b03b4ab5457e060b859a43fbd50f07ac1c1d0fe534298aa86f1ca1af9a15d85 */
+/* sha: 27dadef5095074e497c576a2d1d8629bce92c804210b1bc418250a88db3c39c8 */
 #if BIND_git_branch_create_FUNCTION
 #define git_branch_create_REQUIRED_ARGC 4
 #define git_branch_create_OPTIONAL_ARGC 0
@@ -1488,7 +1384,6 @@ mrb_Git_git_blob_rawsize(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_create(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_branch_name = NULL;
@@ -1517,23 +1412,16 @@ mrb_Git_git_branch_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_create(&native_out, native_repo, native_branch_name, native_target, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_create_from_annotated */
-/* sha: a24c0b6daeac969399eed6c7d987f6e0e6c485c1b3cb5a77bdcf4a8177b45e03 */
+/* sha: 69e0654cb6e616487916fa7e710d350e536aab1a285da949e035df25a7b4e24a */
 #if BIND_git_branch_create_from_annotated_FUNCTION
 #define git_branch_create_from_annotated_REQUIRED_ARGC 4
 #define git_branch_create_from_annotated_OPTIONAL_ARGC 0
@@ -1548,7 +1436,6 @@ mrb_Git_git_branch_create(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_create_from_annotated(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_ref_out = NULL;
   mrb_value repository;
   char * native_branch_name = NULL;
@@ -1577,23 +1464,16 @@ mrb_Git_git_branch_create_from_annotated(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_create_from_annotated(&native_ref_out, native_repository, native_branch_name, native_commit, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: ref_out */
   mrb_value ref_out = native_ref_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_ref_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, ref_out);
-
-  return results;
+  return ref_out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_delete */
-/* sha: a0b1842172a610362477ad13c40a59c70b9586e454edd8a26e3be234611fa03e */
+/* sha: b1bacd3fc70d0a8f2d4918c6c6569353e91bc4badbd5c273b9e4352bba381aa7 */
 #if BIND_git_branch_delete_FUNCTION
 #define git_branch_delete_REQUIRED_ARGC 1
 #define git_branch_delete_OPTIONAL_ARGC 0
@@ -1622,16 +1502,13 @@ mrb_Git_git_branch_delete(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_delete(native_branch);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_is_head */
-/* sha: 2b697d31c1bb3597cefb90a1cea2fa362e50cd620ad0aa48f693eeb4dea08518 */
+/* sha: 7dd6e435c50d010bf3830a4e7eaceec1fdef30c51e83792936afc00dda67a3f2 */
 #if BIND_git_branch_is_head_FUNCTION
 #define git_branch_is_head_REQUIRED_ARGC 1
 #define git_branch_is_head_OPTIONAL_ARGC 0
@@ -1661,7 +1538,7 @@ mrb_Git_git_branch_is_head(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_branch_is_head(native_branch);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -1704,7 +1581,7 @@ mrb_Git_git_branch_iterator_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_iterator_new */
-/* sha: 069deac6b9b32f592553bb3f2db95cf37af9540655ea6a2e40adbcce11f99bfb */
+/* sha: 0d5c5c31be846380f0c51525b6588a4c82679f22d8636522db6207aea7f12688 */
 #if BIND_git_branch_iterator_new_FUNCTION
 #define git_branch_iterator_new_REQUIRED_ARGC 2
 #define git_branch_iterator_new_OPTIONAL_ARGC 0
@@ -1717,7 +1594,6 @@ mrb_Git_git_branch_iterator_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_iterator_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_branch_iterator * native_out = NULL;
   mrb_value repo;
   mrb_int native_list_flags;
@@ -1737,23 +1613,16 @@ mrb_Git_git_branch_iterator_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_iterator_new(&native_out, native_repo, native_list_flags);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_branch_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_lookup */
-/* sha: 9350b9cb1feb40284fe8bea8d587661bd99ec71be5d8121a40490b4ef2013bdd */
+/* sha: 7a842c64bd2cb9f2097cc275202fcb69cbefb8e285ed70db81a3df159937acbc */
 #if BIND_git_branch_lookup_FUNCTION
 #define git_branch_lookup_REQUIRED_ARGC 3
 #define git_branch_lookup_OPTIONAL_ARGC 0
@@ -1767,7 +1636,6 @@ mrb_Git_git_branch_iterator_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_branch_name = NULL;
@@ -1788,23 +1656,16 @@ mrb_Git_git_branch_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_lookup(&native_out, native_repo, native_branch_name, native_branch_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_move */
-/* sha: 8b10108c01e4e9947dba15901d2b240bd9552ae484c9e4b4b00614d4f97da285 */
+/* sha: 5bd41de845967d790c7b8175c8edeb77e23d0cfdca237d4f129d596d25ed75d6 */
 #if BIND_git_branch_move_FUNCTION
 #define git_branch_move_REQUIRED_ARGC 3
 #define git_branch_move_OPTIONAL_ARGC 0
@@ -1818,7 +1679,6 @@ mrb_Git_git_branch_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_move(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value branch;
   char * native_new_branch_name = NULL;
@@ -1839,23 +1699,16 @@ mrb_Git_git_branch_move(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_move(&native_out, native_branch, native_new_branch_name, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_name */
-/* sha: 23808bef41df7dfe1919c8e3b676c41b481959bcba0784d8633b05b35a148eb0 */
+/* sha: 30275ba781cfb1994e7a4caf55be6cd6fbd066aa3d314c0103ed05fb352be4ef */
 #if BIND_git_branch_name_FUNCTION
 #define git_branch_name_REQUIRED_ARGC 1
 #define git_branch_name_OPTIONAL_ARGC 0
@@ -1867,7 +1720,6 @@ mrb_Git_git_branch_move(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_name(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   char * native_out = NULL;
   mrb_value ref;
 
@@ -1886,23 +1738,16 @@ mrb_Git_git_branch_name(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_name(&native_out, native_ref);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out ==  NULL ? mrb_nil_value() : mrb_str_new_cstr(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_next */
-/* sha: df0121f2f27b493af99a182c2857fb7b891ecd5313127f75d2f6a7f9a5f70c90 */
+/* sha: 0111c8d86d6ded1e01baf6b66ec653360473d823d5158fcbaa7de7dc47826295 */
 #if BIND_git_branch_next_FUNCTION
 #define git_branch_next_REQUIRED_ARGC 1
 #define git_branch_next_OPTIONAL_ARGC 0
@@ -1934,10 +1779,6 @@ mrb_Git_git_branch_next(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_next(&native_out, &native_out_type, native_iter);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
   /* Box out param: out_type */
@@ -1953,39 +1794,31 @@ mrb_Git_git_branch_next(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_remote_name */
-/* sha: d2532347746bff390f9a1911587beca4731815e0d468cad615fc284ca006456b */
+/* sha: 171b1eb37041d84edcc553b0538e6d60222490d0f3c40ba3f470655bddd00500 */
 #if BIND_git_branch_remote_name_FUNCTION
-#define git_branch_remote_name_REQUIRED_ARGC 3
+#define git_branch_remote_name_REQUIRED_ARGC 2
 #define git_branch_remote_name_OPTIONAL_ARGC 0
 /* git_branch_remote_name
  *
  * Parameters:
- * - out: git_buf *
  * - repo: git_repository *
  * - canonical_branch_name: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_branch_remote_name(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value repo;
   char * native_canonical_branch_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &repo, &native_canonical_branch_name);
+  mrb_get_args(mrb, "oz", &repo, &native_canonical_branch_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -1993,16 +1826,16 @@ mrb_Git_git_branch_remote_name(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_remote_name(native_out, native_repo, native_canonical_branch_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_set_upstream */
-/* sha: 62576b83f9b72fcca14c9b8c75dc5491f0ab186ea30c102fa172b28dd5ec5bf4 */
+/* sha: 85f362a2c5006a99be2cb1e8ed4030d80adbd9e52c61c7939946afbff0733278 */
 #if BIND_git_branch_set_upstream_FUNCTION
 #define git_branch_set_upstream_REQUIRED_ARGC 2
 #define git_branch_set_upstream_OPTIONAL_ARGC 0
@@ -2033,16 +1866,13 @@ mrb_Git_git_branch_set_upstream(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_set_upstream(native_branch, native_upstream_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_upstream */
-/* sha: 5e9ce55eba3fad61fe2376f109bd972e715ab70759682566afa3564721d73221 */
+/* sha: a5509cedad31e12a0e08c3dee86c3b199cd37167addd208c73415769a79e4e14 */
 #if BIND_git_branch_upstream_FUNCTION
 #define git_branch_upstream_REQUIRED_ARGC 1
 #define git_branch_upstream_OPTIONAL_ARGC 0
@@ -2054,7 +1884,6 @@ mrb_Git_git_branch_set_upstream(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_branch_upstream(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value branch;
 
@@ -2073,55 +1902,40 @@ mrb_Git_git_branch_upstream(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_upstream(&native_out, native_branch);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_upstream_name */
-/* sha: bb4a0179a357ced53167f4bd1eba0ccf3db10d8f0d724aa2d22e96e6d7529654 */
+/* sha: caa5fc87d9e5137e4a04fad4b954dcb4497af68a3aeace44daa6354be7dc2aa6 */
 #if BIND_git_branch_upstream_name_FUNCTION
-#define git_branch_upstream_name_REQUIRED_ARGC 3
+#define git_branch_upstream_name_REQUIRED_ARGC 2
 #define git_branch_upstream_name_OPTIONAL_ARGC 0
 /* git_branch_upstream_name
  *
  * Parameters:
- * - out: git_buf *
  * - repo: git_repository *
  * - refname: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_branch_upstream_name(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value repo;
   char * native_refname = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &repo, &native_refname);
+  mrb_get_args(mrb, "oz", &repo, &native_refname);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -2129,16 +1943,16 @@ mrb_Git_git_branch_upstream_name(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_upstream_name(native_out, native_repo, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_upstream_remote */
-/* sha: 9a59290f7541ec967bd296975312dcf614ef7d9a18cf07f0d99265382c7b5167 */
+/* sha: 768b2bc0d1eceefcc8bd7e508f016b4f44cfa71da1755a728607cfde274dd8c4 */
 #if BIND_git_branch_upstream_remote_FUNCTION
 #define git_branch_upstream_remote_REQUIRED_ARGC 3
 #define git_branch_upstream_remote_OPTIONAL_ARGC 0
@@ -2170,7 +1984,7 @@ mrb_Git_git_branch_upstream_remote(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buf */
-  git_buf * native_buf = (mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf));
+  git_buf * native_buf = mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf);
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -2178,16 +1992,13 @@ mrb_Git_git_branch_upstream_remote(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_branch_upstream_remote(native_buf, native_repo, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_buf_contains_nul */
-/* sha: 80b69670cbf042d826e5702c38eeb3d72818e23b1d305c86bc8b85718e959070 */
+/* sha: 68dd5fc5899563be2983c1f5780a0ea566241a7cd60252bbc046c747d68e0de2 */
 #if BIND_git_buf_contains_nul_FUNCTION
 #define git_buf_contains_nul_REQUIRED_ARGC 1
 #define git_buf_contains_nul_OPTIONAL_ARGC 0
@@ -2211,13 +2022,13 @@ mrb_Git_git_buf_contains_nul(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buf */
-  const git_buf * native_buf = (mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf));
+  git_buf * native_buf = mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf);
 
   /* Invocation */
   int native_return_value = git_buf_contains_nul(native_buf);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -2225,7 +2036,7 @@ mrb_Git_git_buf_contains_nul(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_buf_free */
-/* sha: 5458fec5b3a192ed15c078d49342e1536980d4559bbfd5a7dc5a9ab023399023 */
+/* sha: 7822f3652a3efef7ae1742cd08f9ebad3bef7e65ba9a6ad92e5cedab923220f4 */
 #if BIND_git_buf_free_FUNCTION
 #define git_buf_free_REQUIRED_ARGC 1
 #define git_buf_free_OPTIONAL_ARGC 0
@@ -2249,7 +2060,7 @@ mrb_Git_git_buf_free(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buffer */
-  git_buf * native_buffer = (mrb_nil_p(buffer) ? NULL : mruby_unbox_git_buf(buffer));
+  git_buf * native_buffer = mrb_nil_p(buffer) ? NULL : mruby_unbox_git_buf(buffer);
 
   /* Invocation */
   git_buf_free(native_buffer);
@@ -2260,7 +2071,7 @@ mrb_Git_git_buf_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_buf_grow */
-/* sha: f98d7fd5c1848cc60accb50bb21031fb6d05caac6e1e876536bef4ec410304fb */
+/* sha: 094183c514f40a0feae149a6415fe786df4befb05538e30f18becb3f2241c48e */
 #if BIND_git_buf_grow_FUNCTION
 #define git_buf_grow_REQUIRED_ARGC 2
 #define git_buf_grow_OPTIONAL_ARGC 0
@@ -2286,21 +2097,18 @@ mrb_Git_git_buf_grow(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buffer */
-  git_buf * native_buffer = (mrb_nil_p(buffer) ? NULL : mruby_unbox_git_buf(buffer));
+  git_buf * native_buffer = mrb_nil_p(buffer) ? NULL : mruby_unbox_git_buf(buffer);
 
   /* Invocation */
   int native_return_value = git_buf_grow(native_buffer, native_target_size);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_buf_is_binary */
-/* sha: 9606c47b9a8393b86bfbacf3da66b02bfdf85ae02ca9d5f5cf4ef1fe0c8e2e23 */
+/* sha: cd813b5b603a56595a0ac908b03a4fc61581637518d9d46fc6c55be87c9d2ad6 */
 #if BIND_git_buf_is_binary_FUNCTION
 #define git_buf_is_binary_REQUIRED_ARGC 1
 #define git_buf_is_binary_OPTIONAL_ARGC 0
@@ -2324,13 +2132,13 @@ mrb_Git_git_buf_is_binary(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buf */
-  const git_buf * native_buf = (mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf));
+  git_buf * native_buf = mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf);
 
   /* Invocation */
   int native_return_value = git_buf_is_binary(native_buf);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -2338,7 +2146,7 @@ mrb_Git_git_buf_is_binary(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_buf_set */
-/* sha: 5334c24482065cf481809ac95cee32cda82db0dc6b34457579dab29061326fce */
+/* sha: ab3a3809dd728935e488a062e58dae1b24afe91dacd7feeffd562ca3119db51e */
 #if BIND_git_buf_set_FUNCTION
 #define git_buf_set_REQUIRED_ARGC 2
 #define git_buf_set_OPTIONAL_ARGC 0
@@ -2364,21 +2172,18 @@ mrb_Git_git_buf_set(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buffer */
-  git_buf * native_buffer = (mrb_nil_p(buffer) ? NULL : mruby_unbox_git_buf(buffer));
+  git_buf * native_buffer = mrb_nil_p(buffer) ? NULL : mruby_unbox_git_buf(buffer);
 
   /* Invocation */
   int native_return_value = git_buf_set(native_buffer, RSTRING_PTR(native_data), RSTRING_LEN(native_data));
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_checkout_head */
-/* sha: 1ac3599d08aeffea37a2d59ee57b495f85321915501000ca0863f5869c3c6053 */
+/* sha: 0c04e675e42276ac1f7fea1d71fe287bcc6b67b1300e64ca6c0e0a9e05c54d8a */
 #if BIND_git_checkout_head_FUNCTION
 #define git_checkout_head_REQUIRED_ARGC 2
 #define git_checkout_head_OPTIONAL_ARGC 0
@@ -2416,16 +2221,13 @@ mrb_Git_git_checkout_head(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_checkout_head(native_repo, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_checkout_index */
-/* sha: 3b309998099fd047d4b7b4468fc06f234ae3b0e055e8a6db5c89c100744e1da0 */
+/* sha: 8d048a062033f5d36d180977f98f2fe8e1fe2532680545b7f63ead18f8c16e1a */
 #if BIND_git_checkout_index_FUNCTION
 #define git_checkout_index_REQUIRED_ARGC 3
 #define git_checkout_index_OPTIONAL_ARGC 0
@@ -2472,16 +2274,13 @@ mrb_Git_git_checkout_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_checkout_index(native_repo, native_index, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_checkout_init_options */
-/* sha: 30131555345f6d980638bcb026c3768469cfe47e1541fada8f99ef1ce38e15d1 */
+/* sha: 2f9f91a52f652ed3d24902ec9dd85039f845b00c6e4ca9c7261214d27ed1e447 */
 #if BIND_git_checkout_init_options_FUNCTION
 #define git_checkout_init_options_REQUIRED_ARGC 2
 #define git_checkout_init_options_OPTIONAL_ARGC 0
@@ -2512,16 +2311,13 @@ mrb_Git_git_checkout_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_checkout_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_checkout_tree */
-/* sha: 943fde459fc0bf47b861d18897898aa62f722cd409bc8af92e3b5e266446cbf7 */
+/* sha: 0ea4d1aff5b49da637d6d3551bce8f1df7dcc1dce7bad9b31e6b213e15f0dfa6 */
 #if BIND_git_checkout_tree_FUNCTION
 #define git_checkout_tree_REQUIRED_ARGC 3
 #define git_checkout_tree_OPTIONAL_ARGC 0
@@ -2568,16 +2364,13 @@ mrb_Git_git_checkout_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_checkout_tree(native_repo, native_treeish, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cherrypick */
-/* sha: 14cfe37d81de967110e917c655054168fa71da3ff88acdd8c52118865c926768 */
+/* sha: b2f5a570e6d40dec5623290455c7b31a5aa87d45ad72c31f04b3fae91d4ef867 */
 #if BIND_git_cherrypick_FUNCTION
 #define git_cherrypick_REQUIRED_ARGC 3
 #define git_cherrypick_OPTIONAL_ARGC 0
@@ -2624,16 +2417,13 @@ mrb_Git_git_cherrypick(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cherrypick(native_repo, native_commit, native_cherrypick_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cherrypick_commit */
-/* sha: f500dc86c71cf356119bd1b6c8d96abc737ab93dfd4c7100fa1ca9fc02654f4d */
+/* sha: 69c9dc3dcd9fbfd85b4f0fe2fe434cbae6284b6cc8d1cc4489f2974d85eeaad7 */
 #if BIND_git_cherrypick_commit_FUNCTION
 #define git_cherrypick_commit_REQUIRED_ARGC 5
 #define git_cherrypick_commit_OPTIONAL_ARGC 0
@@ -2649,7 +2439,6 @@ mrb_Git_git_cherrypick(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cherrypick_commit(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
   mrb_value repo;
   mrb_value cherrypick_commit;
@@ -2693,23 +2482,16 @@ mrb_Git_git_cherrypick_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cherrypick_commit(&native_out, native_repo, native_cherrypick_commit, native_our_commit, native_mainline, native_merge_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cherrypick_init_options */
-/* sha: 7d0f1d4c3f2d674370d5ee620d8225a8650afd46955bf0d6f6554b6d96fcea1f */
+/* sha: 63534b70de768f24081cc8eb29e83080077241ed5e1fa52a457ca9f5d4e2c126 */
 #if BIND_git_cherrypick_init_options_FUNCTION
 #define git_cherrypick_init_options_REQUIRED_ARGC 2
 #define git_cherrypick_init_options_OPTIONAL_ARGC 0
@@ -2740,16 +2522,13 @@ mrb_Git_git_cherrypick_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cherrypick_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_clone */
-/* sha: 3c5fd16785b807be2b801f2166e2b1b2992bb85024c4f24b13420f75064000f8 */
+/* sha: fda31264d57cd9af7f6a7332a1c99bd062b03dbc9cb0d9786bfc98e9b7c10081 */
 #if BIND_git_clone_FUNCTION
 #define git_clone_REQUIRED_ARGC 3
 #define git_clone_OPTIONAL_ARGC 0
@@ -2763,7 +2542,6 @@ mrb_Git_git_cherrypick_init_options(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_clone(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   char * native_url = NULL;
   char * native_local_path = NULL;
@@ -2784,23 +2562,16 @@ mrb_Git_git_clone(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_clone(&native_out, native_url, native_local_path, native_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_clone_init_options */
-/* sha: d91c1b35ab3829860cc1799983492520acaec2ac3997647f917646d3f5497b38 */
+/* sha: 58ffbe5df21d3d752c0a3cfe2377e73a58742f7df6a03f450e4d42435e2bc191 */
 #if BIND_git_clone_init_options_FUNCTION
 #define git_clone_init_options_REQUIRED_ARGC 2
 #define git_clone_init_options_OPTIONAL_ARGC 0
@@ -2831,16 +2602,13 @@ mrb_Git_git_clone_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_clone_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_amend */
-/* sha: d2847c9e26c82cd4fb7a3008306b7077b262f7ef73f20e74b04a6bcde7a70d96 */
+/* sha: 483ef6628aa889eb17011286d0c333e7bc538d69a4c2931f7d8be30b14dacac5 */
 #if BIND_git_commit_amend_FUNCTION
 #define git_commit_amend_REQUIRED_ARGC 8
 #define git_commit_amend_OPTIONAL_ARGC 0
@@ -2911,10 +2679,7 @@ mrb_Git_git_commit_amend(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_amend(native_id, native_commit_to_amend, native_update_ref, native_author, native_committer, native_message_encoding, native_message, native_tree);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -3034,7 +2799,7 @@ mrb_Git_git_commit_committer(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_create */
-/* sha: 1e7665d07c3f68baee3f0464eea3e0327932721b1e235cc33ff60a8a872677aa */
+/* sha: 51baca7ce5c001f6fbe30ddb55afb48ddc37ab6e6e4f1c7fd3d5e2e459bf5d61 */
 #if BIND_git_commit_create_FUNCTION
 #define git_commit_create_REQUIRED_ARGC 10
 #define git_commit_create_OPTIONAL_ARGC 0
@@ -3113,16 +2878,13 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_create(native_id, native_repo, native_update_ref, native_author, native_committer, native_message_encoding, native_message, native_tree, native_parent_count, native_parents);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_create_v */
-/* sha: e58146d469efc6cbab2315f071cb62628abd726708b4df46bb3e8e5f32dfbb0f */
+/* sha: c911688c6a796552e1ba09ff96a578c3dc10827a46d9d534ec008bba6dcffddb */
 #if BIND_git_commit_create_v_FUNCTION
 #define git_commit_create_v_REQUIRED_ARGC 9
 #define git_commit_create_v_OPTIONAL_ARGC 0
@@ -3195,10 +2957,7 @@ mrb_Git_git_commit_create_v(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_create_v(native_id, native_repo, native_update_ref, native_author, native_committer, native_message_encoding, native_message, native_tree, native_parent_count);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -3239,39 +2998,31 @@ mrb_Git_git_commit_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_header_field */
-/* sha: 8ad474cbe32968dd80f4eb3a02adece3b3179eb1f49f2a6e95b40768cd80b5d3 */
+/* sha: 8df99718326071c7be462202084003e13ef448a0f0cfff5b3c5d8c1eb7f225ab */
 #if BIND_git_commit_header_field_FUNCTION
-#define git_commit_header_field_REQUIRED_ARGC 3
+#define git_commit_header_field_REQUIRED_ARGC 2
 #define git_commit_header_field_OPTIONAL_ARGC 0
 /* git_commit_header_field
  *
  * Parameters:
- * - out: git_buf *
  * - commit: const git_commit *
  * - field: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_commit_header_field(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value commit;
   char * native_field = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &commit, &native_field);
+  mrb_get_args(mrb, "oz", &commit, &native_field);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, commit, Commit_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Commit expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: commit */
   const git_commit * native_commit = (mrb_nil_p(commit) ? NULL : mruby_unbox_git_commit(commit));
@@ -3279,10 +3030,10 @@ mrb_Git_git_commit_header_field(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_header_field(native_out, native_commit, native_field);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -3326,7 +3077,7 @@ mrb_Git_git_commit_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_lookup */
-/* sha: 168df6021f96ad0fd402b9a407e45cf2e9821e71acce4e791ad7929e4626b21e */
+/* sha: 59ddc748b8d1ce8feb6466876cc521d2667d001e3590518faaecfb0559840c0a */
 #if BIND_git_commit_lookup_FUNCTION
 #define git_commit_lookup_REQUIRED_ARGC 2
 #define git_commit_lookup_OPTIONAL_ARGC 0
@@ -3339,7 +3090,6 @@ mrb_Git_git_commit_id(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_commit_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_commit * native_commit = NULL;
   mrb_value repo;
   mrb_value id;
@@ -3366,23 +3116,16 @@ mrb_Git_git_commit_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_lookup(&native_commit, native_repo, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: commit */
   mrb_value commit = native_commit == NULL ? mrb_nil_value() : mruby_giftwrap_git_commit(mrb, native_commit);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, commit);
-
-  return results;
+  return commit;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_lookup_prefix */
-/* sha: 5b67374feb88574034e4d079fee9b048dcc9c92b64ae5417b63182c2d2eed9aa */
+/* sha: 3d440ab040650c3f2f8fb5c5c4c5e2d43b8b25f381a7cba6b6062e85600355fb */
 #if BIND_git_commit_lookup_prefix_FUNCTION
 #define git_commit_lookup_prefix_REQUIRED_ARGC 3
 #define git_commit_lookup_prefix_OPTIONAL_ARGC 0
@@ -3396,7 +3139,6 @@ mrb_Git_git_commit_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_commit_lookup_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_commit * native_commit = NULL;
   mrb_value repo;
   mrb_value id;
@@ -3424,17 +3166,10 @@ mrb_Git_git_commit_lookup_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_lookup_prefix(&native_commit, native_repo, native_id, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: commit */
   mrb_value commit = native_commit == NULL ? mrb_nil_value() : mruby_giftwrap_git_commit(mrb, native_commit);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, commit);
-
-  return results;
+  return commit;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -3554,7 +3289,7 @@ mrb_Git_git_commit_message_raw(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_nth_gen_ancestor */
-/* sha: 0b278b35d90744c5b27813a8937f7314c7c9ce22a9ea6f4c209f4a1ccc41aef2 */
+/* sha: 2a75ced0f7d060bcf9d4a8d781ef01cce289476aae5e5478e754efe793b682b4 */
 #if BIND_git_commit_nth_gen_ancestor_FUNCTION
 #define git_commit_nth_gen_ancestor_REQUIRED_ARGC 2
 #define git_commit_nth_gen_ancestor_OPTIONAL_ARGC 0
@@ -3567,7 +3302,6 @@ mrb_Git_git_commit_message_raw(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_commit_nth_gen_ancestor(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_commit * native_ancestor = NULL;
   mrb_value commit;
   mrb_int native_n;
@@ -3587,17 +3321,10 @@ mrb_Git_git_commit_nth_gen_ancestor(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_nth_gen_ancestor(&native_ancestor, native_commit, native_n);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: ancestor */
   mrb_value ancestor = native_ancestor == NULL ? mrb_nil_value() : mruby_giftwrap_git_commit(mrb, native_ancestor);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, ancestor);
-
-  return results;
+  return ancestor;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -3641,7 +3368,7 @@ mrb_Git_git_commit_owner(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_parent */
-/* sha: db2649284c2ca32dd2ece1af96a6fe3ca4ee5dcb15e49f4e96c355ed5bf638d2 */
+/* sha: 335490e8848254b7db4757fb87df19494e430ab214acf8ff2270b6d85dc5819e */
 #if BIND_git_commit_parent_FUNCTION
 #define git_commit_parent_REQUIRED_ARGC 2
 #define git_commit_parent_OPTIONAL_ARGC 0
@@ -3654,7 +3381,6 @@ mrb_Git_git_commit_owner(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_commit_parent(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_commit * native_out = NULL;
   mrb_value commit;
   mrb_int native_n;
@@ -3674,17 +3400,10 @@ mrb_Git_git_commit_parent(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_parent(&native_out, native_commit, native_n);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_commit(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -3920,7 +3639,7 @@ mrb_Git_git_commit_time_offset(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_tree */
-/* sha: d3301de98f45a800fe83d4c222fbe52bea9737e79166626c14afbc6d9ce6c627 */
+/* sha: 92af11e26ff1b4c4e0baac350cf55cc091594de09d939dababe3e9f205579c22 */
 #if BIND_git_commit_tree_FUNCTION
 #define git_commit_tree_REQUIRED_ARGC 1
 #define git_commit_tree_OPTIONAL_ARGC 0
@@ -3932,7 +3651,6 @@ mrb_Git_git_commit_time_offset(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_commit_tree(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tree * native_tree_out = NULL;
   mrb_value commit;
 
@@ -3951,17 +3669,10 @@ mrb_Git_git_commit_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_tree(&native_tree_out, native_commit);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: tree_out */
   mrb_value tree_out = native_tree_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_tree(mrb, native_tree_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, tree_out);
-
-  return results;
+  return tree_out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -4005,7 +3716,7 @@ mrb_Git_git_commit_tree_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_add_file_ondisk */
-/* sha: bfcb271db4a9938fc0e6215bafd6b1a105f33c2231163d6ab59c982d7f5f5131 */
+/* sha: adb43428d603683a33acbed42cf6e60ff7ecc9bf44fa7ccec6234964183e43a7 */
 #if BIND_git_config_add_file_ondisk_FUNCTION
 #define git_config_add_file_ondisk_REQUIRED_ARGC 4
 #define git_config_add_file_ondisk_OPTIONAL_ARGC 0
@@ -4040,10 +3751,7 @@ mrb_Git_git_config_add_file_ondisk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_add_file_ondisk(native_cfg, native_path, native_level, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -4101,7 +3809,7 @@ mrb_Git_git_config_backend_foreach_match(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_delete_entry */
-/* sha: 3993657edbcf03629c9a25400bc2a383e826eb17c75d8d8be0c7c84182356a08 */
+/* sha: 754533aca31373b431e7eef6f0a388aa24922cdecdea3f0b8e21c738826f4214 */
 #if BIND_git_config_delete_entry_FUNCTION
 #define git_config_delete_entry_REQUIRED_ARGC 2
 #define git_config_delete_entry_OPTIONAL_ARGC 0
@@ -4132,16 +3840,13 @@ mrb_Git_git_config_delete_entry(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_delete_entry(native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_delete_multivar */
-/* sha: 198f7b13a9966bd570e8d7043b43bc55a0695219a968c0d05ac6d8d539b2ce77 */
+/* sha: 459d923d321223470c20d66ee4b703ec14c1fa5622ceb6b48047c61ffe01b229 */
 #if BIND_git_config_delete_multivar_FUNCTION
 #define git_config_delete_multivar_REQUIRED_ARGC 3
 #define git_config_delete_multivar_OPTIONAL_ARGC 0
@@ -4174,10 +3879,7 @@ mrb_Git_git_config_delete_multivar(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_delete_multivar(native_cfg, native_name, native_regexp);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -4218,159 +3920,111 @@ mrb_Git_git_config_entry_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_find_global */
-/* sha: d7972c16895fd1b604b7b555e79a0d17220037ba0380250bbfcffe5ed78caf2c */
+/* sha: cbe515fe39c88ef05cf5d5021194e9bdf0d09dffd47e95bcba451e4757bf55da */
 #if BIND_git_config_find_global_FUNCTION
-#define git_config_find_global_REQUIRED_ARGC 1
+#define git_config_find_global_REQUIRED_ARGC 0
 #define git_config_find_global_OPTIONAL_ARGC 0
 /* git_config_find_global
  *
- * Parameters:
- * - out: git_buf *
+ * Parameters: None
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_find_global(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
 
-  /* Fetch the args */
-  mrb_get_args(mrb, "o", &out);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Invocation */
   int native_return_value = git_config_find_global(native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_find_programdata */
-/* sha: 6fe51809aa2bb56be5ac0d857ef32d58218291ed32f292f23300ef5be35b4ca3 */
+/* sha: 1c549eb77779fedab813dbc59f6eb53051a54bbbe5f91e930a31c4e890e0a641 */
 #if BIND_git_config_find_programdata_FUNCTION
-#define git_config_find_programdata_REQUIRED_ARGC 1
+#define git_config_find_programdata_REQUIRED_ARGC 0
 #define git_config_find_programdata_OPTIONAL_ARGC 0
 /* git_config_find_programdata
  *
- * Parameters:
- * - out: git_buf *
+ * Parameters: None
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_find_programdata(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
 
-  /* Fetch the args */
-  mrb_get_args(mrb, "o", &out);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Invocation */
   int native_return_value = git_config_find_programdata(native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_find_system */
-/* sha: 87f51f627287cf1a3420900a49a90e21343aee11cddb34067759686b5eda3690 */
+/* sha: ac83e1a1ad7b55fb1a4b01e1d8a8f472b2bb191a4a01b3d47ab42951da2f24f4 */
 #if BIND_git_config_find_system_FUNCTION
-#define git_config_find_system_REQUIRED_ARGC 1
+#define git_config_find_system_REQUIRED_ARGC 0
 #define git_config_find_system_OPTIONAL_ARGC 0
 /* git_config_find_system
  *
- * Parameters:
- * - out: git_buf *
+ * Parameters: None
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_find_system(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
 
-  /* Fetch the args */
-  mrb_get_args(mrb, "o", &out);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Invocation */
   int native_return_value = git_config_find_system(native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_find_xdg */
-/* sha: 6cbe31c04d4dc5faa7233bb195963025fbcd672725fccf7d6e481ff2b4f3945b */
+/* sha: a4ef803f9719b62f65ff3f270fbe8e2e2f8e2a89c0e41152f5227296c9986b24 */
 #if BIND_git_config_find_xdg_FUNCTION
-#define git_config_find_xdg_REQUIRED_ARGC 1
+#define git_config_find_xdg_REQUIRED_ARGC 0
 #define git_config_find_xdg_OPTIONAL_ARGC 0
 /* git_config_find_xdg
  *
- * Parameters:
- * - out: git_buf *
+ * Parameters: None
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_find_xdg(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
 
-  /* Fetch the args */
-  mrb_get_args(mrb, "o", &out);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Invocation */
   int native_return_value = git_config_find_xdg(native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_foreach */
-/* sha: b064c9c6d8043fb248caceb715c5ec8f4687cab363b8b13cc67ff1f93d7f593c */
+/* sha: 1a84278606ba98cbf7d14d0854d5c82ffd208e067426672829bfa3666a60dbd5 */
 #if BIND_git_config_foreach_FUNCTION
 #define git_config_foreach_REQUIRED_ARGC 3
 #define git_config_foreach_OPTIONAL_ARGC 0
@@ -4411,10 +4065,7 @@ mrb_Git_git_config_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_foreach(native_cfg, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -4507,7 +4158,7 @@ mrb_Git_git_config_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_bool */
-/* sha: f43d6d70eb7c8edbb26d0f5f17db261f54f9b8481abbeb4b17d835b43bcb615f */
+/* sha: 378e3cdffacf904ccf978fe06f725eea0d478c4ee350ec4351edb89e505b6754 */
 #if BIND_git_config_get_bool_FUNCTION
 #define git_config_get_bool_REQUIRED_ARGC 2
 #define git_config_get_bool_OPTIONAL_ARGC 0
@@ -4520,7 +4171,6 @@ mrb_Git_git_config_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_get_bool(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   mrb_value cfg;
   char * native_name = NULL;
@@ -4540,23 +4190,16 @@ mrb_Git_git_config_get_bool(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_bool(&native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == 0 ? mrb_false_value() : mrb_true_value();
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_entry */
-/* sha: 78115a269f211c87a2bc7f2f3bd2e828f8a0eaac518315c4e8a0903624714f89 */
+/* sha: 8ff96f7837791cf324aff9b7407f9d4ea11407fd3467db20b190e3b913e24439 */
 #if BIND_git_config_get_entry_FUNCTION
 #define git_config_get_entry_REQUIRED_ARGC 2
 #define git_config_get_entry_OPTIONAL_ARGC 0
@@ -4569,7 +4212,6 @@ mrb_Git_git_config_get_bool(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_get_entry(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config_entry * native_out = NULL;
   mrb_value cfg;
   char * native_name = NULL;
@@ -4589,23 +4231,16 @@ mrb_Git_git_config_get_entry(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_entry(&native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config_entry(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_int32 */
-/* sha: 24b9276574b67790fe22fb0191ecefc4c7367c7411dc7b47fe6b4885b0cd41da */
+/* sha: 386492c1f05095fbf5355a4d67aede46802ac439d271bbb1697fa0570628d6cb */
 #if BIND_git_config_get_int32_FUNCTION
 #define git_config_get_int32_REQUIRED_ARGC 2
 #define git_config_get_int32_OPTIONAL_ARGC 0
@@ -4618,7 +4253,6 @@ mrb_Git_git_config_get_entry(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_get_int32(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   mrb_value cfg;
   char * native_name = NULL;
@@ -4638,23 +4272,16 @@ mrb_Git_git_config_get_int32(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_int32(&native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_int64 */
-/* sha: f458ab555bcb04b83f89746e88e48a2d3282ecb16678f2bd649361c415f15a56 */
+/* sha: 2dd8e5591ac0695ba072ee8c60830616e1e290947283e41b8335c07714988b87 */
 #if BIND_git_config_get_int64_FUNCTION
 #define git_config_get_int64_REQUIRED_ARGC 2
 #define git_config_get_int64_OPTIONAL_ARGC 0
@@ -4667,7 +4294,6 @@ mrb_Git_git_config_get_int32(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_get_int64(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   mrb_value cfg;
   char * native_name = NULL;
@@ -4687,23 +4313,16 @@ mrb_Git_git_config_get_int64(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_int64(&native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_mapped */
-/* sha: 3b48014d0b0e3cedec6cd8219e16fd45790c0dabcee8679e013a7d68f77b9b86 */
+/* sha: 0719e92c633ff590c3c6a29d4d332b80fca489049c7270838a18e651c62df9bc */
 #if BIND_git_config_get_mapped_FUNCTION
 #define git_config_get_mapped_REQUIRED_ARGC 4
 #define git_config_get_mapped_OPTIONAL_ARGC 0
@@ -4718,7 +4337,6 @@ mrb_Git_git_config_get_int64(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_get_mapped(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   mrb_value cfg;
   char * native_name = NULL;
@@ -4747,17 +4365,10 @@ mrb_Git_git_config_get_mapped(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_mapped(&native_out, native_cfg, native_name, native_maps, native_map_n);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -4817,39 +4428,31 @@ mrb_Git_git_config_get_multivar_foreach(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_path */
-/* sha: 5abbd43f15c19ee5182c8f4a50fcc6719e4d5e5b692cc03c5b145c792b446ee0 */
+/* sha: 54e8d1080edac4efcdb29fd41f5bb5d95bc29fa620257a64c18a6ac60249810e */
 #if BIND_git_config_get_path_FUNCTION
-#define git_config_get_path_REQUIRED_ARGC 3
+#define git_config_get_path_REQUIRED_ARGC 2
 #define git_config_get_path_OPTIONAL_ARGC 0
 /* git_config_get_path
  *
  * Parameters:
- * - out: git_buf *
  * - cfg: const git_config *
  * - name: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_get_path(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value cfg;
   char * native_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &cfg, &native_name);
+  mrb_get_args(mrb, "oz", &cfg, &native_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, cfg, Config_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Config expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: cfg */
   const git_config * native_cfg = (mrb_nil_p(cfg) ? NULL : mruby_unbox_git_config(cfg));
@@ -4857,16 +4460,16 @@ mrb_Git_git_config_get_path(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_path(native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_string */
-/* sha: bd77a17078b528b3a8456fbaf8d5b268796c211ba8c257d9f29ef11884272c8a */
+/* sha: e39325b216d03756b725c59a293ab1d7c7ae440336b93b02bca44159c996df34 */
 #if BIND_git_config_get_string_FUNCTION
 #define git_config_get_string_REQUIRED_ARGC 2
 #define git_config_get_string_OPTIONAL_ARGC 0
@@ -4879,7 +4482,6 @@ mrb_Git_git_config_get_path(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_get_string(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   char * native_out = NULL;
   mrb_value cfg;
   char * native_name = NULL;
@@ -4899,55 +4501,40 @@ mrb_Git_git_config_get_string(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_string(&native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out ==  NULL ? mrb_nil_value() : mrb_str_new_cstr(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_get_string_buf */
-/* sha: ba99a4a9d3aaf8c91adc014796851c6e33b65d1bb4072162d0f9de260faaefa6 */
+/* sha: 4608e84d02457f285337bec21b6d2ed7b9a3087076826c4578b5c2d3411fd39a */
 #if BIND_git_config_get_string_buf_FUNCTION
-#define git_config_get_string_buf_REQUIRED_ARGC 3
+#define git_config_get_string_buf_REQUIRED_ARGC 2
 #define git_config_get_string_buf_OPTIONAL_ARGC 0
 /* git_config_get_string_buf
  *
  * Parameters:
- * - out: git_buf *
  * - cfg: const git_config *
  * - name: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_get_string_buf(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value cfg;
   char * native_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &cfg, &native_name);
+  mrb_get_args(mrb, "oz", &cfg, &native_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, cfg, Config_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Config expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: cfg */
   const git_config * native_cfg = (mrb_nil_p(cfg) ? NULL : mruby_unbox_git_config(cfg));
@@ -4955,10 +4542,10 @@ mrb_Git_git_config_get_string_buf(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_get_string_buf(native_out, native_cfg, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -4999,7 +4586,7 @@ mrb_Git_git_config_iterator_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_iterator_glob_new */
-/* sha: 89ad1ad000f2b6946ad12c21b03efdee07329c7722cd3c806839ee9dd3f5d851 */
+/* sha: dff9ca4eb2fa842cbef2e15ba0fddd2fa9ae4cc571c0e9d1faa596d00ba520fc */
 #if BIND_git_config_iterator_glob_new_FUNCTION
 #define git_config_iterator_glob_new_REQUIRED_ARGC 2
 #define git_config_iterator_glob_new_OPTIONAL_ARGC 0
@@ -5012,7 +4599,6 @@ mrb_Git_git_config_iterator_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_iterator_glob_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config_iterator * native_out = NULL;
   mrb_value cfg;
   char * native_regexp = NULL;
@@ -5032,23 +4618,16 @@ mrb_Git_git_config_iterator_glob_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_iterator_glob_new(&native_out, native_cfg, native_regexp);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_iterator_new */
-/* sha: dcec08b151a38d26638fcccf55a98df4bf9b4e7e07f90004174ce78fc53b164b */
+/* sha: 13f23415d289698c7426a9182980e78b0b4534b981b0fcb8642db0e849bab489 */
 #if BIND_git_config_iterator_new_FUNCTION
 #define git_config_iterator_new_REQUIRED_ARGC 1
 #define git_config_iterator_new_OPTIONAL_ARGC 0
@@ -5060,7 +4639,6 @@ mrb_Git_git_config_iterator_glob_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_iterator_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config_iterator * native_out = NULL;
   mrb_value cfg;
 
@@ -5079,23 +4657,16 @@ mrb_Git_git_config_iterator_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_iterator_new(&native_out, native_cfg);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_lock */
-/* sha: 68aa3951a85ed13cc16fd709c86e40ba1025b793a19462f4893f4b2338cb1505 */
+/* sha: 1db1144a2fca7728655b72aef0229b64151e8b373e7eaa90c3a1f43be929152e */
 #if BIND_git_config_lock_FUNCTION
 #define git_config_lock_REQUIRED_ARGC 1
 #define git_config_lock_OPTIONAL_ARGC 0
@@ -5107,7 +4678,6 @@ mrb_Git_git_config_iterator_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_lock(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_transaction * native_tx = NULL;
   mrb_value cfg;
 
@@ -5126,23 +4696,16 @@ mrb_Git_git_config_lock(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_lock(&native_tx, native_cfg);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: tx */
   mrb_value tx = native_tx == NULL ? mrb_nil_value() : mruby_giftwrap_git_transaction(mrb, native_tx);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, tx);
-
-  return results;
+  return tx;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_lookup_map_value */
-/* sha: 1e343897e7301fc82230b96e2d2d5167577ad7aaaa1afb966749fe2c5dc7f76e */
+/* sha: e2bc5803437689fde1166b6ee7eb668d805bf4da0d182a5f6d7ae49589daa6d2 */
 #if BIND_git_config_lookup_map_value_FUNCTION
 #define git_config_lookup_map_value_REQUIRED_ARGC 3
 #define git_config_lookup_map_value_OPTIONAL_ARGC 0
@@ -5156,7 +4719,6 @@ mrb_Git_git_config_lock(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_lookup_map_value(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   mrb_value maps;
   mrb_int native_map_n;
@@ -5177,23 +4739,16 @@ mrb_Git_git_config_lookup_map_value(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_lookup_map_value(&native_out, native_maps, native_map_n, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_multivar_iterator_new */
-/* sha: 3e7ee82200ea5ea06d7f9ff69e0d5f4a2d5b3cba9a0d2be0aac8c7571e93b5ce */
+/* sha: 869ac2e7eca13a9a08c57d11aa34863cb6e2888993b0c06f2369c02c247b90e8 */
 #if BIND_git_config_multivar_iterator_new_FUNCTION
 #define git_config_multivar_iterator_new_REQUIRED_ARGC 3
 #define git_config_multivar_iterator_new_OPTIONAL_ARGC 0
@@ -5207,7 +4762,6 @@ mrb_Git_git_config_lookup_map_value(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_multivar_iterator_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config_iterator * native_out = NULL;
   mrb_value cfg;
   char * native_name = NULL;
@@ -5228,23 +4782,16 @@ mrb_Git_git_config_multivar_iterator_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_multivar_iterator_new(&native_out, native_cfg, native_name, native_regexp);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_new */
-/* sha: 4fed3bb781a698dc8e22f3987582f6718675d3bda1fc6bb6a44fd246f421fb67 */
+/* sha: 4c7ecf83b8571751a566ea6cbe84f1cfddfa091ea76aa430e4cf16465caf430d */
 #if BIND_git_config_new_FUNCTION
 #define git_config_new_REQUIRED_ARGC 0
 #define git_config_new_OPTIONAL_ARGC 0
@@ -5255,30 +4802,22 @@ mrb_Git_git_config_multivar_iterator_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
 
 
   /* Invocation */
   int native_return_value = git_config_new(&native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_next */
-/* sha: b53f96589d26fcaddd768bba1e23fc7068e35cb6ae9f8cebf2b4500ca1907f1c */
+/* sha: e7933fd0ec4df9dc7d7f224ba0c3a27763ef97b228d400507ed62f6c2c914ef6 */
 #if BIND_git_config_next_FUNCTION
 #define git_config_next_REQUIRED_ARGC 1
 #define git_config_next_OPTIONAL_ARGC 0
@@ -5290,7 +4829,6 @@ mrb_Git_git_config_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_next(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config_entry * native_entry = NULL;
   mrb_value iter;
 
@@ -5309,23 +4847,16 @@ mrb_Git_git_config_next(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_next(&native_entry, native_iter);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: entry */
   mrb_value entry = native_entry == NULL ? mrb_nil_value() : mruby_giftwrap_git_config_entry(mrb, native_entry);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, entry);
-
-  return results;
+  return entry;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_open_default */
-/* sha: 2c8db063d2d9d5b75208431648528f77f268599e4b42537c15ccf496e15f41f7 */
+/* sha: 68f9ec78c9c9007833ae0504dc4340bc8b3913afcf933255ae687f58040d7865 */
 #if BIND_git_config_open_default_FUNCTION
 #define git_config_open_default_REQUIRED_ARGC 0
 #define git_config_open_default_OPTIONAL_ARGC 0
@@ -5336,30 +4867,22 @@ mrb_Git_git_config_next(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_open_default(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
 
 
   /* Invocation */
   int native_return_value = git_config_open_default(&native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_open_global */
-/* sha: ae45c80245e1c0c8fd1cae47b2f61779cd51ff4964a0da71491df47b05d2588a */
+/* sha: 7138f28cff50789ea26738dec67403e4d3e64c4dc71dbde5f7dd34a0d1f87dfc */
 #if BIND_git_config_open_global_FUNCTION
 #define git_config_open_global_REQUIRED_ARGC 1
 #define git_config_open_global_OPTIONAL_ARGC 0
@@ -5371,7 +4894,6 @@ mrb_Git_git_config_open_default(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_open_global(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
   mrb_value config;
 
@@ -5390,23 +4912,16 @@ mrb_Git_git_config_open_global(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_open_global(&native_out, native_config);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_open_level */
-/* sha: 4d3a59611ec6952e67f22e9bcb09b3601e38b2e602f5b63ab209c7b013f3f81a */
+/* sha: 2a317409c9b28bdee25a84851760bb4ce8d16fb41bfc0434e544abe878e3d846 */
 #if BIND_git_config_open_level_FUNCTION
 #define git_config_open_level_REQUIRED_ARGC 2
 #define git_config_open_level_OPTIONAL_ARGC 0
@@ -5419,7 +4934,6 @@ mrb_Git_git_config_open_global(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_open_level(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
   mrb_value parent;
   mrb_int native_level;
@@ -5439,23 +4953,16 @@ mrb_Git_git_config_open_level(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_open_level(&native_out, native_parent, native_level);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_open_ondisk */
-/* sha: 90a1b27bfd0e30891ed522b049d91c14c95e42283eee55c9b2bc3da5090cee37 */
+/* sha: ef2822885cbcc38420ae8b833b5f2df9f09456aee147e836743904cb8430fec8 */
 #if BIND_git_config_open_ondisk_FUNCTION
 #define git_config_open_ondisk_REQUIRED_ARGC 1
 #define git_config_open_ondisk_OPTIONAL_ARGC 0
@@ -5467,7 +4974,6 @@ mrb_Git_git_config_open_level(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_open_ondisk(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
   char * native_path = NULL;
 
@@ -5477,23 +4983,16 @@ mrb_Git_git_config_open_ondisk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_open_ondisk(&native_out, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_parse_bool */
-/* sha: 7761a836e93f345670ecb79b4f53d99bb576bd31b973bf16e67e78b8505bd11a */
+/* sha: e1a1f15445dd842178e985e7c07843588285cd264bcea77ffa561fb0957951e7 */
 #if BIND_git_config_parse_bool_FUNCTION
 #define git_config_parse_bool_REQUIRED_ARGC 1
 #define git_config_parse_bool_OPTIONAL_ARGC 0
@@ -5505,7 +5004,6 @@ mrb_Git_git_config_open_ondisk(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_parse_bool(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   char * native_value = NULL;
 
@@ -5515,23 +5013,16 @@ mrb_Git_git_config_parse_bool(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_parse_bool(&native_out, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == 0 ? mrb_false_value() : mrb_true_value();
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_parse_int32 */
-/* sha: f58892d2645112d1f1872d1507277d62407c075438c27030634043341d74d1f0 */
+/* sha: 90e8fc3629d7bbd6874bb32d5da406963284be51290d08321b3127b1802c3699 */
 #if BIND_git_config_parse_int32_FUNCTION
 #define git_config_parse_int32_REQUIRED_ARGC 1
 #define git_config_parse_int32_OPTIONAL_ARGC 0
@@ -5543,7 +5034,6 @@ mrb_Git_git_config_parse_bool(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_parse_int32(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   char * native_value = NULL;
 
@@ -5553,23 +5043,16 @@ mrb_Git_git_config_parse_int32(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_parse_int32(&native_out, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_parse_int64 */
-/* sha: c5a848c33203933c1d4f2df3b585405bb028640ce589eb5d7cd51b950317897a */
+/* sha: d4f892bb36e222347fc75089f477289d2b6bbf449843d987210aa675f59fa8a6 */
 #if BIND_git_config_parse_int64_FUNCTION
 #define git_config_parse_int64_REQUIRED_ARGC 1
 #define git_config_parse_int64_OPTIONAL_ARGC 0
@@ -5581,7 +5064,6 @@ mrb_Git_git_config_parse_int32(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_parse_int64(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   char * native_value = NULL;
 
@@ -5591,63 +5073,46 @@ mrb_Git_git_config_parse_int64(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_parse_int64(&native_out, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_parse_path */
-/* sha: 8db05df58e03353c0dc560dc98fa32b5b41bab2e351d0e6937c860f1919b6dd1 */
+/* sha: 80521e444b6b4262329e6e172ecf62b571dcb1da509802a5b393008224b82da6 */
 #if BIND_git_config_parse_path_FUNCTION
-#define git_config_parse_path_REQUIRED_ARGC 2
+#define git_config_parse_path_REQUIRED_ARGC 1
 #define git_config_parse_path_OPTIONAL_ARGC 0
 /* git_config_parse_path
  *
  * Parameters:
- * - out: git_buf *
  * - value: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_config_parse_path(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   char * native_value = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oz", &out, &native_value);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
+  mrb_get_args(mrb, "z", &native_value);
 
   /* Invocation */
   int native_return_value = git_config_parse_path(native_out, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_set_bool */
-/* sha: eef068f505a8056286b5120d36a617c7c3fa1d1433de5520f191e430e7e2e61b */
+/* sha: 7d0faac9dd41971da89aef427777425364a2a9585c0cf81fbe02d30945020633 */
 #if BIND_git_config_set_bool_FUNCTION
 #define git_config_set_bool_REQUIRED_ARGC 3
 #define git_config_set_bool_OPTIONAL_ARGC 0
@@ -5680,16 +5145,13 @@ mrb_Git_git_config_set_bool(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_set_bool(native_cfg, native_name, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_set_int32 */
-/* sha: 2e55447fb9ed0d1aab9b60d6d5f8adca7bf382c4e32ef594e399e8af09ceb9fc */
+/* sha: 708823ed9d4affcf01d18fa7b40dbacabf098c0cdc9159109f8297a564e32c66 */
 #if BIND_git_config_set_int32_FUNCTION
 #define git_config_set_int32_REQUIRED_ARGC 3
 #define git_config_set_int32_OPTIONAL_ARGC 0
@@ -5722,16 +5184,13 @@ mrb_Git_git_config_set_int32(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_set_int32(native_cfg, native_name, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_set_int64 */
-/* sha: 95e7ec7398fc77e49ad87a539c9550f9757b3752692b60925ff9435728e24bc7 */
+/* sha: 32ea6f0e0ae0bc8f6ddd3c013fb1131977a95cd93653723d3b8487497290078a */
 #if BIND_git_config_set_int64_FUNCTION
 #define git_config_set_int64_REQUIRED_ARGC 3
 #define git_config_set_int64_OPTIONAL_ARGC 0
@@ -5764,16 +5223,13 @@ mrb_Git_git_config_set_int64(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_set_int64(native_cfg, native_name, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_set_multivar */
-/* sha: 5a73800e958fa5bd5b88bcd9455e42f6f9c17acff17c092a6bb45e92d3961dfc */
+/* sha: 61e50bebd39f2d24f7b487977de50b712b3fb0f0f144fbf97d5b7f0ae5c184e2 */
 #if BIND_git_config_set_multivar_FUNCTION
 #define git_config_set_multivar_REQUIRED_ARGC 4
 #define git_config_set_multivar_OPTIONAL_ARGC 0
@@ -5808,16 +5264,13 @@ mrb_Git_git_config_set_multivar(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_set_multivar(native_cfg, native_name, native_regexp, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_set_string */
-/* sha: 00e8a94475eb81088cc1929e3e7d4d4d9fbbf9eec7efb59ade7a18dbec34ab6a */
+/* sha: d083d16bf31f016490ac15719beaf35bbdccbed9f4ea441c930a676783ac590b */
 #if BIND_git_config_set_string_FUNCTION
 #define git_config_set_string_REQUIRED_ARGC 3
 #define git_config_set_string_OPTIONAL_ARGC 0
@@ -5850,16 +5303,13 @@ mrb_Git_git_config_set_string(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_set_string(native_cfg, native_name, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_snapshot */
-/* sha: cac2f36ca0eb485672cd242632d676bc2134341bbb88b3f56bd5e0f2c6b9d840 */
+/* sha: 6aaa382b7ba87c62d8ac1474123d1a5b6fc1ae93a1ff8059227b27aeb3d3c0ac */
 #if BIND_git_config_snapshot_FUNCTION
 #define git_config_snapshot_REQUIRED_ARGC 1
 #define git_config_snapshot_OPTIONAL_ARGC 0
@@ -5871,7 +5321,6 @@ mrb_Git_git_config_set_string(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_config_snapshot(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
   mrb_value config;
 
@@ -5890,23 +5339,16 @@ mrb_Git_git_config_snapshot(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_config_snapshot(&native_out, native_config);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_default_new */
-/* sha: 17f9facd95c6c4bf6366d3771823baeb1677ecf8720a209eb0b88cffd568c2fc */
+/* sha: 15a2a42c847c5e6a0ee785b6ccbf15e696bc930e2f9cf628fcad9888b3130f88 */
 #if BIND_git_cred_default_new_FUNCTION
 #define git_cred_default_new_REQUIRED_ARGC 0
 #define git_cred_default_new_OPTIONAL_ARGC 0
@@ -5917,24 +5359,16 @@ mrb_Git_git_config_snapshot(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_default_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
 
 
   /* Invocation */
   int native_return_value = git_cred_default_new(&native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -5975,7 +5409,7 @@ mrb_Git_git_cred_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_has_username */
-/* sha: 0e8f85e4f41940263fd735b99c448c20832153bdec11bcf9ba3ffc9f6d2e1968 */
+/* sha: 7e63b1bd9858d4674d1e39bf8d3526c350cf5550bc47c992055a25625e2cd01c */
 #if BIND_git_cred_has_username_FUNCTION
 #define git_cred_has_username_REQUIRED_ARGC 1
 #define git_cred_has_username_OPTIONAL_ARGC 0
@@ -6005,7 +5439,7 @@ mrb_Git_git_cred_has_username(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_cred_has_username(native_cred);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -6013,7 +5447,7 @@ mrb_Git_git_cred_has_username(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_ssh_custom_new */
-/* sha: 0399f991fa9c594aedc7b90ab9b6f117c12817ff05fb0ea567da58d61ee5fe96 */
+/* sha: e1ad901aa175735b8bbc82c890d11cb7297e04d6170cb17d0745011e4ebd684d */
 #if BIND_git_cred_ssh_custom_new_FUNCTION
 #define git_cred_ssh_custom_new_REQUIRED_ARGC 5
 #define git_cred_ssh_custom_new_OPTIONAL_ARGC 0
@@ -6029,7 +5463,6 @@ mrb_Git_git_cred_has_username(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_ssh_custom_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
   char * native_username = NULL;
   char * native_publickey = NULL;
@@ -6053,23 +5486,16 @@ mrb_Git_git_cred_ssh_custom_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_ssh_custom_new(&native_out, native_username, native_publickey, native_publickey_len, native_sign_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_ssh_interactive_new */
-/* sha: 08b0f0ff3df7e446bcea03ffee1383884930380ebea9cf128bc3d8aa400eb7be */
+/* sha: 6c366244a1b37a95eb2b845b61089fb77493e5e75451cebfd8c872b125c86dcd */
 #if BIND_git_cred_ssh_interactive_new_FUNCTION
 #define git_cred_ssh_interactive_new_REQUIRED_ARGC 3
 #define git_cred_ssh_interactive_new_OPTIONAL_ARGC 0
@@ -6083,7 +5509,6 @@ mrb_Git_git_cred_ssh_custom_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_ssh_interactive_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
   char * native_username = NULL;
   mrb_value prompt_callback;
@@ -6105,23 +5530,16 @@ mrb_Git_git_cred_ssh_interactive_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_ssh_interactive_new(&native_out, native_username, native_prompt_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_ssh_key_from_agent */
-/* sha: 49291a90af6311256286b4b4e96de73e20b81207b17c3811588470653f2e0f35 */
+/* sha: 35502ff5ac5eeb238f98b9c4c5358c8e00f434a3a4d0c40964f936a7eb355411 */
 #if BIND_git_cred_ssh_key_from_agent_FUNCTION
 #define git_cred_ssh_key_from_agent_REQUIRED_ARGC 1
 #define git_cred_ssh_key_from_agent_OPTIONAL_ARGC 0
@@ -6133,7 +5551,6 @@ mrb_Git_git_cred_ssh_interactive_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_ssh_key_from_agent(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
   char * native_username = NULL;
 
@@ -6143,23 +5560,16 @@ mrb_Git_git_cred_ssh_key_from_agent(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_ssh_key_from_agent(&native_out, native_username);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_ssh_key_memory_new */
-/* sha: 8df778344e44c922c3bfd719d54b3fb608dee6d20ad5a83dde7c119358dcfb38 */
+/* sha: 1b507badd3b59ad34e853819f797d5fc843ff72cf967c31187cb984dde16dd6c */
 #if BIND_git_cred_ssh_key_memory_new_FUNCTION
 #define git_cred_ssh_key_memory_new_REQUIRED_ARGC 4
 #define git_cred_ssh_key_memory_new_OPTIONAL_ARGC 0
@@ -6174,7 +5584,6 @@ mrb_Git_git_cred_ssh_key_from_agent(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_ssh_key_memory_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
   char * native_username = NULL;
   char * native_publickey = NULL;
@@ -6187,23 +5596,16 @@ mrb_Git_git_cred_ssh_key_memory_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_ssh_key_memory_new(&native_out, native_username, native_publickey, native_privatekey, native_passphrase);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_ssh_key_new */
-/* sha: b8acf75a38219b6a97d502b1d72e1b20be257581fe7ab808a57fd70767a4db35 */
+/* sha: a6bff8ddebcfc3ca7642d5192d85aa7d88544d85fdd7ad236440a8f37f916c9d */
 #if BIND_git_cred_ssh_key_new_FUNCTION
 #define git_cred_ssh_key_new_REQUIRED_ARGC 4
 #define git_cred_ssh_key_new_OPTIONAL_ARGC 0
@@ -6218,7 +5620,6 @@ mrb_Git_git_cred_ssh_key_memory_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_ssh_key_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
   char * native_username = NULL;
   char * native_publickey = NULL;
@@ -6231,23 +5632,16 @@ mrb_Git_git_cred_ssh_key_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_ssh_key_new(&native_out, native_username, native_publickey, native_privatekey, native_passphrase);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_username_new */
-/* sha: 0f4d3c8cb4bb412853dd84b7763ab1571b504c577dd280b765a559906dc9bdde */
+/* sha: b1e1df1445c2221fbeda76159a29418706b134a803b41f7e0bac6bdc88e4b1b6 */
 #if BIND_git_cred_username_new_FUNCTION
 #define git_cred_username_new_REQUIRED_ARGC 1
 #define git_cred_username_new_OPTIONAL_ARGC 0
@@ -6259,7 +5653,6 @@ mrb_Git_git_cred_ssh_key_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_username_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_cred = NULL;
   char * native_username = NULL;
 
@@ -6269,23 +5662,16 @@ mrb_Git_git_cred_username_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_username_new(&native_cred, native_username);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: cred */
   mrb_value cred = native_cred == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_cred);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, cred);
-
-  return results;
+  return cred;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_userpass */
-/* sha: 17808dca7e54c2b171b4ccc5f1a16751989aa82cc017a9c2867dc3337e4e1779 */
+/* sha: 061d6fe44d2b2933100e7ce39d15249529a0eedfd847d82e294cfb9b7f431456 */
 #if BIND_git_cred_userpass_FUNCTION
 #define git_cred_userpass_REQUIRED_ARGC 4
 #define git_cred_userpass_OPTIONAL_ARGC 0
@@ -6300,7 +5686,6 @@ mrb_Git_git_cred_username_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_userpass(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_cred = NULL;
   char * native_url = NULL;
   char * native_user_from_url = NULL;
@@ -6319,23 +5704,16 @@ mrb_Git_git_cred_userpass(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_userpass(&native_cred, native_url, native_user_from_url, native_allowed_types, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: cred */
   mrb_value cred = native_cred == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_cred);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, cred);
-
-  return results;
+  return cred;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_cred_userpass_plaintext_new */
-/* sha: 7496870c2e38f16865b98b7a3b1bcf49a8f7cbbec7da0ad50295d85fd72ce8e0 */
+/* sha: dad56c8d5bb8799cf59ac3681701d59929890c1d4ffdbb2ef5743e8ddb0eae24 */
 #if BIND_git_cred_userpass_plaintext_new_FUNCTION
 #define git_cred_userpass_plaintext_new_REQUIRED_ARGC 2
 #define git_cred_userpass_plaintext_new_OPTIONAL_ARGC 0
@@ -6348,7 +5726,6 @@ mrb_Git_git_cred_userpass(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_cred_userpass_plaintext_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_cred * native_out = NULL;
   char * native_username = NULL;
   char * native_password = NULL;
@@ -6359,23 +5736,16 @@ mrb_Git_git_cred_userpass_plaintext_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_cred_userpass_plaintext_new(&native_out, native_username, native_password);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_cred(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_describe_commit */
-/* sha: c849e2203bc602e7db69481ad1fd06587dafb38e19afd6394158406d2b38d37b */
+/* sha: 2773aa42f752a0ee060f0bed4c9a8ffcb90974f761536b498e7326c9039db668 */
 #if BIND_git_describe_commit_FUNCTION
 #define git_describe_commit_REQUIRED_ARGC 2
 #define git_describe_commit_OPTIONAL_ARGC 0
@@ -6388,7 +5758,6 @@ mrb_Git_git_cred_userpass_plaintext_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_describe_commit(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_describe_result * native_result = NULL;
   mrb_value committish;
   mrb_value opts;
@@ -6415,48 +5784,36 @@ mrb_Git_git_describe_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_describe_commit(&native_result, native_committish, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: result */
   mrb_value result = native_result == NULL ? mrb_nil_value() : mruby_giftwrap_git_describe_result(mrb, native_result);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, result);
-
-  return results;
+  return result;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_describe_format */
-/* sha: 04036de28f496d2559ba7ff17a6cf1100a8be2bbf8ec7ac089119d5f9c3ed004 */
+/* sha: 8e142d1788445209e5071e138f9ddaf26f74d5fcdc3b13f44a38d9dcf642902d */
 #if BIND_git_describe_format_FUNCTION
-#define git_describe_format_REQUIRED_ARGC 3
+#define git_describe_format_REQUIRED_ARGC 2
 #define git_describe_format_OPTIONAL_ARGC 0
 /* git_describe_format
  *
  * Parameters:
- * - out: git_buf *
  * - result: const git_describe_result *
  * - opts: const git_describe_format_options *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_describe_format(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value result;
   mrb_value opts;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooo", &out, &result, &opts);
+  mrb_get_args(mrb, "oo", &result, &opts);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, result, DescribeResult_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "DescribeResult expected");
     return mrb_nil_value();
@@ -6465,9 +5822,6 @@ mrb_Git_git_describe_format(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "DescribeFormatOptions expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: result */
   const git_describe_result * native_result = (mrb_nil_p(result) ? NULL : mruby_unbox_git_describe_result(result));
@@ -6478,16 +5832,16 @@ mrb_Git_git_describe_format(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_describe_format(native_out, native_result, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_describe_init_format_options */
-/* sha: cde5213cf35fa2886b49ea1708bd58baab0bb1db8e31b18fdd26b6ac6ace4e22 */
+/* sha: 53fd598acd887da6a7f66f805e8e27b6dc2d393e7277298847b9d7143f07f3c6 */
 #if BIND_git_describe_init_format_options_FUNCTION
 #define git_describe_init_format_options_REQUIRED_ARGC 2
 #define git_describe_init_format_options_OPTIONAL_ARGC 0
@@ -6518,16 +5872,13 @@ mrb_Git_git_describe_init_format_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_describe_init_format_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_describe_init_options */
-/* sha: 02644ebe1ebcc5cd58ab518916fba0ac044ec6497d2d6783d4befa2affd7bf58 */
+/* sha: 6bc1c31a2072c7ab93a50fb2e52c1d5083d73f49efc94d9ec21e439de011ef35 */
 #if BIND_git_describe_init_options_FUNCTION
 #define git_describe_init_options_REQUIRED_ARGC 2
 #define git_describe_init_options_OPTIONAL_ARGC 0
@@ -6558,10 +5909,7 @@ mrb_Git_git_describe_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_describe_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -6602,7 +5950,7 @@ mrb_Git_git_describe_result_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_describe_workdir */
-/* sha: 56613f0a1fa625a43aed7756709cfa8949e6f3815a8a54b901b5c2189f180bf7 */
+/* sha: 4484c4ce450e898efac525bbb163312d611cf959ae56078b3ca26796bcad2119 */
 #if BIND_git_describe_workdir_FUNCTION
 #define git_describe_workdir_REQUIRED_ARGC 2
 #define git_describe_workdir_OPTIONAL_ARGC 0
@@ -6615,7 +5963,6 @@ mrb_Git_git_describe_result_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_describe_workdir(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_describe_result * native_out = NULL;
   mrb_value repo;
   mrb_value opts;
@@ -6642,23 +5989,16 @@ mrb_Git_git_describe_workdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_describe_workdir(&native_out, native_repo, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_describe_result(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_blob_to_buffer */
-/* sha: d0376808bfbd60e1dbcc2d73397243c11064068f0b92524a2709979ec88e9be0 */
+/* sha: 7eca9273f2460718fdaa5f3c3a2c86e2a2a483d0f5f272b7874e811b0f96a5d7 */
 #if BIND_git_diff_blob_to_buffer_FUNCTION
 #define git_diff_blob_to_buffer_REQUIRED_ARGC 11
 #define git_diff_blob_to_buffer_OPTIONAL_ARGC 0
@@ -6734,16 +6074,13 @@ mrb_Git_git_diff_blob_to_buffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_blob_to_buffer(native_old_blob, native_old_as_path, native_buffer, native_buffer_len, native_buffer_as_path, native_options, native_file_cb, native_binary_cb, native_hunk_cb, native_line_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_blobs */
-/* sha: d2ef7b96299017d40b9525c273b421922788ad83fe38db7b8045d264ad597019 */
+/* sha: e8662003428a77b31689696b1ae9da99c1725be4b95e72300a7076ec6a5557d2 */
 #if BIND_git_diff_blobs_FUNCTION
 #define git_diff_blobs_REQUIRED_ARGC 10
 #define git_diff_blobs_OPTIONAL_ARGC 0
@@ -6824,16 +6161,13 @@ mrb_Git_git_diff_blobs(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_blobs(native_old_blob, native_old_as_path, native_new_blob, native_new_as_path, native_options, native_file_cb, native_binary_cb, native_hunk_cb, native_line_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_buffers */
-/* sha: e3eb2a48e5e2e111b27c63a044d1d37f45fa6567d2e15a4686bae5eca4af4b60 */
+/* sha: 8c8cb88ff0ef23504dfbb88df21b2151d755545bc4c156571039701d8a191353 */
 #if BIND_git_diff_buffers_FUNCTION
 #define git_diff_buffers_REQUIRED_ARGC 12
 #define git_diff_buffers_OPTIONAL_ARGC 0
@@ -6912,23 +6246,19 @@ mrb_Git_git_diff_buffers(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_buffers(native_old_buffer, native_old_len, native_old_as_path, native_new_buffer, native_new_len, native_new_as_path, native_options, native_file_cb, native_binary_cb, native_hunk_cb, native_line_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_commit_as_email */
-/* sha: bf48c9d9be4584ec07f645c7128d19c3dcea6d73188b0c7856edbca23659f860 */
+/* sha: 05c7a26601eef9caab616572825da4764800187a460347cdf24a74e948ade271 */
 #if BIND_git_diff_commit_as_email_FUNCTION
-#define git_diff_commit_as_email_REQUIRED_ARGC 7
+#define git_diff_commit_as_email_REQUIRED_ARGC 6
 #define git_diff_commit_as_email_OPTIONAL_ARGC 0
 /* git_diff_commit_as_email
  *
  * Parameters:
- * - out: git_buf *
  * - repo: git_repository *
  * - commit: git_commit *
  * - patch_no: size_t
@@ -6939,7 +6269,7 @@ mrb_Git_git_diff_buffers(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_commit_as_email(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value repo;
   mrb_value commit;
   mrb_int native_patch_no;
@@ -6948,13 +6278,9 @@ mrb_Git_git_diff_commit_as_email(mrb_state* mrb, mrb_value self) {
   mrb_value diff_opts;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oooiiio", &out, &repo, &commit, &native_patch_no, &native_total_patches, &native_flags, &diff_opts);
+  mrb_get_args(mrb, "ooiiio", &repo, &commit, &native_patch_no, &native_total_patches, &native_flags, &diff_opts);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -6968,9 +6294,6 @@ mrb_Git_git_diff_commit_as_email(mrb_state* mrb, mrb_value self) {
     return mrb_nil_value();
   }
 
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
@@ -6983,16 +6306,16 @@ mrb_Git_git_diff_commit_as_email(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_commit_as_email(native_out, native_repo, native_commit, native_patch_no, native_total_patches, native_flags, native_diff_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_find_init_options */
-/* sha: 0cc516c17c49ca70f2594f2c37dc4360c38f87bbc38d1b64faa08b98f3e533a3 */
+/* sha: 5f2c66a6974cce74ce6b2fbaff2f8e92170d9240e0db711b2b0be7fd59d470bd */
 #if BIND_git_diff_find_init_options_FUNCTION
 #define git_diff_find_init_options_REQUIRED_ARGC 2
 #define git_diff_find_init_options_OPTIONAL_ARGC 0
@@ -7023,16 +6346,13 @@ mrb_Git_git_diff_find_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_find_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_find_similar */
-/* sha: b6c1ee264d1189a94b501e9b78913f4ca4ea7a8683a4806f8394884fd14e0110 */
+/* sha: 0f4ca14e31f0edf6a94525abe5a55ae3a86444cedbd3e4fa45fb0285cc36bf0d */
 #if BIND_git_diff_find_similar_FUNCTION
 #define git_diff_find_similar_REQUIRED_ARGC 2
 #define git_diff_find_similar_OPTIONAL_ARGC 0
@@ -7070,16 +6390,13 @@ mrb_Git_git_diff_find_similar(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_find_similar(native_diff, native_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_foreach */
-/* sha: 80b42033a06c95f2d63c0c83e01aaad0d584c988fab7821d831354a9ca73ed13 */
+/* sha: 9eb20e812cc50f0f67cc47fb4c02a7a4e3e3590e00c772b904e1f37cfe331ff5 */
 #if BIND_git_diff_foreach_FUNCTION
 #define git_diff_foreach_REQUIRED_ARGC 6
 #define git_diff_foreach_OPTIONAL_ARGC 0
@@ -7138,41 +6455,33 @@ mrb_Git_git_diff_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_foreach(native_diff, native_file_cb, native_binary_cb, native_hunk_cb, native_line_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_format_email */
-/* sha: c769314e7a0e2e4ed569205540965403acb314764ee778fe20615da88b86bc45 */
+/* sha: f8e1d4a57261ab7ac9d0c7d8d59d18a751f095c1c6cf173051dc6edbb277a02a */
 #if BIND_git_diff_format_email_FUNCTION
-#define git_diff_format_email_REQUIRED_ARGC 3
+#define git_diff_format_email_REQUIRED_ARGC 2
 #define git_diff_format_email_OPTIONAL_ARGC 0
 /* git_diff_format_email
  *
  * Parameters:
- * - out: git_buf *
  * - diff: git_diff *
  * - opts: const git_diff_format_email_options *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_diff_format_email(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value diff;
   mrb_value opts;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooo", &out, &diff, &opts);
+  mrb_get_args(mrb, "oo", &diff, &opts);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, diff, Diff_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Diff expected");
     return mrb_nil_value();
@@ -7181,9 +6490,6 @@ mrb_Git_git_diff_format_email(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "DiffFormatEmailOptions expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: diff */
   git_diff * native_diff = (mrb_nil_p(diff) ? NULL : mruby_unbox_git_diff(diff));
@@ -7194,16 +6500,16 @@ mrb_Git_git_diff_format_email(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_format_email(native_out, native_diff, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_format_email_init_options */
-/* sha: bfaaf7351ffe0e63a12fe9f0cfdb50585773098345fbf4d6f8bf658ab0e2ee1d */
+/* sha: 772f6f76d4267ea72e53581586a696b4d5ccebd405779c4d7bfd9086904f3169 */
 #if BIND_git_diff_format_email_init_options_FUNCTION
 #define git_diff_format_email_init_options_REQUIRED_ARGC 2
 #define git_diff_format_email_init_options_OPTIONAL_ARGC 0
@@ -7234,10 +6540,7 @@ mrb_Git_git_diff_format_email_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_format_email_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -7318,7 +6621,7 @@ mrb_Git_git_diff_get_delta(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_get_stats */
-/* sha: c48a9a53f0337c6a8c3ffc84a65e9cae3e76335563c075930c70a488ad483522 */
+/* sha: 5a069ae743830ccb28e762a73635f3277cd957e67eda261e73c57f8eea971008 */
 #if BIND_git_diff_get_stats_FUNCTION
 #define git_diff_get_stats_REQUIRED_ARGC 1
 #define git_diff_get_stats_OPTIONAL_ARGC 0
@@ -7330,7 +6633,6 @@ mrb_Git_git_diff_get_delta(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_get_stats(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff_stats * native_out = NULL;
   mrb_value diff;
 
@@ -7349,23 +6651,16 @@ mrb_Git_git_diff_get_stats(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_get_stats(&native_out, native_diff);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff_stats(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_index_to_index */
-/* sha: e22a4c70f4c99bf6b56453f5ec347bfba8f56f2004dbeb7478921f27ad617b4b */
+/* sha: cc3f4dd2828d744b92479d3870e5797421e8dc7fe48e9495f41d8183c8a1c884 */
 #if BIND_git_diff_index_to_index_FUNCTION
 #define git_diff_index_to_index_REQUIRED_ARGC 4
 #define git_diff_index_to_index_OPTIONAL_ARGC 0
@@ -7380,7 +6675,6 @@ mrb_Git_git_diff_get_stats(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_index_to_index(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff * native_diff = NULL;
   mrb_value repo;
   mrb_value old_index;
@@ -7423,23 +6717,16 @@ mrb_Git_git_diff_index_to_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_index_to_index(&native_diff, native_repo, native_old_index, native_new_index, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: diff */
   mrb_value diff = native_diff == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff(mrb, native_diff);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, diff);
-
-  return results;
+  return diff;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_index_to_workdir */
-/* sha: db4aa5b21191421e6928da610370ac8dcc58fb6c38b0907a34cea67cf474c629 */
+/* sha: 4bdf76cd679b4f0d48d16a8a80f357acf376160bc75ca298ce9708c6f2497289 */
 #if BIND_git_diff_index_to_workdir_FUNCTION
 #define git_diff_index_to_workdir_REQUIRED_ARGC 3
 #define git_diff_index_to_workdir_OPTIONAL_ARGC 0
@@ -7453,7 +6740,6 @@ mrb_Git_git_diff_index_to_index(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_index_to_workdir(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff * native_diff = NULL;
   mrb_value repo;
   mrb_value index;
@@ -7488,23 +6774,16 @@ mrb_Git_git_diff_index_to_workdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_index_to_workdir(&native_diff, native_repo, native_index, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: diff */
   mrb_value diff = native_diff == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff(mrb, native_diff);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, diff);
-
-  return results;
+  return diff;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_init_options */
-/* sha: da731170a75046c298557641179688b0aa4242fccd3c3c38cf35a685613f8717 */
+/* sha: 354383395ca007489f8877a4bb9e3bfbfd73c49f5c001d8b90944c5c9d302a44 */
 #if BIND_git_diff_init_options_FUNCTION
 #define git_diff_init_options_REQUIRED_ARGC 2
 #define git_diff_init_options_OPTIONAL_ARGC 0
@@ -7535,16 +6814,13 @@ mrb_Git_git_diff_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_is_sorted_icase */
-/* sha: 376537f3472add08b09ba35c833b8247228a54bdb7b2160137950f1eb618a08a */
+/* sha: 4a115e31f28304972488de9df56263a34a13507231a645153897a7e15efdcd96 */
 #if BIND_git_diff_is_sorted_icase_FUNCTION
 #define git_diff_is_sorted_icase_REQUIRED_ARGC 1
 #define git_diff_is_sorted_icase_OPTIONAL_ARGC 0
@@ -7574,7 +6850,7 @@ mrb_Git_git_diff_is_sorted_icase(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_diff_is_sorted_icase(native_diff);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -7582,7 +6858,7 @@ mrb_Git_git_diff_is_sorted_icase(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_merge */
-/* sha: b4ad8015ff57208c203ede9c15db717b8fa1c120f798e10def838b0ae5a138c8 */
+/* sha: 1d399ae0571d1126483d288e5717ca9bd5aeecd24c20627d1079e11e5f983480 */
 #if BIND_git_diff_merge_FUNCTION
 #define git_diff_merge_REQUIRED_ARGC 2
 #define git_diff_merge_OPTIONAL_ARGC 0
@@ -7620,10 +6896,7 @@ mrb_Git_git_diff_merge(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_merge(native_onto, native_from);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -7707,7 +6980,7 @@ mrb_Git_git_diff_num_deltas_of_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_print */
-/* sha: 49e4323625492b18277158b1e925aef577e3545308f8f83709ee81bb4aaf3567 */
+/* sha: b0e1a4c07686fba2531988faf0cc97331a76103f1f0c1dc1242f45542a62ebcc */
 #if BIND_git_diff_print_FUNCTION
 #define git_diff_print_REQUIRED_ARGC 4
 #define git_diff_print_OPTIONAL_ARGC 0
@@ -7750,10 +7023,7 @@ mrb_Git_git_diff_print(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_print(native_diff, native_format, native_print_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -7908,14 +7178,13 @@ mrb_Git_git_diff_stats_insertions(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_stats_to_buf */
-/* sha: 3b7e1f5eaf83863a64465a65c935f28e46127f7947da1766a93a4126af10b084 */
+/* sha: 51406e59997558c3621aee0fd025e9e711da2dcdf5227713ab74d9d2c8f689f2 */
 #if BIND_git_diff_stats_to_buf_FUNCTION
-#define git_diff_stats_to_buf_REQUIRED_ARGC 4
+#define git_diff_stats_to_buf_REQUIRED_ARGC 3
 #define git_diff_stats_to_buf_OPTIONAL_ARGC 0
 /* git_diff_stats_to_buf
  *
  * Parameters:
- * - out: git_buf *
  * - stats: const git_diff_stats *
  * - format: git_diff_stats_format_t
  * - width: size_t
@@ -7923,26 +7192,19 @@ mrb_Git_git_diff_stats_insertions(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_stats_to_buf(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value stats;
   mrb_int native_format;
   mrb_int native_width;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooii", &out, &stats, &native_format, &native_width);
+  mrb_get_args(mrb, "oii", &stats, &native_format, &native_width);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, stats, DiffStats_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "DiffStats expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: stats */
   const git_diff_stats * native_stats = (mrb_nil_p(stats) ? NULL : mruby_unbox_git_diff_stats(stats));
@@ -7950,10 +7212,10 @@ mrb_Git_git_diff_stats_to_buf(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_stats_to_buf(native_out, native_stats, native_format, native_width);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -7988,7 +7250,7 @@ mrb_Git_git_diff_status_char(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_tree_to_index */
-/* sha: 7c368ac9f10df0987e83c5ef53529172065ec00cb009c7e479ae5974d269eed8 */
+/* sha: 0586acc04a48b882e71c926b240c9c803ff6e09484a71fe9eb4a9c13c9931dcd */
 #if BIND_git_diff_tree_to_index_FUNCTION
 #define git_diff_tree_to_index_REQUIRED_ARGC 4
 #define git_diff_tree_to_index_OPTIONAL_ARGC 0
@@ -8003,7 +7265,6 @@ mrb_Git_git_diff_status_char(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_tree_to_index(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff * native_diff = NULL;
   mrb_value repo;
   mrb_value old_tree;
@@ -8046,23 +7307,16 @@ mrb_Git_git_diff_tree_to_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_tree_to_index(&native_diff, native_repo, native_old_tree, native_index, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: diff */
   mrb_value diff = native_diff == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff(mrb, native_diff);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, diff);
-
-  return results;
+  return diff;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_tree_to_tree */
-/* sha: 9e8640b300b647be88af00ab265480745343c5a2f10a27e4bbd7513f11d7d0cc */
+/* sha: 27f3019f210bdb548305e56250f2e83ead6f59241250604419a4b54e79db2c53 */
 #if BIND_git_diff_tree_to_tree_FUNCTION
 #define git_diff_tree_to_tree_REQUIRED_ARGC 4
 #define git_diff_tree_to_tree_OPTIONAL_ARGC 0
@@ -8077,7 +7331,6 @@ mrb_Git_git_diff_tree_to_index(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_tree_to_tree(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff * native_diff = NULL;
   mrb_value repo;
   mrb_value old_tree;
@@ -8120,23 +7373,16 @@ mrb_Git_git_diff_tree_to_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_tree_to_tree(&native_diff, native_repo, native_old_tree, native_new_tree, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: diff */
   mrb_value diff = native_diff == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff(mrb, native_diff);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, diff);
-
-  return results;
+  return diff;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_tree_to_workdir */
-/* sha: e707d8af310ffabad7faf05809973d498d26798b21f1338166ece7c94afc2dc2 */
+/* sha: b3b280a398572df33b3c73d1080e6482f5f77bbe842c652e30774906273b4315 */
 #if BIND_git_diff_tree_to_workdir_FUNCTION
 #define git_diff_tree_to_workdir_REQUIRED_ARGC 3
 #define git_diff_tree_to_workdir_OPTIONAL_ARGC 0
@@ -8150,7 +7396,6 @@ mrb_Git_git_diff_tree_to_tree(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_tree_to_workdir(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff * native_diff = NULL;
   mrb_value repo;
   mrb_value old_tree;
@@ -8185,23 +7430,16 @@ mrb_Git_git_diff_tree_to_workdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_tree_to_workdir(&native_diff, native_repo, native_old_tree, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: diff */
   mrb_value diff = native_diff == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff(mrb, native_diff);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, diff);
-
-  return results;
+  return diff;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_diff_tree_to_workdir_with_index */
-/* sha: bbad4d93ce9b114fe3c6318c7a36fcdd24c1c97db323af3947d266a2a5d7349f */
+/* sha: 2edf7dd5a57eed662bf450e40d2179235220c7ecd93a6c770e6c6df384c1e7a1 */
 #if BIND_git_diff_tree_to_workdir_with_index_FUNCTION
 #define git_diff_tree_to_workdir_with_index_REQUIRED_ARGC 3
 #define git_diff_tree_to_workdir_with_index_OPTIONAL_ARGC 0
@@ -8215,7 +7453,6 @@ mrb_Git_git_diff_tree_to_workdir(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_diff_tree_to_workdir_with_index(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff * native_diff = NULL;
   mrb_value repo;
   mrb_value old_tree;
@@ -8250,23 +7487,16 @@ mrb_Git_git_diff_tree_to_workdir_with_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_diff_tree_to_workdir_with_index(&native_diff, native_repo, native_old_tree, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: diff */
   mrb_value diff = native_diff == NULL ? mrb_nil_value() : mruby_giftwrap_git_diff(mrb, native_diff);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, diff);
-
-  return results;
+  return diff;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_fetch_init_options */
-/* sha: f0170e44204c6b612a43f8cc31d0ec98abe987afac36730b4fad7e28862216a1 */
+/* sha: 872b4b398fe0d5c70148aac03997c5c2316699af4da9f0c042205b00fc22a8b2 */
 #if BIND_git_fetch_init_options_FUNCTION
 #define git_fetch_init_options_REQUIRED_ARGC 2
 #define git_fetch_init_options_OPTIONAL_ARGC 0
@@ -8297,41 +7527,33 @@ mrb_Git_git_fetch_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_fetch_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_apply_to_blob */
-/* sha: 1a382fa8642dde578b82f43cf9f232eaa0ef82f4d192dd3d972539601d321d64 */
+/* sha: 4fdd7c46e75540a3e0a27ca0476793dad0012073a476a3ecffac14e0154eaac2 */
 #if BIND_git_filter_list_apply_to_blob_FUNCTION
-#define git_filter_list_apply_to_blob_REQUIRED_ARGC 3
+#define git_filter_list_apply_to_blob_REQUIRED_ARGC 2
 #define git_filter_list_apply_to_blob_OPTIONAL_ARGC 0
 /* git_filter_list_apply_to_blob
  *
  * Parameters:
- * - out: git_buf *
  * - filters: git_filter_list *
  * - blob: git_blob *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_filter_list_apply_to_blob(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value filters;
   mrb_value blob;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooo", &out, &filters, &blob);
+  mrb_get_args(mrb, "oo", &filters, &blob);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, filters, FilterList_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "FilterList expected");
     return mrb_nil_value();
@@ -8340,9 +7562,6 @@ mrb_Git_git_filter_list_apply_to_blob(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Blob expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: filters */
   git_filter_list * native_filters = (mrb_nil_p(filters) ? NULL : mruby_unbox_git_filter_list(filters));
@@ -8353,41 +7572,36 @@ mrb_Git_git_filter_list_apply_to_blob(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_filter_list_apply_to_blob(native_out, native_filters, native_blob);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_apply_to_data */
-/* sha: b0939e2b131863527c21cde645254f303c80fef102f43286e5b2883fc4c9aa46 */
+/* sha: eac1062ca556ed17c0ee117fe52a91721e2b89e070b74c191ba6048ca017ce50 */
 #if BIND_git_filter_list_apply_to_data_FUNCTION
-#define git_filter_list_apply_to_data_REQUIRED_ARGC 3
+#define git_filter_list_apply_to_data_REQUIRED_ARGC 2
 #define git_filter_list_apply_to_data_OPTIONAL_ARGC 0
 /* git_filter_list_apply_to_data
  *
  * Parameters:
- * - out: git_buf *
  * - filters: git_filter_list *
  * - in: git_buf *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_filter_list_apply_to_data(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value filters;
   mrb_value in;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooo", &out, &filters, &in);
+  mrb_get_args(mrb, "oo", &filters, &in);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, filters, FilterList_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "FilterList expected");
     return mrb_nil_value();
@@ -8397,35 +7611,31 @@ mrb_Git_git_filter_list_apply_to_data(mrb_state* mrb, mrb_value self) {
     return mrb_nil_value();
   }
 
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
-
   /* Unbox param: filters */
   git_filter_list * native_filters = (mrb_nil_p(filters) ? NULL : mruby_unbox_git_filter_list(filters));
 
   /* Unbox param: in */
-  git_buf * native_in = (mrb_nil_p(in) ? NULL : mruby_unbox_git_buf(in));
+  git_buf * native_in = mrb_nil_p(in) ? NULL : mruby_unbox_git_buf(in);
 
   /* Invocation */
   int native_return_value = git_filter_list_apply_to_data(native_out, native_filters, native_in);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_apply_to_file */
-/* sha: 156031b96ec4635a4d88ca169765f2b805a82d62d35f027dd476e9949b5653f8 */
+/* sha: 1ce64e6cc58aa333e8718fc580dbe7b509c257c3a99914c94d84795f16ac2d20 */
 #if BIND_git_filter_list_apply_to_file_FUNCTION
-#define git_filter_list_apply_to_file_REQUIRED_ARGC 4
+#define git_filter_list_apply_to_file_REQUIRED_ARGC 3
 #define git_filter_list_apply_to_file_OPTIONAL_ARGC 0
 /* git_filter_list_apply_to_file
  *
  * Parameters:
- * - out: git_buf *
  * - filters: git_filter_list *
  * - repo: git_repository *
  * - path: const char *
@@ -8433,19 +7643,15 @@ mrb_Git_git_filter_list_apply_to_data(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_filter_list_apply_to_file(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value filters;
   mrb_value repo;
   char * native_path = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oooz", &out, &filters, &repo, &native_path);
+  mrb_get_args(mrb, "ooz", &filters, &repo, &native_path);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, filters, FilterList_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "FilterList expected");
     return mrb_nil_value();
@@ -8454,9 +7660,6 @@ mrb_Git_git_filter_list_apply_to_file(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: filters */
   git_filter_list * native_filters = (mrb_nil_p(filters) ? NULL : mruby_unbox_git_filter_list(filters));
@@ -8467,16 +7670,16 @@ mrb_Git_git_filter_list_apply_to_file(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_filter_list_apply_to_file(native_out, native_filters, native_repo, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_contains */
-/* sha: 5205df6fd71651332f37c30a53fcc15d7a8cd2f6a13705aef03d26bb856fd971 */
+/* sha: e898f98a0c0af9a6507bc2170647649aa402ceaf67335431bf2d7a1d13b969c4 */
 #if BIND_git_filter_list_contains_FUNCTION
 #define git_filter_list_contains_REQUIRED_ARGC 2
 #define git_filter_list_contains_OPTIONAL_ARGC 0
@@ -8508,7 +7711,7 @@ mrb_Git_git_filter_list_contains(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_filter_list_contains(native_filters, native_name);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -8551,7 +7754,7 @@ mrb_Git_git_filter_list_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_load */
-/* sha: ad72e14386bdb0ed2ad0e612db8e9890bbd7ffe7106b9c4f1eb340bb1ddf3b53 */
+/* sha: dccfb4cb86d6e168b1e4c30f60b39f08c510b9beff53f9ed485ad1cdcaa962f7 */
 #if BIND_git_filter_list_load_FUNCTION
 #define git_filter_list_load_REQUIRED_ARGC 5
 #define git_filter_list_load_OPTIONAL_ARGC 0
@@ -8567,7 +7770,6 @@ mrb_Git_git_filter_list_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_filter_list_load(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_filter_list * native_filters = NULL;
   mrb_value repo;
   mrb_value blob;
@@ -8597,23 +7799,16 @@ mrb_Git_git_filter_list_load(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_filter_list_load(&native_filters, native_repo, native_blob, native_path, native_mode, native_flags);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: filters */
   mrb_value filters = native_filters == NULL ? mrb_nil_value() : mruby_giftwrap_git_filter_list(mrb, native_filters);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, filters);
-
-  return results;
+  return filters;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_stream_blob */
-/* sha: 95a0ba104a67a4d504d408ebc1ee8d2d53d7afaebb20b81ae7472db9e0071e07 */
+/* sha: 017df65d7624392407fcc5d5fde7b3832513a0e6f23628bdf42308fa5136def4 */
 #if BIND_git_filter_list_stream_blob_FUNCTION
 #define git_filter_list_stream_blob_REQUIRED_ARGC 3
 #define git_filter_list_stream_blob_OPTIONAL_ARGC 0
@@ -8660,16 +7855,13 @@ mrb_Git_git_filter_list_stream_blob(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_filter_list_stream_blob(native_filters, native_blob, native_target);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_stream_data */
-/* sha: 0390e273cb8a7ededafc95e8d0f080c903f90af839c377924de4a27b523a3a6a */
+/* sha: 0b2caa45831a6d92f041ef080bbb2924874a0f624a1006f856adf1403d66fbb0 */
 #if BIND_git_filter_list_stream_data_FUNCTION
 #define git_filter_list_stream_data_REQUIRED_ARGC 3
 #define git_filter_list_stream_data_OPTIONAL_ARGC 0
@@ -8708,7 +7900,7 @@ mrb_Git_git_filter_list_stream_data(mrb_state* mrb, mrb_value self) {
   git_filter_list * native_filters = (mrb_nil_p(filters) ? NULL : mruby_unbox_git_filter_list(filters));
 
   /* Unbox param: data */
-  git_buf * native_data = (mrb_nil_p(data) ? NULL : mruby_unbox_git_buf(data));
+  git_buf * native_data = mrb_nil_p(data) ? NULL : mruby_unbox_git_buf(data);
 
   /* Unbox param: target */
   git_writestream * native_target = (mrb_nil_p(target) ? NULL : mruby_unbox_git_writestream(target));
@@ -8716,16 +7908,13 @@ mrb_Git_git_filter_list_stream_data(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_filter_list_stream_data(native_filters, native_data, native_target);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_filter_list_stream_file */
-/* sha: 1b6cec8ff893966081d41d7a15765f4caf1e74a987753ac6dfd135bc5fe60154 */
+/* sha: 63e831ddc4b98a36eafdc0273b3378c4e05859b6fd4c6f7a941284894ef656af */
 #if BIND_git_filter_list_stream_file_FUNCTION
 #define git_filter_list_stream_file_REQUIRED_ARGC 4
 #define git_filter_list_stream_file_OPTIONAL_ARGC 0
@@ -8774,16 +7963,13 @@ mrb_Git_git_filter_list_stream_file(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_filter_list_stream_file(native_filters, native_repo, native_path, native_target);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_graph_ahead_behind */
-/* sha: 704eb75430132a3d698926d8ebabefd72fb243e16ec7b20c39a9f06ab9eeb1c6 */
+/* sha: e0d351e606512f3d0598f2f9de858a2a8ab41fed1d7e568a65e613d5d0bf7561 */
 #if BIND_git_graph_ahead_behind_FUNCTION
 #define git_graph_ahead_behind_REQUIRED_ARGC 3
 #define git_graph_ahead_behind_OPTIONAL_ARGC 0
@@ -8833,10 +8019,6 @@ mrb_Git_git_graph_ahead_behind(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_graph_ahead_behind(&native_ahead, &native_behind, native_repo, native_local, native_upstream);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: ahead */
   mrb_value ahead = mrb_fixnum_value(native_ahead);
   /* Box out param: behind */
@@ -8852,7 +8034,7 @@ mrb_Git_git_graph_ahead_behind(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_graph_descendant_of */
-/* sha: 41ef13c35b4b83cd6788c133ba4d0180716ed3da13e154a6c308f8cbaa400263 */
+/* sha: ebeaaaee82411aba0c167212bb54220cebbf7516462342e036eff8ba25c62b77 */
 #if BIND_git_graph_descendant_of_FUNCTION
 #define git_graph_descendant_of_REQUIRED_ARGC 3
 #define git_graph_descendant_of_OPTIONAL_ARGC 0
@@ -8900,7 +8082,7 @@ mrb_Git_git_graph_descendant_of(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_graph_descendant_of(native_repo, native_commit, native_ancestor);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -8908,7 +8090,7 @@ mrb_Git_git_graph_descendant_of(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_ignore_add_rule */
-/* sha: 38c050eba51c635948f2ef5aaa085d73e31c573bce1dc41c36492dfb65d4c07c */
+/* sha: ebd99d17e0214bf8339bc0880da61c4787a9f07f22e89785e85ba9793a8ed76e */
 #if BIND_git_ignore_add_rule_FUNCTION
 #define git_ignore_add_rule_REQUIRED_ARGC 2
 #define git_ignore_add_rule_OPTIONAL_ARGC 0
@@ -8939,16 +8121,13 @@ mrb_Git_git_ignore_add_rule(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_ignore_add_rule(native_repo, native_rules);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_ignore_clear_internal_rules */
-/* sha: a323b6f39ebad34d53c9e894c466626691036c4e3c194adfd3fdf34f5962cfb8 */
+/* sha: 3d7f35e5482b2f7901793d3fa4d8364b628466b99ea1931baf3db24cb45a303e */
 #if BIND_git_ignore_clear_internal_rules_FUNCTION
 #define git_ignore_clear_internal_rules_REQUIRED_ARGC 1
 #define git_ignore_clear_internal_rules_OPTIONAL_ARGC 0
@@ -8977,16 +8156,13 @@ mrb_Git_git_ignore_clear_internal_rules(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_ignore_clear_internal_rules(native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_ignore_path_is_ignored */
-/* sha: 8c223a01d82f02fc224520c73cb243c71a3f980f14683035d2d3839d5229e7f2 */
+/* sha: 2985c28f7f72d099ce04f01a725264e8a413e4deee3fe3d2c57709118f8a7137 */
 #if BIND_git_ignore_path_is_ignored_FUNCTION
 #define git_ignore_path_is_ignored_REQUIRED_ARGC 2
 #define git_ignore_path_is_ignored_OPTIONAL_ARGC 0
@@ -8999,7 +8175,6 @@ mrb_Git_git_ignore_clear_internal_rules(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_ignore_path_is_ignored(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_ignored;
   mrb_value repo;
   char * native_path = NULL;
@@ -9019,23 +8194,16 @@ mrb_Git_git_ignore_path_is_ignored(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_ignore_path_is_ignored(&native_ignored, native_repo, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: ignored */
   mrb_value ignored = native_ignored == 0 ? mrb_false_value() : mrb_true_value();
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, ignored);
-
-  return results;
+  return ignored;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_add */
-/* sha: b543265d2c086df01a1757d35b662808e00f77328c49246038f7291c36fc6754 */
+/* sha: c2d47e46671c80df549de3d2fbc547959fbf090b111a63be1173ff9aec5d033b */
 #if BIND_git_index_add_FUNCTION
 #define git_index_add_REQUIRED_ARGC 2
 #define git_index_add_OPTIONAL_ARGC 0
@@ -9073,16 +8241,13 @@ mrb_Git_git_index_add(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_add(native_index, native_source_entry);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_add_all */
-/* sha: d66fc2e43de41a419ab5646a8c926a530602fe8fba50cb4076bf94fbce727c29 */
+/* sha: 87d47da2ea5cfd8eb34df2d60bb78f32526d5484d71aece9166318a42bccdc0c */
 #if BIND_git_index_add_all_FUNCTION
 #define git_index_add_all_REQUIRED_ARGC 5
 #define git_index_add_all_OPTIONAL_ARGC 0
@@ -9134,16 +8299,13 @@ mrb_Git_git_index_add_all(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_add_all(native_index, native_pathspec, native_flags, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_add_bypath */
-/* sha: 3a9e5823ef38deb6a9ed272ea75aa994b9d1cfe8a517ed4ada99407f0c916c52 */
+/* sha: 3054003e482a59b7801c3d590eb9937b8e04bb099cfca7c252bcc7b5dddafea6 */
 #if BIND_git_index_add_bypath_FUNCTION
 #define git_index_add_bypath_REQUIRED_ARGC 2
 #define git_index_add_bypath_OPTIONAL_ARGC 0
@@ -9174,16 +8336,13 @@ mrb_Git_git_index_add_bypath(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_add_bypath(native_index, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_add_frombuffer */
-/* sha: 2a9dbd6cfcdac589631d59aad3394c2995eec898dec1ec7e3654a309cdcaa832 */
+/* sha: f910c431bce6d48d779054cf2a18eebb7b7241790face0d066d961978055f47b */
 #if BIND_git_index_add_frombuffer_FUNCTION
 #define git_index_add_frombuffer_REQUIRED_ARGC 4
 #define git_index_add_frombuffer_OPTIONAL_ARGC 0
@@ -9229,10 +8388,7 @@ mrb_Git_git_index_add_frombuffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_add_frombuffer(native_index, native_entry, native_buffer, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -9314,7 +8470,7 @@ mrb_Git_git_index_checksum(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_clear */
-/* sha: 968596d7ffea625cf0c2968446be87787f26f38168c89b87d0f152e49cfe4376 */
+/* sha: be148f61164d7a037c2e028953582d5d4df0aefd58462a27da1f94a91a0633e6 */
 #if BIND_git_index_clear_FUNCTION
 #define git_index_clear_REQUIRED_ARGC 1
 #define git_index_clear_OPTIONAL_ARGC 0
@@ -9343,16 +8499,13 @@ mrb_Git_git_index_clear(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_clear(native_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_conflict_add */
-/* sha: dab0219a452af1619e1b4da5e8205b8e0766294bf91fd5fceac24e992d10b687 */
+/* sha: 455a5f965981db61220a3a5d36ecf1dba186b219934b9c4ba46e95754a368d88 */
 #if BIND_git_index_conflict_add_FUNCTION
 #define git_index_conflict_add_REQUIRED_ARGC 4
 #define git_index_conflict_add_OPTIONAL_ARGC 0
@@ -9408,16 +8561,13 @@ mrb_Git_git_index_conflict_add(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_conflict_add(native_index, native_ancestor_entry, native_our_entry, native_their_entry);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_conflict_cleanup */
-/* sha: a97aacf81b9c2231561992901348b67a4bfb2697973851094c7d0004e8e55614 */
+/* sha: 9ec162a03e466dea08397c58e5729307033fcb9fcf143a3c19ac84701b92c7ce */
 #if BIND_git_index_conflict_cleanup_FUNCTION
 #define git_index_conflict_cleanup_REQUIRED_ARGC 1
 #define git_index_conflict_cleanup_OPTIONAL_ARGC 0
@@ -9446,16 +8596,13 @@ mrb_Git_git_index_conflict_cleanup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_conflict_cleanup(native_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_conflict_get */
-/* sha: 7b681c28f7fc9963d81ec7d5cf67dcbe63f17d64f3410fea63f893147760790c */
+/* sha: 172477821648fdf8a01ab87ffa16fd3068e98f07e98a03856aed04b3ae44b0b2 */
 #if BIND_git_index_conflict_get_FUNCTION
 #define git_index_conflict_get_REQUIRED_ARGC 2
 #define git_index_conflict_get_OPTIONAL_ARGC 0
@@ -9490,10 +8637,6 @@ mrb_Git_git_index_conflict_get(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_conflict_get(&native_ancestor_out, &native_our_out, &native_their_out, native_index, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: ancestor_out */
   mrb_value ancestor_out = mruby_box_git_index_entry(mrb, native_ancestor_out);
   /* Box out param: our_out */
@@ -9547,7 +8690,7 @@ mrb_Git_git_index_conflict_iterator_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_conflict_iterator_new */
-/* sha: 13f1dd3fb77111faac86dcabcae26dd3d262e5a1d77e5aa9b64592ab741377c5 */
+/* sha: 775d6a9a1a07e5fa7636a9c06bd3a74e84203cd76a33fb66c341effc43f2145f */
 #if BIND_git_index_conflict_iterator_new_FUNCTION
 #define git_index_conflict_iterator_new_REQUIRED_ARGC 1
 #define git_index_conflict_iterator_new_OPTIONAL_ARGC 0
@@ -9559,7 +8702,6 @@ mrb_Git_git_index_conflict_iterator_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_index_conflict_iterator_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index_conflict_iterator * native_iterator_out = NULL;
   mrb_value index;
 
@@ -9578,17 +8720,10 @@ mrb_Git_git_index_conflict_iterator_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_conflict_iterator_new(&native_iterator_out, native_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: iterator_out */
   mrb_value iterator_out = native_iterator_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index_conflict_iterator(mrb, native_iterator_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, iterator_out);
-
-  return results;
+  return iterator_out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -9649,7 +8784,7 @@ mrb_Git_git_index_conflict_next(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_conflict_remove */
-/* sha: 9d59ba2f14df26f99e5e08ea15aa3a08840004367711fcf173c2ad427bf4870a */
+/* sha: a983a81a7e13f96fc81c44e507771c0ab301c648175c1fc4d73aba18e40b77c9 */
 #if BIND_git_index_conflict_remove_FUNCTION
 #define git_index_conflict_remove_REQUIRED_ARGC 2
 #define git_index_conflict_remove_OPTIONAL_ARGC 0
@@ -9680,16 +8815,13 @@ mrb_Git_git_index_conflict_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_conflict_remove(native_index, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_entry_is_conflict */
-/* sha: 0e4917bc6cd5a9915f12a3b4a2bb2c6382c15ba3fcc23e8f9ac5d9aac383fdf4 */
+/* sha: bbc2c57bbb3372fe04564e079e24414de673550fff345c3a07f6ece40c366819 */
 #if BIND_git_index_entry_is_conflict_FUNCTION
 #define git_index_entry_is_conflict_REQUIRED_ARGC 1
 #define git_index_entry_is_conflict_OPTIONAL_ARGC 0
@@ -9719,7 +8851,7 @@ mrb_Git_git_index_entry_is_conflict(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_index_entry_is_conflict(native_entry);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -9852,7 +8984,7 @@ mrb_Git_git_index_find(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_find_prefix */
-/* sha: a002eb1f94a88988dae88949abf46f8f637c1786bbc208cce1931f36cedb1a93 */
+/* sha: 0ba7dd016fb346ef378192d68eb5d3a221727ba5519ebaa4497c0c108afcfb3b */
 #if BIND_git_index_find_prefix_FUNCTION
 #define git_index_find_prefix_REQUIRED_ARGC 2
 #define git_index_find_prefix_OPTIONAL_ARGC 0
@@ -9865,7 +8997,6 @@ mrb_Git_git_index_find(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_index_find_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_at_pos;
   mrb_value index;
   char * native_prefix = NULL;
@@ -9885,17 +9016,10 @@ mrb_Git_git_index_find_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_find_prefix(&native_at_pos, native_index, native_prefix);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: at_pos */
   mrb_value at_pos = mrb_fixnum_value(native_at_pos);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, at_pos);
-
-  return results;
+  return at_pos;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -10018,7 +9142,7 @@ mrb_Git_git_index_get_bypath(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_has_conflicts */
-/* sha: 8b0daf3d66cbd43320699c43c8606fc1c9b0fb1f12ad1da11eb1c8b0c1650f7b */
+/* sha: 181a191235ea22f7acb0106c9074c5efdd07038cdce2cdf106a0e79e15cc1d09 */
 #if BIND_git_index_has_conflicts_FUNCTION
 #define git_index_has_conflicts_REQUIRED_ARGC 1
 #define git_index_has_conflicts_OPTIONAL_ARGC 0
@@ -10048,7 +9172,7 @@ mrb_Git_git_index_has_conflicts(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_index_has_conflicts(native_index);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -10056,7 +9180,7 @@ mrb_Git_git_index_has_conflicts(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_new */
-/* sha: 266c3d3820457d04294df1a422d3324bba14c2e518f82dddd30994f9b7c65e96 */
+/* sha: f7507dffa6cb8ce01fad62061cb925e7028678e4b4fd1a258e3ff11cb2108201 */
 #if BIND_git_index_new_FUNCTION
 #define git_index_new_REQUIRED_ARGC 0
 #define git_index_new_OPTIONAL_ARGC 0
@@ -10067,30 +9191,22 @@ mrb_Git_git_index_has_conflicts(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_index_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
 
 
   /* Invocation */
   int native_return_value = git_index_new(&native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_open */
-/* sha: cc40782c2afe9337fc6d68deef92342d85b6b4a2ed7baf8f878bdc3851455002 */
+/* sha: 184a8892ec32f069fe3869945cf4efffe0c8a91f0bdd8ccd1fe99beabc1aca82 */
 #if BIND_git_index_open_FUNCTION
 #define git_index_open_REQUIRED_ARGC 1
 #define git_index_open_OPTIONAL_ARGC 0
@@ -10102,7 +9218,6 @@ mrb_Git_git_index_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_index_open(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
   char * native_index_path = NULL;
 
@@ -10112,17 +9227,10 @@ mrb_Git_git_index_open(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_open(&native_out, native_index_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -10204,7 +9312,7 @@ mrb_Git_git_index_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_read */
-/* sha: 2656b5edc1e792c8f083fba0348fe41d924930893c4ba2396da313c2b1c4df78 */
+/* sha: 64dac0d0067cb9d0406c21fb784be6bd1ca62d28b73f128d8eb1af6cd5b4348f */
 #if BIND_git_index_read_FUNCTION
 #define git_index_read_REQUIRED_ARGC 2
 #define git_index_read_OPTIONAL_ARGC 0
@@ -10235,16 +9343,13 @@ mrb_Git_git_index_read(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_read(native_index, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_read_tree */
-/* sha: 42fffa8f84c6d66f7cdbd4ac63d1792aa89dac4319dc811292d0270af45849cc */
+/* sha: 3ab8f1d5fa965c4dd3bacc8ec364dcc63a30e49aad6c53037c75e5a12b02a3a5 */
 #if BIND_git_index_read_tree_FUNCTION
 #define git_index_read_tree_REQUIRED_ARGC 2
 #define git_index_read_tree_OPTIONAL_ARGC 0
@@ -10282,16 +9387,13 @@ mrb_Git_git_index_read_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_read_tree(native_index, native_tree);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_remove */
-/* sha: efe1db86adb0ea28bd75e52f5175911795ec3e88dd767ba37c0949189add550e */
+/* sha: ac4e4d870fabfee1f4861b032171762e70c87bfd39b669d3a74dbd5bee1c8a70 */
 #if BIND_git_index_remove_FUNCTION
 #define git_index_remove_REQUIRED_ARGC 3
 #define git_index_remove_OPTIONAL_ARGC 0
@@ -10324,16 +9426,13 @@ mrb_Git_git_index_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_remove(native_index, native_path, native_stage);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_remove_all */
-/* sha: b124098c54bb02b862751ace70c168f9f3f46ce0037ba09a66ebd70bb2841fe9 */
+/* sha: be9e74e6b5bd4b1ed72beb6eb76e4324cf704316b76a5d9089e988d91ad716f9 */
 #if BIND_git_index_remove_all_FUNCTION
 #define git_index_remove_all_REQUIRED_ARGC 4
 #define git_index_remove_all_OPTIONAL_ARGC 0
@@ -10383,16 +9482,13 @@ mrb_Git_git_index_remove_all(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_remove_all(native_index, native_pathspec, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_remove_bypath */
-/* sha: 9413ba0be31f6c03c94efd7c10d0fe2421b5e2b7f9dd02c98858c45f671a88d5 */
+/* sha: a3051837b24262564a95b73c2881b39de0833f2071e1b06d1e2c76aa3b3ed11c */
 #if BIND_git_index_remove_bypath_FUNCTION
 #define git_index_remove_bypath_REQUIRED_ARGC 2
 #define git_index_remove_bypath_OPTIONAL_ARGC 0
@@ -10423,16 +9519,13 @@ mrb_Git_git_index_remove_bypath(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_remove_bypath(native_index, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_remove_directory */
-/* sha: 1c93de998bb3b1099975495db14c761be79a2b3a565bd8ea56617ab6803aa8c8 */
+/* sha: 570851866a71e758b84f7038c415ee567774d1bfc9cee6ffced77c328f929079 */
 #if BIND_git_index_remove_directory_FUNCTION
 #define git_index_remove_directory_REQUIRED_ARGC 3
 #define git_index_remove_directory_OPTIONAL_ARGC 0
@@ -10465,16 +9558,13 @@ mrb_Git_git_index_remove_directory(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_remove_directory(native_index, native_dir, native_stage);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_set_caps */
-/* sha: 4a82e7febe1813c30b86d6517999ac4066a317f3e62d84ae36f31c3ba31812ae */
+/* sha: 87251d9191c9b38db01711b5330edd42552dbc1a4ce165ce7b866d3c1c068106 */
 #if BIND_git_index_set_caps_FUNCTION
 #define git_index_set_caps_REQUIRED_ARGC 2
 #define git_index_set_caps_OPTIONAL_ARGC 0
@@ -10505,16 +9595,13 @@ mrb_Git_git_index_set_caps(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_set_caps(native_index, native_caps);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_update_all */
-/* sha: b8c982db720cc802a13c6693706234aa80eb13f73c3782f2a48668ffdf30dfca */
+/* sha: ae8d255b64d581e7f3735a42f852a9648cb68236cbe169f2fea4d08a6d2d0c6d */
 #if BIND_git_index_update_all_FUNCTION
 #define git_index_update_all_REQUIRED_ARGC 4
 #define git_index_update_all_OPTIONAL_ARGC 0
@@ -10564,16 +9651,13 @@ mrb_Git_git_index_update_all(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_update_all(native_index, native_pathspec, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_write */
-/* sha: c8e9395e2448ff0945bddb9269ebe1e1c11f4770b77ca8a9eed5e5dfdeb5cca2 */
+/* sha: c2a4e1a46b4319c2cca32eda74530f3090ea289bce81e4678794e70fee6b8cd4 */
 #if BIND_git_index_write_FUNCTION
 #define git_index_write_REQUIRED_ARGC 1
 #define git_index_write_OPTIONAL_ARGC 0
@@ -10602,16 +9686,13 @@ mrb_Git_git_index_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_write(native_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_write_tree */
-/* sha: 95737a71d47baf604a8f1704a4bd03f69cc595a71de7e24215937218b8af2d1e */
+/* sha: fd14fcdb8f93eb6b8b319657997137325ed52a87acaf0875712b269b2e343081 */
 #if BIND_git_index_write_tree_FUNCTION
 #define git_index_write_tree_REQUIRED_ARGC 2
 #define git_index_write_tree_OPTIONAL_ARGC 0
@@ -10649,16 +9730,13 @@ mrb_Git_git_index_write_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_write_tree(native_out, native_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_write_tree_to */
-/* sha: b12db2c66b10f68f5bceaf04a7053f4aae0ef118c1f02749dd07a3ed91ed0f21 */
+/* sha: 48fdf0aed141d140edc77442c05d6679d931b11cffa1ef150a01105cabf5ad8d */
 #if BIND_git_index_write_tree_to_FUNCTION
 #define git_index_write_tree_to_REQUIRED_ARGC 3
 #define git_index_write_tree_to_OPTIONAL_ARGC 0
@@ -10705,16 +9783,13 @@ mrb_Git_git_index_write_tree_to(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_write_tree_to(native_out, native_index, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_indexer_append */
-/* sha: 578d34508fe546823ccce2f5a610b0a6e982dee7a5cff51bfc0513a5a0d4afc6 */
+/* sha: 9311d4ff4242026e21bb2ab832ce598c48f70a02a7d57b3e81aa5d55ec0362c7 */
 #if BIND_git_indexer_append_FUNCTION
 #define git_indexer_append_REQUIRED_ARGC 4
 #define git_indexer_append_OPTIONAL_ARGC 0
@@ -10760,16 +9835,13 @@ mrb_Git_git_indexer_append(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_indexer_append(native_idx, native_data, native_size, native_stats);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_indexer_commit */
-/* sha: 7c0c9d6ffaff538c3faa2a9c7378a458ae9d3ed6ea721a3164a45803874e1507 */
+/* sha: 6357bf0b3c460dde87109b46dd9bd69c474dab8b486d94d4ad14f25e29620e57 */
 #if BIND_git_indexer_commit_FUNCTION
 #define git_indexer_commit_REQUIRED_ARGC 2
 #define git_indexer_commit_OPTIONAL_ARGC 0
@@ -10807,10 +9879,7 @@ mrb_Git_git_indexer_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_indexer_commit(native_idx, native_stats);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -10889,7 +9958,7 @@ mrb_Git_git_indexer_hash(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_indexer_new */
-/* sha: c7512acc1036bf88b4740f2a287474899feb4c22648a4ce668fdb916f9a26ed9 */
+/* sha: 297bdbb82dce036a00bb5a1c1b0369cb76c9e44075b5a2f5357fd26fd855bf31 */
 #if BIND_git_indexer_new_FUNCTION
 #define git_indexer_new_REQUIRED_ARGC 5
 #define git_indexer_new_OPTIONAL_ARGC 0
@@ -10905,7 +9974,6 @@ mrb_Git_git_indexer_hash(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_indexer_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_indexer * native_out = NULL;
   char * native_path = NULL;
   mrb_int native_mode;
@@ -10936,17 +10004,10 @@ mrb_Git_git_indexer_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_indexer_new(&native_out, native_path, native_mode, native_odb, native_progress_cb, native_progress_cb_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_indexer(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -10998,7 +10059,7 @@ mrb_Git_git_libgit2_init(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_libgit2_opts */
-/* sha: 1f0e9a68a5c03808c031204becfc64b799f3474a370e1b3994039d30d4c3109c */
+/* sha: 095576f18f6107bce329fef016bde3016323d7b96bd55ae84f486562c57ce014 */
 #if BIND_git_libgit2_opts_FUNCTION
 #define git_libgit2_opts_REQUIRED_ARGC 1
 #define git_libgit2_opts_OPTIONAL_ARGC 0
@@ -11018,10 +10079,7 @@ mrb_Git_git_libgit2_opts(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_libgit2_opts(native_option);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -11088,7 +10146,7 @@ mrb_Git_git_libgit2_version(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge */
-/* sha: b264dbd3d0aba13a5590e981c8eafce821e25a9ffa066f521b5a46f1d1816de9 */
+/* sha: aadb5ff81a9d414c59ccf7d7c588e4848fcff59000d2dc33f7c52cfec28214dd */
 #if BIND_git_merge_FUNCTION
 #define git_merge_REQUIRED_ARGC 4
 #define git_merge_OPTIONAL_ARGC 0
@@ -11103,7 +10161,6 @@ mrb_Git_git_libgit2_version(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_merge(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   mrb_value repo;
   git_annotated_commit * native_their_heads = NULL;
   mrb_int native_their_heads_len;
@@ -11139,23 +10196,16 @@ mrb_Git_git_merge(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge(native_repo, &native_their_heads, native_their_heads_len, native_merge_opts, native_checkout_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: their_heads */
   mrb_value their_heads = mruby_box_git_annotated_commit(mrb, native_their_heads);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, their_heads);
-
-  return results;
+  return their_heads;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_analysis */
-/* sha: 09cbdf59e62b10819b3bae8d8db5c8deaa65bb2f5d3e5f7cc99524bb8e541c0e */
+/* sha: 926ffa3436fbbba9cd375cecafab1a3842bb568a67437f9fd396df89824e5baa */
 #if BIND_git_merge_analysis_FUNCTION
 #define git_merge_analysis_REQUIRED_ARGC 2
 #define git_merge_analysis_OPTIONAL_ARGC 0
@@ -11190,10 +10240,6 @@ mrb_Git_git_merge_analysis(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_analysis(&native_analysis_out, &native_preference_out, native_repo, &native_their_heads, native_their_heads_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: analysis_out */
   mrb_value analysis_out = mrb_fixnum_value(native_analysis_out);
   /* Box out param: preference_out */
@@ -11212,7 +10258,7 @@ mrb_Git_git_merge_analysis(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_base */
-/* sha: 35126111ac68193eb9c233529ede680400834cab9b4fa15248c9cc082c4fbe01 */
+/* sha: bd83ba66f6cfbe7c66d5ec8d36d2ce3851d102e061e5634cae1b10468a21aeef */
 #if BIND_git_merge_base_FUNCTION
 #define git_merge_base_REQUIRED_ARGC 4
 #define git_merge_base_OPTIONAL_ARGC 0
@@ -11268,16 +10314,13 @@ mrb_Git_git_merge_base(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_base(native_out, native_repo, native_one, native_two);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_base_many */
-/* sha: fd2f52070d245d29bfc54e8ac72f869b5b801efd76b35fd059e40b4c4b0d0e39 */
+/* sha: 61a5e279e40281185fe9ffa4298897bca65969734fafd3e64e6a6c8c15e5d22b */
 #if BIND_git_merge_base_many_FUNCTION
 #define git_merge_base_many_REQUIRED_ARGC 4
 #define git_merge_base_many_OPTIONAL_ARGC 0
@@ -11323,16 +10366,13 @@ mrb_Git_git_merge_base_many(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_base_many(native_out, native_repo, native_length, native_input_array);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_base_octopus */
-/* sha: 2d112e422a39e252f5dc542b07eef2ad93c85964acf8399c2f965188eeb412b7 */
+/* sha: 3d91fa171c93d899297babd2579785c63fdf4aecd5e4bf3e7c6480ccf6751df9 */
 #if BIND_git_merge_base_octopus_FUNCTION
 #define git_merge_base_octopus_REQUIRED_ARGC 4
 #define git_merge_base_octopus_OPTIONAL_ARGC 0
@@ -11378,16 +10418,13 @@ mrb_Git_git_merge_base_octopus(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_base_octopus(native_out, native_repo, native_length, native_input_array);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_bases */
-/* sha: e192877bbf66531ea3776f643e44125c6e107f860e22f8bb2ca5f25aa1c2a661 */
+/* sha: 15c2b6dc49ffd952f39358799946768c70312735fb1ddf22f4569d9593dea9c9 */
 #if BIND_git_merge_bases_FUNCTION
 #define git_merge_bases_REQUIRED_ARGC 4
 #define git_merge_bases_OPTIONAL_ARGC 0
@@ -11443,16 +10480,13 @@ mrb_Git_git_merge_bases(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_bases(native_out, native_repo, native_one, native_two);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_bases_many */
-/* sha: 750fc266ffe0ac060105e1916992564cfd139dc158dc7983fe69e1b79890a688 */
+/* sha: 73dd7ac349dbea55278940235400c34615608b80c79d5cb17aaffb4e1ef9e62f */
 #if BIND_git_merge_bases_many_FUNCTION
 #define git_merge_bases_many_REQUIRED_ARGC 4
 #define git_merge_bases_many_OPTIONAL_ARGC 0
@@ -11498,16 +10532,13 @@ mrb_Git_git_merge_bases_many(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_bases_many(native_out, native_repo, native_length, native_input_array);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_commits */
-/* sha: 1129eda051aa2e575a6e5d616b29f6660f3b347933b09b1b689dd934baddfba0 */
+/* sha: e8a1409729b724c88d1600b79db26e11c9dc561917db0fece0785f5707b38407 */
 #if BIND_git_merge_commits_FUNCTION
 #define git_merge_commits_REQUIRED_ARGC 4
 #define git_merge_commits_OPTIONAL_ARGC 0
@@ -11522,7 +10553,6 @@ mrb_Git_git_merge_bases_many(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_merge_commits(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
   mrb_value repo;
   mrb_value our_commit;
@@ -11565,23 +10595,16 @@ mrb_Git_git_merge_commits(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_commits(&native_out, native_repo, native_our_commit, native_their_commit, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_file */
-/* sha: 008b170de1a080271222ef3242a6156f0084c5d0cdb89d83d42253a4eb2b8c66 */
+/* sha: f577c8cf52c0f3c999b831e36d6f45d9c03aea586c0a182805be3ea0aed013d0 */
 #if BIND_git_merge_file_FUNCTION
 #define git_merge_file_REQUIRED_ARGC 5
 #define git_merge_file_OPTIONAL_ARGC 0
@@ -11646,16 +10669,13 @@ mrb_Git_git_merge_file(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_file(native_out, native_ancestor, native_ours, native_theirs, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_file_from_index */
-/* sha: 48b38c739ab74c43c93be34b1bd85ad7b0b5aab14ca4b77c7979f7cc667d3293 */
+/* sha: 9d82e4ca266356b32187291279dc4757a38ec2c02da727c4464b184697eb1efb */
 #if BIND_git_merge_file_from_index_FUNCTION
 #define git_merge_file_from_index_REQUIRED_ARGC 6
 #define git_merge_file_from_index_OPTIONAL_ARGC 0
@@ -11729,16 +10749,13 @@ mrb_Git_git_merge_file_from_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_file_from_index(native_out, native_repo, native_ancestor, native_ours, native_theirs, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_file_init_input */
-/* sha: de777bdaf247c1dda78e7be2709b44b0f90f17078316d8d79b89030bff8f0133 */
+/* sha: 546add0c81049277f99d3103cafd6816a1fcf73f4ac3c7f301776e3211b23395 */
 #if BIND_git_merge_file_init_input_FUNCTION
 #define git_merge_file_init_input_REQUIRED_ARGC 2
 #define git_merge_file_init_input_OPTIONAL_ARGC 0
@@ -11769,16 +10786,13 @@ mrb_Git_git_merge_file_init_input(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_file_init_input(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_file_init_options */
-/* sha: f5dfd73edb18fc2d69d5bd5beae0d7d1e9a50e660bee67542752f0c9c54bb33f */
+/* sha: d204e507c3741bdb473db13f2f38fd9b9a2de36aee5a041546f08b45bbfe96af */
 #if BIND_git_merge_file_init_options_FUNCTION
 #define git_merge_file_init_options_REQUIRED_ARGC 2
 #define git_merge_file_init_options_OPTIONAL_ARGC 0
@@ -11809,10 +10823,7 @@ mrb_Git_git_merge_file_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_file_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -11853,7 +10864,7 @@ mrb_Git_git_merge_file_result_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_init_options */
-/* sha: e265ac9f338835002c00288bbcc24505881037eb0fdecc3faa992d92a733aac8 */
+/* sha: 1de6c965735c851945f30d4aef8e2177b5de0c0c4b3952d6dad86a1a1eac6725 */
 #if BIND_git_merge_init_options_FUNCTION
 #define git_merge_init_options_REQUIRED_ARGC 2
 #define git_merge_init_options_OPTIONAL_ARGC 0
@@ -11884,16 +10895,13 @@ mrb_Git_git_merge_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_merge_trees */
-/* sha: 7bebf06b968ed212b7d9e16222e84edb519724bb07ec3a4e2271b97916b1c49d */
+/* sha: dd5054ce8cab32dae8f0c4f24d4e205e0cbb2ef8422021490cbb7c1e44a521b1 */
 #if BIND_git_merge_trees_FUNCTION
 #define git_merge_trees_REQUIRED_ARGC 5
 #define git_merge_trees_OPTIONAL_ARGC 0
@@ -11909,7 +10917,6 @@ mrb_Git_git_merge_init_options(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_merge_trees(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
   mrb_value repo;
   mrb_value ancestor_tree;
@@ -11960,30 +10967,22 @@ mrb_Git_git_merge_trees(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_merge_trees(&native_out, native_repo, native_ancestor_tree, native_our_tree, native_their_tree, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_message_prettify */
-/* sha: 9d431880b4ba70c827e47434e832040ea1cdf4727955af11df1a3daa1bab253e */
+/* sha: 038a3c6d05e1c4e056a9d714b3a87aa33a33b3b3e673dfd0bb5faae36ad8d4a6 */
 #if BIND_git_message_prettify_FUNCTION
-#define git_message_prettify_REQUIRED_ARGC 4
+#define git_message_prettify_REQUIRED_ARGC 3
 #define git_message_prettify_OPTIONAL_ARGC 0
 /* git_message_prettify
  *
  * Parameters:
- * - out: git_buf *
  * - message: const char *
  * - strip_comments: int
  * - comment_char: char
@@ -11991,30 +10990,21 @@ mrb_Git_git_merge_trees(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_message_prettify(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   char * native_message = NULL;
   mrb_int native_strip_comments;
   mrb_int native_comment_char;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozii", &out, &native_message, &native_strip_comments, &native_comment_char);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
+  mrb_get_args(mrb, "zii", &native_message, &native_strip_comments, &native_comment_char);
 
   /* Invocation */
   int native_return_value = git_message_prettify(native_out, native_message, native_strip_comments, native_comment_char);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -12096,7 +11086,7 @@ mrb_Git_git_note_committer(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_create */
-/* sha: 294ee3a18366bb5dc0d646e51d111e6b1c0dec34a53ba71d76a0f5534a34df44 */
+/* sha: 194a7e13aa167aea01e18070ef5087d98b830c2c69c745450676098e258f1f48 */
 #if BIND_git_note_create_FUNCTION
 #define git_note_create_REQUIRED_ARGC 8
 #define git_note_create_OPTIONAL_ARGC 0
@@ -12167,16 +11157,13 @@ mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_create(native_out, native_repo, native_notes_ref, native_author, native_committer, native_oid, native_note, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_default_ref */
-/* sha: ce5f9d95d142d4b07783dc2385c234dd98b801ec83db2fc04d3359b10734f057 */
+/* sha: bdf808a028558bedcd6eedb0f39256edc409d448b5ff3a9179ad6ec1bc6bdb71 */
 #if BIND_git_note_default_ref_FUNCTION
 #define git_note_default_ref_REQUIRED_ARGC 1
 #define git_note_default_ref_OPTIONAL_ARGC 0
@@ -12188,7 +11175,6 @@ mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_note_default_ref(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_out;
   mrb_value repo;
 
@@ -12207,23 +11193,16 @@ mrb_Git_git_note_default_ref(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_default_ref(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mrb_fixnum_value(native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_foreach */
-/* sha: d795e56cd90f6b61cf2debe139fc076b6dbb4727f1248e67ccad9670d124133c */
+/* sha: 4e311efe795fc66a432db2d61195cd3850b03f774c30765483410e9ad93aa5ea */
 #if BIND_git_note_foreach_FUNCTION
 #define git_note_foreach_REQUIRED_ARGC 4
 #define git_note_foreach_OPTIONAL_ARGC 0
@@ -12266,10 +11245,7 @@ mrb_Git_git_note_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_foreach(native_repo, native_notes_ref, native_note_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -12383,7 +11359,7 @@ mrb_Git_git_note_iterator_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_iterator_new */
-/* sha: abca2daa413ce1381958d08c134a26aa458b7ccaf20ce28a51a9cf8ded149fc9 */
+/* sha: 30d5bb6d1c82ef0d8e4f79046c2087c1a200c461efbb63305abbd800465def8a */
 #if BIND_git_note_iterator_new_FUNCTION
 #define git_note_iterator_new_REQUIRED_ARGC 2
 #define git_note_iterator_new_OPTIONAL_ARGC 0
@@ -12396,7 +11372,6 @@ mrb_Git_git_note_iterator_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_note_iterator_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_note_iterator * native_out = NULL;
   mrb_value repo;
   char * native_notes_ref = NULL;
@@ -12416,17 +11391,10 @@ mrb_Git_git_note_iterator_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_iterator_new(&native_out, native_repo, native_notes_ref);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_note_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -12526,7 +11494,7 @@ mrb_Git_git_note_next(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_read */
-/* sha: 8411ca4365a196b1307e8a763a0a29e70218dfc5a16b2590b38714ef2ccce671 */
+/* sha: 8e52c30286bdd1d56e2a05781af8bfee9fa2c50b4d613c332d085beb64f26460 */
 #if BIND_git_note_read_FUNCTION
 #define git_note_read_REQUIRED_ARGC 3
 #define git_note_read_OPTIONAL_ARGC 0
@@ -12540,7 +11508,6 @@ mrb_Git_git_note_next(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_note_read(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_note * native_out = NULL;
   mrb_value repo;
   char * native_notes_ref = NULL;
@@ -12568,23 +11535,16 @@ mrb_Git_git_note_read(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_read(&native_out, native_repo, native_notes_ref, native_oid);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_note(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_remove */
-/* sha: 8a4319f2869dd53fc433dde8383a87b96e5b74a6e6f153a5613cc59fe3167770 */
+/* sha: e9f589c95b3600b16d4062576a853d425ef3aa5dc397928761d7f84d8af7d28e */
 #if BIND_git_note_remove_FUNCTION
 #define git_note_remove_REQUIRED_ARGC 5
 #define git_note_remove_OPTIONAL_ARGC 0
@@ -12642,10 +11602,7 @@ mrb_Git_git_note_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_remove(native_repo, native_notes_ref, native_author, native_committer, native_oid);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -12680,7 +11637,7 @@ mrb_Git_git_object__size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_dup */
-/* sha: 644ba2f6a77b15b5edbf5b6f449fdb0fd6091a759dd984332eedca40c21b2747 */
+/* sha: 6b8ed911a96c220d23c65e7dc57a44cbbbe6020e033a2233b9da5d83a15c3715 */
 #if BIND_git_object_dup_FUNCTION
 #define git_object_dup_REQUIRED_ARGC 1
 #define git_object_dup_OPTIONAL_ARGC 0
@@ -12692,7 +11649,6 @@ mrb_Git_git_object__size(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_object_dup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_dest = NULL;
   mrb_value source;
 
@@ -12711,17 +11667,10 @@ mrb_Git_git_object_dup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_object_dup(&native_dest, native_source);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: dest */
   mrb_value dest = native_dest == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_dest);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, dest);
-
-  return results;
+  return dest;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -12800,7 +11749,7 @@ mrb_Git_git_object_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_lookup */
-/* sha: 46c9101409b5f15e72e54ecc2ce3bab212e9a90927e2454b482f30700704e28d */
+/* sha: 07918ecab17104ff4686435e896a5b0435e083b5062607792c9cd918fd2c6f0c */
 #if BIND_git_object_lookup_FUNCTION
 #define git_object_lookup_REQUIRED_ARGC 3
 #define git_object_lookup_OPTIONAL_ARGC 0
@@ -12814,7 +11763,6 @@ mrb_Git_git_object_id(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_object_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_object = NULL;
   mrb_value repo;
   mrb_value id;
@@ -12842,23 +11790,16 @@ mrb_Git_git_object_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_object_lookup(&native_object, native_repo, native_id, native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: object */
   mrb_value object = native_object == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_object);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, object);
-
-  return results;
+  return object;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_lookup_bypath */
-/* sha: c10ce4e6bdcfd9f922e22bdcb332bb23b9384a4c9af7e0f0befbc7c76dc16514 */
+/* sha: 060b386e7f7703dcc84d3a1728513648f8d4ae22a9a133805c990997dea56625 */
 #if BIND_git_object_lookup_bypath_FUNCTION
 #define git_object_lookup_bypath_REQUIRED_ARGC 3
 #define git_object_lookup_bypath_OPTIONAL_ARGC 0
@@ -12872,7 +11813,6 @@ mrb_Git_git_object_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_object_lookup_bypath(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_out = NULL;
   mrb_value treeish;
   char * native_path = NULL;
@@ -12893,23 +11833,16 @@ mrb_Git_git_object_lookup_bypath(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_object_lookup_bypath(&native_out, native_treeish, native_path, native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_lookup_prefix */
-/* sha: 0ca690c162e416ceb4e5a3af6136b0a24635704cdd11d086adf10a12ee3d65fb */
+/* sha: 3376b5196e512c6586ba631f73f6f8fec153f25807016874648933511aaa12d2 */
 #if BIND_git_object_lookup_prefix_FUNCTION
 #define git_object_lookup_prefix_REQUIRED_ARGC 4
 #define git_object_lookup_prefix_OPTIONAL_ARGC 0
@@ -12924,7 +11857,6 @@ mrb_Git_git_object_lookup_bypath(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_object_lookup_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_object_out = NULL;
   mrb_value repo;
   mrb_value id;
@@ -12953,17 +11885,10 @@ mrb_Git_git_object_lookup_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_object_lookup_prefix(&native_object_out, native_repo, native_id, native_len, native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: object_out */
   mrb_value object_out = native_object_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_object_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, object_out);
-
-  return results;
+  return object_out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -13007,7 +11932,7 @@ mrb_Git_git_object_owner(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_peel */
-/* sha: 58d2fccff601eb8a92ff8caf12caeae0f6a922f9c60ed93953163a033f591791 */
+/* sha: 04c277391bb6ca0da8d7bc24b83200475c4135041321ec811211199b6be5cc78 */
 #if BIND_git_object_peel_FUNCTION
 #define git_object_peel_REQUIRED_ARGC 2
 #define git_object_peel_OPTIONAL_ARGC 0
@@ -13020,7 +11945,6 @@ mrb_Git_git_object_owner(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_object_peel(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_peeled = NULL;
   mrb_value object;
   mrb_int native_target_type;
@@ -13040,53 +11964,38 @@ mrb_Git_git_object_peel(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_object_peel(&native_peeled, native_object, native_target_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: peeled */
   mrb_value peeled = native_peeled == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_peeled);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, peeled);
-
-  return results;
+  return peeled;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_short_id */
-/* sha: 2034392b4139dae5eb8b072fce7256ee9506850fb41f966223fc02c01a309ff5 */
+/* sha: 9b0eabf9d4a8ad54a46b2eeef540bd4fc08669ba5d5d1eb156c4ffc4423366f4 */
 #if BIND_git_object_short_id_FUNCTION
-#define git_object_short_id_REQUIRED_ARGC 2
+#define git_object_short_id_REQUIRED_ARGC 1
 #define git_object_short_id_OPTIONAL_ARGC 0
 /* git_object_short_id
  *
  * Parameters:
- * - out: git_buf *
  * - obj: const git_object *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_object_short_id(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value obj;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &out, &obj);
+  mrb_get_args(mrb, "o", &obj);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, obj, Object_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Object expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: obj */
   const git_object * native_obj = (mrb_nil_p(obj) ? NULL : mruby_unbox_git_object(obj));
@@ -13094,10 +12003,10 @@ mrb_Git_git_object_short_id(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_object_short_id(native_out, native_obj);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -13199,7 +12108,7 @@ mrb_Git_git_object_type2string(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_object_typeisloose */
-/* sha: 900fc93e05ccd1811ce2b41d905cec3701253ff7a1e87cc8688a20ba43f88a0c */
+/* sha: 06f1b1ab0ee424d1e6eb4ee2f888f3f7024d191d03609059eed5b9196c7f0aef */
 #if BIND_git_object_typeisloose_FUNCTION
 #define git_object_typeisloose_REQUIRED_ARGC 1
 #define git_object_typeisloose_OPTIONAL_ARGC 0
@@ -13220,7 +12129,7 @@ mrb_Git_git_object_typeisloose(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_object_typeisloose(native_type);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -13228,7 +12137,7 @@ mrb_Git_git_object_typeisloose(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_add_alternate */
-/* sha: 40d56071b7dc056ad2eaa11dada2a2f7ef58aa13c6f785cc2bf6445d7e1912e6 */
+/* sha: f21022670367dbcd66f1cf11290511e6b68a929cbbf713bba8523d67377ef922 */
 #if BIND_git_odb_add_alternate_FUNCTION
 #define git_odb_add_alternate_REQUIRED_ARGC 3
 #define git_odb_add_alternate_OPTIONAL_ARGC 0
@@ -13268,16 +12177,13 @@ mrb_Git_git_odb_add_alternate(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_add_alternate(native_odb, native_backend, native_priority);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_add_backend */
-/* sha: 8eecf5d15002286e61c2cb63ff5fcf505f57749b5183105cd406a33ef42864dc */
+/* sha: cca4aeb8b1e3eea0c62f904e4def6d03875a1e354643d191fc567d427ef71eef */
 #if BIND_git_odb_add_backend_FUNCTION
 #define git_odb_add_backend_REQUIRED_ARGC 3
 #define git_odb_add_backend_OPTIONAL_ARGC 0
@@ -13317,16 +12223,13 @@ mrb_Git_git_odb_add_backend(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_add_backend(native_odb, native_backend, native_priority);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_add_disk_alternate */
-/* sha: ae5316078a8e45971e56f89c513d4be37fac1b480dfcf84208fa7115d08134dd */
+/* sha: e52aa204946821ed9c6192f74f1efea8ad6fcfa93a5e6914948a04c191df6988 */
 #if BIND_git_odb_add_disk_alternate_FUNCTION
 #define git_odb_add_disk_alternate_REQUIRED_ARGC 2
 #define git_odb_add_disk_alternate_OPTIONAL_ARGC 0
@@ -13357,16 +12260,13 @@ mrb_Git_git_odb_add_disk_alternate(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_add_disk_alternate(native_odb, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_backend_loose */
-/* sha: f47b0a3192f3bf88c27f2a0b92be406f74eca5eb9afb3235343600cf1a69d755 */
+/* sha: c8550ef71b95a597b6d0ee5110d67ec35431eee450d664be343469c8a1e351b8 */
 #if BIND_git_odb_backend_loose_FUNCTION
 #define git_odb_backend_loose_REQUIRED_ARGC 5
 #define git_odb_backend_loose_OPTIONAL_ARGC 0
@@ -13382,7 +12282,6 @@ mrb_Git_git_odb_add_disk_alternate(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_backend_loose(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_backend * native_out = NULL;
   char * native_objects_dir = NULL;
   mrb_int native_compression_level;
@@ -13396,23 +12295,16 @@ mrb_Git_git_odb_backend_loose(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_backend_loose(&native_out, native_objects_dir, native_compression_level, native_do_fsync, native_dir_mode, native_file_mode);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_odb_backend(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_backend_one_pack */
-/* sha: bdb0c1a8241364e6a6ca6ec0835924748834b2043781e4cc22d453fd8677249e */
+/* sha: 0c95b208a3b26fb09fa0e829f9eb7f15d92c96ed08a802c3c6222a78f109b8dd */
 #if BIND_git_odb_backend_one_pack_FUNCTION
 #define git_odb_backend_one_pack_REQUIRED_ARGC 1
 #define git_odb_backend_one_pack_OPTIONAL_ARGC 0
@@ -13424,7 +12316,6 @@ mrb_Git_git_odb_backend_loose(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_backend_one_pack(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_backend * native_out = NULL;
   char * native_index_file = NULL;
 
@@ -13434,23 +12325,16 @@ mrb_Git_git_odb_backend_one_pack(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_backend_one_pack(&native_out, native_index_file);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_odb_backend(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_backend_pack */
-/* sha: eacabc386b6530acd3409fbe1c6a5c2df588aaf2327e47e9a1bb092fef2bc86b */
+/* sha: 7c155840712a0667be4d50b773bb9458b25ea26db30abf16b5f87d884dc1087b */
 #if BIND_git_odb_backend_pack_FUNCTION
 #define git_odb_backend_pack_REQUIRED_ARGC 1
 #define git_odb_backend_pack_OPTIONAL_ARGC 0
@@ -13462,7 +12346,6 @@ mrb_Git_git_odb_backend_one_pack(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_backend_pack(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_backend * native_out = NULL;
   char * native_objects_dir = NULL;
 
@@ -13472,23 +12355,16 @@ mrb_Git_git_odb_backend_pack(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_backend_pack(&native_out, native_objects_dir);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_odb_backend(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_exists */
-/* sha: 6921fe3b6332dba3c9be614b37351bcf311c196df1ae35e13d05902aa0fa275a */
+/* sha: aa6a9afefea4799d15dfa51e3f0b471bc963a923c5d16b1f935939eac4003f8f */
 #if BIND_git_odb_exists_FUNCTION
 #define git_odb_exists_REQUIRED_ARGC 2
 #define git_odb_exists_OPTIONAL_ARGC 0
@@ -13527,7 +12403,7 @@ mrb_Git_git_odb_exists(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_odb_exists(native_db, native_id);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -13535,7 +12411,7 @@ mrb_Git_git_odb_exists(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_exists_prefix */
-/* sha: b9e165c70765df4cae7d0c12719b0d05acc8b161743d412ed6d9ca065c2a7fe0 */
+/* sha: f8f1500b1261228891ca59024373a6f10ae8917ac930ed51cd6f5e7c5654fb08 */
 #if BIND_git_odb_exists_prefix_FUNCTION
 #define git_odb_exists_prefix_REQUIRED_ARGC 4
 #define git_odb_exists_prefix_OPTIONAL_ARGC 0
@@ -13585,7 +12461,7 @@ mrb_Git_git_odb_exists_prefix(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_odb_exists_prefix(native_out, native_db, native_short_id, native_len);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -13593,7 +12469,7 @@ mrb_Git_git_odb_exists_prefix(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_foreach */
-/* sha: 9d15ac37576e24cedf1c0bdbc8c4386e96d2f999b73d77bd545858e17f3e97c0 */
+/* sha: 2d38b923c0bacf18ae2b9f99d90f27d2a405112af2994a68043f01e077340cb7 */
 #if BIND_git_odb_foreach_FUNCTION
 #define git_odb_foreach_REQUIRED_ARGC 3
 #define git_odb_foreach_OPTIONAL_ARGC 0
@@ -13634,10 +12510,7 @@ mrb_Git_git_odb_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_foreach(native_db, native_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -13678,7 +12551,7 @@ mrb_Git_git_odb_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_get_backend */
-/* sha: 0022460ab201b1fb91aab5311b81c4b22508ab958656e043c670b2ae535ed2ef */
+/* sha: ef7c13c32065dcf4f91c84a5533161dfa9e33e5a9c516141fe5f4bd6a6ecb7cd */
 #if BIND_git_odb_get_backend_FUNCTION
 #define git_odb_get_backend_REQUIRED_ARGC 2
 #define git_odb_get_backend_OPTIONAL_ARGC 0
@@ -13691,7 +12564,6 @@ mrb_Git_git_odb_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_get_backend(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_backend * native_out = NULL;
   mrb_value odb;
   mrb_int native_pos;
@@ -13711,23 +12583,16 @@ mrb_Git_git_odb_get_backend(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_get_backend(&native_out, native_odb, native_pos);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_odb_backend(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_hash */
-/* sha: 61f08a3e7ad3bf7dd80580e9a74aec277fe9d25392ce9f00c47f4a09edc0ea86 */
+/* sha: 997049b1de747e35863ad363591024a9c57104d67d5cf5048457d984bc667b7e */
 #if BIND_git_odb_hash_FUNCTION
 #define git_odb_hash_REQUIRED_ARGC 3
 #define git_odb_hash_OPTIONAL_ARGC 0
@@ -13760,16 +12625,13 @@ mrb_Git_git_odb_hash(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_hash(native_out, RSTRING_PTR(native_data), RSTRING_LEN(native_data), native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_hashfile */
-/* sha: 393ce24633ba1f6127f25fe02b74d92ddfe8e8510326b077088e7406296a47b4 */
+/* sha: 65c0f90f0b06295570410ef9f4b6a037a2e4685dbc02f3031242cd10125e209a */
 #if BIND_git_odb_hashfile_FUNCTION
 #define git_odb_hashfile_REQUIRED_ARGC 3
 #define git_odb_hashfile_OPTIONAL_ARGC 0
@@ -13802,16 +12664,13 @@ mrb_Git_git_odb_hashfile(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_hashfile(native_out, native_path, native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_new */
-/* sha: eeffcb7823a72a7d46f4f9f9b61e0e2bd655681014370c8c696934257fc633cf */
+/* sha: fde9ebeaab4154814fa25fac84a13af8f58925b680d4d743b9184bd1c2ce636d */
 #if BIND_git_odb_new_FUNCTION
 #define git_odb_new_REQUIRED_ARGC 0
 #define git_odb_new_OPTIONAL_ARGC 0
@@ -13822,24 +12681,16 @@ mrb_Git_git_odb_hashfile(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb * native_out = NULL;
 
 
   /* Invocation */
   int native_return_value = git_odb_new(&native_out);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -13921,7 +12772,7 @@ mrb_Git_git_odb_object_data(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_object_dup */
-/* sha: 8e145f4dd34629787a66d51e2aef6aab5ce57e9daa99b1f9e2bae4f18e4300fa */
+/* sha: 7fd7f35290c057b7c915b5a94a6990fba18f1de42a005bd30d77bde96acee9aa */
 #if BIND_git_odb_object_dup_FUNCTION
 #define git_odb_object_dup_REQUIRED_ARGC 1
 #define git_odb_object_dup_OPTIONAL_ARGC 0
@@ -13933,7 +12784,6 @@ mrb_Git_git_odb_object_data(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_object_dup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_object * native_dest = NULL;
   mrb_value source;
 
@@ -13952,17 +12802,10 @@ mrb_Git_git_odb_object_dup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_object_dup(&native_dest, native_source);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: dest */
   mrb_value dest = native_dest == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb_object(mrb, native_dest);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, dest);
-
-  return results;
+  return dest;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -14117,7 +12960,7 @@ mrb_Git_git_odb_object_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_open */
-/* sha: f3bb5b69138ef4f51bcc2610579ace3691c83549e6f4958cb3ad9d9d5d6f74ea */
+/* sha: ec53c9972e73607db23734fee590671e4f4108ff7fc5ed56edb770476e34ff2c */
 #if BIND_git_odb_open_FUNCTION
 #define git_odb_open_REQUIRED_ARGC 1
 #define git_odb_open_OPTIONAL_ARGC 0
@@ -14129,7 +12972,6 @@ mrb_Git_git_odb_object_type(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_open(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb * native_out = NULL;
   char * native_objects_dir = NULL;
 
@@ -14139,23 +12981,16 @@ mrb_Git_git_odb_open(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_open(&native_out, native_objects_dir);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_open_rstream */
-/* sha: efc3d52519c1c2d7aa28655cdee5ba899ed4106d0851765ed7ea2f727b111f3c */
+/* sha: 53eaca9ed15d599148e70e6c4b52bc356ddcc5aa7bda143d3c22282fccefbf7a */
 #if BIND_git_odb_open_rstream_FUNCTION
 #define git_odb_open_rstream_REQUIRED_ARGC 2
 #define git_odb_open_rstream_OPTIONAL_ARGC 0
@@ -14168,7 +13003,6 @@ mrb_Git_git_odb_open(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_open_rstream(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_stream * native_out = NULL;
   mrb_value db;
   mrb_value oid;
@@ -14195,23 +13029,16 @@ mrb_Git_git_odb_open_rstream(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_open_rstream(&native_out, native_db, native_oid);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb_stream(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_open_wstream */
-/* sha: 2973f11fcd41ccf858c333cbcabce2b74ee52a8dc4fa703eb772ce92a172c05f */
+/* sha: 6e3a5550b02f2a9323d6eb5e77a51b4f65b751cd2b6267ffdc85bd2578a11a69 */
 #if BIND_git_odb_open_wstream_FUNCTION
 #define git_odb_open_wstream_REQUIRED_ARGC 3
 #define git_odb_open_wstream_OPTIONAL_ARGC 0
@@ -14225,7 +13052,6 @@ mrb_Git_git_odb_open_rstream(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_open_wstream(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_stream * native_out = NULL;
   mrb_value db;
   mrb_int native_size;
@@ -14246,23 +13072,16 @@ mrb_Git_git_odb_open_wstream(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_open_wstream(&native_out, native_db, native_size, native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb_stream(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_read */
-/* sha: 2f6277304cd312cc9d804b7ed275937d4b1f9ff605879b157df83f69629e370a */
+/* sha: bc77403cb05136586e0951178b253e90a748ebfc9b8a033ef16b8bbdd983369c */
 #if BIND_git_odb_read_FUNCTION
 #define git_odb_read_REQUIRED_ARGC 2
 #define git_odb_read_OPTIONAL_ARGC 0
@@ -14275,7 +13094,6 @@ mrb_Git_git_odb_open_wstream(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_read(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_object * native_out = NULL;
   mrb_value db;
   mrb_value id;
@@ -14302,23 +13120,16 @@ mrb_Git_git_odb_read(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_read(&native_out, native_db, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb_object(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_read_header */
-/* sha: 623698e6dcf335ea77b20a76b3ee8dd9fc8077adaa7ce0fdb2fdc7250445419e */
+/* sha: 165c80e2dee84c2abcdf9b59534513b608f0065c6b0c500e22e08f482a9f3152 */
 #if BIND_git_odb_read_header_FUNCTION
 #define git_odb_read_header_REQUIRED_ARGC 2
 #define git_odb_read_header_OPTIONAL_ARGC 0
@@ -14359,10 +13170,6 @@ mrb_Git_git_odb_read_header(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_read_header(&native_len_out, &native_type_out, native_db, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: len_out */
   mrb_value len_out = mrb_fixnum_value(native_len_out);
   /* Box out param: type_out */
@@ -14378,7 +13185,7 @@ mrb_Git_git_odb_read_header(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_read_prefix */
-/* sha: ea332e90a711c75447c6563898e4bcfacf0550e918d7e85eb39fbea91b21d9a3 */
+/* sha: ead4a924bd92526be25a5019f46db0cf53d3a86d3dbbbc999735a85c99c28252 */
 #if BIND_git_odb_read_prefix_FUNCTION
 #define git_odb_read_prefix_REQUIRED_ARGC 3
 #define git_odb_read_prefix_OPTIONAL_ARGC 0
@@ -14392,7 +13199,6 @@ mrb_Git_git_odb_read_header(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_read_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_object * native_out = NULL;
   mrb_value db;
   mrb_value short_id;
@@ -14420,23 +13226,16 @@ mrb_Git_git_odb_read_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_read_prefix(&native_out, native_db, native_short_id, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb_object(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_refresh */
-/* sha: a50b4ca9bf69d0553cd092fe306112f86c615ed56607d1dbc4cdf59334b41827 */
+/* sha: 9e0a76e7c958b612a11c356e4296ff1edee5c4b3dddbcd592640a05e269b5f8d */
 #if BIND_git_odb_refresh_FUNCTION
 #define git_odb_refresh_REQUIRED_ARGC 1
 #define git_odb_refresh_OPTIONAL_ARGC 0
@@ -14465,16 +13264,13 @@ mrb_Git_git_odb_refresh(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_refresh(native_db);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_stream_finalize_write */
-/* sha: f9542540075395d7c1f3afcfe6f376c28004dea51854037540846f205bcf5897 */
+/* sha: 6b39fc0f64f100578c9e86935be05228b83b4ab5fc198430855f9f7ae89a9c45 */
 #if BIND_git_odb_stream_finalize_write_FUNCTION
 #define git_odb_stream_finalize_write_REQUIRED_ARGC 2
 #define git_odb_stream_finalize_write_OPTIONAL_ARGC 0
@@ -14512,10 +13308,7 @@ mrb_Git_git_odb_stream_finalize_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_stream_finalize_write(native_out, native_stream);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -14556,7 +13349,7 @@ mrb_Git_git_odb_stream_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_stream_read */
-/* sha: a7485c4c577f226b0b5745c2c51e34008499a45344a7d918ef8c6721c11b0ee2 */
+/* sha: 4df4e85822e890b6ac780ce14879c058ca3fd7387cfab8689116363a7635cf94 */
 #if BIND_git_odb_stream_read_FUNCTION
 #define git_odb_stream_read_REQUIRED_ARGC 3
 #define git_odb_stream_read_OPTIONAL_ARGC 0
@@ -14593,16 +13386,13 @@ mrb_Git_git_odb_stream_read(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_stream_read(native_stream, native_buffer, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_stream_write */
-/* sha: 1fa1e430aa055490a438552644efe9b9219ea6314686b66742d004764ba8fab4 */
+/* sha: 8612b8676bca80fee64dcc9dd114a319c2bbadb1224de33e7dfebf5be07ac67e */
 #if BIND_git_odb_stream_write_FUNCTION
 #define git_odb_stream_write_REQUIRED_ARGC 3
 #define git_odb_stream_write_OPTIONAL_ARGC 0
@@ -14635,16 +13425,13 @@ mrb_Git_git_odb_stream_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_stream_write(native_stream, native_buffer, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_write */
-/* sha: a346ecc61926cef97e5393e2a8dc29107e9d8028289515350eceebb5b680ca40 */
+/* sha: 5af3e01158e77ed16c5d6eb201969cde3f3e91a3c466d7e68342f8698c1e1a37 */
 #if BIND_git_odb_write_FUNCTION
 #define git_odb_write_REQUIRED_ARGC 4
 #define git_odb_write_OPTIONAL_ARGC 0
@@ -14686,16 +13473,13 @@ mrb_Git_git_odb_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_write(native_out, native_odb, RSTRING_PTR(native_data), RSTRING_LEN(native_data), native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_odb_write_pack */
-/* sha: 9eae779719ccc0a47dcb2b1106ac61c79504e86fe71fb2f5275b5f9f797ed54e */
+/* sha: 1871419bc40df2ccdcba0cfd0441171f3e80d80e3ae4e78cb43750a91366a965 */
 #if BIND_git_odb_write_pack_FUNCTION
 #define git_odb_write_pack_REQUIRED_ARGC 3
 #define git_odb_write_pack_OPTIONAL_ARGC 0
@@ -14709,7 +13493,6 @@ mrb_Git_git_odb_write(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_odb_write_pack(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb_writepack * native_out = NULL;
   mrb_value db;
   mrb_value progress_cb;
@@ -14738,17 +13521,10 @@ mrb_Git_git_odb_write_pack(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_odb_write_pack(&native_out, native_db, native_progress_cb, native_progress_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_odb_writepack(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -14845,7 +13621,7 @@ mrb_Git_git_oid_cpy(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_oid_equal */
-/* sha: 3eedcbe975eacab0fb25e51841d26bbcaa3e0a1b03397ea090b994c7e6c67141 */
+/* sha: 0861fb5a30578c99ebf6ad3cb3ff1067e138c5d34eeb61ee21448c11952140b2 */
 #if BIND_git_oid_equal_FUNCTION
 #define git_oid_equal_REQUIRED_ARGC 2
 #define git_oid_equal_OPTIONAL_ARGC 0
@@ -14884,7 +13660,7 @@ mrb_Git_git_oid_equal(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_oid_equal(native_a, native_b);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -14974,7 +13750,7 @@ mrb_Git_git_oid_fromraw(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_oid_fromstr */
-/* sha: b6a812dc065ea723c860b08d13988168f992f2fc5778245581b3cf4589ac2113 */
+/* sha: 4c185c9b15bf5c23913c7e15838ad74a95ae89c405e5f24912aec6c67d4d8d7c */
 #if BIND_git_oid_fromstr_FUNCTION
 #define git_oid_fromstr_REQUIRED_ARGC 2
 #define git_oid_fromstr_OPTIONAL_ARGC 0
@@ -15005,16 +13781,13 @@ mrb_Git_git_oid_fromstr(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_oid_fromstr(native_out, native_str);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_oid_fromstrn */
-/* sha: 22182b13af99eafc1bf1317823a8b54dc446c39a5cbfe9fa3f9f3050c8732b1c */
+/* sha: d78ab7517a0712a66c364cf69290a221f4a9b503f2177d07d15d5d19eeee3c69 */
 #if BIND_git_oid_fromstrn_FUNCTION
 #define git_oid_fromstrn_REQUIRED_ARGC 3
 #define git_oid_fromstrn_OPTIONAL_ARGC 0
@@ -15047,16 +13820,13 @@ mrb_Git_git_oid_fromstrn(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_oid_fromstrn(native_out, native_str, native_length);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_oid_fromstrp */
-/* sha: 8d6a29f2dcd7c7ecaf961684b5069ec95a4848cb6ea097ce973013156dc12fd5 */
+/* sha: 1cbbe55bc82b6e09249aa93abb3127338a577dba51f0a743904d2c463c536fed */
 #if BIND_git_oid_fromstrp_FUNCTION
 #define git_oid_fromstrp_REQUIRED_ARGC 2
 #define git_oid_fromstrp_OPTIONAL_ARGC 0
@@ -15087,16 +13857,13 @@ mrb_Git_git_oid_fromstrp(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_oid_fromstrp(native_out, native_str);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_oid_iszero */
-/* sha: 4be0264ccc736329ef56c5f912fd838ae693af27764985aa73b7b67bfc2e94d1 */
+/* sha: edfe48fd763ce117f55fa995466714344d8707367cc5d1d89726aa49759dc687 */
 #if BIND_git_oid_iszero_FUNCTION
 #define git_oid_iszero_REQUIRED_ARGC 1
 #define git_oid_iszero_OPTIONAL_ARGC 0
@@ -15126,7 +13893,7 @@ mrb_Git_git_oid_iszero(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_oid_iszero(native_id);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -15411,7 +14178,7 @@ mrb_Git_git_oid_strcmp(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_oid_streq */
-/* sha: 1afe4514820ebd1cd49a7cad34da34305487add18d8b601183d3fb6861463e6a */
+/* sha: 6de24b67ab7673ac7b8fe5da0c920bdaf8176528d14854f33d22aa6cf1815ea9 */
 #if BIND_git_oid_streq_FUNCTION
 #define git_oid_streq_REQUIRED_ARGC 2
 #define git_oid_streq_OPTIONAL_ARGC 0
@@ -15443,7 +14210,7 @@ mrb_Git_git_oid_streq(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_oid_streq(native_id, native_str);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -15570,7 +14337,7 @@ mrb_Git_git_oidarray_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_foreach */
-/* sha: b5931a181440eef53b781c755fd81fa8f3179c11ad07ffa3aa737ff78e949ae5 */
+/* sha: 63777da6de247c72ae961dd2fbce759926f4d5bd116a89e05098b952eb18b0eb */
 #if BIND_git_packbuilder_foreach_FUNCTION
 #define git_packbuilder_foreach_REQUIRED_ARGC 3
 #define git_packbuilder_foreach_OPTIONAL_ARGC 0
@@ -15611,10 +14378,7 @@ mrb_Git_git_packbuilder_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_foreach(native_pb, native_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -15693,7 +14457,7 @@ mrb_Git_git_packbuilder_hash(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_insert */
-/* sha: c6d9b67df537346b590152505383b9841e5ae3b0b20d672bdbc9e4c707e7df6f */
+/* sha: 50c0246e2735cfd6ccc20f3efa67e75f474c736a92afb5e6801ea29a4aef5952 */
 #if BIND_git_packbuilder_insert_FUNCTION
 #define git_packbuilder_insert_REQUIRED_ARGC 3
 #define git_packbuilder_insert_OPTIONAL_ARGC 0
@@ -15733,16 +14497,13 @@ mrb_Git_git_packbuilder_insert(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_insert(native_pb, native_id, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_insert_commit */
-/* sha: aede3df22bdd5c9cc3f38884f1f046ba7c0e6de41b79779003cd27cf185fe71f */
+/* sha: 8283587d1c0fad280e9a9a80309c51a96e48945c078d2bfd75b08b94e40e0e25 */
 #if BIND_git_packbuilder_insert_commit_FUNCTION
 #define git_packbuilder_insert_commit_REQUIRED_ARGC 2
 #define git_packbuilder_insert_commit_OPTIONAL_ARGC 0
@@ -15780,16 +14541,13 @@ mrb_Git_git_packbuilder_insert_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_insert_commit(native_pb, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_insert_recur */
-/* sha: ba4e277c2bacfed880035b0080ae29eb929f1bd70796e9dd11971654b76fb7ab */
+/* sha: 3fdc0fa43c758264ddd60e4ba3114f0d15599f1a0a7d7d18b4151f5c14a6575b */
 #if BIND_git_packbuilder_insert_recur_FUNCTION
 #define git_packbuilder_insert_recur_REQUIRED_ARGC 3
 #define git_packbuilder_insert_recur_OPTIONAL_ARGC 0
@@ -15829,16 +14587,13 @@ mrb_Git_git_packbuilder_insert_recur(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_insert_recur(native_pb, native_id, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_insert_tree */
-/* sha: bb66206abd5f277b855367d6cabab9c4ccc67dcdcd3b11882e03f5a8aa42d18e */
+/* sha: ee5564971ee25fa13941cd40d3a62fd090809201f61d86336c02fc943b534809 */
 #if BIND_git_packbuilder_insert_tree_FUNCTION
 #define git_packbuilder_insert_tree_REQUIRED_ARGC 2
 #define git_packbuilder_insert_tree_OPTIONAL_ARGC 0
@@ -15876,16 +14631,13 @@ mrb_Git_git_packbuilder_insert_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_insert_tree(native_pb, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_insert_walk */
-/* sha: 2fe6e2ad5c3f70bcb01a1b2e71f2da0dd9800c38c0100103d55a0fb4fe114062 */
+/* sha: 1566dcc813b0d3357c0f442965fed4bbf3e878170d023b9bd3f07b0308646ee6 */
 #if BIND_git_packbuilder_insert_walk_FUNCTION
 #define git_packbuilder_insert_walk_REQUIRED_ARGC 2
 #define git_packbuilder_insert_walk_OPTIONAL_ARGC 0
@@ -15923,16 +14675,13 @@ mrb_Git_git_packbuilder_insert_walk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_insert_walk(native_pb, native_walk);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_new */
-/* sha: fd4f331ee9104e25758bcfee53dd07d83d2755942ef64a1b0be200c79b52f0b4 */
+/* sha: 84ec79eb321bdd213514f22d005b42b9e1201d3df608aec340dd4e3fd97315fe */
 #if BIND_git_packbuilder_new_FUNCTION
 #define git_packbuilder_new_REQUIRED_ARGC 1
 #define git_packbuilder_new_OPTIONAL_ARGC 0
@@ -15944,7 +14693,6 @@ mrb_Git_git_packbuilder_insert_walk(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_packbuilder_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_packbuilder * native_out = NULL;
   mrb_value repo;
 
@@ -15963,17 +14711,10 @@ mrb_Git_git_packbuilder_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_new(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_packbuilder(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -16017,7 +14758,7 @@ mrb_Git_git_packbuilder_object_count(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_set_callbacks */
-/* sha: 0d54e59d2b45606cd3b1ed7866f952bbd43e68f29ddf196cfd0ae81597216ab5 */
+/* sha: c6b152a0257a86ea472a60ccf60d56c87002ae30d28cbc2bc6cb392cb7e71098 */
 #if BIND_git_packbuilder_set_callbacks_FUNCTION
 #define git_packbuilder_set_callbacks_REQUIRED_ARGC 3
 #define git_packbuilder_set_callbacks_OPTIONAL_ARGC 0
@@ -16058,10 +14799,7 @@ mrb_Git_git_packbuilder_set_callbacks(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_set_callbacks(native_pb, native_progress_cb, native_progress_cb_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -16107,7 +14845,7 @@ mrb_Git_git_packbuilder_set_threads(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_write */
-/* sha: a058f055443f84aba791602ad8f843ac532b44a2de6f668e3c97e3c070f6e62f */
+/* sha: 8d8a208cfae5ef05bd93d9d7569255aa239ae63a4a75b0512c056d28ffeba2cb */
 #if BIND_git_packbuilder_write_FUNCTION
 #define git_packbuilder_write_REQUIRED_ARGC 5
 #define git_packbuilder_write_OPTIONAL_ARGC 0
@@ -16152,16 +14890,13 @@ mrb_Git_git_packbuilder_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_write(native_pb, native_path, native_mode, native_progress_cb, native_progress_cb_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_packbuilder_write_buf */
-/* sha: a3d7b1a0a8b7ecf0d2e573f39a15260687279e57e7b45bd63d4d7bde0d605dbe */
+/* sha: 8d2fef8d1fc47d2001500d3c20f63ed1d9923fb934b9c801e1e2c9fd346df3b9 */
 #if BIND_git_packbuilder_write_buf_FUNCTION
 #define git_packbuilder_write_buf_REQUIRED_ARGC 2
 #define git_packbuilder_write_buf_OPTIONAL_ARGC 0
@@ -16191,7 +14926,7 @@ mrb_Git_git_packbuilder_write_buf(mrb_state* mrb, mrb_value self) {
   }
 
   /* Unbox param: buf */
-  git_buf * native_buf = (mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf));
+  git_buf * native_buf = mrb_nil_p(buf) ? NULL : mruby_unbox_git_buf(buf);
 
   /* Unbox param: pb */
   git_packbuilder * native_pb = (mrb_nil_p(pb) ? NULL : mruby_unbox_git_packbuilder(pb));
@@ -16199,10 +14934,7 @@ mrb_Git_git_packbuilder_write_buf(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_packbuilder_write_buf(native_buf, native_pb);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -16281,7 +15013,7 @@ mrb_Git_git_patch_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_from_blob_and_buffer */
-/* sha: 726e612d26f9d4238c691b79763f7bb9c67e9ad418b83e0dc334f41c99def042 */
+/* sha: bdd5d524e64adb7117b3887e9d1fb670765cadf79901f7a48d07cc5f58ee1144 */
 #if BIND_git_patch_from_blob_and_buffer_FUNCTION
 #define git_patch_from_blob_and_buffer_REQUIRED_ARGC 6
 #define git_patch_from_blob_and_buffer_OPTIONAL_ARGC 0
@@ -16298,7 +15030,6 @@ mrb_Git_git_patch_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_patch_from_blob_and_buffer(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_patch * native_out = NULL;
   mrb_value old_blob;
   char * native_old_as_path = NULL;
@@ -16329,23 +15060,16 @@ mrb_Git_git_patch_from_blob_and_buffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_from_blob_and_buffer(&native_out, native_old_blob, native_old_as_path, native_buffer, native_buffer_len, native_buffer_as_path, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_patch(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_from_blobs */
-/* sha: 2f0931464eb148c3bc8938c11cc0c9fc61c60d67dccf2fcc20cd0dda0b92ccce */
+/* sha: a6acf0e1b1bfc0c923f730162b00b8c4c827d012670ba79818a2909d7229094f */
 #if BIND_git_patch_from_blobs_FUNCTION
 #define git_patch_from_blobs_REQUIRED_ARGC 5
 #define git_patch_from_blobs_OPTIONAL_ARGC 0
@@ -16361,7 +15085,6 @@ mrb_Git_git_patch_from_blob_and_buffer(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_patch_from_blobs(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_patch * native_out = NULL;
   mrb_value old_blob;
   char * native_old_as_path = NULL;
@@ -16398,23 +15121,16 @@ mrb_Git_git_patch_from_blobs(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_from_blobs(&native_out, native_old_blob, native_old_as_path, native_new_blob, native_new_as_path, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_patch(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_from_buffers */
-/* sha: 31b943170ae62550815a8de4eea52b003272705ab55e8977fe405a703232414c */
+/* sha: 326aa5210bab052c500e480bfdaed495c4746d8e540521cb46fda91e101398a0 */
 #if BIND_git_patch_from_buffers_FUNCTION
 #define git_patch_from_buffers_REQUIRED_ARGC 7
 #define git_patch_from_buffers_OPTIONAL_ARGC 0
@@ -16432,7 +15148,6 @@ mrb_Git_git_patch_from_blobs(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_patch_from_buffers(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_patch * native_out = NULL;
   mrb_value old_buffer;
   mrb_int native_old_len;
@@ -16461,23 +15176,16 @@ mrb_Git_git_patch_from_buffers(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_from_buffers(&native_out, native_old_buffer, native_old_len, native_old_as_path, native_new_buffer, native_new_len, native_new_as_path, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_patch(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_from_diff */
-/* sha: f2645f93d063e351e420b12168a5abe13e7f7450e88e233e90b2562fb3eeaff0 */
+/* sha: 4d332677fc2a07c462dca1073d247ff271a09f74357c6e7ed2c8d7c6c5cc858f */
 #if BIND_git_patch_from_diff_FUNCTION
 #define git_patch_from_diff_REQUIRED_ARGC 2
 #define git_patch_from_diff_OPTIONAL_ARGC 0
@@ -16490,7 +15198,6 @@ mrb_Git_git_patch_from_buffers(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_patch_from_diff(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_patch * native_out = NULL;
   mrb_value diff;
   mrb_int native_idx;
@@ -16510,17 +15217,10 @@ mrb_Git_git_patch_from_diff(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_from_diff(&native_out, native_diff, native_idx);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_patch(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -16564,7 +15264,7 @@ mrb_Git_git_patch_get_delta(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_get_hunk */
-/* sha: 34cc1b331f7ed7e030f4452063d094d373f4baec064b517bf8e5aa9d21a0ee2e */
+/* sha: 371ec9a6f1127472738836ad6158ee017a5aa9d02df22212709821f8ae616e27 */
 #if BIND_git_patch_get_hunk_FUNCTION
 #define git_patch_get_hunk_REQUIRED_ARGC 2
 #define git_patch_get_hunk_OPTIONAL_ARGC 0
@@ -16598,10 +15298,6 @@ mrb_Git_git_patch_get_hunk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_get_hunk(&native_out, &native_lines_in_hunk, native_patch, native_hunk_idx);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_diff_hunk(mrb, native_out);
   /* Box out param: lines_in_hunk */
@@ -16617,7 +15313,7 @@ mrb_Git_git_patch_get_hunk(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_get_line_in_hunk */
-/* sha: 3c7ef98e3ce48456429a1e22703ee9dc4e1cd5fe1a11d7af4adb83b06a85de53 */
+/* sha: fc204fe395aaa94e279399a17a4667f0c8bb3694f4f0039a7433ada71a735bef */
 #if BIND_git_patch_get_line_in_hunk_FUNCTION
 #define git_patch_get_line_in_hunk_REQUIRED_ARGC 3
 #define git_patch_get_line_in_hunk_OPTIONAL_ARGC 0
@@ -16631,7 +15327,6 @@ mrb_Git_git_patch_get_hunk(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_patch_get_line_in_hunk(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_diff_line * native_out = NULL;
   mrb_value patch;
   mrb_int native_hunk_idx;
@@ -16652,23 +15347,16 @@ mrb_Git_git_patch_get_line_in_hunk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_get_line_in_hunk(&native_out, native_patch, native_hunk_idx, native_line_of_hunk);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_diff_line(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_line_stats */
-/* sha: 746118591ace18e34f7518d84ff4243244919cbe8a62c562e16be1c1389bf364 */
+/* sha: 0468b3b564516da9a0b15a7c83914c2d63523cc99a5fc29e9756257727be3ec0 */
 #if BIND_git_patch_line_stats_FUNCTION
 #define git_patch_line_stats_REQUIRED_ARGC 1
 #define git_patch_line_stats_OPTIONAL_ARGC 0
@@ -16701,10 +15389,6 @@ mrb_Git_git_patch_line_stats(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_line_stats(&native_total_context, &native_total_additions, &native_total_deletions, native_patch);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: total_context */
   mrb_value total_context = mrb_fixnum_value(native_total_context);
   /* Box out param: total_additions */
@@ -16801,7 +15485,7 @@ mrb_Git_git_patch_num_lines_in_hunk(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_print */
-/* sha: 53703e7c103994aaea8e7f3a24a0e7cf0d29a59cc651c70204483e7cf16cc7c5 */
+/* sha: 547f2791d8bcbb1ec7940d555202a765c740180ed0300b316e493145c9ace1d3 */
 #if BIND_git_patch_print_FUNCTION
 #define git_patch_print_REQUIRED_ARGC 3
 #define git_patch_print_OPTIONAL_ARGC 0
@@ -16842,10 +15526,7 @@ mrb_Git_git_patch_print(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_print(native_patch, native_print_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -16895,37 +15576,29 @@ mrb_Git_git_patch_size(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_patch_to_buf */
-/* sha: 367a1c7e7f01f914d457aa5302929d6e30ecc9574658866e6d87c5d6c8b5edd4 */
+/* sha: 4523103f82a9ddb32fee3f5922c43a722958ad0207d7d96ccc350a7637834c74 */
 #if BIND_git_patch_to_buf_FUNCTION
-#define git_patch_to_buf_REQUIRED_ARGC 2
+#define git_patch_to_buf_REQUIRED_ARGC 1
 #define git_patch_to_buf_OPTIONAL_ARGC 0
 /* git_patch_to_buf
  *
  * Parameters:
- * - out: git_buf *
  * - patch: git_patch *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_patch_to_buf(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value patch;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &out, &patch);
+  mrb_get_args(mrb, "o", &patch);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, patch, Patch_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Patch expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: patch */
   git_patch * native_patch = (mrb_nil_p(patch) ? NULL : mruby_unbox_git_patch(patch));
@@ -16933,10 +15606,10 @@ mrb_Git_git_patch_to_buf(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_patch_to_buf(native_out, native_patch);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -16977,7 +15650,7 @@ mrb_Git_git_pathspec_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_pathspec_match_diff */
-/* sha: 8a9f97333396551ae66266eb848b32ff88da196272611fb2e88345dc5929d9aa */
+/* sha: b6c0a4b68a001972b3115e811d846d2ff67a7bc0834c929b70dcd2c2f5cbe133 */
 #if BIND_git_pathspec_match_diff_FUNCTION
 #define git_pathspec_match_diff_REQUIRED_ARGC 3
 #define git_pathspec_match_diff_OPTIONAL_ARGC 0
@@ -16991,7 +15664,6 @@ mrb_Git_git_pathspec_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_pathspec_match_diff(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_pathspec_match_list * native_out = NULL;
   mrb_value diff;
   mrb_int native_flags;
@@ -17019,23 +15691,16 @@ mrb_Git_git_pathspec_match_diff(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_pathspec_match_diff(&native_out, native_diff, native_flags, native_ps);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_pathspec_match_list(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_pathspec_match_index */
-/* sha: d31971aea2869d7aa2b60a79b34a56033602fbf478447505ac2e1c8770d31a9b */
+/* sha: 37aa0596c5fca52e0b61090d54dabd95739536e9fac5a047209d2ba15cbc2fa5 */
 #if BIND_git_pathspec_match_index_FUNCTION
 #define git_pathspec_match_index_REQUIRED_ARGC 3
 #define git_pathspec_match_index_OPTIONAL_ARGC 0
@@ -17049,7 +15714,6 @@ mrb_Git_git_pathspec_match_diff(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_pathspec_match_index(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_pathspec_match_list * native_out = NULL;
   mrb_value index;
   mrb_int native_flags;
@@ -17077,17 +15741,10 @@ mrb_Git_git_pathspec_match_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_pathspec_match_index(&native_out, native_index, native_flags, native_ps);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_pathspec_match_list(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -17324,7 +15981,7 @@ mrb_Git_git_pathspec_match_list_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_pathspec_match_tree */
-/* sha: e22691d9569413446bd230096c9efa9efcff5b18b249f3c130b3be568b4cc32b */
+/* sha: bed472e71be4ea5d2e0165a6c037b8d031b1c5e2b9d00a9a220e9cfacf355eff */
 #if BIND_git_pathspec_match_tree_FUNCTION
 #define git_pathspec_match_tree_REQUIRED_ARGC 3
 #define git_pathspec_match_tree_OPTIONAL_ARGC 0
@@ -17338,7 +15995,6 @@ mrb_Git_git_pathspec_match_list_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_pathspec_match_tree(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_pathspec_match_list * native_out = NULL;
   mrb_value tree;
   mrb_int native_flags;
@@ -17366,23 +16022,16 @@ mrb_Git_git_pathspec_match_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_pathspec_match_tree(&native_out, native_tree, native_flags, native_ps);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_pathspec_match_list(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_pathspec_match_workdir */
-/* sha: a54e658b3581af052baa182711ceda6834cebfce712d6e3f615fb904594c2a10 */
+/* sha: a730dd6bd230d54242a03ac5ed2bb039e22751aca7bb2d7edc5cc6950899d4b7 */
 #if BIND_git_pathspec_match_workdir_FUNCTION
 #define git_pathspec_match_workdir_REQUIRED_ARGC 3
 #define git_pathspec_match_workdir_OPTIONAL_ARGC 0
@@ -17396,7 +16045,6 @@ mrb_Git_git_pathspec_match_tree(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_pathspec_match_workdir(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_pathspec_match_list * native_out = NULL;
   mrb_value repo;
   mrb_int native_flags;
@@ -17424,23 +16072,16 @@ mrb_Git_git_pathspec_match_workdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_pathspec_match_workdir(&native_out, native_repo, native_flags, native_ps);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_pathspec_match_list(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_pathspec_matches_path */
-/* sha: fcca4515b17e47bf6d375d71f785b3227adddf15b57f4269e23401be1e833c37 */
+/* sha: 3cd416aeec5b9ddf4164f7f263fd2fa86475bebf76dbeb62156f023f25d3ae98 */
 #if BIND_git_pathspec_matches_path_FUNCTION
 #define git_pathspec_matches_path_REQUIRED_ARGC 3
 #define git_pathspec_matches_path_OPTIONAL_ARGC 0
@@ -17474,7 +16115,7 @@ mrb_Git_git_pathspec_matches_path(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_pathspec_matches_path(native_ps, native_flags, native_path);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -17482,7 +16123,7 @@ mrb_Git_git_pathspec_matches_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_pathspec_new */
-/* sha: e483a5526d5fd6b46ad3ccc9e7b2bf436b7b588e713fdd41ce9c3cc544142299 */
+/* sha: a80766c85f899b9c1a9a9d10fc70c916862af9b546902ee0211749224852570e */
 #if BIND_git_pathspec_new_FUNCTION
 #define git_pathspec_new_REQUIRED_ARGC 1
 #define git_pathspec_new_OPTIONAL_ARGC 0
@@ -17494,7 +16135,6 @@ mrb_Git_git_pathspec_matches_path(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_pathspec_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_pathspec * native_out = NULL;
   mrb_value pathspec;
 
@@ -17513,23 +16153,16 @@ mrb_Git_git_pathspec_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_pathspec_new(&native_out, native_pathspec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_pathspec(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_push_init_options */
-/* sha: 57ea0e95ac3824f7683007388c9f58abbb3cd10c8d7ee2d75393689c466ea6cb */
+/* sha: 676308cfb7b06ab4388f57e246486d016511b2e697db19e81432f4907ef7f0ef */
 #if BIND_git_push_init_options_FUNCTION
 #define git_push_init_options_REQUIRED_ARGC 2
 #define git_push_init_options_OPTIONAL_ARGC 0
@@ -17560,16 +16193,13 @@ mrb_Git_git_push_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_push_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_abort */
-/* sha: 350c44142a26eee46bef37e875f9ee41903e211b436f8a52f54bdf0d1bdb7d81 */
+/* sha: 527f92e019dd1cc06751b445848a163eceda256c69a9f76289ae2d0ecb6181ba */
 #if BIND_git_rebase_abort_FUNCTION
 #define git_rebase_abort_REQUIRED_ARGC 1
 #define git_rebase_abort_OPTIONAL_ARGC 0
@@ -17598,16 +16228,13 @@ mrb_Git_git_rebase_abort(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_abort(native_rebase);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_commit */
-/* sha: a0645c0f0b19250ec73b183be745a04653848dfd663e2f1d97a4829c8b2fd2d6 */
+/* sha: dd6d3d32869500a1fd40c0cf730490847a62c17abdae0c107951e808f837610b */
 #if BIND_git_rebase_commit_FUNCTION
 #define git_rebase_commit_REQUIRED_ARGC 6
 #define git_rebase_commit_OPTIONAL_ARGC 0
@@ -17667,16 +16294,13 @@ mrb_Git_git_rebase_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_commit(native_id, native_rebase, native_author, native_committer, native_message_encoding, native_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_finish */
-/* sha: 3287d7cde84e684175f60452404fafc54faf89899c588adfce5647badfd715fc */
+/* sha: a59b0ed0caf5c1306983dbfad1b6d1f1f1f509d8fc5c3993b0f0e31c1272d13b */
 #if BIND_git_rebase_finish_FUNCTION
 #define git_rebase_finish_REQUIRED_ARGC 2
 #define git_rebase_finish_OPTIONAL_ARGC 0
@@ -17714,10 +16338,7 @@ mrb_Git_git_rebase_finish(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_finish(native_rebase, native_signature);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -17758,7 +16379,7 @@ mrb_Git_git_rebase_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_init */
-/* sha: 4b8d916485451f1c15f6717906886b6ad441454327a58176801db34e57fecab3 */
+/* sha: a76f27dc6324721f60fa359e903e68730256e61a8645b67fd5fb425cc2128460 */
 #if BIND_git_rebase_init_FUNCTION
 #define git_rebase_init_REQUIRED_ARGC 5
 #define git_rebase_init_OPTIONAL_ARGC 0
@@ -17774,7 +16395,6 @@ mrb_Git_git_rebase_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_rebase_init(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_rebase * native_out = NULL;
   mrb_value repo;
   mrb_value branch;
@@ -17825,23 +16445,16 @@ mrb_Git_git_rebase_init(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_init(&native_out, native_repo, native_branch, native_upstream, native_onto, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_rebase(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_init_options */
-/* sha: 5aa4d46ac9c4967a9a55c360be4eed2f514e7856443cb11f1ef840e2fb9e00dd */
+/* sha: 04f2c64fab0d21527d07e9bf0a7ac4aca50f1871691475a326318086fbe22676 */
 #if BIND_git_rebase_init_options_FUNCTION
 #define git_rebase_init_options_REQUIRED_ARGC 2
 #define git_rebase_init_options_OPTIONAL_ARGC 0
@@ -17872,16 +16485,13 @@ mrb_Git_git_rebase_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_next */
-/* sha: 95266997cbd1a5da2a72a48dc08598b0becc2558b86ee8c3912b5547e488e6a7 */
+/* sha: 904f6b1f044963bbb8829029fcafc59ff63d04b0524a33936d89649754a3624c */
 #if BIND_git_rebase_next_FUNCTION
 #define git_rebase_next_REQUIRED_ARGC 1
 #define git_rebase_next_OPTIONAL_ARGC 0
@@ -17893,7 +16503,6 @@ mrb_Git_git_rebase_init_options(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_rebase_next(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_rebase_operation * native_operation = NULL;
   mrb_value rebase;
 
@@ -17912,23 +16521,16 @@ mrb_Git_git_rebase_next(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_next(&native_operation, native_rebase);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: operation */
   mrb_value operation = mruby_box_git_rebase_operation(mrb, native_operation);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, operation);
-
-  return results;
+  return operation;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_rebase_open */
-/* sha: e297c0bb20b7da2a1b37f849c225084d2d1bf67498000f124d17aafddf73f90e */
+/* sha: 5c3ca88b139ec116e27801d08bb2d63f26706a0897aaec0243a06dba68bad2c4 */
 #if BIND_git_rebase_open_FUNCTION
 #define git_rebase_open_REQUIRED_ARGC 2
 #define git_rebase_open_OPTIONAL_ARGC 0
@@ -17941,7 +16543,6 @@ mrb_Git_git_rebase_next(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_rebase_open(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_rebase * native_out = NULL;
   mrb_value repo;
   mrb_value opts;
@@ -17968,17 +16569,10 @@ mrb_Git_git_rebase_open(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_rebase_open(&native_out, native_repo, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_rebase(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -18100,7 +16694,7 @@ mrb_Git_git_rebase_operation_entrycount(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refdb_compress */
-/* sha: 2bc7e2a66837e18a1cc346d98a1b3023bb3aec800b644d310c47ec8cb947fdc0 */
+/* sha: 27baeff2154a75179c59f368fb446aeb467e3c65d6a603a88d90b37469aaf41f */
 #if BIND_git_refdb_compress_FUNCTION
 #define git_refdb_compress_REQUIRED_ARGC 1
 #define git_refdb_compress_OPTIONAL_ARGC 0
@@ -18129,10 +16723,7 @@ mrb_Git_git_refdb_compress(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_refdb_compress(native_refdb);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -18173,7 +16764,7 @@ mrb_Git_git_refdb_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refdb_new */
-/* sha: f902c49a47df7f27f2b44d89c365557c39eed13c0302e83b5857b2b19d99a857 */
+/* sha: d8169b1bc6bedc49c6e19f5be8e1a29633cabe42a4b2b0d50fb0cd511d3ca0fa */
 #if BIND_git_refdb_new_FUNCTION
 #define git_refdb_new_REQUIRED_ARGC 1
 #define git_refdb_new_OPTIONAL_ARGC 0
@@ -18185,7 +16776,6 @@ mrb_Git_git_refdb_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_refdb_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_refdb * native_out = NULL;
   mrb_value repo;
 
@@ -18204,23 +16794,16 @@ mrb_Git_git_refdb_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_refdb_new(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_refdb(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refdb_open */
-/* sha: d7f5f2b1d0b67297bd77792049aebb4047036ade33111fcc54930881d74d7205 */
+/* sha: 9723845747901ec43d743642b8a323f7ad11bd9a4e913ce8573945af58248b23 */
 #if BIND_git_refdb_open_FUNCTION
 #define git_refdb_open_REQUIRED_ARGC 1
 #define git_refdb_open_OPTIONAL_ARGC 0
@@ -18232,7 +16815,6 @@ mrb_Git_git_refdb_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_refdb_open(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_refdb * native_out = NULL;
   mrb_value repo;
 
@@ -18251,17 +16833,10 @@ mrb_Git_git_refdb_open(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_refdb_open(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_refdb(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -18314,7 +16889,7 @@ mrb_Git_git_reference_cmp(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_create */
-/* sha: 580e30a00639e1bb568b21bc6d304a0d5199dea3e0d93e3db8175615411807cc */
+/* sha: 70aeb037274f742768572ab7f23be02a3c6e3708f645a84de69fa4a1ffc1e640 */
 #if BIND_git_reference_create_FUNCTION
 #define git_reference_create_REQUIRED_ARGC 5
 #define git_reference_create_OPTIONAL_ARGC 0
@@ -18330,7 +16905,6 @@ mrb_Git_git_reference_cmp(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_create(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -18360,23 +16934,16 @@ mrb_Git_git_reference_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_create(&native_out, native_repo, native_name, native_id, native_force, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_create_matching */
-/* sha: fc04248bc8ea60f72fc9c6f327f24904b3b5b488f53ddcfb82d951f09164d9d0 */
+/* sha: 4b7235d480beb0593fa9f10906bc544740a02ec1d42057d823fa66fa54a40ada */
 #if BIND_git_reference_create_matching_FUNCTION
 #define git_reference_create_matching_REQUIRED_ARGC 6
 #define git_reference_create_matching_OPTIONAL_ARGC 0
@@ -18393,7 +16960,6 @@ mrb_Git_git_reference_create(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_create_matching(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -18431,23 +16997,16 @@ mrb_Git_git_reference_create_matching(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_create_matching(&native_out, native_repo, native_name, native_id, native_force, native_current_id, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_delete */
-/* sha: 00e6f24bd0ba89db98ba0fcf32f6c023df165e89ec0ff21a0c264a0f7beb2cea */
+/* sha: ffdf0906b427a8afe675a1acf40a31e60e8e93bb7beaed10513c2365cd01ff97 */
 #if BIND_git_reference_delete_FUNCTION
 #define git_reference_delete_REQUIRED_ARGC 1
 #define git_reference_delete_OPTIONAL_ARGC 0
@@ -18476,16 +17035,13 @@ mrb_Git_git_reference_delete(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_delete(native_ref);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_dwim */
-/* sha: fe68a0c40bdafa4db03214ddbc285fc4935f38d0156f3c2c3563a66df5eecf47 */
+/* sha: 20b24b81601994d0d710e044a323b8df07b86268f2362af1af92ca48c04e4256 */
 #if BIND_git_reference_dwim_FUNCTION
 #define git_reference_dwim_REQUIRED_ARGC 2
 #define git_reference_dwim_OPTIONAL_ARGC 0
@@ -18498,7 +17054,6 @@ mrb_Git_git_reference_delete(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_dwim(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_shorthand = NULL;
@@ -18518,23 +17073,16 @@ mrb_Git_git_reference_dwim(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_dwim(&native_out, native_repo, native_shorthand);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_ensure_log */
-/* sha: 4f31958e93191483ff4a7a626fb77585843c2044c2e28a3608f5cac3af3537d3 */
+/* sha: f3d92db177188c3fd72daf73c54fa3bf3268aa01657ce3f34371f573cdcb6e8c */
 #if BIND_git_reference_ensure_log_FUNCTION
 #define git_reference_ensure_log_REQUIRED_ARGC 2
 #define git_reference_ensure_log_OPTIONAL_ARGC 0
@@ -18565,16 +17113,13 @@ mrb_Git_git_reference_ensure_log(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_ensure_log(native_repo, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_foreach */
-/* sha: bcb8c89821661aa1cb003a54c6f982fc8d09739debfddb7a53b1f0725344475b */
+/* sha: 1f9ff85d798823d6bccdc999b558b13fbdfc54895b024cb2608a6f6a1d9e080d */
 #if BIND_git_reference_foreach_FUNCTION
 #define git_reference_foreach_REQUIRED_ARGC 3
 #define git_reference_foreach_OPTIONAL_ARGC 0
@@ -18615,16 +17160,13 @@ mrb_Git_git_reference_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_foreach(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_foreach_glob */
-/* sha: 9206d99bc97c8a91b17a084c1c3d18add9bebc8e3e85e6adfc3902044ba00b87 */
+/* sha: 10cf58d536d8e10cf892b837832f0779ae1109110ac468465c06f7a5c7004de4 */
 #if BIND_git_reference_foreach_glob_FUNCTION
 #define git_reference_foreach_glob_REQUIRED_ARGC 4
 #define git_reference_foreach_glob_OPTIONAL_ARGC 0
@@ -18667,16 +17209,13 @@ mrb_Git_git_reference_foreach_glob(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_foreach_glob(native_repo, native_glob, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_foreach_name */
-/* sha: f5585486f6262dc8d0adafb13cffca5669e9125591f7bfa10bdb6a85fc4e34f2 */
+/* sha: f0bb06764f178ed7814ceec83d92e0f932781af964b95ba8169f6643a4a10220 */
 #if BIND_git_reference_foreach_name_FUNCTION
 #define git_reference_foreach_name_REQUIRED_ARGC 3
 #define git_reference_foreach_name_OPTIONAL_ARGC 0
@@ -18717,10 +17256,7 @@ mrb_Git_git_reference_foreach_name(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_foreach_name(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -18761,7 +17297,7 @@ mrb_Git_git_reference_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_has_log */
-/* sha: 7f1f483d942bcdf0fad7fb3fef6448a1d0d986a863efdd58ec713cb2dd09bd2e */
+/* sha: 4957ece107cf12162333b54d5c877711d603bf644d037ee9bc73ab84f06d82df */
 #if BIND_git_reference_has_log_FUNCTION
 #define git_reference_has_log_REQUIRED_ARGC 2
 #define git_reference_has_log_OPTIONAL_ARGC 0
@@ -18793,7 +17329,7 @@ mrb_Git_git_reference_has_log(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_reference_has_log(native_repo, native_refname);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -18801,7 +17337,7 @@ mrb_Git_git_reference_has_log(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_is_branch */
-/* sha: 4e29d33562e85efca73f5fc08ceddeee57915c3038a373b7831d13ef31926538 */
+/* sha: a17c66763bd6e56d5e558fc5e79688ae89869a1f05286b3b79930def7e221b5c */
 #if BIND_git_reference_is_branch_FUNCTION
 #define git_reference_is_branch_REQUIRED_ARGC 1
 #define git_reference_is_branch_OPTIONAL_ARGC 0
@@ -18831,7 +17367,7 @@ mrb_Git_git_reference_is_branch(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_reference_is_branch(native_ref);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -18839,7 +17375,7 @@ mrb_Git_git_reference_is_branch(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_is_note */
-/* sha: 28ffa9a6674c1085f4a63100d7244e6095c48edf28dc310b577ee4bbb75c36e8 */
+/* sha: 2199b99a17d8a9c3f9605d7f3c079cb5898862c08d006c8ce03578862a21b39c */
 #if BIND_git_reference_is_note_FUNCTION
 #define git_reference_is_note_REQUIRED_ARGC 1
 #define git_reference_is_note_OPTIONAL_ARGC 0
@@ -18869,7 +17405,7 @@ mrb_Git_git_reference_is_note(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_reference_is_note(native_ref);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -18877,7 +17413,7 @@ mrb_Git_git_reference_is_note(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_is_remote */
-/* sha: a8d0d6b609a15e406393cea8a826a8338c7fb1d754188fd6a83589e8aaa2ce73 */
+/* sha: 324667ec5731c817463fe02bfe25d2771e22229fa5e7859c12441c923f94918b */
 #if BIND_git_reference_is_remote_FUNCTION
 #define git_reference_is_remote_REQUIRED_ARGC 1
 #define git_reference_is_remote_OPTIONAL_ARGC 0
@@ -18907,7 +17443,7 @@ mrb_Git_git_reference_is_remote(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_reference_is_remote(native_ref);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -18915,7 +17451,7 @@ mrb_Git_git_reference_is_remote(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_is_tag */
-/* sha: 6e7381a50200e7aa8f2e5c3d6fb5cf8423bdcac313ca5ab7517579ae8d74c36a */
+/* sha: 3c49b8557e844c8dcfb3f24ed37d2afcdfbfbc25176b2b9e9636f2817b5b324d */
 #if BIND_git_reference_is_tag_FUNCTION
 #define git_reference_is_tag_REQUIRED_ARGC 1
 #define git_reference_is_tag_OPTIONAL_ARGC 0
@@ -18945,7 +17481,7 @@ mrb_Git_git_reference_is_tag(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_reference_is_tag(native_ref);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -18953,7 +17489,7 @@ mrb_Git_git_reference_is_tag(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_is_valid_name */
-/* sha: 3d98c0eb2665aa213fd7586eb81d9c9aed9a1c9ed79e0c4dd27ac0d9df47a631 */
+/* sha: ac1ba452f211d45a4a847509129b3b55bdf5f3265608631d6cb87317a61726f5 */
 #if BIND_git_reference_is_valid_name_FUNCTION
 #define git_reference_is_valid_name_REQUIRED_ARGC 1
 #define git_reference_is_valid_name_OPTIONAL_ARGC 0
@@ -18974,7 +17510,7 @@ mrb_Git_git_reference_is_valid_name(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_reference_is_valid_name(native_refname);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -19017,7 +17553,7 @@ mrb_Git_git_reference_iterator_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_iterator_glob_new */
-/* sha: b72ef748c20eb1661b3da9a0b55eacd834314e1489c0347af98225e7f06844b1 */
+/* sha: c3d46d6231dd8a751accec64b5075136e9d9c5ba63c884d743d01cf2a1f147c0 */
 #if BIND_git_reference_iterator_glob_new_FUNCTION
 #define git_reference_iterator_glob_new_REQUIRED_ARGC 2
 #define git_reference_iterator_glob_new_OPTIONAL_ARGC 0
@@ -19030,7 +17566,6 @@ mrb_Git_git_reference_iterator_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_iterator_glob_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference_iterator * native_out = NULL;
   mrb_value repo;
   char * native_glob = NULL;
@@ -19050,23 +17585,16 @@ mrb_Git_git_reference_iterator_glob_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_iterator_glob_new(&native_out, native_repo, native_glob);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_iterator_new */
-/* sha: 2a82d43bd37fbb0adb4a4e1b443d95c842f9984324f178ab5ca1dea4cc17c825 */
+/* sha: 7d63de37e6d88f2aebf2a040b949e416c3a04db0dc642fcb2d079793dd83fb39 */
 #if BIND_git_reference_iterator_new_FUNCTION
 #define git_reference_iterator_new_REQUIRED_ARGC 1
 #define git_reference_iterator_new_OPTIONAL_ARGC 0
@@ -19078,7 +17606,6 @@ mrb_Git_git_reference_iterator_glob_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_iterator_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference_iterator * native_out = NULL;
   mrb_value repo;
 
@@ -19097,23 +17624,16 @@ mrb_Git_git_reference_iterator_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_iterator_new(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference_iterator(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_list */
-/* sha: e3671c79a7d1a00bd1ba7b8ee456ee8dcc5cabb2a33ff93cea8912280699b86b */
+/* sha: b675afbbf849036f0587ec0734d0b5efc927ef092ce3cc64324c18659f253d31 */
 #if BIND_git_reference_list_FUNCTION
 #define git_reference_list_REQUIRED_ARGC 2
 #define git_reference_list_OPTIONAL_ARGC 0
@@ -19151,16 +17671,13 @@ mrb_Git_git_reference_list(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_list(native_array, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_lookup */
-/* sha: 2d782fd1b269e848cbe504d8ff6b2cb02b1a30a5a497db3609bedbbf6ea806d8 */
+/* sha: a9c6ddbffd9ff62f74081caa3a50585d1220aee425ab007b6f6b94192c4959e3 */
 #if BIND_git_reference_lookup_FUNCTION
 #define git_reference_lookup_REQUIRED_ARGC 2
 #define git_reference_lookup_OPTIONAL_ARGC 0
@@ -19173,7 +17690,6 @@ mrb_Git_git_reference_list(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -19193,17 +17709,10 @@ mrb_Git_git_reference_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_lookup(&native_out, native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -19247,7 +17756,7 @@ mrb_Git_git_reference_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_name_to_id */
-/* sha: f23db6dceef79fd13e92152cd2dbe9e4fc1688d7456267fa89e17f83f89c2ff4 */
+/* sha: 70fede8bbc0329f6a01bbb130bf77fbe510dc973de230fb400b14a675c130a8a */
 #if BIND_git_reference_name_to_id_FUNCTION
 #define git_reference_name_to_id_REQUIRED_ARGC 3
 #define git_reference_name_to_id_OPTIONAL_ARGC 0
@@ -19287,16 +17796,13 @@ mrb_Git_git_reference_name_to_id(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_name_to_id(native_out, native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_next */
-/* sha: db3a0020ff941689dc40109d8513fdc5b2c2ec8087db12331614272a839fe14e */
+/* sha: b7ec74ee0d29d74a06ca3951ecf041c8fe44d36f7bdc9cdbc402ff8a97753b17 */
 #if BIND_git_reference_next_FUNCTION
 #define git_reference_next_REQUIRED_ARGC 1
 #define git_reference_next_OPTIONAL_ARGC 0
@@ -19308,7 +17814,6 @@ mrb_Git_git_reference_name_to_id(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_next(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value iter;
 
@@ -19327,23 +17832,16 @@ mrb_Git_git_reference_next(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_next(&native_out, native_iter);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_next_name */
-/* sha: d1f9c06c7e09f1a760322fa071c195fd028b9884483f399a7272cb5edf5caa71 */
+/* sha: cfc940bc4a5ca39c3b1a27eb3788c297d2a68967e28f286a68552ddd0f2168e3 */
 #if BIND_git_reference_next_name_FUNCTION
 #define git_reference_next_name_REQUIRED_ARGC 1
 #define git_reference_next_name_OPTIONAL_ARGC 0
@@ -19355,7 +17853,6 @@ mrb_Git_git_reference_next(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_next_name(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   char * native_out = NULL;
   mrb_value iter;
 
@@ -19374,23 +17871,16 @@ mrb_Git_git_reference_next_name(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_next_name(&native_out, native_iter);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out ==  NULL ? mrb_nil_value() : mrb_str_new_cstr(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_normalize_name */
-/* sha: d28706211778962ca74f146ee9247a59a759f858e8896520317cfef8652aab6b */
+/* sha: 390d6de229d6109e6550920e5157370a4ff4cf3858e90b12e343ab9b3e6b3749 */
 #if BIND_git_reference_normalize_name_FUNCTION
 #define git_reference_normalize_name_REQUIRED_ARGC 4
 #define git_reference_normalize_name_OPTIONAL_ARGC 0
@@ -19422,10 +17912,7 @@ mrb_Git_git_reference_normalize_name(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_normalize_name(native_buffer_out, native_buffer_size, native_name, native_flags);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -19469,7 +17956,7 @@ mrb_Git_git_reference_owner(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_peel */
-/* sha: 0bfb205f13dfd3172122251a74d14984ca8b3ca887415acd80022b196ba16b85 */
+/* sha: a27ecb8d314e236e0c620a86c296da829059b157cf956cc74eb19e73ce031798 */
 #if BIND_git_reference_peel_FUNCTION
 #define git_reference_peel_REQUIRED_ARGC 2
 #define git_reference_peel_OPTIONAL_ARGC 0
@@ -19482,7 +17969,6 @@ mrb_Git_git_reference_owner(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_peel(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_out = NULL;
   mrb_value ref;
   mrb_int native_type;
@@ -19502,23 +17988,16 @@ mrb_Git_git_reference_peel(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_peel(&native_out, native_ref, native_type);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_remove */
-/* sha: 0972d96e395990cf92ade8a70dcbf60e6e55fc714c6599e1f20e14092e10ccf2 */
+/* sha: 0e85b0acf5074a73e7de82c677378335c00c2d3b3c7041ae56f4a20250d74203 */
 #if BIND_git_reference_remove_FUNCTION
 #define git_reference_remove_REQUIRED_ARGC 2
 #define git_reference_remove_OPTIONAL_ARGC 0
@@ -19549,16 +18028,13 @@ mrb_Git_git_reference_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_remove(native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_rename */
-/* sha: 9f0c922f1e7598ff3fbb501e65e0a00ba6f3c1b9910499eeacbe234df972d239 */
+/* sha: dd0f2a39c423132c607bdf90df7739a106502ea9c0ff431cdd779150cf74190b */
 #if BIND_git_reference_rename_FUNCTION
 #define git_reference_rename_REQUIRED_ARGC 4
 #define git_reference_rename_OPTIONAL_ARGC 0
@@ -19573,7 +18049,6 @@ mrb_Git_git_reference_remove(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_rename(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_new_ref = NULL;
   mrb_value ref;
   char * native_new_name = NULL;
@@ -19595,23 +18070,16 @@ mrb_Git_git_reference_rename(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_rename(&native_new_ref, native_ref, native_new_name, native_force, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: new_ref */
   mrb_value new_ref = native_new_ref == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_new_ref);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, new_ref);
-
-  return results;
+  return new_ref;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_resolve */
-/* sha: b05b360cedbe125b3281995d84af1b1c666e02bf1059fbf4c7c3fbd43adea551 */
+/* sha: 28303d624b46970bee296abdf1248609446d1c2f6749a15e5ac5ae23da8ce951 */
 #if BIND_git_reference_resolve_FUNCTION
 #define git_reference_resolve_REQUIRED_ARGC 1
 #define git_reference_resolve_OPTIONAL_ARGC 0
@@ -19623,7 +18091,6 @@ mrb_Git_git_reference_rename(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_resolve(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value ref;
 
@@ -19642,23 +18109,16 @@ mrb_Git_git_reference_resolve(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_resolve(&native_out, native_ref);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_set_target */
-/* sha: 2b655960b5335149405449133e2b7eacff60677b2f31569ea5c16400365794e0 */
+/* sha: 5e7975cd2cc801e3727226ff2a1bfea98a4d0dfea6dea37b2db184c20e968073 */
 #if BIND_git_reference_set_target_FUNCTION
 #define git_reference_set_target_REQUIRED_ARGC 3
 #define git_reference_set_target_OPTIONAL_ARGC 0
@@ -19672,7 +18132,6 @@ mrb_Git_git_reference_resolve(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_set_target(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value ref;
   mrb_value id;
@@ -19700,17 +18159,10 @@ mrb_Git_git_reference_set_target(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_set_target(&native_out, native_ref, native_id, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -19754,7 +18206,7 @@ mrb_Git_git_reference_shorthand(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_symbolic_create */
-/* sha: 284cb1b2435db748d28dfca38bfb884ca17e033aa98dceb7c79b5ddb4eed4d42 */
+/* sha: 86f0d31a9f0f89da132649abdc3173401a7814a8bbd7ada38deacef73de63058 */
 #if BIND_git_reference_symbolic_create_FUNCTION
 #define git_reference_symbolic_create_REQUIRED_ARGC 5
 #define git_reference_symbolic_create_OPTIONAL_ARGC 0
@@ -19770,7 +18222,6 @@ mrb_Git_git_reference_shorthand(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_symbolic_create(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -19793,23 +18244,16 @@ mrb_Git_git_reference_symbolic_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_symbolic_create(&native_out, native_repo, native_name, native_target, native_force, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_symbolic_create_matching */
-/* sha: 116885b5010577ccfbf12704ba6fbe3437ce9a8c02d5199e6b77aa0bb0470bd9 */
+/* sha: 390dd8d6465859c6aae3af009c7392bc3e4ed6d9fb3fe43634598cf9efeea83f */
 #if BIND_git_reference_symbolic_create_matching_FUNCTION
 #define git_reference_symbolic_create_matching_REQUIRED_ARGC 6
 #define git_reference_symbolic_create_matching_OPTIONAL_ARGC 0
@@ -19826,7 +18270,6 @@ mrb_Git_git_reference_symbolic_create(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_symbolic_create_matching(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -19850,23 +18293,16 @@ mrb_Git_git_reference_symbolic_create_matching(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_symbolic_create_matching(&native_out, native_repo, native_name, native_target, native_force, native_current_value, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_symbolic_set_target */
-/* sha: d35f55ea5eb903c02d94a3eeaf37b12c25e317a1e48379b3d23b345ed1ce6c30 */
+/* sha: fc2a6b226059c2546f518e165f937484278c5d107c7cce7d24d0cbd3e30650bc */
 #if BIND_git_reference_symbolic_set_target_FUNCTION
 #define git_reference_symbolic_set_target_REQUIRED_ARGC 3
 #define git_reference_symbolic_set_target_OPTIONAL_ARGC 0
@@ -19880,7 +18316,6 @@ mrb_Git_git_reference_symbolic_create_matching(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reference_symbolic_set_target(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value ref;
   char * native_target = NULL;
@@ -19901,17 +18336,10 @@ mrb_Git_git_reference_symbolic_set_target(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_symbolic_set_target(&native_out, native_ref, native_target, native_log_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -20069,7 +18497,7 @@ mrb_Git_git_reference_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reflog_append */
-/* sha: cb7cde7f23b24300df6da936a57c1cdeb981403a5850feb779c6e5caf7975ebd */
+/* sha: 1fcec97d2bc82340f5c3ef4aad7d68e0be27e20fa3d57895a06a3721d8f86681 */
 #if BIND_git_reflog_append_FUNCTION
 #define git_reflog_append_REQUIRED_ARGC 4
 #define git_reflog_append_OPTIONAL_ARGC 0
@@ -20118,16 +18546,13 @@ mrb_Git_git_reflog_append(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reflog_append(native_reflog, native_id, native_committer, native_msg);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reflog_delete */
-/* sha: 3f53f946b68436e2a1bb4b02e5d31cc39470a05589e6437a5198ea98424cd440 */
+/* sha: 349f30cef5508d333a24982d724ffbc8e635e66a4ff0b4ce8113a13cf5d2774e */
 #if BIND_git_reflog_delete_FUNCTION
 #define git_reflog_delete_REQUIRED_ARGC 2
 #define git_reflog_delete_OPTIONAL_ARGC 0
@@ -20158,16 +18583,13 @@ mrb_Git_git_reflog_delete(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reflog_delete(native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reflog_drop */
-/* sha: bddc8e568dd116d9e09eab4aa9adbc4466ba2d1c24e785c96e317b8943d63bcc */
+/* sha: 2269af1b2aa6890d75f82f444b34f3624e7f9c4c804bdf7e23ea85fb1fb67b3e */
 #if BIND_git_reflog_drop_FUNCTION
 #define git_reflog_drop_REQUIRED_ARGC 3
 #define git_reflog_drop_OPTIONAL_ARGC 0
@@ -20200,10 +18622,7 @@ mrb_Git_git_reflog_drop(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reflog_drop(native_reflog, native_idx, native_rewrite_previous_entry);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -20474,7 +18893,7 @@ mrb_Git_git_reflog_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reflog_read */
-/* sha: a03006678c799545e850f7bb17a342050ad3d7479691171d3c24f605235ac836 */
+/* sha: e9a7909d8bfe06305cc9a4b64d3d6196ed8e9e03dcf7bd9cd1c330af9be96390 */
 #if BIND_git_reflog_read_FUNCTION
 #define git_reflog_read_REQUIRED_ARGC 2
 #define git_reflog_read_OPTIONAL_ARGC 0
@@ -20487,7 +18906,6 @@ mrb_Git_git_reflog_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_reflog_read(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reflog * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -20507,23 +18925,16 @@ mrb_Git_git_reflog_read(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reflog_read(&native_out, native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reflog(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reflog_rename */
-/* sha: 481df6067fea432cc5bfd3685baafad39faeb8376993220431c69b27727119b3 */
+/* sha: 58065dec046e729784935269613cb3e3c2d83dc8d6f972f55389bc3e8f792659 */
 #if BIND_git_reflog_rename_FUNCTION
 #define git_reflog_rename_REQUIRED_ARGC 3
 #define git_reflog_rename_OPTIONAL_ARGC 0
@@ -20556,16 +18967,13 @@ mrb_Git_git_reflog_rename(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reflog_rename(native_repo, native_old_name, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reflog_write */
-/* sha: b97939e648ace1857a83be5771c3fd70416ac642fb4247e0d95a9c68607f44fb */
+/* sha: b2d7ae8c37df25909a2ef8c8c00e434d60e9c79a8cb307bdb78c01bb97bf35ce */
 #if BIND_git_reflog_write_FUNCTION
 #define git_reflog_write_REQUIRED_ARGC 1
 #define git_reflog_write_OPTIONAL_ARGC 0
@@ -20594,10 +19002,7 @@ mrb_Git_git_reflog_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reflog_write(native_reflog);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -20679,7 +19084,7 @@ mrb_Git_git_refspec_dst(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refspec_dst_matches */
-/* sha: 1ccf0b0fa9b5572c6e4652f3ccd5250d015c5724f37dd5ab54d961a03cbc40d2 */
+/* sha: c406e52831f01b538cbfdb304ada95f1424aa2e20935af94b1b02989a53964e4 */
 #if BIND_git_refspec_dst_matches_FUNCTION
 #define git_refspec_dst_matches_REQUIRED_ARGC 2
 #define git_refspec_dst_matches_OPTIONAL_ARGC 0
@@ -20711,7 +19116,7 @@ mrb_Git_git_refspec_dst_matches(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_refspec_dst_matches(native_refspec, native_refname);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -20719,7 +19124,7 @@ mrb_Git_git_refspec_dst_matches(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refspec_force */
-/* sha: d2255d53e09e888b92b4d0f81a55b8116636f24aa4a9520336c59625e2d2044e */
+/* sha: d9f865f5a70216b07975536111f4376626ab7599077fa61a4010958449cfba0a */
 #if BIND_git_refspec_force_FUNCTION
 #define git_refspec_force_REQUIRED_ARGC 1
 #define git_refspec_force_OPTIONAL_ARGC 0
@@ -20749,7 +19154,7 @@ mrb_Git_git_refspec_force(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_refspec_force(native_refspec);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -20757,39 +19162,31 @@ mrb_Git_git_refspec_force(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refspec_rtransform */
-/* sha: 415005c3d715f90b8c2b0ad0739430465b57eec60286eec6d4988c618d5a73da */
+/* sha: 587d98fa1dcbeeafd681848559ab5f3da61248271230bb1cb634ba7c5bfc556d */
 #if BIND_git_refspec_rtransform_FUNCTION
-#define git_refspec_rtransform_REQUIRED_ARGC 3
+#define git_refspec_rtransform_REQUIRED_ARGC 2
 #define git_refspec_rtransform_OPTIONAL_ARGC 0
 /* git_refspec_rtransform
  *
  * Parameters:
- * - out: git_buf *
  * - spec: const git_refspec *
  * - name: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_refspec_rtransform(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value spec;
   char * native_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &spec, &native_name);
+  mrb_get_args(mrb, "oz", &spec, &native_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, spec, Refspec_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Refspec expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: spec */
   const git_refspec * native_spec = (mrb_nil_p(spec) ? NULL : mruby_unbox_git_refspec(spec));
@@ -20797,10 +19194,10 @@ mrb_Git_git_refspec_rtransform(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_refspec_rtransform(native_out, native_spec, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -20844,7 +19241,7 @@ mrb_Git_git_refspec_src(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refspec_src_matches */
-/* sha: 1bb192a321fe0c6fc2424a63056b07887a751c7e9d235b0c3fa452d2ad09e540 */
+/* sha: e16ae06f5e0b62281ead54448156c98cdebeaca089adb9a0be97751a8e38e833 */
 #if BIND_git_refspec_src_matches_FUNCTION
 #define git_refspec_src_matches_REQUIRED_ARGC 2
 #define git_refspec_src_matches_OPTIONAL_ARGC 0
@@ -20876,7 +19273,7 @@ mrb_Git_git_refspec_src_matches(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_refspec_src_matches(native_refspec, native_refname);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -20922,39 +19319,31 @@ mrb_Git_git_refspec_string(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_refspec_transform */
-/* sha: c9d3a3b8a9e94001694e2ccf401bf630855550c7cf842f9a82f40310ba91d797 */
+/* sha: 9fa4886d81e8ef709214de65b840621413a557e8307c06cba965dffe0ec2f9cd */
 #if BIND_git_refspec_transform_FUNCTION
-#define git_refspec_transform_REQUIRED_ARGC 3
+#define git_refspec_transform_REQUIRED_ARGC 2
 #define git_refspec_transform_OPTIONAL_ARGC 0
 /* git_refspec_transform
  *
  * Parameters:
- * - out: git_buf *
  * - spec: const git_refspec *
  * - name: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_refspec_transform(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value spec;
   char * native_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &spec, &native_name);
+  mrb_get_args(mrb, "oz", &spec, &native_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, spec, Refspec_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Refspec expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: spec */
   const git_refspec * native_spec = (mrb_nil_p(spec) ? NULL : mruby_unbox_git_refspec(spec));
@@ -20962,16 +19351,16 @@ mrb_Git_git_refspec_transform(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_refspec_transform(native_out, native_spec, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_add_fetch */
-/* sha: 9e94b97b8919a2a8c793dd508e1f033b8cc62ecabb3987c9b43fe3fb988321f7 */
+/* sha: 79c20c955def1a47246e9fda493c6f73b3ce681b71ff223a11f4ac9883ab9a03 */
 #if BIND_git_remote_add_fetch_FUNCTION
 #define git_remote_add_fetch_REQUIRED_ARGC 3
 #define git_remote_add_fetch_OPTIONAL_ARGC 0
@@ -21004,16 +19393,13 @@ mrb_Git_git_remote_add_fetch(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_add_fetch(native_repo, native_remote, native_refspec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_add_push */
-/* sha: 26efb1a06412ed35a41180ae0ead91617f06aea6dfa732831ff47de28c936d20 */
+/* sha: 70a0b76bbd1cbb41483c5691dd29adf1acd685ff572fecdf7ce1be8e884887fe */
 #if BIND_git_remote_add_push_FUNCTION
 #define git_remote_add_push_REQUIRED_ARGC 3
 #define git_remote_add_push_OPTIONAL_ARGC 0
@@ -21046,10 +19432,7 @@ mrb_Git_git_remote_add_push(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_add_push(native_repo, native_remote, native_refspec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21093,7 +19476,7 @@ mrb_Git_git_remote_autotag(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_connect */
-/* sha: 7e2071f5e1ec6a755a9a49d7340d82e4698382fdaeb16cc98d981fa74647d3cd */
+/* sha: 1b50281f77fbb20321e23933897f87322754dcb8a466e03747e2355a827bf326 */
 #if BIND_git_remote_connect_FUNCTION
 #define git_remote_connect_REQUIRED_ARGC 4
 #define git_remote_connect_OPTIONAL_ARGC 0
@@ -21142,16 +19525,13 @@ mrb_Git_git_remote_connect(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_connect(native_remote, native_direction, native_callbacks, native_custom_headers);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_connected */
-/* sha: 8b731bf6577e71144433dfa8d93ffffba16e83504f5768323872464081e7874e */
+/* sha: cd8e34ae5e5bea2f51db56f0dcbe1bb6c04fefc643d466a7d6c511838d1cdd9e */
 #if BIND_git_remote_connected_FUNCTION
 #define git_remote_connected_REQUIRED_ARGC 1
 #define git_remote_connected_OPTIONAL_ARGC 0
@@ -21181,7 +19561,7 @@ mrb_Git_git_remote_connected(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_remote_connected(native_remote);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -21189,7 +19569,7 @@ mrb_Git_git_remote_connected(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_create */
-/* sha: 8ffb0fa48d96469dc9089832b33ce6277d37dc1a9beee23dacbfbc5687a36875 */
+/* sha: 21ffca0709de2c989a8e932ee77cf489d08572bc0e22fc26b03fd7772c07bc6a */
 #if BIND_git_remote_create_FUNCTION
 #define git_remote_create_REQUIRED_ARGC 3
 #define git_remote_create_OPTIONAL_ARGC 0
@@ -21203,7 +19583,6 @@ mrb_Git_git_remote_connected(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_remote_create(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_remote * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -21224,23 +19603,16 @@ mrb_Git_git_remote_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_create(&native_out, native_repo, native_name, native_url);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_remote(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_create_anonymous */
-/* sha: f549a1741cf7207385019650c0106b1adb516d0c2b4711413b561037eaff9c65 */
+/* sha: 32e8345ebf0b8a354af6fcd559f207ca47843c6ec72f188d27cfb66f141fe5a0 */
 #if BIND_git_remote_create_anonymous_FUNCTION
 #define git_remote_create_anonymous_REQUIRED_ARGC 2
 #define git_remote_create_anonymous_OPTIONAL_ARGC 0
@@ -21253,7 +19625,6 @@ mrb_Git_git_remote_create(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_remote_create_anonymous(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_remote * native_out = NULL;
   mrb_value repo;
   char * native_url = NULL;
@@ -21273,23 +19644,16 @@ mrb_Git_git_remote_create_anonymous(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_create_anonymous(&native_out, native_repo, native_url);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_remote(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_create_with_fetchspec */
-/* sha: 3787a1caab5585a66dcc3d559f4ebba9a85c778450c7a88745a39fa3242d63fe */
+/* sha: 01aa64e803c0e770929ee604bdadbe3682f6a378bd6219c82cbdac4719dac2ca */
 #if BIND_git_remote_create_with_fetchspec_FUNCTION
 #define git_remote_create_with_fetchspec_REQUIRED_ARGC 4
 #define git_remote_create_with_fetchspec_OPTIONAL_ARGC 0
@@ -21304,7 +19668,6 @@ mrb_Git_git_remote_create_anonymous(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_remote_create_with_fetchspec(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_remote * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -21326,53 +19689,38 @@ mrb_Git_git_remote_create_with_fetchspec(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_create_with_fetchspec(&native_out, native_repo, native_name, native_url, native_fetch);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_remote(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_default_branch */
-/* sha: ac02fd2539821ba7b1c7a841c4a92be1b9053959386472b81aa5d60d4366648d */
+/* sha: dcb6a6eea1d61e32487765d256c598b0d12b4870d4643f3b16a8c6ed933ddda8 */
 #if BIND_git_remote_default_branch_FUNCTION
-#define git_remote_default_branch_REQUIRED_ARGC 2
+#define git_remote_default_branch_REQUIRED_ARGC 1
 #define git_remote_default_branch_OPTIONAL_ARGC 0
 /* git_remote_default_branch
  *
  * Parameters:
- * - out: git_buf *
  * - remote: git_remote *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_remote_default_branch(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value remote;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &out, &remote);
+  mrb_get_args(mrb, "o", &remote);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, remote, Remote_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Remote expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: remote */
   git_remote * native_remote = (mrb_nil_p(remote) ? NULL : mruby_unbox_git_remote(remote));
@@ -21380,16 +19728,16 @@ mrb_Git_git_remote_default_branch(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_default_branch(native_out, native_remote);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_delete */
-/* sha: dc107d9004e73c6840387e5a6d72ea97c54f79664669668324fb0cb99e1c099c */
+/* sha: 8ef575f95737d1d58534059f8ed9c8e490da7c34bcca519fdbfe975c357530ce */
 #if BIND_git_remote_delete_FUNCTION
 #define git_remote_delete_REQUIRED_ARGC 2
 #define git_remote_delete_OPTIONAL_ARGC 0
@@ -21420,10 +19768,7 @@ mrb_Git_git_remote_delete(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_delete(native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21464,7 +19809,7 @@ mrb_Git_git_remote_disconnect(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_download */
-/* sha: 31008e228d24a7d4e2868bb2cc90a92085ec150a6e16e4e13380fcd2afd457e9 */
+/* sha: a55b2b908d26f3126ed5086f65fe52fafd9fee4a0114ea289d17f5ece40a57cf */
 #if BIND_git_remote_download_FUNCTION
 #define git_remote_download_REQUIRED_ARGC 3
 #define git_remote_download_OPTIONAL_ARGC 0
@@ -21511,16 +19856,13 @@ mrb_Git_git_remote_download(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_download(native_remote, native_refspecs, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_dup */
-/* sha: 1e8b91351cb8a90c774d006e85228f661227df426ab90b040b62ad9fd2b85579 */
+/* sha: 62f4dc8f73d0ac19f8a3e6f8ba37df48ce5ffe84b05cc8a8beaf659b1b2e51f9 */
 #if BIND_git_remote_dup_FUNCTION
 #define git_remote_dup_REQUIRED_ARGC 1
 #define git_remote_dup_OPTIONAL_ARGC 0
@@ -21532,7 +19874,6 @@ mrb_Git_git_remote_download(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_remote_dup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_remote * native_dest = NULL;
   mrb_value source;
 
@@ -21551,23 +19892,16 @@ mrb_Git_git_remote_dup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_dup(&native_dest, native_source);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: dest */
   mrb_value dest = native_dest == NULL ? mrb_nil_value() : mruby_giftwrap_git_remote(mrb, native_dest);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, dest);
-
-  return results;
+  return dest;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_fetch */
-/* sha: bc858a546b62acee7d26d3817b064ed8418e958b58bc87e18df00d1f63f7f52e */
+/* sha: ed89602376496806702470ade94f62dcb7b64bf2086eac7d1ccffe6ed2616162 */
 #if BIND_git_remote_fetch_FUNCTION
 #define git_remote_fetch_REQUIRED_ARGC 4
 #define git_remote_fetch_OPTIONAL_ARGC 0
@@ -21616,10 +19950,7 @@ mrb_Git_git_remote_fetch(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_fetch(native_remote, native_refspecs, native_opts, native_reflog_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21660,7 +19991,7 @@ mrb_Git_git_remote_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_get_fetch_refspecs */
-/* sha: 31390d214a82e602cba336af9856975b5206f342f5881eb3658a5b9bc89979c7 */
+/* sha: 16f61f6633b7128ab2692560bf954d57a5108f456b4710400b175856f5f132b0 */
 #if BIND_git_remote_get_fetch_refspecs_FUNCTION
 #define git_remote_get_fetch_refspecs_REQUIRED_ARGC 2
 #define git_remote_get_fetch_refspecs_OPTIONAL_ARGC 0
@@ -21698,16 +20029,13 @@ mrb_Git_git_remote_get_fetch_refspecs(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_get_fetch_refspecs(native_array, native_remote);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_get_push_refspecs */
-/* sha: 689287b3b8e02fd9690069a7337f8de348a4d901ce30225c8cb3d5d94218694c */
+/* sha: acaa68cd268b4172f0b89a20f60252a1f9eb9cb1207e9aa8de064a1e699d7971 */
 #if BIND_git_remote_get_push_refspecs_FUNCTION
 #define git_remote_get_push_refspecs_REQUIRED_ARGC 2
 #define git_remote_get_push_refspecs_OPTIONAL_ARGC 0
@@ -21745,10 +20073,7 @@ mrb_Git_git_remote_get_push_refspecs(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_get_push_refspecs(native_array, native_remote);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21794,7 +20119,7 @@ mrb_Git_git_remote_get_refspec(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_init_callbacks */
-/* sha: 98064bf4b098d7cd2a894f68f572dffd0d307dc43a62414758f96d688c9d648b */
+/* sha: e744361df0ac26abc57ee80270f332ab0d4d8e23ff7f4790ad5062b0b21fa25a */
 #if BIND_git_remote_init_callbacks_FUNCTION
 #define git_remote_init_callbacks_REQUIRED_ARGC 2
 #define git_remote_init_callbacks_OPTIONAL_ARGC 0
@@ -21825,16 +20150,13 @@ mrb_Git_git_remote_init_callbacks(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_init_callbacks(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_is_valid_name */
-/* sha: 83f718e7ff7ebc3b0f467b02f528fa5b2b7cf4f7da72aaccda20202097b6d932 */
+/* sha: d6e1f12aefd3f5f38096ae78cb100b0387dbcda3dc7fb8100dc49a2af1d1d0b0 */
 #if BIND_git_remote_is_valid_name_FUNCTION
 #define git_remote_is_valid_name_REQUIRED_ARGC 1
 #define git_remote_is_valid_name_OPTIONAL_ARGC 0
@@ -21855,7 +20177,7 @@ mrb_Git_git_remote_is_valid_name(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_remote_is_valid_name(native_remote_name);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -21863,7 +20185,7 @@ mrb_Git_git_remote_is_valid_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_list */
-/* sha: dddec647535287d4df53ee1c096a4fc0c48075216a597725b61a9be27139d5df */
+/* sha: 2535123b240421fdbfe109678525ec814f96eab920e0f084e944569f18c38db2 */
 #if BIND_git_remote_list_FUNCTION
 #define git_remote_list_REQUIRED_ARGC 2
 #define git_remote_list_OPTIONAL_ARGC 0
@@ -21901,16 +20223,13 @@ mrb_Git_git_remote_list(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_list(native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_lookup */
-/* sha: 30af9fbf9fedcf9bfc23594b8996c1f3918c0b61cfcfb60553acbf6d1af035c9 */
+/* sha: 7bf9e1199a1c65e76d4cafb306395193f52d6cf12da86528fcd4031821dd92bf */
 #if BIND_git_remote_lookup_FUNCTION
 #define git_remote_lookup_REQUIRED_ARGC 2
 #define git_remote_lookup_OPTIONAL_ARGC 0
@@ -21923,7 +20242,6 @@ mrb_Git_git_remote_list(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_remote_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_remote * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -21943,23 +20261,16 @@ mrb_Git_git_remote_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_lookup(&native_out, native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_remote(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_ls */
-/* sha: 62733d73837baa30ae06276742da63a5f0a49b739d2c6be00ee0585b30b49a23 */
+/* sha: 37fe3b9198bb754fafda8ea683ce2bb3845e0d60d86bde543e6086f26af22e7e */
 #if BIND_git_remote_ls_FUNCTION
 #define git_remote_ls_REQUIRED_ARGC 2
 #define git_remote_ls_OPTIONAL_ARGC 0
@@ -21972,7 +20283,6 @@ mrb_Git_git_remote_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_remote_ls(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   mrb_value out;
   int native_size;
   mrb_value remote;
@@ -21996,17 +20306,10 @@ mrb_Git_git_remote_ls(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_ls(native_out, &native_size, native_remote);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: size */
   mrb_value size = mrb_fixnum_value(native_size);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, size);
-
-  return results;
+  return size;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -22088,7 +20391,7 @@ mrb_Git_git_remote_owner(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_prune */
-/* sha: 99ba3fe0648ade7d0e752f67d45cdd0da1aaae5b5dbaea98f8f901b13d62a633 */
+/* sha: 9f5e701deba659331a06021e36698feb9aaca0aee931d2d1873d5e4c56462900 */
 #if BIND_git_remote_prune_FUNCTION
 #define git_remote_prune_REQUIRED_ARGC 2
 #define git_remote_prune_OPTIONAL_ARGC 0
@@ -22126,10 +20429,7 @@ mrb_Git_git_remote_prune(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_prune(native_remote, native_callbacks);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -22173,7 +20473,7 @@ mrb_Git_git_remote_prune_refs(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_push */
-/* sha: a826d23eeeea0f0ffabb0fefdffaac82fdecb9ad812bf392908cbd1b36d2cd8f */
+/* sha: 1033c35753332c55390d502f4542971cacd2b2523c3e0370f71e5a7bc8a83624 */
 #if BIND_git_remote_push_FUNCTION
 #define git_remote_push_REQUIRED_ARGC 3
 #define git_remote_push_OPTIONAL_ARGC 0
@@ -22220,10 +20520,7 @@ mrb_Git_git_remote_push(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_push(native_remote, native_refspecs, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -22305,7 +20602,7 @@ mrb_Git_git_remote_refspec_count(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_rename */
-/* sha: d6331ca269844a08353fb37b6b8b69f9decc11f1e5b6f7c87665ba36123c2f7a */
+/* sha: cd7f47dd02ff0ea38a5a3c3e37b8de6b150d5b8ed12a956b31a557a2a06ab2a3 */
 #if BIND_git_remote_rename_FUNCTION
 #define git_remote_rename_REQUIRED_ARGC 4
 #define git_remote_rename_OPTIONAL_ARGC 0
@@ -22347,16 +20644,13 @@ mrb_Git_git_remote_rename(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_rename(native_problems, native_repo, native_name, native_new_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_set_autotag */
-/* sha: 8b0604c6a0d6bb960285d8326d6777feb053171ba78d7baf6e5598285eb8e921 */
+/* sha: df095768131d530ef33d1b610e94b9477b8f7dd3c1969167686769dbfc294cde */
 #if BIND_git_remote_set_autotag_FUNCTION
 #define git_remote_set_autotag_REQUIRED_ARGC 3
 #define git_remote_set_autotag_OPTIONAL_ARGC 0
@@ -22389,16 +20683,13 @@ mrb_Git_git_remote_set_autotag(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_set_autotag(native_repo, native_remote, native_value);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_set_pushurl */
-/* sha: c17216a74a792586f69c2dc3a1772dbd908a4bbc71979ad58455419853a0dfdc */
+/* sha: 9452714ee7acc8d21e3f5ab7b9e3bc056b2ad447031ae3c9ac07d4750d88f300 */
 #if BIND_git_remote_set_pushurl_FUNCTION
 #define git_remote_set_pushurl_REQUIRED_ARGC 3
 #define git_remote_set_pushurl_OPTIONAL_ARGC 0
@@ -22431,16 +20722,13 @@ mrb_Git_git_remote_set_pushurl(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_set_pushurl(native_repo, native_remote, native_url);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_set_url */
-/* sha: 480dc3bb0bd2302a5e32efd3ecac123110ff5b1356cfbb4ba81e10174fbbacbb */
+/* sha: 54934931c02ed0dd14081619d9756d25c13117e1974bc31a3eaa7de3cf53923f */
 #if BIND_git_remote_set_url_FUNCTION
 #define git_remote_set_url_REQUIRED_ARGC 3
 #define git_remote_set_url_OPTIONAL_ARGC 0
@@ -22473,10 +20761,7 @@ mrb_Git_git_remote_set_url(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_set_url(native_repo, native_remote, native_url);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -22555,7 +20840,7 @@ mrb_Git_git_remote_stop(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_update_tips */
-/* sha: 3829f350ac4bc835a60961a022f17093fdd7452e9c90baac9a20d69bc132142f */
+/* sha: 59911ea316886867ea0175b244f371019dba69641a9d55eaa3e61fa0102a4802 */
 #if BIND_git_remote_update_tips_FUNCTION
 #define git_remote_update_tips_REQUIRED_ARGC 5
 #define git_remote_update_tips_OPTIONAL_ARGC 0
@@ -22599,16 +20884,13 @@ mrb_Git_git_remote_update_tips(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_update_tips(native_remote, native_callbacks, native_update_fetchhead, native_download_tags, native_reflog_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_upload */
-/* sha: 64a74db51b22adf155458257ac8b04f2cb09a200c234b6770e59a878045fe7e6 */
+/* sha: 2917256fe834615ca4447911f3fd57a95500103987e933aeb5887f4988da5aa8 */
 #if BIND_git_remote_upload_FUNCTION
 #define git_remote_upload_REQUIRED_ARGC 3
 #define git_remote_upload_OPTIONAL_ARGC 0
@@ -22655,10 +20937,7 @@ mrb_Git_git_remote_upload(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_remote_upload(native_remote, native_refspecs, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -22702,7 +20981,7 @@ mrb_Git_git_remote_url(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_config */
-/* sha: 6a0a287ce8f53ab035cb3c8c15e72ec0fbc7fd72e4ec7e005a7488cee9fd4f3d */
+/* sha: c8e49ff90fc788cf2bbb60caa1a6898ed4f5a98af5f3ddfda34094b88853fd7d */
 #if BIND_git_repository_config_FUNCTION
 #define git_repository_config_REQUIRED_ARGC 1
 #define git_repository_config_OPTIONAL_ARGC 0
@@ -22714,7 +20993,6 @@ mrb_Git_git_remote_url(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_config(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
   mrb_value repo;
 
@@ -22733,23 +21011,16 @@ mrb_Git_git_repository_config(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_config(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_config_snapshot */
-/* sha: 6ea7536ffe97a82fd5554f0954ebc7a9d3ee984a6a218ecad7cfadb3a046825d */
+/* sha: 6c350557f79dac63894257bdfbd0d6c276dca8150fe98e7f498d07b9228c8e3e */
 #if BIND_git_repository_config_snapshot_FUNCTION
 #define git_repository_config_snapshot_REQUIRED_ARGC 1
 #define git_repository_config_snapshot_OPTIONAL_ARGC 0
@@ -22761,7 +21032,6 @@ mrb_Git_git_repository_config(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_config_snapshot(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_config * native_out = NULL;
   mrb_value repo;
 
@@ -22780,23 +21050,16 @@ mrb_Git_git_repository_config_snapshot(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_config_snapshot(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_config(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_detach_head */
-/* sha: d93ad5ca2432b89decda1227baa41c2d0bafafaf50d809dde9536f714afb959d */
+/* sha: 460dedc343e44512d0b0eae257d0a8961262b12f880ec54653032a489b3c4bd1 */
 #if BIND_git_repository_detach_head_FUNCTION
 #define git_repository_detach_head_REQUIRED_ARGC 1
 #define git_repository_detach_head_OPTIONAL_ARGC 0
@@ -22825,23 +21088,19 @@ mrb_Git_git_repository_detach_head(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_detach_head(native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_discover */
-/* sha: 5afc30a71ae235920b54303dc2a1972c35164ff6fc2257a09b40aa7f70b030ad */
+/* sha: 67f89cfd8cc4e41612a2b7e803eb07887f49e65ed900281377374f36acd6b9c0 */
 #if BIND_git_repository_discover_FUNCTION
-#define git_repository_discover_REQUIRED_ARGC 4
+#define git_repository_discover_REQUIRED_ARGC 3
 #define git_repository_discover_OPTIONAL_ARGC 0
 /* git_repository_discover
  *
  * Parameters:
- * - out: git_buf *
  * - start_path: const char *
  * - across_fs: int
  * - ceiling_dirs: const char *
@@ -22849,36 +21108,27 @@ mrb_Git_git_repository_detach_head(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_discover(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   char * native_start_path = NULL;
   mrb_int native_across_fs;
   char * native_ceiling_dirs = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oziz", &out, &native_start_path, &native_across_fs, &native_ceiling_dirs);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
+  mrb_get_args(mrb, "ziz", &native_start_path, &native_across_fs, &native_ceiling_dirs);
 
   /* Invocation */
   int native_return_value = git_repository_discover(native_out, native_start_path, native_across_fs, native_ceiling_dirs);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_fetchhead_foreach */
-/* sha: 8573705d3e59039113f0cea1a3a4336e0577a65d273b3ddbe77ca4be65cf805f */
+/* sha: 3ef57a790fe9f488ab6d8c7c693dfcbaa30814e113644f90c470e9f45c430001 */
 #if BIND_git_repository_fetchhead_foreach_FUNCTION
 #define git_repository_fetchhead_foreach_REQUIRED_ARGC 3
 #define git_repository_fetchhead_foreach_OPTIONAL_ARGC 0
@@ -22919,10 +21169,7 @@ mrb_Git_git_repository_fetchhead_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_fetchhead_foreach(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -23001,7 +21248,7 @@ mrb_Git_git_repository_get_namespace(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_hashfile */
-/* sha: 853dae3f63eba88e8a70ae4301efdba9c1d69077581ece725c9ceb12c1d2ac4d */
+/* sha: d0ca6ea464bf231f38225a2fe19f3adeab9c2e760ab404b988ec9edaae177150 */
 #if BIND_git_repository_hashfile_FUNCTION
 #define git_repository_hashfile_REQUIRED_ARGC 5
 #define git_repository_hashfile_OPTIONAL_ARGC 0
@@ -23045,16 +21292,13 @@ mrb_Git_git_repository_hashfile(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_hashfile(native_out, native_repo, native_path, native_type, native_as_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_head */
-/* sha: 84e0d0107e8a3e77fba3038fb0007735f04a215b43d4b808a12c65ec277fcdbc */
+/* sha: d0fdb7b8f702a8abf13e7f7be4f0b248261886ee1fe3ba2b147b408c1a3dacdd */
 #if BIND_git_repository_head_FUNCTION
 #define git_repository_head_REQUIRED_ARGC 1
 #define git_repository_head_OPTIONAL_ARGC 0
@@ -23066,7 +21310,6 @@ mrb_Git_git_repository_hashfile(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_head(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_reference * native_out = NULL;
   mrb_value repo;
 
@@ -23085,23 +21328,16 @@ mrb_Git_git_repository_head(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_head(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_reference(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_head_detached */
-/* sha: 6ae878c02dde0ee69724fcb0e369472c3eb5856bcf0373c6df09607db4f52096 */
+/* sha: 831ca1435d5816f1055cac1183bfee1578a2f24e489fe4767b5ad5df992ab1a0 */
 #if BIND_git_repository_head_detached_FUNCTION
 #define git_repository_head_detached_REQUIRED_ARGC 1
 #define git_repository_head_detached_OPTIONAL_ARGC 0
@@ -23131,7 +21367,7 @@ mrb_Git_git_repository_head_detached(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_repository_head_detached(native_repo);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -23139,7 +21375,7 @@ mrb_Git_git_repository_head_detached(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_head_unborn */
-/* sha: 48f2a1a2fb6ea5d765c9a7680a90f968707e767e450812bfef2fa9d5cc0bd060 */
+/* sha: dc524de86915875485ae7ce2479080d3d789c8582b61c09e60722ee975edfe03 */
 #if BIND_git_repository_head_unborn_FUNCTION
 #define git_repository_head_unborn_REQUIRED_ARGC 1
 #define git_repository_head_unborn_OPTIONAL_ARGC 0
@@ -23169,7 +21405,7 @@ mrb_Git_git_repository_head_unborn(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_repository_head_unborn(native_repo);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -23177,7 +21413,7 @@ mrb_Git_git_repository_head_unborn(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_ident */
-/* sha: 8bf10267ba9bb2af257e0599b009ad4e682845c1aba3f1add9b3f3a6a1b9e0f1 */
+/* sha: c89be872283a3ddafc05815c51bb7efd0145d700573fe3b98e639f953258a085 */
 #if BIND_git_repository_ident_FUNCTION
 #define git_repository_ident_REQUIRED_ARGC 1
 #define git_repository_ident_OPTIONAL_ARGC 0
@@ -23209,10 +21445,6 @@ mrb_Git_git_repository_ident(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_ident(&native_name, &native_email, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: name */
   mrb_value name = native_name ==  NULL ? mrb_nil_value() : mrb_str_new_cstr(mrb, native_name);
   /* Box out param: email */
@@ -23228,7 +21460,7 @@ mrb_Git_git_repository_ident(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_index */
-/* sha: ffadb921d173f289b661e59a36a4f661363a0b3498b9dcef3d37fd699d5a8db9 */
+/* sha: 606019b9887dcd7a571753afe5c85827905ebc225f5972091d02df4d89898a71 */
 #if BIND_git_repository_index_FUNCTION
 #define git_repository_index_REQUIRED_ARGC 1
 #define git_repository_index_OPTIONAL_ARGC 0
@@ -23240,7 +21472,6 @@ mrb_Git_git_repository_ident(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_index(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
   mrb_value repo;
 
@@ -23259,17 +21490,10 @@ mrb_Git_git_repository_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_index(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -23318,7 +21542,7 @@ mrb_Git_git_repository_init(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_init_ext */
-/* sha: e12f4ecf83ec051a8903cb7e263a26f830f7558c03cbcbc7351f8d7705d90147 */
+/* sha: 1fe283c8862a1cb59e70ffed1be989d78ff38d9bfc3a38933cde725b7f184b9c */
 #if BIND_git_repository_init_ext_FUNCTION
 #define git_repository_init_ext_REQUIRED_ARGC 2
 #define git_repository_init_ext_OPTIONAL_ARGC 0
@@ -23331,7 +21555,6 @@ mrb_Git_git_repository_init(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_init_ext(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   char * native_repo_path = NULL;
   mrb_value opts;
@@ -23351,23 +21574,16 @@ mrb_Git_git_repository_init_ext(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_init_ext(&native_out, native_repo_path, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_init_init_options */
-/* sha: 06fad8805a1818ed31be787c50133f32fc01da0d2367f8130303627aa7a3a450 */
+/* sha: 789f7000316784a21c93f740208fbacefdc3a4d2b0d3a9d0e1e651645485ce80 */
 #if BIND_git_repository_init_init_options_FUNCTION
 #define git_repository_init_init_options_REQUIRED_ARGC 2
 #define git_repository_init_init_options_OPTIONAL_ARGC 0
@@ -23398,16 +21614,13 @@ mrb_Git_git_repository_init_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_init_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_is_bare */
-/* sha: 812d374317d6cc89799a9f1653f2ad22f88e2256f279cf8606651eea7db5a9ca */
+/* sha: 779b7d8874d292f5343ecd8ee1497be6cb09086391db0a913c806299a7bca431 */
 #if BIND_git_repository_is_bare_FUNCTION
 #define git_repository_is_bare_REQUIRED_ARGC 1
 #define git_repository_is_bare_OPTIONAL_ARGC 0
@@ -23437,7 +21650,7 @@ mrb_Git_git_repository_is_bare(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_repository_is_bare(native_repo);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -23445,7 +21658,7 @@ mrb_Git_git_repository_is_bare(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_is_empty */
-/* sha: 6cac9b58d801f5d4eb5fea1270040ea062d2e0c8b5e3e896434b9a9347d4dbbd */
+/* sha: 9aa4bbe40dcbd1149b7a71420adaca27317c6b0cd92e1b1073285fc7c1c764f7 */
 #if BIND_git_repository_is_empty_FUNCTION
 #define git_repository_is_empty_REQUIRED_ARGC 1
 #define git_repository_is_empty_OPTIONAL_ARGC 0
@@ -23475,7 +21688,7 @@ mrb_Git_git_repository_is_empty(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_repository_is_empty(native_repo);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -23483,7 +21696,7 @@ mrb_Git_git_repository_is_empty(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_is_shallow */
-/* sha: 7ffac33045daf776a0d1f84b8e693dc5fcfba7f65579ac152cde8dbf800749f2 */
+/* sha: 6b8f2cc109f633d3bba86e0577923f469b4cdd3ed69cfcbfa7a4b9c27061f1d2 */
 #if BIND_git_repository_is_shallow_FUNCTION
 #define git_repository_is_shallow_REQUIRED_ARGC 1
 #define git_repository_is_shallow_OPTIONAL_ARGC 0
@@ -23513,7 +21726,7 @@ mrb_Git_git_repository_is_shallow(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_repository_is_shallow(native_repo);
 
   /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
+  mrb_value return_value = mrb_bool_value(native_return_value);
   
   return return_value;
 }
@@ -23521,7 +21734,7 @@ mrb_Git_git_repository_is_shallow(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_mergehead_foreach */
-/* sha: ff2ff925c67ad6b3ab0b8a6961232c649ab67def8da288d5e1199c9416ff4383 */
+/* sha: f24b182017e6eddb28e59696ccd8d25b21aa89c31836f7cbdcae140ace22fcc3 */
 #if BIND_git_repository_mergehead_foreach_FUNCTION
 #define git_repository_mergehead_foreach_REQUIRED_ARGC 3
 #define git_repository_mergehead_foreach_OPTIONAL_ARGC 0
@@ -23562,46 +21775,35 @@ mrb_Git_git_repository_mergehead_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_mergehead_foreach(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_message */
-/* sha: 56cf34d0582c184fd00685fa89448d2a5d1e8bce79d5b9b9fce59554f5667c74 */
+/* sha: fb9a3e0fd1b2a7b47ba792f85d3cb93110595ae40579720b0b855b7cc55f5ad2 */
 #if BIND_git_repository_message_FUNCTION
-#define git_repository_message_REQUIRED_ARGC 2
+#define git_repository_message_REQUIRED_ARGC 1
 #define git_repository_message_OPTIONAL_ARGC 0
 /* git_repository_message
  *
  * Parameters:
- * - out: git_buf *
  * - repo: git_repository *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_repository_message(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value repo;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &out, &repo);
+  mrb_get_args(mrb, "o", &repo);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -23609,16 +21811,16 @@ mrb_Git_git_repository_message(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_message(native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_message_remove */
-/* sha: 73a618800bcff8fefa0e38491f039c107353525c0c74722c0232c1ab6f955cdc */
+/* sha: c968bcbfb57ea0361b73ac229725ca26d8e4a520e6c0b21a312056275e1ca468 */
 #if BIND_git_repository_message_remove_FUNCTION
 #define git_repository_message_remove_REQUIRED_ARGC 1
 #define git_repository_message_remove_OPTIONAL_ARGC 0
@@ -23647,16 +21849,13 @@ mrb_Git_git_repository_message_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_message_remove(native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_odb */
-/* sha: d4e9ae34bd79a36ac9be0c019f28f50277198d223b0d422ab7e2d57aa27b33d2 */
+/* sha: edce355da2a58a670f7edd08293cff2f2cc9cff3900105433367ca467112d94e */
 #if BIND_git_repository_odb_FUNCTION
 #define git_repository_odb_REQUIRED_ARGC 1
 #define git_repository_odb_OPTIONAL_ARGC 0
@@ -23668,7 +21867,6 @@ mrb_Git_git_repository_message_remove(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_odb(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_odb * native_out = NULL;
   mrb_value repo;
 
@@ -23687,23 +21885,16 @@ mrb_Git_git_repository_odb(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_odb(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_odb(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_open */
-/* sha: 124929c0f6d9bd84c64cbf62ad96e297da0d943b2fe40c53ef45858f07ded671 */
+/* sha: df5f79b3d89c68e41ab532651e89182d2587ade256d2137859dc7f87f6bea9f6 */
 #if BIND_git_repository_open_FUNCTION
 #define git_repository_open_REQUIRED_ARGC 1
 #define git_repository_open_OPTIONAL_ARGC 0
@@ -23715,7 +21906,6 @@ mrb_Git_git_repository_odb(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_open(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   char * native_path = NULL;
 
@@ -23725,23 +21915,16 @@ mrb_Git_git_repository_open(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_open(&native_out, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_open_bare */
-/* sha: 0a47f5cf8e0b048f39e828bf2143d3cee9647e205421d3ffd97bc83956ac27c9 */
+/* sha: d3cf04dac6d0995d970c1e26b0dc1861c2b3fc4da500c9c46cbfcc190b45da06 */
 #if BIND_git_repository_open_bare_FUNCTION
 #define git_repository_open_bare_REQUIRED_ARGC 1
 #define git_repository_open_bare_OPTIONAL_ARGC 0
@@ -23753,7 +21936,6 @@ mrb_Git_git_repository_open(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_open_bare(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   char * native_bare_path = NULL;
 
@@ -23763,17 +21945,10 @@ mrb_Git_git_repository_open_bare(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_open_bare(&native_out, native_bare_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -23859,7 +22034,7 @@ mrb_Git_git_repository_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_refdb */
-/* sha: ea7fc42d9fd8e619d833920c6c2a2944392bb8f529797afe62e7661b03c2950a */
+/* sha: 9da46feabb388f64e980ea6960896f4caf5e95c5de14ba3c1221b047a7eee8ed */
 #if BIND_git_repository_refdb_FUNCTION
 #define git_repository_refdb_REQUIRED_ARGC 1
 #define git_repository_refdb_OPTIONAL_ARGC 0
@@ -23871,7 +22046,6 @@ mrb_Git_git_repository_path(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_refdb(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_refdb * native_out = NULL;
   mrb_value repo;
 
@@ -23890,23 +22064,16 @@ mrb_Git_git_repository_refdb(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_refdb(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_refdb(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_set_head */
-/* sha: 854589c0aef73387f592dd0805623f5dc8314fecc92ff677954b248786cfe894 */
+/* sha: 940a3efd621c799d155e63aeae814c5dd487ea0f0af64b107008c1113b9f1b63 */
 #if BIND_git_repository_set_head_FUNCTION
 #define git_repository_set_head_REQUIRED_ARGC 2
 #define git_repository_set_head_OPTIONAL_ARGC 0
@@ -23937,16 +22104,13 @@ mrb_Git_git_repository_set_head(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_set_head(native_repo, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_set_head_detached */
-/* sha: 0ce6b2ccabbd1532128fb97e56e26d6b487578904148b1482bf1ea69674af56c */
+/* sha: f2e5c4fb84d9e7a3cd498a31c75c9b784ef650318fc662f6213f69fd774efc31 */
 #if BIND_git_repository_set_head_detached_FUNCTION
 #define git_repository_set_head_detached_REQUIRED_ARGC 2
 #define git_repository_set_head_detached_OPTIONAL_ARGC 0
@@ -23984,16 +22148,13 @@ mrb_Git_git_repository_set_head_detached(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_set_head_detached(native_repo, native_commitish);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_set_head_detached_from_annotated */
-/* sha: c599e91bcfc748f9a2485a5cf26f0d52bf06dc21c32c6f92e7f315d76c92e077 */
+/* sha: 3a57d6fd516a4955d0eba4acf507cd458aa04658c708dd34f4cd3b13bfd3602b */
 #if BIND_git_repository_set_head_detached_from_annotated_FUNCTION
 #define git_repository_set_head_detached_from_annotated_REQUIRED_ARGC 2
 #define git_repository_set_head_detached_from_annotated_OPTIONAL_ARGC 0
@@ -24031,16 +22192,13 @@ mrb_Git_git_repository_set_head_detached_from_annotated(mrb_state* mrb, mrb_valu
   /* Invocation */
   int native_return_value = git_repository_set_head_detached_from_annotated(native_repo, native_commitish);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_set_ident */
-/* sha: cdd23042d0c835bd4ded8d91e65f20f2ff472d7807187f0ebebeab31adcac007 */
+/* sha: f4d714c948d2afabfa2ae92cf3923aacae2e63925fb845e1a58ec6061354df5e */
 #if BIND_git_repository_set_ident_FUNCTION
 #define git_repository_set_ident_REQUIRED_ARGC 3
 #define git_repository_set_ident_OPTIONAL_ARGC 0
@@ -24073,16 +22231,13 @@ mrb_Git_git_repository_set_ident(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_set_ident(native_repo, native_name, native_email);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_set_namespace */
-/* sha: f2a4a495dac24ce1835f8608cd01c3cef61395a61b2c3d2a0c0c5ac37ab6fa97 */
+/* sha: 0510dd146c49396c48ecdd259a618cc424a6322ee031aca638b30e53c62dda1c */
 #if BIND_git_repository_set_namespace_FUNCTION
 #define git_repository_set_namespace_REQUIRED_ARGC 2
 #define git_repository_set_namespace_OPTIONAL_ARGC 0
@@ -24113,16 +22268,13 @@ mrb_Git_git_repository_set_namespace(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_set_namespace(native_repo, native_nmspace);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_set_workdir */
-/* sha: 703167e951e46a327df95b277b4bdec1d6293f8234be252688bb76294b982561 */
+/* sha: da711cb96ac5afb49e37b498968e2628b19c4054fabe95e1c4ce9b6088bb7fb6 */
 #if BIND_git_repository_set_workdir_FUNCTION
 #define git_repository_set_workdir_REQUIRED_ARGC 3
 #define git_repository_set_workdir_OPTIONAL_ARGC 0
@@ -24155,10 +22307,7 @@ mrb_Git_git_repository_set_workdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_set_workdir(native_repo, native_workdir, native_update_gitlink);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -24202,7 +22351,7 @@ mrb_Git_git_repository_state(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_state_cleanup */
-/* sha: d66c13db62f54667330272406c5a5660c757eee90cf0bcc81afc15d9f4f4d528 */
+/* sha: 679180dff0ed528f69c8c141fb6612e68d492fd20bc3a90a5a40637c20433eaa */
 #if BIND_git_repository_state_cleanup_FUNCTION
 #define git_repository_state_cleanup_REQUIRED_ARGC 1
 #define git_repository_state_cleanup_OPTIONAL_ARGC 0
@@ -24231,10 +22380,7 @@ mrb_Git_git_repository_state_cleanup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_state_cleanup(native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -24278,7 +22424,7 @@ mrb_Git_git_repository_workdir(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_repository_wrap_odb */
-/* sha: 7e01cc20ef820878eb6e3b8f113d3ed19f15d703f297be9d994be680486a80b5 */
+/* sha: 59eb11988a0636958ccf941b1055d689f5b49bdea3749ca72980a2707712cd5d */
 #if BIND_git_repository_wrap_odb_FUNCTION
 #define git_repository_wrap_odb_REQUIRED_ARGC 1
 #define git_repository_wrap_odb_OPTIONAL_ARGC 0
@@ -24290,7 +22436,6 @@ mrb_Git_git_repository_workdir(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_repository_wrap_odb(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   mrb_value odb;
 
@@ -24309,23 +22454,16 @@ mrb_Git_git_repository_wrap_odb(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_repository_wrap_odb(&native_out, native_odb);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reset */
-/* sha: cdea42a20d578c367315eb00359c4df4bd618e6e47839cf00ea9f5cd542f6903 */
+/* sha: 291fc6f7b26e548049c16b9cff800d3d89853baa751b94d1d3f434f9d670925b */
 #if BIND_git_reset_FUNCTION
 #define git_reset_REQUIRED_ARGC 4
 #define git_reset_OPTIONAL_ARGC 0
@@ -24374,16 +22512,13 @@ mrb_Git_git_reset(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reset(native_repo, native_target, native_reset_type, native_checkout_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reset_default */
-/* sha: 170e69f0472af3b74cc88a23aa7a72f397f797a0d827ef3d05f16e9f6782ab55 */
+/* sha: f2d890a1a8b88d58a439276f4371d263f399fd864488b7719bf3223ca54b2754 */
 #if BIND_git_reset_default_FUNCTION
 #define git_reset_default_REQUIRED_ARGC 3
 #define git_reset_default_OPTIONAL_ARGC 0
@@ -24430,16 +22565,13 @@ mrb_Git_git_reset_default(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reset_default(native_repo, native_target, native_pathspecs);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reset_from_annotated */
-/* sha: 60f5adb5779c89a38ae6d12d532fee4ae4353ed6f55d069c84634f7ff783a280 */
+/* sha: e30b6e3a1f0617dfce8941eb2cbb23723c46f6cbc6fe47bfa679924263f5129f */
 #if BIND_git_reset_from_annotated_FUNCTION
 #define git_reset_from_annotated_REQUIRED_ARGC 4
 #define git_reset_from_annotated_OPTIONAL_ARGC 0
@@ -24488,16 +22620,13 @@ mrb_Git_git_reset_from_annotated(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reset_from_annotated(native_repo, native_commit, native_reset_type, native_checkout_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revert */
-/* sha: b185b65434fd346d1bc078fc88e03b41e1fd677e6187710fd976239e7c055bff */
+/* sha: 3e56522d815f42d3e16435ff2647cee90d4c47fb85d0e5ab3d90265ad12848a0 */
 #if BIND_git_revert_FUNCTION
 #define git_revert_REQUIRED_ARGC 3
 #define git_revert_OPTIONAL_ARGC 0
@@ -24544,16 +22673,13 @@ mrb_Git_git_revert(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revert(native_repo, native_commit, native_given_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revert_commit */
-/* sha: de1ac022f86649c696cda6e40cc551c7488a4b897bfd8be1e198e69fa4ffc954 */
+/* sha: 5964aa821989aa4e52729fd5f80ee7dfe3c74ffb4dd808f4a11a5ad699ba03d2 */
 #if BIND_git_revert_commit_FUNCTION
 #define git_revert_commit_REQUIRED_ARGC 5
 #define git_revert_commit_OPTIONAL_ARGC 0
@@ -24569,7 +22695,6 @@ mrb_Git_git_revert(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_revert_commit(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_index * native_out = NULL;
   mrb_value repo;
   mrb_value revert_commit;
@@ -24613,23 +22738,16 @@ mrb_Git_git_revert_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revert_commit(&native_out, native_repo, native_revert_commit, native_our_commit, native_mainline, native_merge_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_index(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revert_init_options */
-/* sha: 04ff28412c7fd6491d5ddf1005d46c60098447b726eeb7836716a669f92b14c4 */
+/* sha: 1a566d35838b00583a7e352af7b4d2d8ffa067aa6ca19184b1aef55ff396ad09 */
 #if BIND_git_revert_init_options_FUNCTION
 #define git_revert_init_options_REQUIRED_ARGC 2
 #define git_revert_init_options_OPTIONAL_ARGC 0
@@ -24660,16 +22778,13 @@ mrb_Git_git_revert_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revert_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revparse */
-/* sha: f4db0087fb3bdd58b4e3a93e7e3f1acacfc7d2612aae0a788267cb94e5a0e34d */
+/* sha: 20d65f04dc10d94a811aa27c53939a46017af63b4d99a125e2873aefdbed98ed */
 #if BIND_git_revparse_FUNCTION
 #define git_revparse_REQUIRED_ARGC 3
 #define git_revparse_OPTIONAL_ARGC 0
@@ -24709,16 +22824,13 @@ mrb_Git_git_revparse(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revparse(native_revspec, native_repo, native_spec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revparse_ext */
-/* sha: 5df900a2fa9f39b2173f51eaf80714996b26c7d21ffd1cc34d412a7ad230da6e */
+/* sha: 769da7594b4d713a29d28e58b88d95025600ab7fab4c176a3f007b5f21b3448c */
 #if BIND_git_revparse_ext_FUNCTION
 #define git_revparse_ext_REQUIRED_ARGC 2
 #define git_revparse_ext_OPTIONAL_ARGC 0
@@ -24752,10 +22864,6 @@ mrb_Git_git_revparse_ext(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revparse_ext(&native_object_out, &native_reference_out, native_repo, native_spec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: object_out */
   mrb_value object_out = native_object_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_object_out);
   /* Box out param: reference_out */
@@ -24771,7 +22879,7 @@ mrb_Git_git_revparse_ext(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revparse_single */
-/* sha: 5de7136c07e2c5d14d58074264acb7baf9ff0765087f651fc5e294ba1258d2b9 */
+/* sha: 1a9fd180e1443c4a4c84e2558c8fc91185263bc00a87a498ab7416f6c6d54a0f */
 #if BIND_git_revparse_single_FUNCTION
 #define git_revparse_single_REQUIRED_ARGC 2
 #define git_revparse_single_OPTIONAL_ARGC 0
@@ -24784,7 +22892,6 @@ mrb_Git_git_revparse_ext(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_revparse_single(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_out = NULL;
   mrb_value repo;
   char * native_spec = NULL;
@@ -24804,23 +22911,16 @@ mrb_Git_git_revparse_single(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revparse_single(&native_out, native_repo, native_spec);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_add_hide_cb */
-/* sha: 5260c89385229db4a27acb3ca7642ae4a420406e359d786f40ce12ca70ece044 */
+/* sha: 1d9dadacf27b583055209c3c4d13a0be31384d827dae30032e85b6beea8d37da */
 #if BIND_git_revwalk_add_hide_cb_FUNCTION
 #define git_revwalk_add_hide_cb_REQUIRED_ARGC 3
 #define git_revwalk_add_hide_cb_OPTIONAL_ARGC 0
@@ -24861,10 +22961,7 @@ mrb_Git_git_revwalk_add_hide_cb(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_add_hide_cb(native_walk, native_hide_cb, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -24905,7 +23002,7 @@ mrb_Git_git_revwalk_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_hide */
-/* sha: d219fd32cc3a7da821f7b508d39f0707fdc4e7c07ad42c9b336e9b14fd23bcbd */
+/* sha: dc06471b19218144d9eac6d8e1db23fc74c5d759ead40cbe88b42c2d5b94da92 */
 #if BIND_git_revwalk_hide_FUNCTION
 #define git_revwalk_hide_REQUIRED_ARGC 2
 #define git_revwalk_hide_OPTIONAL_ARGC 0
@@ -24943,16 +23040,13 @@ mrb_Git_git_revwalk_hide(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_hide(native_walk, native_commit_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_hide_glob */
-/* sha: 3082223056f34d66a88a889af0fb5ec47909ee9a47d93a16384c1e87fe1ee57c */
+/* sha: f544dd5a4fd00cee05e246de142cc519df3e3e75a7bd891d825e38cdcf020feb */
 #if BIND_git_revwalk_hide_glob_FUNCTION
 #define git_revwalk_hide_glob_REQUIRED_ARGC 2
 #define git_revwalk_hide_glob_OPTIONAL_ARGC 0
@@ -24983,16 +23077,13 @@ mrb_Git_git_revwalk_hide_glob(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_hide_glob(native_walk, native_glob);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_hide_head */
-/* sha: eaba798eefe4288f535276cd11bf176522b88b8f4346eac6e4c8ac3abbe17cfa */
+/* sha: b5ae4e4ed926f757420292cbd1dd43e730a933f82313802f2b4f1b1dd8946476 */
 #if BIND_git_revwalk_hide_head_FUNCTION
 #define git_revwalk_hide_head_REQUIRED_ARGC 1
 #define git_revwalk_hide_head_OPTIONAL_ARGC 0
@@ -25021,16 +23112,13 @@ mrb_Git_git_revwalk_hide_head(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_hide_head(native_walk);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_hide_ref */
-/* sha: a0d4a8875d14c6516484ade1a79e1781905ed1dd1fd66584f2ec88c6899b0236 */
+/* sha: e65bbd7ff98f3ac68a182efb48613aa32595729f630c1df7655bb3917bca00f1 */
 #if BIND_git_revwalk_hide_ref_FUNCTION
 #define git_revwalk_hide_ref_REQUIRED_ARGC 2
 #define git_revwalk_hide_ref_OPTIONAL_ARGC 0
@@ -25061,16 +23149,13 @@ mrb_Git_git_revwalk_hide_ref(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_hide_ref(native_walk, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_new */
-/* sha: 819f8eebca73be83f2317ebe71cb1e6a134b6de659087a29b57be047dd85f9c3 */
+/* sha: f44426bedf0489c925316fe168eff4276bd6acee7119b69927626d82e76e3387 */
 #if BIND_git_revwalk_new_FUNCTION
 #define git_revwalk_new_REQUIRED_ARGC 1
 #define git_revwalk_new_OPTIONAL_ARGC 0
@@ -25082,7 +23167,6 @@ mrb_Git_git_revwalk_hide_ref(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_revwalk_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_revwalk * native_out = NULL;
   mrb_value repo;
 
@@ -25101,17 +23185,10 @@ mrb_Git_git_revwalk_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_new(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_revwalk(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -25164,7 +23241,7 @@ mrb_Git_git_revwalk_next(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_push */
-/* sha: 3532cf91f4d9ea7469cd6a69a2b1c63378c7670eb359bf1a39510d02511b5865 */
+/* sha: 055f68f160a60eb6200758804fe4dce8b7167f6e29ffe106e5fc53df9ecca215 */
 #if BIND_git_revwalk_push_FUNCTION
 #define git_revwalk_push_REQUIRED_ARGC 2
 #define git_revwalk_push_OPTIONAL_ARGC 0
@@ -25202,16 +23279,13 @@ mrb_Git_git_revwalk_push(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_push(native_walk, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_push_glob */
-/* sha: 39c87a126d3c034454e9ebbd6fc52a6cb510cc4dd307a79b73231f76fd570861 */
+/* sha: 845e99c2fae66320d92cf3fd08445d4458dba002e86190531511d94619764c4f */
 #if BIND_git_revwalk_push_glob_FUNCTION
 #define git_revwalk_push_glob_REQUIRED_ARGC 2
 #define git_revwalk_push_glob_OPTIONAL_ARGC 0
@@ -25242,16 +23316,13 @@ mrb_Git_git_revwalk_push_glob(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_push_glob(native_walk, native_glob);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_push_head */
-/* sha: 0123200e8115d2063d1bc1bb985cba647eb1a1b9e13e73e534b421e5b2e233ae */
+/* sha: a320f1ff01cb06410a63a3246c80dc82130385ace8f88da27d4757c88d18590f */
 #if BIND_git_revwalk_push_head_FUNCTION
 #define git_revwalk_push_head_REQUIRED_ARGC 1
 #define git_revwalk_push_head_OPTIONAL_ARGC 0
@@ -25280,16 +23351,13 @@ mrb_Git_git_revwalk_push_head(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_push_head(native_walk);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_push_range */
-/* sha: f5d525719fde307aa42ad36e1fa3d557db3b8bab369044ea96217bceb300008e */
+/* sha: 5ac79d494e74c6bee9c3d4db33b7631cf76073be9d3cbcebca636b64de547bbb */
 #if BIND_git_revwalk_push_range_FUNCTION
 #define git_revwalk_push_range_REQUIRED_ARGC 2
 #define git_revwalk_push_range_OPTIONAL_ARGC 0
@@ -25320,16 +23388,13 @@ mrb_Git_git_revwalk_push_range(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_push_range(native_walk, native_range);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_revwalk_push_ref */
-/* sha: 89788973a26ee8d92f6a970efa43ccbcd5e442c06e090e8638420856f9bb3e66 */
+/* sha: 5a9b5cccc6b8e50aa5514aa0c7d2dccc4c9ebe9cb7de01ccedc112abf077c2e2 */
 #if BIND_git_revwalk_push_ref_FUNCTION
 #define git_revwalk_push_ref_REQUIRED_ARGC 2
 #define git_revwalk_push_ref_OPTIONAL_ARGC 0
@@ -25360,10 +23425,7 @@ mrb_Git_git_revwalk_push_ref(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_revwalk_push_ref(native_walk, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -25514,7 +23576,7 @@ mrb_Git_git_revwalk_sorting(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_signature_default */
-/* sha: 7ebcccf97a6cbd60424e965e0e6158e538b1f3dd58f5a8bab64e4c59d92e965b */
+/* sha: 0385d02c50271b514a8472eeb9e68b1f2d00839f24ff33060c97c18393008654 */
 #if BIND_git_signature_default_FUNCTION
 #define git_signature_default_REQUIRED_ARGC 1
 #define git_signature_default_OPTIONAL_ARGC 0
@@ -25526,7 +23588,6 @@ mrb_Git_git_revwalk_sorting(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_signature_default(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_signature * native_out = NULL;
   mrb_value repo;
 
@@ -25545,23 +23606,16 @@ mrb_Git_git_signature_default(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_signature_default(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_signature(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_signature_dup */
-/* sha: 395402047eb64e6b549a9353f91044b21331a1d33150c7820cc30823916950ab */
+/* sha: e9049356e5376dba3c477753055d48c199bfac3337f8d4b826cff9e488785e0f */
 #if BIND_git_signature_dup_FUNCTION
 #define git_signature_dup_REQUIRED_ARGC 1
 #define git_signature_dup_OPTIONAL_ARGC 0
@@ -25573,7 +23627,6 @@ mrb_Git_git_signature_default(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_signature_dup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_signature * native_dest = NULL;
   mrb_value sig;
 
@@ -25592,17 +23645,10 @@ mrb_Git_git_signature_dup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_signature_dup(&native_dest, native_sig);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: dest */
   mrb_value dest = native_dest == NULL ? mrb_nil_value() : mruby_giftwrap_git_signature(mrb, native_dest);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, dest);
-
-  return results;
+  return dest;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -25643,7 +23689,7 @@ mrb_Git_git_signature_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_signature_new */
-/* sha: 199f5d8b152fbe3bf7d831a3b423a69a5371b74ea266e4516e712f641b0cecbb */
+/* sha: da6c136b29775d8071d70769d6ed5f63457ee5dbfcdd546c4bca210f73d30241 */
 #if BIND_git_signature_new_FUNCTION
 #define git_signature_new_REQUIRED_ARGC 4
 #define git_signature_new_OPTIONAL_ARGC 0
@@ -25658,7 +23704,6 @@ mrb_Git_git_signature_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_signature_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_signature * native_out = NULL;
   char * native_name = NULL;
   char * native_email = NULL;
@@ -25671,23 +23716,16 @@ mrb_Git_git_signature_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_signature_new(&native_out, native_name, native_email, native_time, native_offset);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_signature(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_signature_now */
-/* sha: 0dcf16ec2a568f3042c800586386497d1acbb786e6ae4b7e8230d7c08c04e8e0 */
+/* sha: 9dddf0ef4c791841efc5be2db3484b634d0d0b39ed8e37da107c10896acbbabf */
 #if BIND_git_signature_now_FUNCTION
 #define git_signature_now_REQUIRED_ARGC 2
 #define git_signature_now_OPTIONAL_ARGC 0
@@ -25700,7 +23738,6 @@ mrb_Git_git_signature_new(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_signature_now(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_signature * native_out = NULL;
   char * native_name = NULL;
   char * native_email = NULL;
@@ -25711,23 +23748,16 @@ mrb_Git_git_signature_now(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_signature_now(&native_out, native_name, native_email);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_signature(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_stash_apply */
-/* sha: 193242f9038417de7353f0b54057372bc2a43e191683e52b0ecc671fc6c71dea */
+/* sha: 438e60472f176993ed23d645bc7a14fcc4cc1579bf626ff55eb18651b4a63fb0 */
 #if BIND_git_stash_apply_FUNCTION
 #define git_stash_apply_REQUIRED_ARGC 3
 #define git_stash_apply_OPTIONAL_ARGC 0
@@ -25767,16 +23797,13 @@ mrb_Git_git_stash_apply(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_stash_apply(native_repo, native_index, native_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_stash_apply_init_options */
-/* sha: 9b174ecaad15505b5137bbcc95b04e8f901dc09a5209abbb7eaa287f79fbb16d */
+/* sha: a73de477ab87c26159ff97c05b506c562219c99f68849b69258e3b4e29ef821b */
 #if BIND_git_stash_apply_init_options_FUNCTION
 #define git_stash_apply_init_options_REQUIRED_ARGC 2
 #define git_stash_apply_init_options_OPTIONAL_ARGC 0
@@ -25807,16 +23834,13 @@ mrb_Git_git_stash_apply_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_stash_apply_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_stash_drop */
-/* sha: 32465aef268f7b099ca447742e5561f145449377a9aadb0c952b66e7ff5d3801 */
+/* sha: 896993b47087218e7f68913656bf8af805d5b5ea486442dc2c803c0977a7f8e5 */
 #if BIND_git_stash_drop_FUNCTION
 #define git_stash_drop_REQUIRED_ARGC 2
 #define git_stash_drop_OPTIONAL_ARGC 0
@@ -25847,16 +23871,13 @@ mrb_Git_git_stash_drop(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_stash_drop(native_repo, native_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_stash_foreach */
-/* sha: 145eaae424114bddd9eef0e2e13930b89ed5c616697bc8ca67a266b63221063f */
+/* sha: e82ff0473ee2aab001fad92d0d142d64549d137466ca2686b2d2b64c69498d3a */
 #if BIND_git_stash_foreach_FUNCTION
 #define git_stash_foreach_REQUIRED_ARGC 3
 #define git_stash_foreach_OPTIONAL_ARGC 0
@@ -25897,16 +23918,13 @@ mrb_Git_git_stash_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_stash_foreach(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_stash_pop */
-/* sha: 47ac4b321d72218ce6b8e78e9e9b30cb66a0e3d2cf3c0766e75864b3879a750e */
+/* sha: dfaf67d2ee9c2907fcce444270e4c31a07e2d562852765577d0b78c2bfb055d1 */
 #if BIND_git_stash_pop_FUNCTION
 #define git_stash_pop_REQUIRED_ARGC 3
 #define git_stash_pop_OPTIONAL_ARGC 0
@@ -25946,16 +23964,13 @@ mrb_Git_git_stash_pop(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_stash_pop(native_repo, native_index, native_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_stash_save */
-/* sha: 7527223c5dcc440da0c10ed4009c9304bd6a8cfe625483db61ccf7314b0c131e */
+/* sha: 7cd8f5a63d15edd6fe1b90174285239202dec91177ef519336cb27c72fe82b3d */
 #if BIND_git_stash_save_FUNCTION
 #define git_stash_save_REQUIRED_ARGC 5
 #define git_stash_save_OPTIONAL_ARGC 0
@@ -26006,10 +24021,7 @@ mrb_Git_git_stash_save(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_stash_save(native_out, native_repo, native_stasher, native_message, native_flags);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -26055,7 +24067,7 @@ mrb_Git_git_status_byindex(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_status_file */
-/* sha: 290c3a24afa1ae2ed676bd6249a0489e5915b883acc09a2f5e00dbb32ae86faa */
+/* sha: b115b0a8c1fb25494d68afddbae75ea20d3eff008992557d7056487e4fe994d1 */
 #if BIND_git_status_file_FUNCTION
 #define git_status_file_REQUIRED_ARGC 2
 #define git_status_file_OPTIONAL_ARGC 0
@@ -26068,7 +24080,6 @@ mrb_Git_git_status_byindex(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_status_file(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_status_flags;
   mrb_value repo;
   char * native_path = NULL;
@@ -26088,23 +24099,16 @@ mrb_Git_git_status_file(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_status_file(&native_status_flags, native_repo, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: status_flags */
   mrb_value status_flags = mrb_fixnum_value(native_status_flags);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, status_flags);
-
-  return results;
+  return status_flags;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_status_foreach */
-/* sha: f973156c9c381e30fcd888c7298c79fbec54fbf0b3f2e13d2af6e1fe69ce64f2 */
+/* sha: 73fcfb390bd489ecfbb9ec2a0fdac8a8c8e9ced0580de832f385ed01e0dc6924 */
 #if BIND_git_status_foreach_FUNCTION
 #define git_status_foreach_REQUIRED_ARGC 3
 #define git_status_foreach_OPTIONAL_ARGC 0
@@ -26145,16 +24149,13 @@ mrb_Git_git_status_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_status_foreach(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_status_foreach_ext */
-/* sha: e8208e258097351e841581e966087027121b8f899541492f36e36af9af1f9008 */
+/* sha: 3a546379df81013087e91dcc5d53ce18385b1a69eda0d30cfa9055b1ef99fa7e */
 #if BIND_git_status_foreach_ext_FUNCTION
 #define git_status_foreach_ext_REQUIRED_ARGC 4
 #define git_status_foreach_ext_OPTIONAL_ARGC 0
@@ -26204,16 +24205,13 @@ mrb_Git_git_status_foreach_ext(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_status_foreach_ext(native_repo, native_opts, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_status_init_options */
-/* sha: cfbcc38514d9b0742e756c29056ff62ce34c3dfe70c5c6ecc00643aa593096ac */
+/* sha: 6c7903b39ec0facb0f760f521bb9c04f0bcf311b397e5b3a4ad3eb59003e6bc0 */
 #if BIND_git_status_init_options_FUNCTION
 #define git_status_init_options_REQUIRED_ARGC 2
 #define git_status_init_options_OPTIONAL_ARGC 0
@@ -26244,10 +24242,7 @@ mrb_Git_git_status_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_status_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -26326,7 +24321,7 @@ mrb_Git_git_status_list_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_status_list_new */
-/* sha: cdb6cce6fed36096cab533e095fbc7048ee3a2b773088a64d9948ba276b4c7d4 */
+/* sha: a1532a4c5d88d056d78745e215e6853a46b1ed21871104befaee20f30a3b2a4e */
 #if BIND_git_status_list_new_FUNCTION
 #define git_status_list_new_REQUIRED_ARGC 2
 #define git_status_list_new_OPTIONAL_ARGC 0
@@ -26339,7 +24334,6 @@ mrb_Git_git_status_list_free(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_status_list_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_status_list * native_out = NULL;
   mrb_value repo;
   mrb_value opts;
@@ -26366,23 +24360,16 @@ mrb_Git_git_status_list_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_status_list_new(&native_out, native_repo, native_opts);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_status_list(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_status_should_ignore */
-/* sha: b81eb5ddc24d770f0da75c41f4ed1d02894d9692b0af838cf5084e2d78851ddc */
+/* sha: b3b5690e555e4e086d36e3985e8d98c924bed690eac4a4c9d994e91bf8def4a1 */
 #if BIND_git_status_should_ignore_FUNCTION
 #define git_status_should_ignore_REQUIRED_ARGC 3
 #define git_status_should_ignore_OPTIONAL_ARGC 0
@@ -26419,16 +24406,13 @@ mrb_Git_git_status_should_ignore(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_status_should_ignore(native_ignored, native_repo, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_strarray_copy */
-/* sha: b2f5a170c5878af219cdbe50f9591396899c0ec20899315685417a7b51e7455e */
+/* sha: 58e449b47a4d7cf4f40cf338431175a62492b826c643835b04487212b2c37e79 */
 #if BIND_git_strarray_copy_FUNCTION
 #define git_strarray_copy_REQUIRED_ARGC 2
 #define git_strarray_copy_OPTIONAL_ARGC 0
@@ -26466,10 +24450,7 @@ mrb_Git_git_strarray_copy(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_strarray_copy(native_tgt, native_src);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -26510,7 +24491,7 @@ mrb_Git_git_strarray_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_add_finalize */
-/* sha: 1fc35b9f1fb609685a4bf0b60562035dadc64dd410ae50e8f8d8ef4f6a85b3af */
+/* sha: c4105ef97af0b0875ddb8a4c3d5a28536fd8818f8e21c459abb61670c3d7f5e2 */
 #if BIND_git_submodule_add_finalize_FUNCTION
 #define git_submodule_add_finalize_REQUIRED_ARGC 1
 #define git_submodule_add_finalize_OPTIONAL_ARGC 0
@@ -26539,16 +24520,13 @@ mrb_Git_git_submodule_add_finalize(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_add_finalize(native_submodule);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_add_setup */
-/* sha: 92731633788589c8748e00a4d89cd4db6c6cb924e7c0267be0061678f0b908d8 */
+/* sha: 5ba3068fec9e3b3ddb197ae3427480b11579e33be9cd0416f1fc6445e5e497d7 */
 #if BIND_git_submodule_add_setup_FUNCTION
 #define git_submodule_add_setup_REQUIRED_ARGC 4
 #define git_submodule_add_setup_OPTIONAL_ARGC 0
@@ -26563,7 +24541,6 @@ mrb_Git_git_submodule_add_finalize(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_submodule_add_setup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_submodule * native_out = NULL;
   mrb_value repo;
   char * native_url = NULL;
@@ -26585,23 +24562,16 @@ mrb_Git_git_submodule_add_setup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_add_setup(&native_out, native_repo, native_url, native_path, native_use_gitlink);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_submodule(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_add_to_index */
-/* sha: 7719937f6085cebffb5618b4ea42ada6a57bf5c05a358e41b95042787442279b */
+/* sha: adfa57c2ff8f2d67a676783c54ccdc983d951e960c36564b34f2512bc157fb97 */
 #if BIND_git_submodule_add_to_index_FUNCTION
 #define git_submodule_add_to_index_REQUIRED_ARGC 2
 #define git_submodule_add_to_index_OPTIONAL_ARGC 0
@@ -26632,10 +24602,7 @@ mrb_Git_git_submodule_add_to_index(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_add_to_index(native_submodule, native_write_index);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -26717,7 +24684,7 @@ mrb_Git_git_submodule_fetch_recurse_submodules(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_foreach */
-/* sha: f0143f999e56fb0e13aaf29ba8aec55933d8690f3a66117bb8d53241ec756c91 */
+/* sha: 9988fee3d92167ee614798cf04a4513620f81770611db9d3cf4ea3c62360eceb */
 #if BIND_git_submodule_foreach_FUNCTION
 #define git_submodule_foreach_REQUIRED_ARGC 3
 #define git_submodule_foreach_OPTIONAL_ARGC 0
@@ -26758,10 +24725,7 @@ mrb_Git_git_submodule_foreach(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_foreach(native_repo, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -26916,7 +24880,7 @@ mrb_Git_git_submodule_index_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_init */
-/* sha: be19a983381f217a6984b4fe43e3d53b59d40c104ec0b3e251ae83812163bcc9 */
+/* sha: 43f8670a1c71666256d16eebf2020055139aff1a63687621a3226afd6283f963 */
 #if BIND_git_submodule_init_FUNCTION
 #define git_submodule_init_REQUIRED_ARGC 2
 #define git_submodule_init_OPTIONAL_ARGC 0
@@ -26947,16 +24911,13 @@ mrb_Git_git_submodule_init(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_init(native_submodule, native_overwrite);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_location */
-/* sha: 786435c42b6845d5234e6c5cd7864949e81ebba3245c21a73a4c350c0454a8dc */
+/* sha: b2b30c38618b2332d459da9f2b8351feb6c36a14b3a4110fb8775cde62bc2f19 */
 #if BIND_git_submodule_location_FUNCTION
 #define git_submodule_location_REQUIRED_ARGC 1
 #define git_submodule_location_OPTIONAL_ARGC 0
@@ -26968,7 +24929,6 @@ mrb_Git_git_submodule_init(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_submodule_location(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_location_status;
   mrb_value submodule;
 
@@ -26987,23 +24947,16 @@ mrb_Git_git_submodule_location(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_location(&native_location_status, native_submodule);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: location_status */
   mrb_value location_status = mrb_fixnum_value(native_location_status);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, location_status);
-
-  return results;
+  return location_status;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_lookup */
-/* sha: 0c076e33b6316906cb81a71d990d2fbd9b290469e48a422d3ad2c605a9bbcc66 */
+/* sha: 6b9c60aa5ef228331b28cd8ee3d41767b6772d71a6abf748a3dc8e5f554ad5b0 */
 #if BIND_git_submodule_lookup_FUNCTION
 #define git_submodule_lookup_REQUIRED_ARGC 2
 #define git_submodule_lookup_OPTIONAL_ARGC 0
@@ -27016,7 +24969,6 @@ mrb_Git_git_submodule_location(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_submodule_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_submodule * native_out = NULL;
   mrb_value repo;
   char * native_name = NULL;
@@ -27036,17 +24988,10 @@ mrb_Git_git_submodule_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_lookup(&native_out, native_repo, native_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_submodule(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -27090,7 +25035,7 @@ mrb_Git_git_submodule_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_open */
-/* sha: eae6cbc7700be413539c9d024fd098f6f91da5cf4d668262b7cfcecd0a3869a8 */
+/* sha: 262da25406db5eed7750155251942bb82984e5f86ead034a7b430fb89699b8c7 */
 #if BIND_git_submodule_open_FUNCTION
 #define git_submodule_open_REQUIRED_ARGC 1
 #define git_submodule_open_OPTIONAL_ARGC 0
@@ -27102,7 +25047,6 @@ mrb_Git_git_submodule_name(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_submodule_open(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_repo = NULL;
   mrb_value submodule;
 
@@ -27121,17 +25065,10 @@ mrb_Git_git_submodule_open(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_open(&native_repo, native_submodule);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: repo */
   mrb_value repo = native_repo == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_repo);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, repo);
-
-  return results;
+  return repo;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -27213,7 +25150,7 @@ mrb_Git_git_submodule_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_reload */
-/* sha: db0adb14b461bbcb3e88c25205569ec5dad6454dff71242724d3870a60ea0011 */
+/* sha: 124208efb494a07003a6d31194b27e6c5c7d90cd1fb4559fdacd696b99613f20 */
 #if BIND_git_submodule_reload_FUNCTION
 #define git_submodule_reload_REQUIRED_ARGC 2
 #define git_submodule_reload_OPTIONAL_ARGC 0
@@ -27244,16 +25181,13 @@ mrb_Git_git_submodule_reload(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_reload(native_submodule, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_repo_init */
-/* sha: d1a7a9b6d14cbbf967158af6025acf492925d5fdac6a41a681ab6a7d75e57227 */
+/* sha: fd623892dc2c2318d02224a3cc47cface741b19cecd03e24c5bb44e8efd66b10 */
 #if BIND_git_submodule_repo_init_FUNCTION
 #define git_submodule_repo_init_REQUIRED_ARGC 2
 #define git_submodule_repo_init_OPTIONAL_ARGC 0
@@ -27266,7 +25200,6 @@ mrb_Git_git_submodule_reload(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_submodule_repo_init(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   mrb_value sm;
   mrb_int native_use_gitlink;
@@ -27286,55 +25219,40 @@ mrb_Git_git_submodule_repo_init(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_repo_init(&native_out, native_sm, native_use_gitlink);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_repository(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_resolve_url */
-/* sha: 53248ce2fc6579341890e5bd9298d8525b2bfe3a29328d1680735085e41ad0a3 */
+/* sha: e9b629a6d00c0c0c88c031faa468bbf415a9c080ce57acfeaa06dab5b6dd7831 */
 #if BIND_git_submodule_resolve_url_FUNCTION
-#define git_submodule_resolve_url_REQUIRED_ARGC 3
+#define git_submodule_resolve_url_REQUIRED_ARGC 2
 #define git_submodule_resolve_url_OPTIONAL_ARGC 0
 /* git_submodule_resolve_url
  *
  * Parameters:
- * - out: git_buf *
  * - repo: git_repository *
  * - url: const char *
  * Return Type: int
  */
 mrb_value
 mrb_Git_git_submodule_resolve_url(mrb_state* mrb, mrb_value self) {
-  mrb_value out;
+  git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value repo;
   char * native_url = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &repo, &native_url);
+  mrb_get_args(mrb, "oz", &repo, &native_url);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Buf_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Buf expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_buf * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_buf(out));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -27342,16 +25260,16 @@ mrb_Git_git_submodule_resolve_url(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_resolve_url(native_out, native_repo, native_url);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_buf(mrb, native_out);
+
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_set_branch */
-/* sha: 9b1076d0bcf5adbae885498b0844c5b5290013719df053f5dd421c76794b4e70 */
+/* sha: 33d7d70c603224f3565027c072fbd762e74a97881e8dadfa14aed5947ab7740b */
 #if BIND_git_submodule_set_branch_FUNCTION
 #define git_submodule_set_branch_REQUIRED_ARGC 3
 #define git_submodule_set_branch_OPTIONAL_ARGC 0
@@ -27384,16 +25302,13 @@ mrb_Git_git_submodule_set_branch(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_set_branch(native_repo, native_name, native_branch);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_set_fetch_recurse_submodules */
-/* sha: c6e478e23d51a07e246e553f02d58af274451a7fa28d81ca2a7780b9b9cbf62e */
+/* sha: d435d8644dcfebaf444ecf9daa7502ebfc13c90b5474fe332cd49fbf33edbec8 */
 #if BIND_git_submodule_set_fetch_recurse_submodules_FUNCTION
 #define git_submodule_set_fetch_recurse_submodules_REQUIRED_ARGC 3
 #define git_submodule_set_fetch_recurse_submodules_OPTIONAL_ARGC 0
@@ -27426,16 +25341,13 @@ mrb_Git_git_submodule_set_fetch_recurse_submodules(mrb_state* mrb, mrb_value sel
   /* Invocation */
   int native_return_value = git_submodule_set_fetch_recurse_submodules(native_repo, native_name, native_fetch_recurse_submodules);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_set_ignore */
-/* sha: b82e1c742636c450ed0e4771d8c1b8e5902fb9f6df80d7d9eb18a683f293af53 */
+/* sha: fea4aa820cff6f8724e8267ba15af565beec70954a08bea3c7e4f001fcab0171 */
 #if BIND_git_submodule_set_ignore_FUNCTION
 #define git_submodule_set_ignore_REQUIRED_ARGC 3
 #define git_submodule_set_ignore_OPTIONAL_ARGC 0
@@ -27468,16 +25380,13 @@ mrb_Git_git_submodule_set_ignore(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_set_ignore(native_repo, native_name, native_ignore);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_set_update */
-/* sha: 21ae595b306ca08ed62d133c44316c20ebde3f610e67bf719f45b108f364bb09 */
+/* sha: 62c6bfbb75d8813bf3f6f77c1bb10a257c680ac42eb37edf971cb8654444f6fc */
 #if BIND_git_submodule_set_update_FUNCTION
 #define git_submodule_set_update_REQUIRED_ARGC 3
 #define git_submodule_set_update_OPTIONAL_ARGC 0
@@ -27510,16 +25419,13 @@ mrb_Git_git_submodule_set_update(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_set_update(native_repo, native_name, native_update);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_set_url */
-/* sha: 570ffb3969071d864da2e5bb746ad497031c9a7f6236d81dea5dde74f461177b */
+/* sha: e1b5978fc99933f2eba1984b02d8f8857ace41df9301e7184795b691de7b7f4b */
 #if BIND_git_submodule_set_url_FUNCTION
 #define git_submodule_set_url_REQUIRED_ARGC 3
 #define git_submodule_set_url_OPTIONAL_ARGC 0
@@ -27552,16 +25458,13 @@ mrb_Git_git_submodule_set_url(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_set_url(native_repo, native_name, native_url);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_status */
-/* sha: be51f0186906f18c6d0173e7d794ca3735374a5752446ef9cd8c3121abdedb02 */
+/* sha: f67f1b29de7aaf1c93ee358e3487fbd1e0953888c28b587b2da9f9917f050607 */
 #if BIND_git_submodule_status_FUNCTION
 #define git_submodule_status_REQUIRED_ARGC 3
 #define git_submodule_status_OPTIONAL_ARGC 0
@@ -27575,7 +25478,6 @@ mrb_Git_git_submodule_set_url(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_submodule_status(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   int native_status;
   mrb_value repo;
   char * native_name = NULL;
@@ -27596,23 +25498,16 @@ mrb_Git_git_submodule_status(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_status(&native_status, native_repo, native_name, native_ignore);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: status */
   mrb_value status = mrb_fixnum_value(native_status);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, status);
-
-  return results;
+  return status;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_sync */
-/* sha: 92b5ff5b7f43ba111f701d56347dd2f931b112ed400dfa6581a84440a3c59752 */
+/* sha: f647a619d20e0075498980f1bc691697b70c2e52e1a0b08c27c2b060d1361901 */
 #if BIND_git_submodule_sync_FUNCTION
 #define git_submodule_sync_REQUIRED_ARGC 1
 #define git_submodule_sync_OPTIONAL_ARGC 0
@@ -27641,16 +25536,13 @@ mrb_Git_git_submodule_sync(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_sync(native_submodule);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_update */
-/* sha: 9cf769ed12f58c95e937df42edde664a57da74e119a7930f9bfed261974a2eed */
+/* sha: dcb15d0e5877954edbe1d4ac1e2980ea1a460f15b0fb6f1844f2289d57479d88 */
 #if BIND_git_submodule_update_FUNCTION
 #define git_submodule_update_REQUIRED_ARGC 3
 #define git_submodule_update_OPTIONAL_ARGC 0
@@ -27690,16 +25582,13 @@ mrb_Git_git_submodule_update(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_update(native_submodule, native_init, native_options);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_update_init_options */
-/* sha: 691996b568d5084b1970ae941d395e906c822b7e4994e0622d2e700e5be8a539 */
+/* sha: 150d16b1c66094f2c526d5f71070418e9c1ff0c61ef6966a782788df17bfeaf9 */
 #if BIND_git_submodule_update_init_options_FUNCTION
 #define git_submodule_update_init_options_REQUIRED_ARGC 2
 #define git_submodule_update_init_options_OPTIONAL_ARGC 0
@@ -27730,10 +25619,7 @@ mrb_Git_git_submodule_update_init_options(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_submodule_update_init_options(native_opts, native_version);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -27853,7 +25739,7 @@ mrb_Git_git_submodule_wd_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_annotation_create */
-/* sha: 5182b7b3e9a3e4883f1e5f19801c2fb8e190ca1f28632837fd96e0ae06ace4c0 */
+/* sha: 671f25cd9fd3f24e9d841d4b2babbaad8006ffb11e7ac84468e9c1c102f6da36 */
 #if BIND_git_tag_annotation_create_FUNCTION
 #define git_tag_annotation_create_REQUIRED_ARGC 6
 #define git_tag_annotation_create_OPTIONAL_ARGC 0
@@ -27913,16 +25799,13 @@ mrb_Git_git_tag_annotation_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_annotation_create(native_oid, native_repo, native_tag_name, native_target, native_tagger, native_message);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create */
-/* sha: f069c37736391bc84e91c9cde4fb71e0feae689ead033ee86bda4f7108e71689 */
+/* sha: a73d42c837e0f2c020c1364b0f7932b120ba28936f866487357c958030d8506e */
 #if BIND_git_tag_create_FUNCTION
 #define git_tag_create_REQUIRED_ARGC 7
 #define git_tag_create_OPTIONAL_ARGC 0
@@ -27984,16 +25867,13 @@ mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_create(native_oid, native_repo, native_tag_name, native_target, native_tagger, native_message, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create_frombuffer */
-/* sha: 6076f1c4e589d05dc46e9bf55ec4b64e430cf50d136d6df4a5d6f405387e7ed7 */
+/* sha: a7ca89868d4eee0f3211393125c61f8f3f84834b35436d38cf1ad3f865cf9aeb */
 #if BIND_git_tag_create_frombuffer_FUNCTION
 #define git_tag_create_frombuffer_REQUIRED_ARGC 4
 #define git_tag_create_frombuffer_OPTIONAL_ARGC 0
@@ -28035,16 +25915,13 @@ mrb_Git_git_tag_create_frombuffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_create_frombuffer(native_oid, native_repo, native_buffer, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create_lightweight */
-/* sha: 235f87ea7894b38503a4a1bbaaff077ab362deff02b61815dfae28724a5509c0 */
+/* sha: 1abcff2062c68678998174df459f35afd51be7f5f6685e3bcb016fd67c7df7aa */
 #if BIND_git_tag_create_lightweight_FUNCTION
 #define git_tag_create_lightweight_REQUIRED_ARGC 5
 #define git_tag_create_lightweight_OPTIONAL_ARGC 0
@@ -28095,16 +25972,13 @@ mrb_Git_git_tag_create_lightweight(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_create_lightweight(native_oid, native_repo, native_tag_name, native_target, native_force);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_delete */
-/* sha: 836d9b03b29b6217ed56b19e97438cb0489dafd7be544b2830195d49ce0a8292 */
+/* sha: 4a51aeb50c3897021cbd0f712aecaad7322fbe04581c90c2659f9969031491a4 */
 #if BIND_git_tag_delete_FUNCTION
 #define git_tag_delete_REQUIRED_ARGC 2
 #define git_tag_delete_OPTIONAL_ARGC 0
@@ -28135,10 +26009,7 @@ mrb_Git_git_tag_delete(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_delete(native_repo, native_tag_name);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -28267,7 +26138,7 @@ mrb_Git_git_tag_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_list */
-/* sha: b5216da5993e10ad8a65cb69dbbc1910acdf133cb8cb99689c2a8267b2b7df0f */
+/* sha: abf9afded20d698b5cc2d2992ab0eca6ac24449bf6626c31dcb241a62834ceef */
 #if BIND_git_tag_list_FUNCTION
 #define git_tag_list_REQUIRED_ARGC 2
 #define git_tag_list_OPTIONAL_ARGC 0
@@ -28305,16 +26176,13 @@ mrb_Git_git_tag_list(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_list(native_tag_names, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_list_match */
-/* sha: dff341a30b9cac2274c291bf6665923ec319ea9391984b19e4036256ded3a7c2 */
+/* sha: f4d814cec2563e06935e924317a272c6b7768a4a9e12fbcb14ad6f3ecb001b75 */
 #if BIND_git_tag_list_match_FUNCTION
 #define git_tag_list_match_REQUIRED_ARGC 3
 #define git_tag_list_match_OPTIONAL_ARGC 0
@@ -28354,16 +26222,13 @@ mrb_Git_git_tag_list_match(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_list_match(native_tag_names, native_pattern, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_lookup */
-/* sha: c0f58644a94f9c4adf4b9b28b5ab0fd58c1ab18d7978ab379c4d6bec7877f197 */
+/* sha: a0084fa25747a450df230219db655af3690c8c1e80078ab1dc8b232400ce77db */
 #if BIND_git_tag_lookup_FUNCTION
 #define git_tag_lookup_REQUIRED_ARGC 2
 #define git_tag_lookup_OPTIONAL_ARGC 0
@@ -28376,7 +26241,6 @@ mrb_Git_git_tag_list_match(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tag_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tag * native_out = NULL;
   mrb_value repo;
   mrb_value id;
@@ -28403,23 +26267,16 @@ mrb_Git_git_tag_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_lookup(&native_out, native_repo, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_tag(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_lookup_prefix */
-/* sha: 92ffd68819b600b9e3086c9e3b3ed20d92adbf2d5780fa52dff9887040c1616a */
+/* sha: c90aab5402abb5cc495c88081134122503f50ccb8a4f2aa4df15e7d77868eb28 */
 #if BIND_git_tag_lookup_prefix_FUNCTION
 #define git_tag_lookup_prefix_REQUIRED_ARGC 3
 #define git_tag_lookup_prefix_OPTIONAL_ARGC 0
@@ -28433,7 +26290,6 @@ mrb_Git_git_tag_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tag_lookup_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tag * native_out = NULL;
   mrb_value repo;
   mrb_value id;
@@ -28461,17 +26317,10 @@ mrb_Git_git_tag_lookup_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_lookup_prefix(&native_out, native_repo, native_id, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_tag(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -28591,7 +26440,7 @@ mrb_Git_git_tag_owner(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_peel */
-/* sha: d142e6119d27c1b3096c726125e8c297109b46718739626686a9423abd3f27cd */
+/* sha: 09f3af14890c0ca28f4463936cead16a027653962ee57e67ff3ddc50b8c61bd5 */
 #if BIND_git_tag_peel_FUNCTION
 #define git_tag_peel_REQUIRED_ARGC 1
 #define git_tag_peel_OPTIONAL_ARGC 0
@@ -28603,7 +26452,6 @@ mrb_Git_git_tag_owner(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tag_peel(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_tag_target_out = NULL;
   mrb_value tag;
 
@@ -28622,17 +26470,10 @@ mrb_Git_git_tag_peel(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_peel(&native_tag_target_out, native_tag);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: tag_target_out */
   mrb_value tag_target_out = native_tag_target_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_tag_target_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, tag_target_out);
-
-  return results;
+  return tag_target_out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -28676,7 +26517,7 @@ mrb_Git_git_tag_tagger(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_target */
-/* sha: 729c1eb51daf358c22a9fd470fb60d7d04ad4a2236422082165602170da41474 */
+/* sha: c32fa6dc6bc8c082d8edc81d5815b559c880064e1380db2b4ac2f90b4a428a12 */
 #if BIND_git_tag_target_FUNCTION
 #define git_tag_target_REQUIRED_ARGC 1
 #define git_tag_target_OPTIONAL_ARGC 0
@@ -28688,7 +26529,6 @@ mrb_Git_git_tag_tagger(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tag_target(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_target_out = NULL;
   mrb_value tag;
 
@@ -28707,17 +26547,10 @@ mrb_Git_git_tag_target(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_target(&native_target_out, native_tag);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: target_out */
   mrb_value target_out = native_target_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_target_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, target_out);
-
-  return results;
+  return target_out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -28799,7 +26632,7 @@ mrb_Git_git_tag_target_type(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_trace_set */
-/* sha: ffbe3f6dc665d9d7c279c0f8159f82a627287b452ba555fc07bbc41e62c34331 */
+/* sha: 98692ee73d44e1d854e2f4ca7c96908a8ed47329edcbe7992293ee3191816b88 */
 #if BIND_git_trace_set_FUNCTION
 #define git_trace_set_REQUIRED_ARGC 2
 #define git_trace_set_OPTIONAL_ARGC 0
@@ -28827,16 +26660,13 @@ mrb_Git_git_trace_set(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_trace_set(native_level, native_cb);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_commit */
-/* sha: 8088424df500e7ad7f621301a2b2782f96aaa451a59ace7e546a6daa06f0adbb */
+/* sha: 5187ba4b0f9f71f481c85ddf1f2fbcd94682858555c5b59f5ed2f0dbabd8b697 */
 #if BIND_git_transaction_commit_FUNCTION
 #define git_transaction_commit_REQUIRED_ARGC 1
 #define git_transaction_commit_OPTIONAL_ARGC 0
@@ -28865,10 +26695,7 @@ mrb_Git_git_transaction_commit(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_commit(native_tx);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -28909,7 +26736,7 @@ mrb_Git_git_transaction_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_lock_ref */
-/* sha: 922db4631793f975aab90026086be18ba063021781a1724f2685dd21fa8ae5d0 */
+/* sha: 856a25727cb2bb167a068d36482438a175e9d340035fd5d4f87477dfb97f23e0 */
 #if BIND_git_transaction_lock_ref_FUNCTION
 #define git_transaction_lock_ref_REQUIRED_ARGC 2
 #define git_transaction_lock_ref_OPTIONAL_ARGC 0
@@ -28940,16 +26767,13 @@ mrb_Git_git_transaction_lock_ref(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_lock_ref(native_tx, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_new */
-/* sha: ed7ca112b7c92b18119772fa2d701bfb83acf308f04b6d0557b5319c52a344c9 */
+/* sha: 21e2fe72eb059314a50cace30cac52dbce7a6bf83fb9e991e4320d8eba79d94f */
 #if BIND_git_transaction_new_FUNCTION
 #define git_transaction_new_REQUIRED_ARGC 1
 #define git_transaction_new_OPTIONAL_ARGC 0
@@ -28961,7 +26785,6 @@ mrb_Git_git_transaction_lock_ref(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_transaction_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_transaction * native_out = NULL;
   mrb_value repo;
 
@@ -28980,23 +26803,16 @@ mrb_Git_git_transaction_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_new(&native_out, native_repo);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_transaction(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_remove */
-/* sha: 6d89ce9697da247d66f08fa597f68abf5b233424357b5e91d75573c44c1e0ff7 */
+/* sha: 149b939b1010e659fe0856f635c4e50958729d6bcf3d9a04eb012e8f65a5554d */
 #if BIND_git_transaction_remove_FUNCTION
 #define git_transaction_remove_REQUIRED_ARGC 2
 #define git_transaction_remove_OPTIONAL_ARGC 0
@@ -29027,16 +26843,13 @@ mrb_Git_git_transaction_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_remove(native_tx, native_refname);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_set_reflog */
-/* sha: d04922e7bd7290306aa962b9fd2c39e26266c20d05dad0854382b752492ef900 */
+/* sha: e04fcdbc32c789e778c07a107f5d1abf87008208617dc1b0f3f9c555195ef40f */
 #if BIND_git_transaction_set_reflog_FUNCTION
 #define git_transaction_set_reflog_REQUIRED_ARGC 3
 #define git_transaction_set_reflog_OPTIONAL_ARGC 0
@@ -29076,16 +26889,13 @@ mrb_Git_git_transaction_set_reflog(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_set_reflog(native_tx, native_refname, native_reflog);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_set_symbolic_target */
-/* sha: daf707fd5afacd87fd5332000c4dcccba99b1eca5faba252f5cb48f450e0555e */
+/* sha: c0da148c264f1f15d2e859258445d06c3efc7aa351217e9896e7559af65fdf1e */
 #if BIND_git_transaction_set_symbolic_target_FUNCTION
 #define git_transaction_set_symbolic_target_REQUIRED_ARGC 5
 #define git_transaction_set_symbolic_target_OPTIONAL_ARGC 0
@@ -29129,16 +26939,13 @@ mrb_Git_git_transaction_set_symbolic_target(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_set_symbolic_target(native_tx, native_refname, native_target, native_sig, native_msg);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_transaction_set_target */
-/* sha: 3bc186a6126b4a5d764e0a9fabc8ed21f1e113f8521bba00cc8ffb4d8082ed26 */
+/* sha: bbeab059af98443384fbba87b59ad170c704035ab12bb44e14c4496f3a7e9643 */
 #if BIND_git_transaction_set_target_FUNCTION
 #define git_transaction_set_target_REQUIRED_ARGC 5
 #define git_transaction_set_target_OPTIONAL_ARGC 0
@@ -29189,10 +26996,7 @@ mrb_Git_git_transaction_set_target(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_transaction_set_target(native_tx, native_refname, native_target, native_sig, native_msg);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -29325,7 +27129,7 @@ mrb_Git_git_tree_entry_byname(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tree_entry_bypath */
-/* sha: ef4c56f4e35f58f820b9871d51630a6b9dadd94485a0d7b37c622a859f1eab01 */
+/* sha: cb2b12ae9e9d3ef31bf963cfc22c3c81218a46694c3690915cb0193becd9e5c8 */
 #if BIND_git_tree_entry_bypath_FUNCTION
 #define git_tree_entry_bypath_REQUIRED_ARGC 2
 #define git_tree_entry_bypath_OPTIONAL_ARGC 0
@@ -29338,7 +27142,6 @@ mrb_Git_git_tree_entry_byname(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tree_entry_bypath(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tree_entry * native_out = NULL;
   mrb_value root;
   char * native_path = NULL;
@@ -29358,17 +27161,10 @@ mrb_Git_git_tree_entry_bypath(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tree_entry_bypath(&native_out, native_root, native_path);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_tree_entry(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -29421,7 +27217,7 @@ mrb_Git_git_tree_entry_cmp(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tree_entry_dup */
-/* sha: a46475fd8380d392d2684cbf6e659752c31b47021c025f76c004a8c7b7833883 */
+/* sha: 44b94bc5fe8d8f87192d3d4df8761b4b3be61b5b5fd8dcb99f170fdad713748c */
 #if BIND_git_tree_entry_dup_FUNCTION
 #define git_tree_entry_dup_REQUIRED_ARGC 1
 #define git_tree_entry_dup_OPTIONAL_ARGC 0
@@ -29433,7 +27229,6 @@ mrb_Git_git_tree_entry_cmp(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tree_entry_dup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tree_entry * native_dest = NULL;
   mrb_value source;
 
@@ -29452,17 +27247,10 @@ mrb_Git_git_tree_entry_dup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tree_entry_dup(&native_dest, native_source);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: dest */
   mrb_value dest = native_dest == NULL ? mrb_nil_value() : mruby_giftwrap_git_tree_entry(mrb, native_dest);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, dest);
-
-  return results;
+  return dest;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -29655,7 +27443,7 @@ mrb_Git_git_tree_entry_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tree_entry_to_object */
-/* sha: 2463dc676ce8e5af9cd70d4ef008d4cfb3ee20b724784cee02bda10a15cc8e4e */
+/* sha: 6cec69d188cc6804d4d268929afb606c83bd0160acf8d7d47df02b5332112908 */
 #if BIND_git_tree_entry_to_object_FUNCTION
 #define git_tree_entry_to_object_REQUIRED_ARGC 2
 #define git_tree_entry_to_object_OPTIONAL_ARGC 0
@@ -29668,7 +27456,6 @@ mrb_Git_git_tree_entry_name(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tree_entry_to_object(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_object * native_object_out = NULL;
   mrb_value repo;
   mrb_value entry;
@@ -29695,17 +27482,10 @@ mrb_Git_git_tree_entry_to_object(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tree_entry_to_object(&native_object_out, native_repo, native_entry);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: object_out */
   mrb_value object_out = native_object_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_object_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, object_out);
-
-  return results;
+  return object_out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -29860,7 +27640,7 @@ mrb_Git_git_tree_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tree_lookup */
-/* sha: 942084fadd3fcad31fab9c612be0a2c25514aef7d8446691eb8877536743ce80 */
+/* sha: 54ae088ea5cdffa0232e9d0021e90d71af0ac92954e635c6266b36c426bb25cc */
 #if BIND_git_tree_lookup_FUNCTION
 #define git_tree_lookup_REQUIRED_ARGC 2
 #define git_tree_lookup_OPTIONAL_ARGC 0
@@ -29873,7 +27653,6 @@ mrb_Git_git_tree_id(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tree_lookup(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tree * native_out = NULL;
   mrb_value repo;
   mrb_value id;
@@ -29900,23 +27679,16 @@ mrb_Git_git_tree_lookup(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tree_lookup(&native_out, native_repo, native_id);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_tree(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tree_lookup_prefix */
-/* sha: 16d9b6e50c69b6625ec829dc2a74cec4161fe7f27519f4263e7394436a1f9989 */
+/* sha: 0eba031b2bfc43a5e5e18628c021e1080eda3f4fc34f6c54e994adaf5ff32709 */
 #if BIND_git_tree_lookup_prefix_FUNCTION
 #define git_tree_lookup_prefix_REQUIRED_ARGC 3
 #define git_tree_lookup_prefix_OPTIONAL_ARGC 0
@@ -29930,7 +27702,6 @@ mrb_Git_git_tree_lookup(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_tree_lookup_prefix(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tree * native_out = NULL;
   mrb_value repo;
   mrb_value id;
@@ -29958,17 +27729,10 @@ mrb_Git_git_tree_lookup_prefix(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tree_lookup_prefix(&native_out, native_repo, native_id, native_len);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_tree(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -30012,7 +27776,7 @@ mrb_Git_git_tree_owner(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tree_walk */
-/* sha: 4de2b97266adff4730c0193e1d1be25cef6f2a79371be906c299a01239214f5b */
+/* sha: 8e3d2a60614806a6fcdc9ce101044de0967a9c66cc344ad84313dc64c940cfa0 */
 #if BIND_git_tree_walk_FUNCTION
 #define git_tree_walk_REQUIRED_ARGC 4
 #define git_tree_walk_OPTIONAL_ARGC 0
@@ -30055,10 +27819,7 @@ mrb_Git_git_tree_walk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tree_walk(native_tree, native_mode, native_callback, native_payload);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -30259,7 +28020,7 @@ mrb_Git_git_treebuilder_get(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_treebuilder_insert */
-/* sha: c84005fe42e96ec26629def50375d394efe56a5e17b5d919e498c835315b7727 */
+/* sha: ee1d409e09d6d3131bee542b5e6a7f6a08750049528e20d56447bd55230ed405 */
 #if BIND_git_treebuilder_insert_FUNCTION
 #define git_treebuilder_insert_REQUIRED_ARGC 4
 #define git_treebuilder_insert_OPTIONAL_ARGC 0
@@ -30274,7 +28035,6 @@ mrb_Git_git_treebuilder_get(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_treebuilder_insert(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_tree_entry * native_out = NULL;
   mrb_value bld;
   char * native_filename = NULL;
@@ -30303,23 +28063,16 @@ mrb_Git_git_treebuilder_insert(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_treebuilder_insert(&native_out, native_bld, native_filename, native_id, native_filemode);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = mruby_box_git_tree_entry(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_treebuilder_new */
-/* sha: 21302eaf5a0065fc1cf137bc5e9977abb5a870086d3cf5a5a81135bf5bb298af */
+/* sha: 27711e22c1f1542e61bf692fc5c87adc1e3eab609bada2abf313d3c78e1ee46c */
 #if BIND_git_treebuilder_new_FUNCTION
 #define git_treebuilder_new_REQUIRED_ARGC 2
 #define git_treebuilder_new_OPTIONAL_ARGC 0
@@ -30332,7 +28085,6 @@ mrb_Git_git_treebuilder_insert(mrb_state* mrb, mrb_value self) {
  */
 mrb_value
 mrb_Git_git_treebuilder_new(mrb_state* mrb, mrb_value self) {
-  mrb_value results = mrb_ary_new(mrb);
   git_treebuilder * native_out = NULL;
   mrb_value repo;
   mrb_value source;
@@ -30359,23 +28111,16 @@ mrb_Git_git_treebuilder_new(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_treebuilder_new(&native_out, native_repo, native_source);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  mrb_ary_push(mrb, results, return_value);
-  
   /* Box out param: out */
   mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_treebuilder(mrb, native_out);
 
-  /* Add out params to results */
-  mrb_ary_push(mrb, results, out);
-
-  return results;
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_treebuilder_remove */
-/* sha: 289b608683758406552e71505aa0aeb101c8e3f3f519442f853b526dfa6a079b */
+/* sha: 264fc5864537d6873abf877dc747d1fc3fce5aef251de4b650b19b10294f6377 */
 #if BIND_git_treebuilder_remove_FUNCTION
 #define git_treebuilder_remove_REQUIRED_ARGC 2
 #define git_treebuilder_remove_OPTIONAL_ARGC 0
@@ -30406,16 +28151,13 @@ mrb_Git_git_treebuilder_remove(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_treebuilder_remove(native_bld, native_filename);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_treebuilder_write */
-/* sha: d37e50cad810a5e3852bb73354493d77c02eeabd20b7c678d72ce7f6c0df24d5 */
+/* sha: 7269258024273149336fcaeab1338ed0d2fee5ba562d4ed2b71bf0176776029c */
 #if BIND_git_treebuilder_write_FUNCTION
 #define git_treebuilder_write_REQUIRED_ARGC 2
 #define git_treebuilder_write_OPTIONAL_ARGC 0
@@ -30453,10 +28195,7 @@ mrb_Git_git_treebuilder_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_treebuilder_write(native_id, native_bld);
 
-  /* Box the return value */
-  mrb_value return_value = mrb_fixnum_value(native_return_value);
-  
-  return return_value;
+  return mrb_nil_value();
 }
 #endif
 /* MRUBY_BINDING_END */

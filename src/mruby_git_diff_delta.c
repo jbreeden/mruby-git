@@ -339,12 +339,10 @@ void mrb_Git_DiffDelta_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::class_method_definitions */
-/* sha: b5db1572f6fa919fe378051069fe854e896af7cc31e8f5e6677edf811316a609 */
+/* sha: 2ca54e1cefd8c7e7d15607ed4bd8612ba9b7e54929955854780c9da9fa1f0bb7 */
 #if BIND_DiffDelta_INITIALIZE
   mrb_define_method(mrb, DiffDelta_class, "initialize", mrb_Git_DiffDelta_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffDelta_class, "disown", mrb_Git_DiffDelta_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffDelta_class, "belongs_to_ruby?", mrb_Git_DiffDelta_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffDelta::pre_attr_definitions */

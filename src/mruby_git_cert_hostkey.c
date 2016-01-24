@@ -250,12 +250,10 @@ void mrb_Git_CertHostkey_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertHostkey::class_method_definitions */
-/* sha: bc8b28b13a861fa0efd279f904f63631c326f08f079710197b0014c7c6a9b2c8 */
+/* sha: ca18c4cfff517f8c3e4f4e7e69b691f81c5fb634cff78f014827370fdcd3c4e8 */
 #if BIND_CertHostkey_INITIALIZE
   mrb_define_method(mrb, CertHostkey_class, "initialize", mrb_Git_CertHostkey_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CertHostkey_class, "disown", mrb_Git_CertHostkey_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CertHostkey_class, "belongs_to_ruby?", mrb_Git_CertHostkey_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CertHostkey::pre_attr_definitions */

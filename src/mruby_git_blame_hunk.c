@@ -490,12 +490,10 @@ void mrb_Git_BlameHunk_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::class_method_definitions */
-/* sha: d316ef7f84cfba141936c8f205efe3d0f70dc518786adb8ec84161fc20f1eda7 */
+/* sha: b5908738c782ff1cbf65bc8526d5f5d1aefa914335acacdf6d3a82dcd61fd4de */
 #if BIND_BlameHunk_INITIALIZE
   mrb_define_method(mrb, BlameHunk_class, "initialize", mrb_Git_BlameHunk_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, BlameHunk_class, "disown", mrb_Git_BlameHunk_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, BlameHunk_class, "belongs_to_ruby?", mrb_Git_BlameHunk_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BlameHunk::pre_attr_definitions */

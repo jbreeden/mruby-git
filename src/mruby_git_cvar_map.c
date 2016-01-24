@@ -186,12 +186,10 @@ void mrb_Git_CvarMap_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CvarMap::class_method_definitions */
-/* sha: b0667fb2a03ee204ebcd5a64d49bd582aeb7538950a6b25df9a0cd6c3018778b */
+/* sha: 3e5dd12303aa3d9f033bf7f9dcc37a9ac4c30ccb52a2b02cbfa4d6720fc0ab93 */
 #if BIND_CvarMap_INITIALIZE
   mrb_define_method(mrb, CvarMap_class, "initialize", mrb_Git_CvarMap_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CvarMap_class, "disown", mrb_Git_CvarMap_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CvarMap_class, "belongs_to_ruby?", mrb_Git_CvarMap_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CvarMap::pre_attr_definitions */

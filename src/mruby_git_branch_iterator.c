@@ -47,12 +47,10 @@ void mrb_Git_BranchIterator_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BranchIterator::class_method_definitions */
-/* sha: 13e4d4c7453c77cc9c9738460bf074de1088060b204f67874b7c94106aa14fcf */
+/* sha: a6fea61a4a16d2199d92de40171a470eebfaea54526457ee16313435fa0f67a9 */
 #if BIND_BranchIterator_INITIALIZE
   mrb_define_method(mrb, BranchIterator_class, "initialize", mrb_Git_BranchIterator_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, BranchIterator_class, "disown", mrb_Git_BranchIterator_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, BranchIterator_class, "belongs_to_ruby?", mrb_Git_BranchIterator_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: BranchIterator::pre_attr_definitions */

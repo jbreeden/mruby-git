@@ -366,12 +366,10 @@ void mrb_Git_TransferProgress_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::class_method_definitions */
-/* sha: a2d72de6d77164a2c1db525c61584bc2fec7805f9f917e2a6a912f193c623aa1 */
+/* sha: 689ce0f4c1a0b6d4492f70ad5c44e6db2b532f97a9bf35720bf3b2a1c37b2f04 */
 #if BIND_TransferProgress_INITIALIZE
   mrb_define_method(mrb, TransferProgress_class, "initialize", mrb_Git_TransferProgress_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, TransferProgress_class, "disown", mrb_Git_TransferProgress_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, TransferProgress_class, "belongs_to_ruby?", mrb_Git_TransferProgress_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: TransferProgress::pre_attr_definitions */

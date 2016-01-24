@@ -146,12 +146,10 @@ void mrb_Git_Strarray_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Strarray::class_method_definitions */
-/* sha: 2e5208b91da86aa9a1fc6aedda86d06c5e6f7a3f351069283c3379c406a8d275 */
+/* sha: 28451ce4394dfb9c296161d4cfb7fb02dfbb8320a97f251f626088bb8fbef2a4 */
 #if BIND_Strarray_INITIALIZE
   mrb_define_method(mrb, Strarray_class, "initialize", mrb_Git_Strarray_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Strarray_class, "disown", mrb_Git_Strarray_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Strarray_class, "belongs_to_ruby?", mrb_Git_Strarray_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Strarray::pre_attr_definitions */

@@ -146,12 +146,10 @@ void mrb_Git_Cred_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cred::class_method_definitions */
-/* sha: f642523438663f77bd08a17df1c82b2cdc9e497833c22f9c5fb83ce0ef471eb5 */
+/* sha: dd63d8694483732601f7edb0c1917a47863ade60e1d18de8e2d381c4f41d204a */
 #if BIND_Cred_INITIALIZE
   mrb_define_method(mrb, Cred_class, "initialize", mrb_Git_Cred_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Cred_class, "disown", mrb_Git_Cred_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Cred_class, "belongs_to_ruby?", mrb_Git_Cred_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Cred::pre_attr_definitions */

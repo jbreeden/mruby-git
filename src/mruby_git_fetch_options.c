@@ -339,12 +339,10 @@ void mrb_Git_FetchOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::class_method_definitions */
-/* sha: 549462fb2e96ab0a8814ac157350792814abad46aaca0bea3dd3947d75e0f440 */
+/* sha: 1a8477ffd35895bd94b4c3fd16a8e7e98260ebf72291177bcd843dbea6fac3a7 */
 #if BIND_FetchOptions_INITIALIZE
   mrb_define_method(mrb, FetchOptions_class, "initialize", mrb_Git_FetchOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, FetchOptions_class, "disown", mrb_Git_FetchOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, FetchOptions_class, "belongs_to_ruby?", mrb_Git_FetchOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: FetchOptions::pre_attr_definitions */

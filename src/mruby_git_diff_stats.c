@@ -47,12 +47,10 @@ void mrb_Git_DiffStats_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffStats::class_method_definitions */
-/* sha: f269ff17583467d1549258401b8d898f6f7fa4bcc0170a14894227f473f67165 */
+/* sha: 3f600f3ef31e05425eca05f1562dfb9cac0e4e8d0510f43708505150959a2412 */
 #if BIND_DiffStats_INITIALIZE
   mrb_define_method(mrb, DiffStats_class, "initialize", mrb_Git_DiffStats_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffStats_class, "disown", mrb_Git_DiffStats_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffStats_class, "belongs_to_ruby?", mrb_Git_DiffStats_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffStats::pre_attr_definitions */

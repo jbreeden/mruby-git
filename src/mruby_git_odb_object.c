@@ -47,12 +47,10 @@ void mrb_Git_OdbObject_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbObject::class_method_definitions */
-/* sha: 77b645b7c1fa39b240aaa99c9dce748a545de4e27e386a78e6814e4a241116d5 */
+/* sha: 684cf719c38b12cb44831f922ea4a45761c339990faa3edef3fe3ba45d831340 */
 #if BIND_OdbObject_INITIALIZE
   mrb_define_method(mrb, OdbObject_class, "initialize", mrb_Git_OdbObject_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, OdbObject_class, "disown", mrb_Git_OdbObject_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, OdbObject_class, "belongs_to_ruby?", mrb_Git_OdbObject_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbObject::pre_attr_definitions */

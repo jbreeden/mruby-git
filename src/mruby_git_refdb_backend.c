@@ -47,12 +47,10 @@ void mrb_Git_RefdbBackend_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RefdbBackend::class_method_definitions */
-/* sha: f11bc2adeed9a1586963be4b491bf21bd0f5c17ce3dd8ff92e4f6bbf3aebde1f */
+/* sha: 9c14ce005341aded76473ea33ff8214065d9aa7a5819643ac20ab6a0dd5f141a */
 #if BIND_RefdbBackend_INITIALIZE
   mrb_define_method(mrb, RefdbBackend_class, "initialize", mrb_Git_RefdbBackend_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, RefdbBackend_class, "disown", mrb_Git_RefdbBackend_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, RefdbBackend_class, "belongs_to_ruby?", mrb_Git_RefdbBackend_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RefdbBackend::pre_attr_definitions */

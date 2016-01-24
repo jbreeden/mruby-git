@@ -159,12 +159,10 @@ void mrb_Git_DiffBinary_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinary::class_method_definitions */
-/* sha: 4059156b477bad96c3edc24e5aa71d2a21bdad170b8b597596cf995afffb5071 */
+/* sha: dba09a59e5cb4aa9b3b0be41b6aef659e0e58f1f1f5b56125faaad7454745c73 */
 #if BIND_DiffBinary_INITIALIZE
   mrb_define_method(mrb, DiffBinary_class, "initialize", mrb_Git_DiffBinary_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffBinary_class, "disown", mrb_Git_DiffBinary_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffBinary_class, "belongs_to_ruby?", mrb_Git_DiffBinary_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffBinary::pre_attr_definitions */

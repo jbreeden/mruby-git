@@ -255,12 +255,10 @@ void mrb_Git_CredSshInteractive_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshInteractive::class_method_definitions */
-/* sha: 2b1f30b586c472f8413110822cdde750f6a30c4cbdfc8861d4f1e4a6c05b932c */
+/* sha: a6ee77827afeba6bcb0bdd9e05a017e7acde5dbd0da18a0231d6ed51d868ac62 */
 #if BIND_CredSshInteractive_INITIALIZE
   mrb_define_method(mrb, CredSshInteractive_class, "initialize", mrb_Git_CredSshInteractive_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CredSshInteractive_class, "disown", mrb_Git_CredSshInteractive_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CredSshInteractive_class, "belongs_to_ruby?", mrb_Git_CredSshInteractive_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshInteractive::pre_attr_definitions */

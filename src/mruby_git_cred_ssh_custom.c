@@ -350,12 +350,10 @@ void mrb_Git_CredSshCustom_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshCustom::class_method_definitions */
-/* sha: b705aa3485971248ad5711194bf5d97b33ad651d78a6c938302361fa6a1745b3 */
+/* sha: cb5577c9495d6c677b3f950d1be3ef851417d4ec474a9d4e61a55837fd797b90 */
 #if BIND_CredSshCustom_INITIALIZE
   mrb_define_method(mrb, CredSshCustom_class, "initialize", mrb_Git_CredSshCustom_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CredSshCustom_class, "disown", mrb_Git_CredSshCustom_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CredSshCustom_class, "belongs_to_ruby?", mrb_Git_CredSshCustom_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CredSshCustom::pre_attr_definitions */

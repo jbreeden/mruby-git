@@ -539,12 +539,10 @@ void mrb_Git_CloneOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::class_method_definitions */
-/* sha: c92fe080134b2805e485ad6dc866c2dd16043cec91a6c1a21b2dfd8fe01e8ca7 */
+/* sha: 6fd170553821e104ce9092ab70b8d0c9ed07dc47062e7b824046d1984610c830 */
 #if BIND_CloneOptions_INITIALIZE
   mrb_define_method(mrb, CloneOptions_class, "initialize", mrb_Git_CloneOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, CloneOptions_class, "disown", mrb_Git_CloneOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, CloneOptions_class, "belongs_to_ruby?", mrb_Git_CloneOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: CloneOptions::pre_attr_definitions */

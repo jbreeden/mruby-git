@@ -47,12 +47,10 @@ void mrb_Git_Pathspec_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Pathspec::class_method_definitions */
-/* sha: 98c93999d4b2787ebeff8721108925e2be2e1cee60b1d00a7b03ea012bea4f3c */
+/* sha: ea5b0b032cbee549ef42487b450830942d83ec94b93392366daf5513af7cb8f2 */
 #if BIND_Pathspec_INITIALIZE
   mrb_define_method(mrb, Pathspec_class, "initialize", mrb_Git_Pathspec_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Pathspec_class, "disown", mrb_Git_Pathspec_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Pathspec_class, "belongs_to_ruby?", mrb_Git_Pathspec_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Pathspec::pre_attr_definitions */

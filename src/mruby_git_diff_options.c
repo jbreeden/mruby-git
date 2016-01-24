@@ -660,12 +660,10 @@ void mrb_Git_DiffOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::class_method_definitions */
-/* sha: 070b20e9a73c20b4be491bce262c8534a305dac184a41d19bfedace4692f943e */
+/* sha: 8eeb5b9542bf7a5da50860396793b159d2c5e8f9a5500718de683a8232d78028 */
 #if BIND_DiffOptions_INITIALIZE
   mrb_define_method(mrb, DiffOptions_class, "initialize", mrb_Git_DiffOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffOptions_class, "disown", mrb_Git_DiffOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffOptions_class, "belongs_to_ruby?", mrb_Git_DiffOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffOptions::pre_attr_definitions */

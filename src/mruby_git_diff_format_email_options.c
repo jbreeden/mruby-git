@@ -427,12 +427,10 @@ void mrb_Git_DiffFormatEmailOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::class_method_definitions */
-/* sha: cd9b644e0270ee1a136bb0a42e7f9d1fb2851e91165698e59561016d294c1c87 */
+/* sha: b89cf150095686a23c9189c87f5c5c83f31b48efdfb4a8bd4ea895c581d3e230 */
 #if BIND_DiffFormatEmailOptions_INITIALIZE
   mrb_define_method(mrb, DiffFormatEmailOptions_class, "initialize", mrb_Git_DiffFormatEmailOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DiffFormatEmailOptions_class, "disown", mrb_Git_DiffFormatEmailOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DiffFormatEmailOptions_class, "belongs_to_ruby?", mrb_Git_DiffFormatEmailOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DiffFormatEmailOptions::pre_attr_definitions */

@@ -254,12 +254,10 @@ void mrb_Git_OdbWritepack_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbWritepack::class_method_definitions */
-/* sha: cccf861dc953e90b56803b53c88abaa480a326ae506115d686f9f3599c77f57c */
+/* sha: 881b7c4c601a46cd072dae1d9fa90131a200c5b553a3f0a691bb7ab2e1c2398a */
 #if BIND_OdbWritepack_INITIALIZE
   mrb_define_method(mrb, OdbWritepack_class, "initialize", mrb_Git_OdbWritepack_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, OdbWritepack_class, "disown", mrb_Git_OdbWritepack_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, OdbWritepack_class, "belongs_to_ruby?", mrb_Git_OdbWritepack_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: OdbWritepack::pre_attr_definitions */

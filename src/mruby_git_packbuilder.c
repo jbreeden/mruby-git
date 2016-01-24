@@ -47,12 +47,10 @@ void mrb_Git_Packbuilder_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Packbuilder::class_method_definitions */
-/* sha: eab74bd123d071c4ad0af07b629ea4f22f2df9a033982853e67dfee137c0c7e2 */
+/* sha: f85a329a6cd2b51819a90bb36bb89dc119c0e94df7d5222b2d35a0bd4a21c701 */
 #if BIND_Packbuilder_INITIALIZE
   mrb_define_method(mrb, Packbuilder_class, "initialize", mrb_Git_Packbuilder_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Packbuilder_class, "disown", mrb_Git_Packbuilder_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Packbuilder_class, "belongs_to_ruby?", mrb_Git_Packbuilder_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Packbuilder::pre_attr_definitions */

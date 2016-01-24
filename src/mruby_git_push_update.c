@@ -259,12 +259,10 @@ void mrb_Git_PushUpdate_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushUpdate::class_method_definitions */
-/* sha: 87b9604ad42ddb07c0603f1b09979e4f3ba9ffd5e444f902a4be90a372b8a0f6 */
+/* sha: 7d2617b597acc3a4177e32ecb0a1b50c0fcaa8fbc04711de56885848d2368ab8 */
 #if BIND_PushUpdate_INITIALIZE
   mrb_define_method(mrb, PushUpdate_class, "initialize", mrb_Git_PushUpdate_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, PushUpdate_class, "disown", mrb_Git_PushUpdate_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, PushUpdate_class, "belongs_to_ruby?", mrb_Git_PushUpdate_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: PushUpdate::pre_attr_definitions */

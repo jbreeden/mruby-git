@@ -201,12 +201,10 @@ void mrb_Git_Writestream_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Writestream::class_method_definitions */
-/* sha: f82d09ba20da6b2be5aee83a32d2e4a265b5be30a6edcb0669e780c0d83a15c8 */
+/* sha: 2f335c53ac59e06a28d1942d3e0f621c494c896336668a6a32c3bbfc8253360e */
 #if BIND_Writestream_INITIALIZE
   mrb_define_method(mrb, Writestream_class, "initialize", mrb_Git_Writestream_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Writestream_class, "disown", mrb_Git_Writestream_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Writestream_class, "belongs_to_ruby?", mrb_Git_Writestream_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Writestream::pre_attr_definitions */

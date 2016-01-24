@@ -249,12 +249,10 @@ void mrb_Git_RevertOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RevertOptions::class_method_definitions */
-/* sha: 2edcbb92a84437125e8e3d3fc32bbcb07bbc766e1055be67538d5413f73d3c65 */
+/* sha: f3a417b597bc1155c837fe3643f41f86603aadd88b1a7c55fef97d9d97a748a0 */
 #if BIND_RevertOptions_INITIALIZE
   mrb_define_method(mrb, RevertOptions_class, "initialize", mrb_Git_RevertOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, RevertOptions_class, "disown", mrb_Git_RevertOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, RevertOptions_class, "belongs_to_ruby?", mrb_Git_RevertOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: RevertOptions::pre_attr_definitions */

@@ -47,12 +47,10 @@ void mrb_Git_Indexer_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Indexer::class_method_definitions */
-/* sha: 40d459ddde677031cd849c14aee4347a493c88bfe2316b436e4f48b86f7d2aaf */
+/* sha: 6ea76915357dac8587e59f4b58918ad00b20a957a10d3f853770310829e2e389 */
 #if BIND_Indexer_INITIALIZE
   mrb_define_method(mrb, Indexer_class, "initialize", mrb_Git_Indexer_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Indexer_class, "disown", mrb_Git_Indexer_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Indexer_class, "belongs_to_ruby?", mrb_Git_Indexer_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Indexer::pre_attr_definitions */

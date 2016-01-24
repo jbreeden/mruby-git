@@ -231,12 +231,10 @@ void mrb_Git_DescribeFormatOptions_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeFormatOptions::class_method_definitions */
-/* sha: 88fcf66bf89984515b5d5c02bc2cf2d4dc3f2967020ceb69be2d1a4834d8a78f */
+/* sha: 9c0ec8d5de0c192f810361dd399da4fb681d4b0680fc9984b31d15e5f28ec9c3 */
 #if BIND_DescribeFormatOptions_INITIALIZE
   mrb_define_method(mrb, DescribeFormatOptions_class, "initialize", mrb_Git_DescribeFormatOptions_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, DescribeFormatOptions_class, "disown", mrb_Git_DescribeFormatOptions_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, DescribeFormatOptions_class, "belongs_to_ruby?", mrb_Git_DescribeFormatOptions_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: DescribeFormatOptions::pre_attr_definitions */

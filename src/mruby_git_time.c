@@ -141,12 +141,10 @@ void mrb_Git_Time_init(mrb_state* mrb) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Time::class_method_definitions */
-/* sha: a62cd93142dbef224d1272bad26c8ea81f82dc422b3a859a16714c42817c0e7a */
+/* sha: a6a1618eaf3624f5a4a3fed1c2f23785c6dcaaed7b1ca8118a405de42565f14e */
 #if BIND_Time_INITIALIZE
   mrb_define_method(mrb, Time_class, "initialize", mrb_Git_Time_initialize, MRB_ARGS_NONE());
 #endif
-  mrb_define_class_method(mrb, Time_class, "disown", mrb_Git_Time_disown, MRB_ARGS_ARG(1, 0));
-  mrb_define_class_method(mrb, Time_class, "belongs_to_ruby?", mrb_Git_Time_belongs_to_ruby, MRB_ARGS_ARG(1, 0));
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: Time::pre_attr_definitions */
