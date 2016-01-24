@@ -21,9 +21,9 @@
 #if BIND_RevertOptions_INITIALIZE
 mrb_value
 mrb_Git_RevertOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_revert_options* native_object = (git_revert_options*)calloc(1, sizeof(git_revert_options));
   mruby_gift_git_revert_options_data_ptr(self, native_object);
+  git_revert_init_options(native_object, GIT_REVERT_OPTIONS_VERSION);
   return self;
 }
 #endif

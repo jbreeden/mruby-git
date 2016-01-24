@@ -21,9 +21,9 @@
 #if BIND_DescribeFormatOptions_INITIALIZE
 mrb_value
 mrb_Git_DescribeFormatOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_describe_format_options* native_object = (git_describe_format_options*)calloc(1, sizeof(git_describe_format_options));
   mruby_gift_git_describe_format_options_data_ptr(self, native_object);
+  git_describe_init_format_options(native_object, GIT_DESCRIBE_FORMAT_OPTIONS_VERSION);
   return self;
 }
 #endif

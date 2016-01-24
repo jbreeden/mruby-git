@@ -29,7 +29,7 @@
 #define BIND_BlameHunk_boundary_FIELD_WRITER TRUE
 
 #define BIND_BlameOptions_TYPE TRUE
-#define BIND_BlameOptions_INITIALIZE FALSE
+#define BIND_BlameOptions_INITIALIZE TRUE
 #define BIND_BlameOptions_version_FIELD_READER TRUE
 #define BIND_BlameOptions_version_FIELD_WRITER TRUE
 #define BIND_BlameOptions_flags_FIELD_READER TRUE
@@ -86,7 +86,7 @@
 #define BIND_CertX509_len_FIELD_WRITER TRUE
 
 #define BIND_CheckoutOptions_TYPE TRUE
-#define BIND_CheckoutOptions_INITIALIZE FALSE
+#define BIND_CheckoutOptions_INITIALIZE TRUE
 #define BIND_CheckoutOptions_version_FIELD_READER TRUE
 #define BIND_CheckoutOptions_version_FIELD_WRITER TRUE
 #define BIND_CheckoutOptions_checkout_strategy_FIELD_READER TRUE
@@ -138,7 +138,7 @@
 #define BIND_CheckoutPerfdata_chmod_calls_FIELD_WRITER TRUE
 
 #define BIND_CherrypickOptions_TYPE TRUE
-#define BIND_CherrypickOptions_INITIALIZE FALSE
+#define BIND_CherrypickOptions_INITIALIZE TRUE
 #define BIND_CherrypickOptions_version_FIELD_READER TRUE
 #define BIND_CherrypickOptions_version_FIELD_WRITER TRUE
 #define BIND_CherrypickOptions_mainline_FIELD_READER TRUE
@@ -149,7 +149,7 @@
 #define BIND_CherrypickOptions_checkout_opts_FIELD_WRITER TRUE
 
 #define BIND_CloneOptions_TYPE TRUE
-#define BIND_CloneOptions_INITIALIZE FALSE
+#define BIND_CloneOptions_INITIALIZE TRUE
 #define BIND_CloneOptions_version_FIELD_READER TRUE
 #define BIND_CloneOptions_version_FIELD_WRITER TRUE
 #define BIND_CloneOptions_checkout_opts_FIELD_READER FALSE
@@ -275,7 +275,7 @@
 #define BIND_CvarMap_map_value_FIELD_WRITER TRUE
 
 #define BIND_DescribeFormatOptions_TYPE TRUE
-#define BIND_DescribeFormatOptions_INITIALIZE FALSE
+#define BIND_DescribeFormatOptions_INITIALIZE TRUE
 #define BIND_DescribeFormatOptions_version_FIELD_READER TRUE
 #define BIND_DescribeFormatOptions_version_FIELD_WRITER TRUE
 #define BIND_DescribeFormatOptions_abbreviated_size_FIELD_READER TRUE
@@ -286,7 +286,7 @@
 #define BIND_DescribeFormatOptions_dirty_suffix_FIELD_WRITER TRUE
 
 #define BIND_DescribeOptions_TYPE TRUE
-#define BIND_DescribeOptions_INITIALIZE FALSE
+#define BIND_DescribeOptions_INITIALIZE TRUE
 #define BIND_DescribeOptions_version_FIELD_READER TRUE
 #define BIND_DescribeOptions_version_FIELD_WRITER TRUE
 #define BIND_DescribeOptions_max_candidates_tags_FIELD_READER TRUE
@@ -353,7 +353,7 @@
 #define BIND_DiffFile_mode_FIELD_WRITER TRUE
 
 #define BIND_DiffFindOptions_TYPE TRUE
-#define BIND_DiffFindOptions_INITIALIZE FALSE
+#define BIND_DiffFindOptions_INITIALIZE TRUE
 #define BIND_DiffFindOptions_version_FIELD_READER TRUE
 #define BIND_DiffFindOptions_version_FIELD_WRITER TRUE
 #define BIND_DiffFindOptions_flags_FIELD_READER TRUE
@@ -372,7 +372,7 @@
 #define BIND_DiffFindOptions_metric_FIELD_WRITER TRUE
 
 #define BIND_DiffFormatEmailOptions_TYPE TRUE
-#define BIND_DiffFormatEmailOptions_INITIALIZE FALSE
+#define BIND_DiffFormatEmailOptions_INITIALIZE TRUE
 #define BIND_DiffFormatEmailOptions_version_FIELD_READER TRUE
 #define BIND_DiffFormatEmailOptions_version_FIELD_WRITER TRUE
 #define BIND_DiffFormatEmailOptions_flags_FIELD_READER TRUE
@@ -423,7 +423,7 @@
 #define BIND_DiffLine_content_FIELD_WRITER TRUE
 
 #define BIND_DiffOptions_TYPE TRUE
-#define BIND_DiffOptions_INITIALIZE FALSE
+#define BIND_DiffOptions_INITIALIZE TRUE
 #define BIND_DiffOptions_version_FIELD_READER TRUE
 #define BIND_DiffOptions_version_FIELD_WRITER TRUE
 #define BIND_DiffOptions_flags_FIELD_READER TRUE
@@ -469,13 +469,13 @@
 
 #define BIND_Error_TYPE TRUE
 #define BIND_Error_INITIALIZE FALSE
-#define BIND_Error_message_FIELD_READER FALSE
+#define BIND_Error_message_FIELD_READER TRUE
 #define BIND_Error_message_FIELD_WRITER FALSE
 #define BIND_Error_klass_FIELD_READER TRUE
 #define BIND_Error_klass_FIELD_WRITER TRUE
 
 #define BIND_FetchOptions_TYPE TRUE
-#define BIND_FetchOptions_INITIALIZE FALSE
+#define BIND_FetchOptions_INITIALIZE TRUE
 #define BIND_FetchOptions_version_FIELD_READER TRUE
 #define BIND_FetchOptions_version_FIELD_WRITER TRUE
 #define BIND_FetchOptions_callbacks_FIELD_READER FALSE
@@ -552,7 +552,7 @@
 #define BIND_MergeFileInput_mode_FIELD_WRITER TRUE
 
 #define BIND_MergeFileOptions_TYPE TRUE
-#define BIND_MergeFileOptions_INITIALIZE FALSE
+#define BIND_MergeFileOptions_INITIALIZE TRUE
 #define BIND_MergeFileOptions_version_FIELD_READER TRUE
 #define BIND_MergeFileOptions_version_FIELD_WRITER TRUE
 #define BIND_MergeFileOptions_ancestor_label_FIELD_READER TRUE
@@ -580,7 +580,7 @@
 #define BIND_MergeFileResult_len_FIELD_WRITER TRUE
 
 #define BIND_MergeOptions_TYPE TRUE
-#define BIND_MergeOptions_INITIALIZE FALSE
+#define BIND_MergeOptions_INITIALIZE TRUE
 #define BIND_MergeOptions_version_FIELD_READER TRUE
 #define BIND_MergeOptions_version_FIELD_WRITER TRUE
 #define BIND_MergeOptions_flags_FIELD_READER TRUE
@@ -682,7 +682,7 @@
 #define BIND_Push_INITIALIZE FALSE
 
 #define BIND_PushOptions_TYPE TRUE
-#define BIND_PushOptions_INITIALIZE FALSE
+#define BIND_PushOptions_INITIALIZE TRUE
 #define BIND_PushOptions_version_FIELD_READER TRUE
 #define BIND_PushOptions_version_FIELD_WRITER TRUE
 #define BIND_PushOptions_pb_parallelism_FIELD_READER TRUE
@@ -715,7 +715,7 @@
 #define BIND_RebaseOperation_exec_FIELD_WRITER TRUE
 
 #define BIND_RebaseOptions_TYPE TRUE
-#define BIND_RebaseOptions_INITIALIZE FALSE
+#define BIND_RebaseOptions_INITIALIZE TRUE
 #define BIND_RebaseOptions_version_FIELD_READER TRUE
 #define BIND_RebaseOptions_version_FIELD_WRITER TRUE
 #define BIND_RebaseOptions_quiet_FIELD_READER TRUE
@@ -795,7 +795,7 @@
 #define BIND_Repository_INITIALIZE FALSE
 
 #define BIND_RepositoryInitOptions_TYPE TRUE
-#define BIND_RepositoryInitOptions_INITIALIZE FALSE
+#define BIND_RepositoryInitOptions_INITIALIZE TRUE
 #define BIND_RepositoryInitOptions_version_FIELD_READER TRUE
 #define BIND_RepositoryInitOptions_version_FIELD_WRITER TRUE
 #define BIND_RepositoryInitOptions_flags_FIELD_READER TRUE
@@ -814,7 +814,7 @@
 #define BIND_RepositoryInitOptions_origin_url_FIELD_WRITER TRUE
 
 #define BIND_RevertOptions_TYPE TRUE
-#define BIND_RevertOptions_INITIALIZE FALSE
+#define BIND_RevertOptions_INITIALIZE TRUE
 #define BIND_RevertOptions_version_FIELD_READER TRUE
 #define BIND_RevertOptions_version_FIELD_WRITER TRUE
 #define BIND_RevertOptions_mainline_FIELD_READER TRUE
@@ -846,7 +846,7 @@
 #define BIND_Signature_when_FIELD_WRITER TRUE
 
 #define BIND_StashApplyOptions_TYPE TRUE
-#define BIND_StashApplyOptions_INITIALIZE FALSE
+#define BIND_StashApplyOptions_INITIALIZE TRUE
 #define BIND_StashApplyOptions_version_FIELD_READER TRUE
 #define BIND_StashApplyOptions_version_FIELD_WRITER TRUE
 #define BIND_StashApplyOptions_flags_FIELD_READER TRUE
@@ -878,7 +878,7 @@
 #define BIND_StatusOptions_show_FIELD_WRITER TRUE
 #define BIND_StatusOptions_flags_FIELD_READER TRUE
 #define BIND_StatusOptions_flags_FIELD_WRITER TRUE
-#define BIND_StatusOptions_pathspec_FIELD_READER FALSE
+#define BIND_StatusOptions_pathspec_FIELD_READER TRUE
 #define BIND_StatusOptions_pathspec_FIELD_WRITER TRUE
 
 #define BIND_Strarray_TYPE TRUE
@@ -892,7 +892,7 @@
 #define BIND_Submodule_INITIALIZE FALSE
 
 #define BIND_SubmoduleUpdateOptions_TYPE TRUE
-#define BIND_SubmoduleUpdateOptions_INITIALIZE FALSE
+#define BIND_SubmoduleUpdateOptions_INITIALIZE TRUE
 #define BIND_SubmoduleUpdateOptions_version_FIELD_READER TRUE
 #define BIND_SubmoduleUpdateOptions_version_FIELD_WRITER TRUE
 #define BIND_SubmoduleUpdateOptions_checkout_opts_FIELD_READER FALSE

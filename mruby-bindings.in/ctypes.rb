@@ -34,6 +34,11 @@ CTypes.translate_fn_names do |name|
   end
 end
 
+CTypes.translate_enum_names do |name|
+  # Don't repeat the module name in the class names
+  name.sub /^GIT_/i, ''
+end
+
 CTypes.typedef('int', 'git_off_t')
 CTypes.typedef('int', 'git_time_t')
 CTypes.typedef('out:int *', 'size_t *')

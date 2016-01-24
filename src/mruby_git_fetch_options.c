@@ -21,9 +21,9 @@
 #if BIND_FetchOptions_INITIALIZE
 mrb_value
 mrb_Git_FetchOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_fetch_options* native_object = (git_fetch_options*)calloc(1, sizeof(git_fetch_options));
   mruby_gift_git_fetch_options_data_ptr(self, native_object);
+  git_fetch_init_options(native_object, GIT_FETCH_OPTIONS_VERSION);
   return self;
 }
 #endif

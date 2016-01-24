@@ -21,9 +21,9 @@
 #if BIND_DiffFindOptions_INITIALIZE
 mrb_value
 mrb_Git_DiffFindOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_diff_find_options* native_object = (git_diff_find_options*)calloc(1, sizeof(git_diff_find_options));
   mruby_gift_git_diff_find_options_data_ptr(self, native_object);
+  git_diff_find_init_options(native_object, GIT_DIFF_FIND_OPTIONS_VERSION);
   return self;
 }
 #endif

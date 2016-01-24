@@ -44,10 +44,15 @@
 /* sha: user_defined */
 
   /* "Re-disable" some stuff until the bindings are fixed */
+  #undef BIND_LIBSSH2SESSION_TYPE
   #define BIND_LIBSSH2SESSION_TYPE FALSE
+  #undef BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE
   #define BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE FALSE
+  #undef BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE
   #define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
+  #undef BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE
   #define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
+  #undef BIND_CredUserpassPayload_TYPE
   #define BIND_CredUserpassPayload_TYPE FALSE
 
 /* MRUBY_BINDING_END */
@@ -546,9 +551,10 @@ void mrb_Git_Writestream_init(mrb_state* mrb);
 /* MRUBY_BINDING_END */
 
 /*
- * Macro definition function declaration
- * -------------------------------------
+ * Macro & Enum definition function declarations
+ * ---------------------------------------------
  */
 void mruby_Git_define_macro_constants(mrb_state* mrb);
+void mruby_Git_define_enum_constants(mrb_state* mrb);
 
 #endif

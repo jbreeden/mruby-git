@@ -566,7 +566,7 @@
 #define BIND_git_signature_new_FUNCTION TRUE
 #define BIND_git_signature_now_FUNCTION TRUE
 #define BIND_git_stash_apply_FUNCTION TRUE
-#define BIND_git_stash_apply_init_options_FUNCTION FALSE
+#define BIND_git_stash_apply_init_options_FUNCTION TRUE
 #define BIND_git_stash_drop_FUNCTION TRUE
 #define BIND_git_stash_foreach_FUNCTION FALSE
 #define BIND_git_stash_pop_FUNCTION TRUE

@@ -21,9 +21,9 @@
 #if BIND_CloneOptions_INITIALIZE
 mrb_value
 mrb_Git_CloneOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_clone_options* native_object = (git_clone_options*)calloc(1, sizeof(git_clone_options));
   mruby_gift_git_clone_options_data_ptr(self, native_object);
+  git_clone_init_options(native_object, GIT_CLONE_OPTIONS_VERSION);
   return self;
 }
 #endif

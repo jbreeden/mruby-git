@@ -83,4 +83,17 @@ namespace :bindings do
   task :unbound_fn_count do
     sh "cat include/mruby_Git_functions.h | egrep 'FALSE' | wc -l"
   end
+  
+  task :'show-macro' do
+    require 'json'
+    File.open('./declarations.json') do |f|
+      f.each_line do |l|
+        decl = JSON.parse(l)
+        if decl['kind'] == 'MacroDefinition' && decl['name'] == ENV['name']
+          puts decl['text']
+          break
+        end
+      end
+    end
+  end
 end

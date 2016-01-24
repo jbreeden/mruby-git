@@ -21,9 +21,9 @@
 #if BIND_DescribeOptions_INITIALIZE
 mrb_value
 mrb_Git_DescribeOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_describe_options* native_object = (git_describe_options*)calloc(1, sizeof(git_describe_options));
   mruby_gift_git_describe_options_data_ptr(self, native_object);
+  git_describe_init_options(native_object, GIT_DESCRIBE_OPTIONS_VERSION);
   return self;
 }
 #endif

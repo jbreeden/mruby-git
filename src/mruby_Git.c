@@ -23291,10 +23291,13 @@ mrb_Git_git_repository_init(mrb_state* mrb, mrb_value self) {
   mrb_value results = mrb_ary_new(mrb);
   git_repository * native_out = NULL;
   char * native_path = NULL;
-  mrb_int native_is_bare;
+  mrb_value is_bare;
+  int native_is_bare;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "zi", &native_path, &native_is_bare);
+  mrb_get_args(mrb, "zo", &native_path, &is_bare);
+  
+  native_is_bare = mrb_test(is_bare);
 
   /* Invocation */
   int native_return_value = git_repository_init(&native_out, native_path, native_is_bare);
@@ -30586,6 +30589,7 @@ void mrb_mruby_git_gem_init(mrb_state* mrb) {
   
   struct RClass* Git_module = mrb_define_module(mrb, "Git");
   mruby_Git_define_macro_constants(mrb);
+  mruby_Git_define_enum_constants(mrb);
 
 /* MRUBY_BINDING: pre_class_initializations */
 /* sha: user_defined */

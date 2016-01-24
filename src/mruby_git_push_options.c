@@ -21,9 +21,9 @@
 #if BIND_PushOptions_INITIALIZE
 mrb_value
 mrb_Git_PushOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_push_options* native_object = (git_push_options*)calloc(1, sizeof(git_push_options));
   mruby_gift_git_push_options_data_ptr(self, native_object);
+  git_push_init_options(native_object, GIT_PUSH_OPTIONS_VERSION);
   return self;
 }
 #endif

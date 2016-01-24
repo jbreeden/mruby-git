@@ -21,9 +21,9 @@
 #if BIND_CherrypickOptions_INITIALIZE
 mrb_value
 mrb_Git_CherrypickOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_cherrypick_options* native_object = (git_cherrypick_options*)calloc(1, sizeof(git_cherrypick_options));
   mruby_gift_git_cherrypick_options_data_ptr(self, native_object);
+  git_cherrypick_init_options(native_object, GIT_CHERRYPICK_OPTIONS_VERSION);
   return self;
 }
 #endif

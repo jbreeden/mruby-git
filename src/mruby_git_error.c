@@ -84,7 +84,7 @@ mrb_Git_Error_get_message(mrb_state* mrb, mrb_value self) {
 
   char * native_message = native_self->message;
 
-  mrb_value message = TODO_mruby_box_char_PTR(mrb, native_message);
+  mrb_value message = mrb_str_new_cstr(mrb, native_message);
 
   return message;
 }

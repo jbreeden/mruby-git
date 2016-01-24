@@ -21,9 +21,9 @@
 #if BIND_StashApplyOptions_INITIALIZE
 mrb_value
 mrb_Git_StashApplyOptions_initialize(mrb_state* mrb, mrb_value self) {
-/* TODO: Remove this comment & run `mrbind enable-functions` if an initializer is desired. */
   git_stash_apply_options* native_object = (git_stash_apply_options*)calloc(1, sizeof(git_stash_apply_options));
   mruby_gift_git_stash_apply_options_data_ptr(self, native_object);
+  git_stash_apply_init_options(native_object, GIT_STASH_APPLY_OPTIONS_VERSION);
   return self;
 }
 #endif
