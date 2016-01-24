@@ -237,7 +237,7 @@ end
 CTypes.set_fn_param_type("git_blob_filtered_content", "out", CTypes["out:git_buf *"])
 CTypes.set_fn_param_type("git_branch_upstream_name", "out", CTypes["out:git_buf *"])
 CTypes.set_fn_param_type("git_branch_remote_name", "out", CTypes["out:git_buf *"])
-CTypes.set_fn_param_type("git_branch_upstream_remote", "buf", CTypes["in:git_buf *"])
+CTypes.set_fn_param_type("git_branch_upstream_remote", "buf", CTypes["out:git_buf *"])
 CTypes.set_fn_param_type("git_buf_free", "buffer", CTypes["in:git_buf *"])
 CTypes.set_fn_param_type("git_buf_grow", "buffer", CTypes["in:git_buf *"])
 CTypes.set_fn_param_type("git_buf_set", "buffer", CTypes["in:git_buf *"])
@@ -772,12 +772,7 @@ git_odb_write_pack
 git_packbuilder_write_buf
 git_refdb_compress
 ].each do |fn|
-  CTypes.set_fn_header(fn, "giterr_clear();");
-  CTypes.set_fn_footer(fn, <<-EOS);
-if (giterr_last() != NULL) {
-  raise_git_error(mrb);
-  return mrb_nil_value();
-}
-EOS
+  CTypes.set_fn_header(fn, "CLEAR_GIT_ERROR();");
+  CTypes.set_fn_footer(fn, "RAISE_GIT_ERROR();")
   CTypes.set_fn_return_type(fn, CTypes['ignore'])
 end

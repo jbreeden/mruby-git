@@ -37,204 +37,57 @@
  * such as setting `ptr` to a value that was passed in by the user.  In
  * those cases, the behavior will be clearly documented by the API.
  */
- 
-/* IMPORTANT: GC INFORMATION 
- * -------------------------
- *
- * The `asize` member communicates who owns the buffer. This lets us
- * easily determine what to do on GC of the Ruby handle to the buffer.
- * I wish all libraries did something like that.
- */
 
 
 #if BIND_Buf_TYPE
-/*
- * Class Methods
- */
 
-/* MRUBY_BINDING: Buf::initialize */
-/* sha: 004b10b48973a520c4e1b9d44590be4627288d0cee124bcfb9847de0f0aa343e */
-#if BIND_Buf_INITIALIZE
 mrb_value
 mrb_Git_Buf_initialize(mrb_state* mrb, mrb_value self) {
+  mrb_value str = mrb_nil_value();
+  mrb_get_args(mrb, "S", str);
+  
   git_buf* native_object = (git_buf*)calloc(1, sizeof(git_buf));
   mruby_gift_git_buf_data_ptr(self, native_object);
+  
+  if (!mrb_nil_p(str)) {
+    git_buf_set(native_object, RSTRING_PTR(str), RSTRING_LEN(str));
+  }
+  
   return self;
 }
-#endif
-/* MRUBY_BINDING_END */
 
-/*
- * Fields
- */
-
-/* MRUBY_BINDING: Buf::asize_reader */
-/* sha: c9103c448ca494fb57979dcf225872453d3775b1bc6a163182a7db5795e708dd */
-#if BIND_Buf_asize_FIELD_READER
-/* get_asize
- *
- * Return Type: size_t
- */
 mrb_value
-mrb_Git_Buf_get_asize(mrb_state* mrb, mrb_value self) {
+mrb_Git_Buf_to_s(mrb_state * mrb, mrb_value self) {
   git_buf * native_self = mruby_unbox_git_buf(self);
-
-  size_t native_asize = native_self->asize;
-
-  mrb_value asize = mrb_fixnum_value(native_asize);
-
-  return asize;
+  if (native_self->ptr == NULL) {
+    return mrb_nil_value();
+  } else {
+    return mrb_str_new(mrb, native_self->ptr, native_self->size);
+  }
 }
-#endif
-/* MRUBY_BINDING_END */
 
-/* MRUBY_BINDING: Buf::asize_writer */
-/* sha: 8ff5f34f6f656898692df8cb7ff9ab2598e32124f79005735ea2da5ccddf54b7 */
-#if BIND_Buf_asize_FIELD_WRITER
-/* set_asize
- *
- * Parameters:
- * - value: size_t
- */
 mrb_value
-mrb_Git_Buf_set_asize(mrb_state* mrb, mrb_value self) {
+mrb_Git_Buf_replace(mrb_state * mrb, mrb_value self) {
+  giterr_clear();
   git_buf * native_self = mruby_unbox_git_buf(self);
-  mrb_int native_asize;
-
-  mrb_get_args(mrb, "i", &native_asize);
-
-  native_self->asize = native_asize;
-  
-  mrb_value value_as_mrb_value;
-  mrb_get_args(mrb, "o", &value_as_mrb_value);
-  return value_as_mrb_value;
+  mrb_value str = mrb_nil_value();
+  mrb_get_args(mrb, "S", str);
+  git_buf_set(native_self, RSTRING_PTR(str), RSTRING_LEN(str));
+  RAISE_GIT_ERROR();
+  return str;
 }
-#endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::size_reader */
-/* sha: e388a48770cfad7d33e85900958f300a4674c263a22d5d5a922e8baa5f051ab0 */
-#if BIND_Buf_size_FIELD_READER
-/* get_size
- *
- * Return Type: size_t
- */
-mrb_value
-mrb_Git_Buf_get_size(mrb_state* mrb, mrb_value self) {
-  git_buf * native_self = mruby_unbox_git_buf(self);
-
-  size_t native_size = native_self->size;
-
-  mrb_value size = mrb_fixnum_value(native_size);
-
-  return size;
-}
-#endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::size_writer */
-/* sha: a86fee24fea0bde49352666e5dd0337e40d0b84cab83d9556a589c1432ae34d1 */
-#if BIND_Buf_size_FIELD_WRITER
-/* set_size
- *
- * Parameters:
- * - value: size_t
- */
-mrb_value
-mrb_Git_Buf_set_size(mrb_state* mrb, mrb_value self) {
-  git_buf * native_self = mruby_unbox_git_buf(self);
-  mrb_int native_size;
-
-  mrb_get_args(mrb, "i", &native_size);
-
-  native_self->size = native_size;
-  
-  mrb_value value_as_mrb_value;
-  mrb_get_args(mrb, "o", &value_as_mrb_value);
-  return value_as_mrb_value;
-}
-#endif
-/* MRUBY_BINDING_END */
-
 
 void mrb_Git_Buf_init(mrb_state* mrb) {
-/* MRUBY_BINDING: Buf::class_init_header */
-/* sha: ad8337ceaefe095e6123163db0ca9028098ef3cf11dd77e31138363633f0fdd6 */
-  /* Don't double-init. */
   static int initialized = 0;
   if (initialized) return;
   else initialized = 1;
-/* MRUBY_BINDING_END */
 
-/* MRUBY_BINDING: Buf::class_definition */
-/* sha: ec5ed7cdd86c6645e0f5bbfe0276932588fdd5303fdec47d8db5b45ab8d68f66 */
   struct RClass* Buf_class = mrb_define_class_under(mrb, Git_module(mrb), "Buf", mrb->object_class);
   MRB_SET_INSTANCE_TT(Buf_class, MRB_TT_DATA);
-/* MRUBY_BINDING_END */
 
-/* MRUBY_BINDING: Buf::pre_class_method_definitions */
-/* sha: user_defined */
-
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::class_method_definitions */
-/* sha: cb24fdefd2ec9d5251aec7e9a7c2f0670038ef18976badb22bfbf840301ab8fb */
-#if BIND_Buf_INITIALIZE
   mrb_define_method(mrb, Buf_class, "initialize", mrb_Git_Buf_initialize, MRB_ARGS_NONE());
-#endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::pre_attr_definitions */
-/* sha: user_defined */
-
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::attr_definitions */
-/* sha: 8da034e6aef9ae45b319b797d9845f1270c37dde52a2c08be32a9e8bf45fd06a */
-  /*
-   * Fields
-   */
-#if BIND_Buf_ptr_FIELD_READER
-  mrb_define_method(mrb, Buf_class, "ptr", mrb_Git_Buf_get_ptr, MRB_ARGS_ARG(0, 0));
-#endif
-#if BIND_Buf_ptr_FIELD_WRITER
-  mrb_define_method(mrb, Buf_class, "ptr=", mrb_Git_Buf_set_ptr, MRB_ARGS_ARG(1, 0));
-#endif
-#if BIND_Buf_asize_FIELD_READER
-  mrb_define_method(mrb, Buf_class, "asize", mrb_Git_Buf_get_asize, MRB_ARGS_ARG(0, 0));
-#endif
-#if BIND_Buf_asize_FIELD_WRITER
-  mrb_define_method(mrb, Buf_class, "asize=", mrb_Git_Buf_set_asize, MRB_ARGS_ARG(1, 0));
-#endif
-#if BIND_Buf_size_FIELD_READER
-  mrb_define_method(mrb, Buf_class, "size", mrb_Git_Buf_get_size, MRB_ARGS_ARG(0, 0));
-#endif
-#if BIND_Buf_size_FIELD_WRITER
-  mrb_define_method(mrb, Buf_class, "size=", mrb_Git_Buf_set_size, MRB_ARGS_ARG(1, 0));
-#endif
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::pre_instance_method_definitions */
-/* sha: user_defined */
-
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::instance_method_definitions */
-/* sha: bc1a7bf41f8f5b2f90434b58331667565e72c2b8794e7f56884099f7767fa42c */
-  /*
-   * Member Functions
-   */
-  /* None */
-/* MRUBY_BINDING_END */
-
-/* MRUBY_BINDING: Buf::class_init_footer */
-/* sha: user_defined */
-
-/* MRUBY_BINDING_END */
+  mrb_define_method(mrb, Buf_class, "to_s", mrb_Git_Buf_to_s, MRB_ARGS_ARG(0, 0));
+  mrb_define_method(mrb, Buf_class, "to_str", mrb_Git_Buf_to_s, MRB_ARGS_ARG(0, 0));
+  mrb_define_method(mrb, Buf_class, "replace", mrb_Git_Buf_replace, MRB_ARGS_ARG(1, 0));
 }
-
-/* MRUBY_BINDING: footer */
-/* sha: user_defined */
-
-/* MRUBY_BINDING_END */
 #endif

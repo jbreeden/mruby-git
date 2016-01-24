@@ -52,11 +52,6 @@
 #define BIND_BranchIterator_INITIALIZE FALSE
 
 #define BIND_Buf_TYPE TRUE
-#define BIND_Buf_INITIALIZE TRUE
-#define BIND_Buf_asize_FIELD_READER TRUE
-#define BIND_Buf_asize_FIELD_WRITER TRUE
-#define BIND_Buf_size_FIELD_READER TRUE
-#define BIND_Buf_size_FIELD_WRITER TRUE
 
 #define BIND_Cert_TYPE TRUE
 #define BIND_Cert_INITIALIZE FALSE

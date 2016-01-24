@@ -1,13 +1,14 @@
 # Initialize the library
 # ----------------------
-# The library needs to keep some global state and initialize its dependencies. You must therefore initialize the library before working with it
+# The library needs to keep some global state and initialize its dependencies. You must therefore initialize the library before working with it.
+# This is handled for you when `mruby-git` is loaded, so no need to call it manually.
 #
 # ```Ruby
-Git.libgit2_init
+# Git.libgit2_init
 # ```
 #
 # Usually you don't need to call the shutdown function as the operating system will take care of reclaiming resources, but if your application uses libgit2 in some areas which are not usually active, you can use
-# 
+#
 # ```Ruby
 # Git.libgit2_shutdown
 # ```
@@ -16,15 +17,16 @@ Git.libgit2_init
 #
 # Errors
 # ------
-# Return codes from public APIs indicate general failure category. For extended information, libgit2 keeps some data in thread-local storage.
-# Any out parameters from the C API are returned in an array with the error code:
+# Any error from libgit2 are raised as Git::Error objects.
 #
 # ```Ruby
 puts 'Attempting to open non-existant repo'
-error, repo = Git.repository_open('dne')
-if error < 0
-  e = Git.err_last
-  puts "Error #{error} #{e.klass} #{e.message}"
+begin
+  repo = Git.repository_open('dne')
+rescue Git::Error => ex
+  puts "#{ex.class}: #{ex.message} (#{ex.klass})"
+else
+  raise "Expected an error, but didn't catch one."
 end
 # ```
 #
@@ -35,10 +37,10 @@ end
 # ```Ruby
 ## With working directory:
 puts 'Create a repo with a working directory'
-error, repo = Git.repository_init("sandbox/wd", false)
+repo = Git.repository_init("sandbox/wd", false)
 ## …or bare:
 puts 'Create a bare repo'
-error, repo = Git.repository_init("sandbox/bare", true)
+repo = Git.repository_init("sandbox/bare", true)
 # ```
 #
 # ### Init (Options)
@@ -51,7 +53,7 @@ opts.flags |= Git::REPOSITORY_INIT_MKPATH # mkdir as needed to create repo */
 opts.description = "My repository has a custom description"
 
 puts "Making a repository in sandbox/no/parent (as with mkdir -p)"
-error, repo = Git.repository_init_ext("sandbox/no/parent", opts)
+repo = Git.repository_init_ext("sandbox/no/parent", opts)
 
 # ```
 #
@@ -62,8 +64,7 @@ url = "http://github.com/jbreeden/yargs"
 path = "sandbox/yargs"
 opt = Git::CloneOptions.new
 puts "Cloning yargs repo"
-error, repo = Git.clone(url, path, opt)
-puts "Error cloning yargs" if error != 0
+repo = Git.clone(url, path, opt)
 # ```
 
 # ### Clone (Progress)
@@ -104,7 +105,7 @@ puts "Error cloning yargs" if error != 0
 # ```
 
 # ### Clone (Custom repo and remote)
-# (Not yet supported)
+# (Callbacks not yet supported)
 # ```Ruby
 ## int create_repsitory(git_repository **out, const char *path, int bare, void *payload)
 ## {
@@ -123,7 +124,7 @@ puts "Error cloning yargs" if error != 0
 ##     return 0;
 ## }
 ## 
-## int create_remote(git_remote **out, git_repository *repo, const char *name, const char *url, void *payload)
+## int create_remote(git_remote **out, git_repository *repo, const char *name, const char *url)
 ## {
 ##     int error;
 ## 
@@ -189,59 +190,54 @@ puts "Error cloning yargs" if error != 0
 # ### Open (Simple)
 #
 # ```Ruby
-error, yargs_repo = Git.repository_open("sandbox/yargs")
-if error == 0
-  puts "Opened yargs repo #{yargs_repo}"
-else
+begin
+  repo = Git.repository_open("sandbox/yargs")
+rescue Git::Error
   puts "Failed to open yargs repo"
+else
+  puts "Opened yargs repo #{repo}"
 end
 # ```
 #
 # ### Open (Options)
+# Note that flag options and nullable params (like the ceiling_dirs parameter
+# to repository_open_ext) from the C API are typically optional in the Ruby API.
 #
 # ```Ruby
-## Open repository, walking up from given directory to find root
-error, repo = Git.repository_open_ext("sandbox", 0)
+## Open repository, walking up from given directory to find root.
+repo = Git.repository_open_ext("sandbox") # No flags param, defaults to 0
 
 ## Open repository in given directory (or fail if not a repository)
-error, repo = Git.repository_open_ext("sandbox", Git::REPOSITORY_OPEN_NO_SEARCH)
-if error == 0
-  puts "Error: Opened sandbox, even though it's not a repo!"
+begin
+  repo = Git.repository_open_ext("sandbox", Git::REPOSITORY_OPEN_NO_SEARCH)
+rescue Git::Error
+  puts "Error opening non-repo folder as repo - as expected."
 else
-  puts "Couldn't open ./sandox, as expected: #{Git.err_last.message}"
+  raise "Expected an exception, but caught none."
 end
 ## GIT::REPOSITORY_OPEN_CROSS_FS - Unless this flag is set, open will not
 ##   continue searching across filesystem boundaries (i.e. when `st_dev`
 ##   changes from the `stat` system call)
 puts 'Open repository with "ceiling" directories list to limit walking up'
-error, repo = Git.repository_open_ext("#{Dir.pwd}/sandbox", Git::REPOSITORY_OPEN_CROSS_FS, "#{File.dirname(Dir.pwd)}:/other/dir");
-if error == 0
-  puts "Found & opened a repo containing #{Dir.pwd}/sandbox"
-else
-  puts "Error: #{Git.err_last.message}"
-end
+repo = Git.repository_open_ext("#{Dir.pwd}/sandbox", Git::REPOSITORY_OPEN_CROSS_FS, "#{File.dirname(Dir.pwd)}:/other/dir");
 # ```
 #
 # ### Open (Bare)
 # A fast way of opening a bare repository when the exact path is known.
 #
 # ```Ruby
-error, repo = git_repository_open_bare("sandbox/bare")
-if error == 0
-  puts "Successfully opened bare repo"
-else
-  puts "Error: #{Git.err_last.message}"
-end
+repo = Git.repository_open_bare("sandbox/bare")
 # ```
 #
 # ### Find Repository
 # Check if a given path is inside a repository and return the repository root directory if found.
+# Note that MRuby uses the Git::Buf class to represet `struct git_buf`. You can use
+# `to_s` to get the string value from a buffer.
+#
 # ```Ruby
-git_buf root = {0};
-int error = git_repository_discover(&root, "/tmp/…", 0, NULL);
+root = Git.repository_discover("./sandbox")
+puts "Root of ./sandbox is #{root.to_s}"
 …
-git_buf_free(&root); /* returned path data must be freed after use */
-(git_repository_discover)
 # ```
 #
 # ### Check If Repository

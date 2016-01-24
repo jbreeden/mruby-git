@@ -43,17 +43,25 @@
 /* MRUBY_BINDING: post_includes */
 /* sha: user_defined */
 
-  /* "Re-disable" some stuff until the bindings are fixed */
-  #undef BIND_LIBSSH2SESSION_TYPE
-  #define BIND_LIBSSH2SESSION_TYPE FALSE
-  #undef BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE
-  #define BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE FALSE
-  #undef BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE
-  #define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
-  #undef BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE
-  #define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
-  #undef BIND_CredUserpassPayload_TYPE
-  #define BIND_CredUserpassPayload_TYPE FALSE
+/* "Re-disable" some stuff until the bindings are fixed */
+#undef BIND_LIBSSH2SESSION_TYPE
+#define BIND_LIBSSH2SESSION_TYPE FALSE
+#undef BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE
+#define BIND_LIBSSH2USERAUTHKBDINTPROMPT_TYPE FALSE
+#undef BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE
+#define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
+#undef BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE
+#define BIND_LIBSSH2USERAUTHKBDINTRESPONSE_TYPE FALSE
+#undef BIND_CredUserpassPayload_TYPE
+#define BIND_CredUserpassPayload_TYPE FALSE
+  
+void raise_git_error(mrb_state * mrb);
+#define CLEAR_GIT_ERROR() giterr_clear();
+#define RAISE_GIT_ERROR() \
+if (giterr_last()) { \
+  raise_git_error(mrb); \
+  return mrb_nil_value(); \
+}
 
 /* MRUBY_BINDING_END */
 
