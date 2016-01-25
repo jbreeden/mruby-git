@@ -803,6 +803,8 @@ entry = Git.index_get_bypath(
 ```
 
 #### Conflicts
+
+```Ruby
 if (Git.index_has_conflicts(idx))
   # If you know the path of a conflicted file
   ancestor, ours, theirs = Git.index_conflict_get(idx, "path/to/file.cs")
