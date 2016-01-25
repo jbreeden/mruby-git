@@ -269,12 +269,12 @@ Objects
 SHA-1 hashes are usually written as 40 characters of hexadecimal. These are converted to a binary representation internally, called git_oid, and there are routines for converting back and forth.
 
 ```Ruby
-Convert a SHA to an OID
+# Convert a SHA to an OID
 sha = "4a202b346bb0fb0db7eff3cffeb3c70babbd2045"
 oid = Git.oid_fromstr(sha)
 puts "Got oid #{oid} (#{oid.class})"
 
-Make a shortened printable string from an OID
+# Make a shortened printable string from an OID
 short = Git.oid_tostr_s(oid)[0..6]
 puts "Converted Git::Oid to short sha: #{short}"
 ```
@@ -414,6 +414,7 @@ if Git.tree_entry_type(entry) == Git::OBJ_TREE
 end
 ```
 #### Tree Entries
+```Ruby
 tree = Git.revparse_single(repo, "HEAD^{tree}")
 puts "Tree: #{tree}"
 
