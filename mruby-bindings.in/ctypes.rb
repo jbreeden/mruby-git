@@ -804,6 +804,8 @@ end
  ["oid", "git_tag_create_frombuffer"],
  ["oid", "git_tag_create_lightweight"],
  ["out", "git_reference_name_to_id"],
+ ["out", "git_index_write_tree"],
+ ["out", "git_index_write_tree_to"],
  ["id", "git_treebuilder_write"]].each do |name, fn|
    CTypes.set_fn_param_type(fn, name, CTypes['out:git_oid *'])
 end

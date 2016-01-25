@@ -10452,14 +10452,13 @@ mrb_Git_git_index_write(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_write_tree */
-/* sha: f2c01123fc26c1a33aba2619b82072bb14e3169ed8723ab33359fe08f6749abd */
+/* sha: da894ac3193d4dfb1bc68268b327d4651b73767127ecb5b10091efffba4c8e99 */
 #if BIND_git_index_write_tree_FUNCTION
-#define git_index_write_tree_REQUIRED_ARGC 2
+#define git_index_write_tree_REQUIRED_ARGC 1
 #define git_index_write_tree_OPTIONAL_ARGC 0
 /* git_index_write_tree
  *
  * Parameters:
- * - out: git_oid *
  * - index: git_index *
  * Return Type: int
  */
@@ -10467,24 +10466,17 @@ mrb_value
 mrb_Git_git_index_write_tree(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value out;
+  git_oid * native_out = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value index;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &out, &index);
+  mrb_get_args(mrb, "o", &index);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, index, Index_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Index expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_oid * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_oid(out));
 
   /* Unbox param: index */
   git_index * native_index = (mrb_nil_p(index) ? NULL : mruby_unbox_git_index(index));
@@ -10492,22 +10484,24 @@ mrb_Git_git_index_write_tree(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_write_tree(native_out, native_index);
 
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_out);
+
   RAISE_GIT_ERROR(native_return_value);
 
-  return mrb_nil_value();
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_write_tree_to */
-/* sha: 628ecc43169c8d6525d4d76efd3cb2128cf91441f24c7ea145b65e33138268ad */
+/* sha: acfd7beb0e09543526414a147b5829f1b558196cccd11c2ed29ecbf2ebfe743c */
 #if BIND_git_index_write_tree_to_FUNCTION
-#define git_index_write_tree_to_REQUIRED_ARGC 3
+#define git_index_write_tree_to_REQUIRED_ARGC 2
 #define git_index_write_tree_to_OPTIONAL_ARGC 0
 /* git_index_write_tree_to
  *
  * Parameters:
- * - out: git_oid *
  * - index: git_index *
  * - repo: git_repository *
  * Return Type: int
@@ -10516,18 +10510,14 @@ mrb_value
 mrb_Git_git_index_write_tree_to(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value out;
+  git_oid * native_out = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value index;
   mrb_value repo;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooo", &out, &index, &repo);
+  mrb_get_args(mrb, "oo", &index, &repo);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, index, Index_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Index expected");
     return mrb_nil_value();
@@ -10536,9 +10526,6 @@ mrb_Git_git_index_write_tree_to(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_oid * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_oid(out));
 
   /* Unbox param: index */
   git_index * native_index = (mrb_nil_p(index) ? NULL : mruby_unbox_git_index(index));
@@ -10549,9 +10536,12 @@ mrb_Git_git_index_write_tree_to(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_index_write_tree_to(native_out, native_index, native_repo);
 
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_out);
+
   RAISE_GIT_ERROR(native_return_value);
 
-  return mrb_nil_value();
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */

@@ -714,7 +714,7 @@ oid = Git.tag_create_lightweight(
       false)      # force?
 ```
 
-### Create (annotated)
+#### Create (annotated)
 
 ```Ruby
 target = Git.revparse_single(repo, "HEAD^{commit}")
@@ -738,3 +738,87 @@ obj = Git.tag_peel(tag)
 puts "Peeled tag: #{obj}"
 ```
 
+### Index
+
+#### Loading
+
+```Ruby
+# Each repository owns an index
+idx = Git.repository_index(repo)
+puts "Index: #{idx}"
+
+# Or you can open it by path
+idx = Git.index_open("sandbox/yargs/.git/index")
+puts "Index by path: #{idx}"
+```
+
+#### Creating (in-memory)
+In-memory indexes cannot be saved to disk, but can be useful for creating trees.
+
+```Ruby
+in_memory_idx = Git.index_new
+puts "New index: #{in_memory_idx}"
+```
+
+#### Disk
+
+```Ruby
+# Make the in-memory index match what's on disk
+Git.index_read(idx, true)
+
+# Write the in-memory index to disk
+Git.index_write(idx)
+```
+#### Trees
+Note that all tree operations work recursively. For example, git_index_read_tree will replace not only the root directory, but all subdirectory contents as well.
+
+```Ruby
+# Overwrite the index contents with those of a tree
+idx = Git.repository_index(repo)
+tree = Git.revparse_single(repo, "HEAD~^{tree}")
+Git.index_read_tree(idx, tree)
+
+# Write the index contents to the ODB as a tree
+new_tree_id = Git.index_write_tree(idx)
+
+# In-memory indexes can write trees to any repo
+new_tree_id = Git.index_write_tree_to(idx, other_repo)
+```
+
+#### Entries
+
+```Ruby
+# Access by index
+count = Git.index_entrycount(idx)
+(0...count).each do |i|
+  entry = Git.index_get_byindex(idx, i)
+  puts "Index entry: #{entry}"
+end
+
+# Access by path
+entry = Git.index_get_bypath(
+        idx,                # index
+        "path/to/file.rb",  # path
+        0)                  # stage
+```
+
+#### Conflicts
+if (Git.index_has_conflicts(idx))
+  # If you know the path of a conflicted file
+  ancestor, ours, theirs = Git.index_conflict_get(idx, "path/to/file.cs")
+
+  # Or, iterate through all conflicts
+  iter = Git.index_conflict_iterator_new(idx)
+  loop {
+    ancestor, ours, theirs = Git.index_conflict_next(iter)
+    break if ancestor.nil? # || ours.nil? || theirs.nil?
+    puts "Conflict entry: #{ancestor}, #{ours} #{theirs}"
+    
+    # Mark this conflict as resolved
+    Git.index_conflict_remove(idx, ours.path)
+  }
+  Git.index_conflict_iterator_free(iter)
+end
+```
+
+#### Add & Remove

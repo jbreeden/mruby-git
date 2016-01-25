@@ -714,7 +714,7 @@ oid = Git.tag_create_lightweight(
       false)      # force?
 # ```
 #
-# ### Create (annotated)
+# #### Create (annotated)
 #
 # ```Ruby
 target = Git.revparse_single(repo, "HEAD^{commit}")
@@ -738,86 +738,91 @@ obj = Git.tag_peel(tag)
 puts "Peeled tag: #{obj}"
 # ```
 #
-__END__
-Index
-Loading
-/* Each repository owns an index */
-git_index *idx = NULL;
-int error = git_repository_index(&idx, repo);
+# ### Index
+#
+# #### Loading
+#
+# ```Ruby
+## Each repository owns an index
+idx = Git.repository_index(repo)
+puts "Index: #{idx}"
 
-/* Or you can open it by path */
-error = git_index_open(&idx, "/path/to/repo/.git/index");
-( git_repository_index, git_index_open )
+## Or you can open it by path
+idx = Git.index_open("sandbox/yargs/.git/index")
+puts "Index by path: #{idx}"
+# ```
+#
+# #### Creating (in-memory)
+# In-memory indexes cannot be saved to disk, but can be useful for creating trees.
+#
+# ```Ruby
+in_memory_idx = Git.index_new
+puts "New index: #{in_memory_idx}"
+# ```
+#
+# #### Disk
+#
+# ```Ruby
+## Make the in-memory index match what's on disk
+Git.index_read(idx, true)
 
-Creating (in-memory)
-In-memory indexes cannot be saved to disk, but can be useful for creating trees.
+## Write the in-memory index to disk
+Git.index_write(idx)
+# ```
+# #### Trees
+# Note that all tree operations work recursively. For example, git_index_read_tree will replace not only the root directory, but all subdirectory contents as well.
+#
+# ```Ruby
+## Overwrite the index contents with those of a tree
+idx = Git.repository_index(repo)
+tree = Git.revparse_single(repo, "HEAD~^{tree}")
+Git.index_read_tree(idx, tree)
 
-git_index *idx = NULL;
-int error = git_index_new(&idx);
-( git_index_new )
+## Write the index contents to the ODB as a tree
+new_tree_id = Git.index_write_tree(idx)
 
-Disk
-/* Make the in-memory index match what's on disk */
-int error = git_index_read(idx, true);
+## In-memory indexes can write trees to any repo
+# new_tree_id = Git.index_write_tree_to(idx, other_repo)
+# ```
+#
+# #### Entries
+# 
+# ```Ruby
+## Access by index
+count = Git.index_entrycount(idx)
+(0...count).each do |i|
+  entry = Git.index_get_byindex(idx, i)
+  puts "Index entry: #{entry}"
+end
 
-/* Write the in-memory index to disk */
-error = git_index_write(idx);
-( git_index_read, git_index_write )
+## Access by path
+entry = Git.index_get_bypath(
+        idx,                # index
+        "path/to/file.rb",  # path
+        0)                  # stage
+# ```
+#
+# #### Conflicts
+if (Git.index_has_conflicts(idx))
+  # If you know the path of a conflicted file
+  ancestor, ours, theirs = Git.index_conflict_get(idx, "path/to/file.cs")
 
-Trees
-Note that all tree operations work recursively. For example, git_index_read_tree will replace not only the root directory, but all subdirectory contents as well.
-
-/* Overwrite the index contents with those of a tree */
-git_tree *tree = NULL;
-int error = git_revparse_single((git_object**)&tree,
-                                repo, "HEAD~^{tree}");
-error = git_index_read_tree(idx, tree);
-
-/* Write the index contents to the ODB as a tree */
-git_oid new_tree_id = 0;
-error = git_index_write_tree(&new_tree_id, idx);
-
-/* In-memory indexes can write trees to any repo */
-error = git_index_write_tree_to(&new_tree_id, idx, other_repo);
-( git_revparse_single, git_index_read_tree, git_index_write_tree, git_index_write_tree_to )
-
-Entries
-/* Access by index */
-size_t count = git_index_entrycount(idx);
-for (size_t i=0; i<count; i++) {
-  const git_index_entry *entry = git_index_get_byindex(idx, i);
-  /* … */
-}
-
-/* Access by path */
-const git_index_entry *entry = git_index_get_bypath(
-        idx,                /* index */
-        "path/to/file.rb",  /* path */
-        0);                 /* stage */
-( git_index_entrycount, git_index_get_byindex, git_index_get_bypath, git_index_entry )
-
-Conflicts
-if (git_index_has_conflicts(idx)) {
-  /* If you know the path of a conflicted file */
-  const git_index_entry *ancestor = NULL,
-                        *ours = NULL,
-                        *theirs = NULL;
-  int error = git_index_conflict_get(&ancestor, &ours, &theirs
-                                     idx, "path/to/file.cs");
-
-  /* Or, iterate through all conflicts */
-  git_index_conflict_iterator *iter = NULL;
-  error = git_index_conflict_iterator_new(&iter, idx);
-  while (git_index_conflict_next(&ancestor, &ours, &theirs, iter)
-              != GIT_ITEROVER) {
-    /* Mark this conflict as resolved */
-    error = git_index_conflict_remove(idx, ours->path);
+  # Or, iterate through all conflicts
+  iter = Git.index_conflict_iterator_new(idx)
+  loop {
+    ancestor, ours, theirs = Git.index_conflict_next(iter)
+    break if ancestor.nil? # || ours.nil? || theirs.nil?
+    puts "Conflict entry: #{ancestor}, #{ours} #{theirs}"
+    
+    # Mark this conflict as resolved
+    Git.index_conflict_remove(idx, ours.path)
   }
-  git_index_conflict_iterator_free(iter);
-}
-( git_index_has_conflicts, git_index_conflict_get, git_index_conflict_iterator_new, git_index_conflict_next, git_index_conflict_iterator_free, git_index_conflict_remove )
-
-Add & Remove
+  Git.index_conflict_iterator_free(iter)
+end
+# ```
+#
+# #### Add & Remove
+__END__
 /* Force a single file to be added (even if it is ignored) */
 error = git_index_add_bypath(idx, "path/to/file.py");
 /* … or removed */
