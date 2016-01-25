@@ -404,8 +404,6 @@ tree = Git.commit_tree(commit)
 puts "Tree: #{tree}"
 # ```
 #
-# You can look them up by OID
-#
 # Trees can contain trees:
 # ```Ruby
 entry = Git.tree_entry_byindex(tree, 0)
@@ -480,137 +478,141 @@ Git.treebuilder_insert(bld,
 oid = Git.treebuilder_write(bld)
 puts "Wrote tree #{oid}"
 # ```
-__END__
+#
+# ### Commits
+# #### Lookups
+#
+# ```Ruby
+obj = Git.revparse_single(repo, "HEAD")
+commit = Git.commit_lookup(repo, Git.object_id(obj))
+puts "Commit: #{commit}"
+#```
+#
+# #### Properties
+#
+# ```Ruby
+puts "Commit id:  #{Git.commit_id(commit)}"
+puts "Commit message_encoding:  #{Git.commit_message_encoding(commit)}"
+puts "Commit message:  #{Git.commit_message(commit)}"
+puts "Commit summary:  #{Git.commit_summary(commit)}"
+puts "Commit time:  #{Git.commit_time(commit)}"
+puts "Commit time_offset:  #{Git.commit_time_offset(commit)}"
+puts "Commit committer:  #{Git.commit_committer(commit)}"
+puts "Commit author:  #{Git.commit_author(commit)}"
+puts "Commit raw_header:  \n#{Git.commit_raw_header(commit)}"
+puts "Commit tree_id:  #{Git.commit_tree_id(commit)}"
+# ```
+# #### Parents
+# ```Ruby
+count = Git.commit_parentcount(commit)
+(0..(count - 1)).each do |i|
+  nth_parent_id = Git.commit_parent_id(commit, i)
+  nth_parent = Git.commit_parent(commit, i)
+  puts "Parent #{i}: #{nth_parent}"
+end
 
-Commits
-Lookups
-git_commit *commit;
-int error = git_commit_lookup(&commit, repo, &oid);
-( git_commit_lookup )
+nth_ancestor = Git.commit_nth_gen_ancestor(commit, 2)
+puts "2nd ancestory: #{nth_ancestor}"
+#```
+#
+# #### Create
+my_signature = Git.signature_now("Me", "me@example.com")
 
-Properties
-const git_oid *oid             = git_commit_id(commit);
-const char *encoding           = git_commit_message_encoding(commit);
-const char *message            = git_commit_message(commit);
-const char *summmary           = git_commit_summary(commit);
-git_time_t time                = git_commit_time(commit);
-int offset_in_min              = git_commit_time_offset(commit);
-const git_signature *committer = git_commit_committer(commit);
-const git_signature *author    = git_commit_author(commit);
-const char *header             = git_commit_raw_header(commit);
-const git_oid *tree_id         = git_commit_tree_id(commit);
-( git_commit_id, git_commit_message_encoding, git_commit_message, git_commit_summary, git_commit_time, git_commit_time_offset, git_commit_committer, git_commit_author, git_commit_raw_header, git_commit_tree_id )
+parents = [Git.revparse_single(repo, "HEAD")]
 
-Parents
-unsigned int count = git_commit_parentcount(commit);
-for (unsigned int i=0; i<count; i++) {
-  git_oid *nth_parent_id = git_commit_parent_id(commit);
-
-  git_commit *nth_parent = NULL;
-  int error = git_commit_parent(&nth_parent, commit, i);
-  /* … */
-}
-
-git_commit *nth_ancestor = NULL;
-int error = git_commit_nth_gen_ancestor(&nth_ancestor, commit, 7);
-( git_commit_parentcount, git_commit_parent_id, git_commit_parent, git_commit_nth_gen_ancestor )
-
-Create
-git_signature *me = NULL;
-int error = git_signature_now(&me, "Me", "me@example.com");
-
-const git_commit *parents[] = {parent1, parent2};
-
-git_oid new_commit_id = 0;
-error = git_commit_create(
-  &new_commit_id,
+oid = Git.commit_create(
   repo,
-  "HEAD",                      /* name of ref to update */
-  me,                          /* author */
-  me,                          /* committer */
-  "UTF-8",                     /* message encoding */
-  "Flooberhaul the whatnots",  /* message */
-  tree,                        /* root tree */
-  2,                           /* parent count */
-  parents);                    /* parents */
-( git_signature_now, git_commit_create )
+  "HEAD",                      # name of ref to update
+  my_signature,                          # author
+  my_signature,                          # committer
+  "UTF-8",                     # message encoding
+  "Flooberhaul the whatnots",  # message
+  tree,                        # root tree
+  parents)                     # parents
+puts "Created commit #{oid}"
+# ```
+#
+# ### References
+# #### Lookups (full name)
+ref = Git.reference_lookup(repo, "refs/heads/master")
+puts "refs/heads/master: #{ref}"
+# #### Lookups (short name)
+#
+# ```Ruby
+ref = Git.reference_dwim(repo, "HEAD") # "master" isn't working... TODO
+puts "HEAD^: #{ref}"
+# ```
+#
+# #### Lookups (resolved)
+# Get the object pointed to by a symbolic reference (or a chain of them).
+#
+# ```Ruby
+oid = Git.reference_name_to_id(repo, "HEAD")
+puts "HEAD: #{oid}"
+# ```
+#
+# #### Listing
+#
+# ```Ruby
+reflist = Git.reference_list(repo)
+puts "Reflist: #{reflist}"
+puts "Reflist Strings: #{reflist.strings}"
+# ```
+#
+# #### Foreach (refs)
+# (Not yet supported)
+# ```Ruby
+## typedef struct { /* … */ } ref_data;
+## 
+## int each_ref_cb(git_reference *ref, void *payload)
+## {
+##   ref_data *d = (ref_data*)payload;
+##   /* … */
+## }
+## 
+## ref_data d = {0};
+## int error = git_reference_foreach(repo, each_ref_cb, &d);
+# ```
+#
+# #### Foreach (names)
+# (Not yet supported)
+# ```Ruby
+##typedef struct { /* … */ } ref_data;
+##
+##int each_name_cb(const char *name, void *payload)
+##{
+##  ref_data *d = (ref_data*)payload;
+##  /* … */
+##}
+##
+##ref_data d = {0};
+##int error = git_reference_foreach_name(repo, each_name_cb, &d);
+# ```
+# #### Foreach (glob)
+# (Not yet supported)
+# ```Ruby
+##typedef struct { /* … */ } ref_data;
+##
+##int each_name_cb(const char *name, void *payload)
+##{
+##  ref_data *d = (ref_data*)payload;
+##  /* … */
+##}
+##
+##ref_data d = {0};
+##int error = git_reference_foreach_glob(repo, "refs/remotes/*", each_name_cb, &d);
+#
+# #### Iterator (all)
+# ```Ruby
+iter = Git.reference_iterator_new(repo)
 
-References
-Lookups (full name)
-git_reference *ref = NULL;
-int error = git_reference_lookup(&ref, repo, "refs/heads/master");
-(git_reference_lookup)
-
-Lookups (short name)
-git_reference *ref = NULL;
-int error = git_reference_dwim(&ref, repo, "master");
-(git_reference_dwim)
-
-Lookups (resolved)
-Get the object pointed to by a symbolic reference (or a chain of them).
-
-git_oid oid = 0;
-int error = git_reference_name_to_id(&oid, repo, "HEAD");
-(git_reference_name_to_id)
-
-Listing
-git_strarray refs = {0};
-int error = git_reference_list(&refs, repo);
-(git_reference_list)
-
-Foreach (refs)
-typedef struct { /* … */ } ref_data;
-
-int each_ref_cb(git_reference *ref, void *payload)
-{
-  ref_data *d = (ref_data*)payload;
-  /* … */
-}
-
-ref_data d = {0};
-int error = git_reference_foreach(repo, each_ref_cb, &d);
-(git_reference_foreach)
-
-Foreach (names)
-typedef struct { /* … */ } ref_data;
-
-int each_name_cb(const char *name, void *payload)
-{
-  ref_data *d = (ref_data*)payload;
-  /* … */
-}
-
-ref_data d = {0};
-int error = git_reference_foreach_name(repo, each_name_cb, &d);
-(git_reference_foreach_name)
-
-Foreach (glob)
-typedef struct { /* … */ } ref_data;
-
-int each_name_cb(const char *name, void *payload)
-{
-  ref_data *d = (ref_data*)payload;
-  /* … */
-}
-
-ref_data d = {0};
-int error = git_reference_foreach_glob(repo, "refs/remotes/*", each_name_cb, &d);
-(git_reference_foreach_glob)
-
-Iterator (all)
-git_reference_iterator *iter = NULL;
-int error = git_reference_iterator_new(&iter, repo);
-
-git_reference *ref = NULL;
-while (!(error = git_reference_next(&ref, iter))) {
-  /* … */
-}
-
-if (error != GIT_ITEROVER) {
-  /* error */
-}
-( git_reference_iterator_new, git_reference_next )
-
+## Git.reference_next() return nil after last element (any errors are raised)
+while ref = Git.reference_next(iter)
+  puts "Ref iteration: #{ref}"
+end
+puts "Done iterating"
+# ```
+__END__
 Iterator (glob)
 git_reference_iterator *iter = NULL;
 int error = git_reference_iterator_glob_new(&iter, repo, "refs/heads/*");

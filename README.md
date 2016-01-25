@@ -404,8 +404,6 @@ tree = Git.commit_tree(commit)
 puts "Tree: #{tree}"
 ```
 
-You can look them up by OID
-
 Trees can contain trees:
 ```Ruby
 entry = Git.tree_entry_byindex(tree, 0)
@@ -436,7 +434,7 @@ puts "Mode: #{mode}"
 # In C, you have to be careful to free this one,
 # unlike the results from most lookups. mruby-git
 # handles that for you.
-entry = Git.tree_entry_bypath(tree, "a/b/c.txt")
+entry = Git.tree_entry_bypath(tree, "README.md")
 ```
 
 #### Walking
@@ -458,4 +456,159 @@ entry = Git.tree_entry_bypath(tree, "a/b/c.txt")
 #
 #walk_data d = {0};
 #error = git_tree_walk(tree, GIT_TREEWALK_PRE, walk_cb, &d);
+```
+#### Treebuilder
+Since trees in git are immutable we need a mechanism to build them. This method in libgit2 is the treebuilder. Just like the tree object, the treebuilder object represents a single directory containing other objects.
+```Ruby
+bld = Git.treebuilder_new(repo)
+
+# Add some entries
+obj = Git.revparse_single(repo, "HEAD:README.md")
+Git.treebuilder_insert(bld,
+                       "README.md",        # filename
+                       Git.object_id(obj), # OID
+                       Git::FILEMODE_BLOB)  # mode
+
+obj = Git.revparse_single(repo, "v1.0.0:yargs.rb")
+Git.treebuilder_insert(bld,
+                       "d.c",
+                       Git.object_id(obj),
+                       Git::FILEMODE_BLOB)
+
+oid = Git.treebuilder_write(bld)
+puts "Wrote tree #{oid}"
+```
+
+### Commits
+#### Lookups
+
+```Ruby
+obj = Git.revparse_single(repo, "HEAD")
+commit = Git.commit_lookup(repo, Git.object_id(obj))
+puts "Commit: #{commit}"
+```
+
+#### Properties
+
+```Ruby
+puts "Commit id:  #{Git.commit_id(commit)}"
+puts "Commit message_encoding:  #{Git.commit_message_encoding(commit)}"
+puts "Commit message:  #{Git.commit_message(commit)}"
+puts "Commit summary:  #{Git.commit_summary(commit)}"
+puts "Commit time:  #{Git.commit_time(commit)}"
+puts "Commit time_offset:  #{Git.commit_time_offset(commit)}"
+puts "Commit committer:  #{Git.commit_committer(commit)}"
+puts "Commit author:  #{Git.commit_author(commit)}"
+puts "Commit raw_header:  \n#{Git.commit_raw_header(commit)}"
+puts "Commit tree_id:  #{Git.commit_tree_id(commit)}"
+```
+#### Parents
+```Ruby
+count = Git.commit_parentcount(commit)
+(0..(count - 1)).each do |i|
+  nth_parent_id = Git.commit_parent_id(commit, i)
+  nth_parent = Git.commit_parent(commit, i)
+  puts "Parent #{i}: #{nth_parent}"
+end
+
+nth_ancestor = Git.commit_nth_gen_ancestor(commit, 2)
+puts "2nd ancestory: #{nth_ancestor}"
+```
+
+#### Create
+my_signature = Git.signature_now("Me", "me@example.com")
+
+parents = [Git.revparse_single(repo, "HEAD")]
+
+oid = Git.commit_create(
+  repo,
+  "HEAD",                      # name of ref to update
+  my_signature,                          # author
+  my_signature,                          # committer
+  "UTF-8",                     # message encoding
+  "Flooberhaul the whatnots",  # message
+  tree,                        # root tree
+  parents)                     # parents
+puts "Created commit #{oid}"
+```
+
+### References
+#### Lookups (full name)
+ref = Git.reference_lookup(repo, "refs/heads/master")
+puts "refs/heads/master: #{ref}"
+#### Lookups (short name)
+
+```Ruby
+ref = Git.reference_dwim(repo, "HEAD") # "master" isn't working... TODO
+puts "HEAD^: #{ref}"
+```
+
+#### Lookups (resolved)
+Get the object pointed to by a symbolic reference (or a chain of them).
+
+```Ruby
+oid = Git.reference_name_to_id(repo, "HEAD")
+puts "HEAD: #{oid}"
+```
+
+#### Listing
+
+```Ruby
+reflist = Git.reference_list(repo)
+puts "Reflist: #{reflist}"
+puts "Reflist Strings: #{reflist.strings}"
+```
+
+#### Foreach (refs)
+(Not yet supported)
+```Ruby
+# typedef struct { /* … */ } ref_data;
+# 
+# int each_ref_cb(git_reference *ref, void *payload)
+# {
+#   ref_data *d = (ref_data*)payload;
+#   /* … */
+# }
+# 
+# ref_data d = {0};
+# int error = git_reference_foreach(repo, each_ref_cb, &d);
+```
+
+#### Foreach (names)
+(Not yet supported)
+```Ruby
+#typedef struct { /* … */ } ref_data;
+#
+#int each_name_cb(const char *name, void *payload)
+#{
+#  ref_data *d = (ref_data*)payload;
+#  /* … */
+#}
+#
+#ref_data d = {0};
+#int error = git_reference_foreach_name(repo, each_name_cb, &d);
+```
+#### Foreach (glob)
+(Not yet supported)
+```Ruby
+#typedef struct { /* … */ } ref_data;
+#
+#int each_name_cb(const char *name, void *payload)
+#{
+#  ref_data *d = (ref_data*)payload;
+#  /* … */
+#}
+#
+#ref_data d = {0};
+#int error = git_reference_foreach_glob(repo, "refs/remotes/*", each_name_cb, &d);
+
+#### Iterator (all)
+```Ruby
+iter = Git.reference_iterator_new(repo)
+
+# Git.reference_next() return nil after last element (any errors are raised)
+while ref = Git.reference_next(iter)
+  puts "Ref iteration: #{ref}"
+end
+puts "Done iterating"
 ```

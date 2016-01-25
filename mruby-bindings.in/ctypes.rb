@@ -175,7 +175,6 @@ end
   git_revwalk
   git_signature
   git_status_list
-  git_strarray
   git_submodule
   git_tag
   git_transaction
@@ -804,6 +803,32 @@ end
  ["oid", "git_tag_annotation_create"],
  ["oid", "git_tag_create_frombuffer"],
  ["oid", "git_tag_create_lightweight"],
+ ["out", "git_reference_name_to_id"],
  ["id", "git_treebuilder_write"]].each do |name, fn|
    CTypes.set_fn_param_type(fn, name, CTypes['out:git_oid *'])
+end
+
+# git_strarray out params
+# -----------------------
+
+CTypes.set_destructor("git_strarray", "git_strarray_free")
+CTypes.define("out:git_strarray *") do
+  self.type_name = "git_strarray"
+  self.recv_template = "git_strarray * %{value} = (git_strarray*)calloc(1, sizeof(git_strarray));"
+  self.get_args_template = ""
+  self.invocation_arg_template = "&%{value}"
+  self.boxing_fn.invocation_template = "mrb_value %{as} = %{box} == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, %{box});"
+  self.out_only = true
+end
+
+[["array", "git_reference_list"],
+ ["array", "git_remote_get_fetch_refspecs"], 
+ ["array", "git_remote_get_push_refspecs"],
+ ["out", "git_remote_list"], 
+ ["problems", "git_remote_rename"],
+ ["pathspecs", "git_reset_default"],
+ ["tgt", "git_strarray_copy"],
+ ["tag_names", "git_tag_list"],
+ ["tag_names", "git_tag_list_match"]].each do |name, fn|
+  CTypes.set_fn_param_type(fn, name, CTypes['out:git_strarray *'])
 end

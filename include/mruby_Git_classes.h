@@ -826,9 +826,9 @@
 
 #define BIND_Signature_TYPE TRUE
 #define BIND_Signature_INITIALIZE FALSE
-#define BIND_Signature_name_FIELD_READER FALSE
+#define BIND_Signature_name_FIELD_READER TRUE
 #define BIND_Signature_name_FIELD_WRITER FALSE
-#define BIND_Signature_email_FIELD_READER FALSE
+#define BIND_Signature_email_FIELD_READER TRUE
 #define BIND_Signature_email_FIELD_WRITER FALSE
 #define BIND_Signature_when_FIELD_READER FALSE
 #define BIND_Signature_when_FIELD_WRITER TRUE
@@ -871,7 +871,7 @@
 
 #define BIND_Strarray_TYPE TRUE
 #define BIND_Strarray_INITIALIZE FALSE
-#define BIND_Strarray_strings_FIELD_READER FALSE
+#define BIND_Strarray_strings_FIELD_READER TRUE
 #define BIND_Strarray_strings_FIELD_WRITER FALSE
 #define BIND_Strarray_count_FIELD_READER TRUE
 #define BIND_Strarray_count_FIELD_WRITER TRUE

@@ -3084,21 +3084,41 @@ mrb_Git_git_commit_committer(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING: git_commit_create */
 /* sha: fe94a9c093a320218fc69eef120660a557bf7a7d60be6044007692c7fdd4c527 */
 #if BIND_git_commit_create_FUNCTION
-#define git_commit_create_REQUIRED_ARGC 9
+#define git_commit_create_REQUIRED_ARGC 8
 #define git_commit_create_OPTIONAL_ARGC 0
 /* git_commit_create
  *
- * Parameters:
- * - repo: git_repository *
- * - update_ref: const char *
- * - author: const git_signature *
- * - committer: const git_signature *
- * - message_encoding: const char *
- * - message: const char *
- * - tree: const git_tree *
- * - parent_count: size_t
- * - parents: const git_commit *[]
- * Return Type: int
+ * @param id Pointer in which to store the OID of the newly created commit
+ *
+ * @param repo Repository where to store the commit
+ *
+ * @param update_ref If not NULL, name of the reference that
+ *	will be updated to point to this commit. If the reference
+ *	is not direct, it will be resolved to a direct reference.
+ *	Use "HEAD" to update the HEAD of the current branch and
+ *	make it point to this commit. If the reference doesn't
+ *	exist yet, it will be created. If it does exist, the first
+ *	parent must be the tip of this branch.
+ *
+ * @param author Signature with author and author time of commit
+ *
+ * @param committer Signature with committer and * commit time of commit
+ *
+ * @param message_encoding The encoding for the message in the
+ *  commit, represented with a standard encoding name.
+ *  E.g. "UTF-8". If NULL, no encoding header is written and
+ *  UTF-8 is assumed.
+ *
+ * @param message Full message for this commit
+ *
+ * @param tree An instance of a `git_tree` object that will
+ *  be used as the tree for the commit. This tree object must
+ *  also be owned by the given `repo`.
+ *
+ * @param parents Array of `parent_count` pointers to `git_commit`
+ *  objects that will be used as the parents for this commit. This
+ *  array may be NULL if `parent_count` is 0 (root commit). All the
+ *  given commits must be owned by the `repo`.
  */
 mrb_value
 mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
@@ -3113,10 +3133,19 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
   char * native_message = NULL;
   mrb_value tree;
   mrb_int native_parent_count;
-  mrb_value parents;
+  mrb_value * parents;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozoozzoio", &repo, &native_update_ref, &author, &committer, &native_message_encoding, &native_message, &tree, &native_parent_count, &parents);
+  mrb_get_args(mrb, "oz!ooz!zoa",
+    &repo,
+    &native_update_ref,
+    &author, 
+    &committer,
+    &native_message_encoding,
+    &native_message,
+    &tree,
+    &parents,
+    &native_parent_count);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -3135,7 +3164,16 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Tree expected");
     return mrb_nil_value();
   }
-  TODO_type_check_git_commit_PTR_[](parents);
+  
+  git_commit ** native_parents = (git_commit**)calloc(native_parent_count, sizeof(git_commit *));
+  for (int i = 0; i < native_parent_count; ++i) {
+    if (!mrb_obj_is_kind_of(mrb, parents[i], Commit_class(mrb))) {
+      mrb_raise(mrb, E_TYPE_ERROR, "Expected parents to be an array of Commits");
+      return mrb_nil_value();
+    } else {
+      native_parents[i] = mruby_unbox_git_commit(parents[i]);
+    }
+  }
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -3148,9 +3186,6 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
 
   /* Unbox param: tree */
   const git_tree * native_tree = (mrb_nil_p(tree) ? NULL : mruby_unbox_git_tree(tree));
-
-  /* Unbox param: parents */
-  const git_commit *[] native_parents = TODO_mruby_unbox_git_commit_PTR_[](parents);
 
   /* Invocation */
   int native_return_value = git_commit_create(native_id, native_repo, native_update_ref, native_author, native_committer, native_message_encoding, native_message, native_tree, native_parent_count, native_parents);
@@ -18761,14 +18796,13 @@ mrb_Git_git_reference_iterator_new(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_list */
-/* sha: 14234d1e8c47c88f5023ab10045eff51a3ddfc4240815bbb900da72bf516f691 */
+/* sha: daea7543ac0a3ababd9c45debe1e75f95c64d36fa530a979b3d88f810ba68394 */
 #if BIND_git_reference_list_FUNCTION
-#define git_reference_list_REQUIRED_ARGC 2
+#define git_reference_list_REQUIRED_ARGC 1
 #define git_reference_list_OPTIONAL_ARGC 0
 /* git_reference_list
  *
  * Parameters:
- * - array: git_strarray *
  * - repo: git_repository *
  * Return Type: int
  */
@@ -18776,24 +18810,17 @@ mrb_value
 mrb_Git_git_reference_list(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value array;
+  git_strarray * native_array = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value repo;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &array, &repo);
+  mrb_get_args(mrb, "o", &repo);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, array, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: array */
-  git_strarray * native_array = (mrb_nil_p(array) ? NULL : mruby_unbox_git_strarray(array));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -18801,9 +18828,12 @@ mrb_Git_git_reference_list(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_list(native_array, native_repo);
 
+  /* Box out param: array */
+  mrb_value array = native_array == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_array);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return array;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -18892,14 +18922,13 @@ mrb_Git_git_reference_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_name_to_id */
-/* sha: 742e8706f2b3112fd366d37da742a5e79b96cd77d7e9843dd5deb4f6ead7ae14 */
+/* sha: 4a9c767804fac13bbc835f44ff3829470d32e8e8dcbbbf9d85de08bbaf7e92fa */
 #if BIND_git_reference_name_to_id_FUNCTION
-#define git_reference_name_to_id_REQUIRED_ARGC 3
+#define git_reference_name_to_id_REQUIRED_ARGC 2
 #define git_reference_name_to_id_OPTIONAL_ARGC 0
 /* git_reference_name_to_id
  *
  * Parameters:
- * - out: git_oid *
  * - repo: git_repository *
  * - name: const char *
  * Return Type: int
@@ -18908,25 +18937,18 @@ mrb_value
 mrb_Git_git_reference_name_to_id(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value out;
+  git_oid * native_out = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &out, &repo, &native_name);
+  mrb_get_args(mrb, "oz", &repo, &native_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: out */
-  git_oid * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_oid(out));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -18934,9 +18956,12 @@ mrb_Git_git_reference_name_to_id(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_reference_name_to_id(native_out, native_repo, native_name);
 
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_out);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21251,14 +21276,13 @@ mrb_Git_git_remote_free(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_get_fetch_refspecs */
-/* sha: 00ac5ca88fd9e6ba6991b3a1019bff3bb23687461bb44f2cb6693100b7fd3175 */
+/* sha: 20f0fc6878ccd9ab36b4fb2452b12c5d5e1ca7843506830ac503a026554fc539 */
 #if BIND_git_remote_get_fetch_refspecs_FUNCTION
-#define git_remote_get_fetch_refspecs_REQUIRED_ARGC 2
+#define git_remote_get_fetch_refspecs_REQUIRED_ARGC 1
 #define git_remote_get_fetch_refspecs_OPTIONAL_ARGC 0
 /* git_remote_get_fetch_refspecs
  *
  * Parameters:
- * - array: git_strarray *
  * - remote: const git_remote *
  * Return Type: int
  */
@@ -21266,47 +21290,42 @@ mrb_value
 mrb_Git_git_remote_get_fetch_refspecs(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value array;
+  git_strarray * native_array = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value remote;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &array, &remote);
+  mrb_get_args(mrb, "o", &remote);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, array, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, remote, Remote_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Remote expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: array */
-  git_strarray * native_array = (mrb_nil_p(array) ? NULL : mruby_unbox_git_strarray(array));
-
   /* Unbox param: remote */
   const git_remote * native_remote = (mrb_nil_p(remote) ? NULL : mruby_unbox_git_remote(remote));
 
   /* Invocation */
-  int native_return_value = git_remote_get_fetch_refspecs(native_array, native_remote);
+  int native_return_value = git_remote_get_fetch_refspecs(&native_array, native_remote);
+
+  /* Box out param: array */
+  mrb_value array = native_array == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_array);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return array;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_get_push_refspecs */
-/* sha: 5229c84d9540bd53c14d0edde70952bfdf919c596e86e6b8be33ab56af3072b7 */
+/* sha: bc3d23c1c9bf66033611999406961ad6f4d2064ab6e2181cfd6eeb4c57fb52b9 */
 #if BIND_git_remote_get_push_refspecs_FUNCTION
-#define git_remote_get_push_refspecs_REQUIRED_ARGC 2
+#define git_remote_get_push_refspecs_REQUIRED_ARGC 1
 #define git_remote_get_push_refspecs_OPTIONAL_ARGC 0
 /* git_remote_get_push_refspecs
  *
  * Parameters:
- * - array: git_strarray *
  * - remote: const git_remote *
  * Return Type: int
  */
@@ -21314,34 +21333,30 @@ mrb_value
 mrb_Git_git_remote_get_push_refspecs(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value array;
+  git_strarray * native_array = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value remote;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &array, &remote);
+  mrb_get_args(mrb, "o", &remote);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, array, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, remote, Remote_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Remote expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: array */
-  git_strarray * native_array = (mrb_nil_p(array) ? NULL : mruby_unbox_git_strarray(array));
-
   /* Unbox param: remote */
   const git_remote * native_remote = (mrb_nil_p(remote) ? NULL : mruby_unbox_git_remote(remote));
 
   /* Invocation */
-  int native_return_value = git_remote_get_push_refspecs(native_array, native_remote);
+  int native_return_value = git_remote_get_push_refspecs(&native_array, native_remote);
+
+  /* Box out param: array */
+  mrb_value array = native_array == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_array);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return array;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21457,14 +21472,13 @@ mrb_Git_git_remote_is_valid_name(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_list */
-/* sha: a865ae8d916b22ff690685945c4ee36bb1134e8db97e78e0859c984ce2db3eab */
+/* sha: 157ffea11c56ed2b012bfcbee3cb0d37d1ae007c1a6d27290316f998bbb85d99 */
 #if BIND_git_remote_list_FUNCTION
-#define git_remote_list_REQUIRED_ARGC 2
+#define git_remote_list_REQUIRED_ARGC 1
 #define git_remote_list_OPTIONAL_ARGC 0
 /* git_remote_list
  *
  * Parameters:
- * - out: git_strarray *
  * - repo: git_repository *
  * Return Type: int
  */
@@ -21472,34 +21486,30 @@ mrb_value
 mrb_Git_git_remote_list(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value out;
+  git_strarray * native_out = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value repo;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &out, &repo);
+  mrb_get_args(mrb, "o", &repo);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: out */
-  git_strarray * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_strarray(out));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
   /* Invocation */
-  int native_return_value = git_remote_list(native_out, native_repo);
+  int native_return_value = git_remote_list(&native_out, native_repo);
+
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_out);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -21894,14 +21904,13 @@ mrb_Git_git_remote_refspec_count(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_remote_rename */
-/* sha: d6379fa13bd791ee673dc006234e1223aa60cc7be193f372e104b1d94d56307d */
+/* sha: 59a23ca0594370628cda1b0a1aa4c3848c92d0ef245c0e014f88f7ce96816510 */
 #if BIND_git_remote_rename_FUNCTION
-#define git_remote_rename_REQUIRED_ARGC 4
+#define git_remote_rename_REQUIRED_ARGC 3
 #define git_remote_rename_OPTIONAL_ARGC 0
 /* git_remote_rename
  *
  * Parameters:
- * - problems: git_strarray *
  * - repo: git_repository *
  * - name: const char *
  * - new_name: const char *
@@ -21911,36 +21920,32 @@ mrb_value
 mrb_Git_git_remote_rename(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value problems;
+  git_strarray * native_problems = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value repo;
   char * native_name = NULL;
   char * native_new_name = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozz", &problems, &repo, &native_name, &native_new_name);
+  mrb_get_args(mrb, "ozz", &repo, &native_name, &native_new_name);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, problems, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: problems */
-  git_strarray * native_problems = (mrb_nil_p(problems) ? NULL : mruby_unbox_git_strarray(problems));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
   /* Invocation */
-  int native_return_value = git_remote_rename(native_problems, native_repo, native_name, native_new_name);
+  int native_return_value = git_remote_rename(&native_problems, native_repo, native_name, native_new_name);
+
+  /* Box out param: problems */
+  mrb_value problems = native_problems == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_problems);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return problems;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -23943,16 +23948,15 @@ mrb_Git_git_reset(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reset_default */
-/* sha: 872cbbdeb1ca06963930c0980875c142c90a04c2fa2b457fd58c107fb667c87b */
+/* sha: d3f74e630377e1265b644d21e52fec1d2094cd07c5e7fec8d09d9ced760f6822 */
 #if BIND_git_reset_default_FUNCTION
-#define git_reset_default_REQUIRED_ARGC 3
+#define git_reset_default_REQUIRED_ARGC 2
 #define git_reset_default_OPTIONAL_ARGC 0
 /* git_reset_default
  *
  * Parameters:
  * - repo: git_repository *
  * - target: git_object *
- * - pathspecs: git_strarray *
  * Return Type: int
  */
 mrb_value
@@ -23961,10 +23965,10 @@ mrb_Git_git_reset_default(mrb_state* mrb, mrb_value self) {
 
   mrb_value repo;
   mrb_value target;
-  mrb_value pathspecs;
+  git_strarray * native_pathspecs = (git_strarray*)calloc(1, sizeof(git_strarray));
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooo", &repo, &target, &pathspecs);
+  mrb_get_args(mrb, "oo", &repo, &target);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -23975,10 +23979,6 @@ mrb_Git_git_reset_default(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Object expected");
     return mrb_nil_value();
   }
-  if (!mrb_obj_is_kind_of(mrb, pathspecs, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -23986,15 +23986,15 @@ mrb_Git_git_reset_default(mrb_state* mrb, mrb_value self) {
   /* Unbox param: target */
   git_object * native_target = (mrb_nil_p(target) ? NULL : mruby_unbox_git_object(target));
 
-  /* Unbox param: pathspecs */
-  git_strarray * native_pathspecs = (mrb_nil_p(pathspecs) ? NULL : mruby_unbox_git_strarray(pathspecs));
-
   /* Invocation */
-  int native_return_value = git_reset_default(native_repo, native_target, native_pathspecs);
+  int native_return_value = git_reset_default(native_repo, native_target, &native_pathspecs);
+
+  /* Box out param: pathspecs */
+  mrb_value pathspecs = native_pathspecs == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_pathspecs);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return pathspecs;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -25980,14 +25980,13 @@ mrb_Git_git_status_should_ignore(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_strarray_copy */
-/* sha: bde79890c3ec49d6b56f7653f413ffa30555c385580292ab3b3db5ef7fa982a0 */
+/* sha: b8d3fc0a143c6a789d3a09357cd32c7480606f0f473ecbbfe50018f8402553bd */
 #if BIND_git_strarray_copy_FUNCTION
-#define git_strarray_copy_REQUIRED_ARGC 2
+#define git_strarray_copy_REQUIRED_ARGC 1
 #define git_strarray_copy_OPTIONAL_ARGC 0
 /* git_strarray_copy
  *
  * Parameters:
- * - tgt: git_strarray *
  * - src: const git_strarray *
  * Return Type: int
  */
@@ -25995,34 +25994,30 @@ mrb_value
 mrb_Git_git_strarray_copy(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value tgt;
+  git_strarray * native_tgt = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value src;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &tgt, &src);
+  mrb_get_args(mrb, "o", &src);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, tgt, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, src, Strarray_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: tgt */
-  git_strarray * native_tgt = (mrb_nil_p(tgt) ? NULL : mruby_unbox_git_strarray(tgt));
-
   /* Unbox param: src */
   const git_strarray * native_src = (mrb_nil_p(src) ? NULL : mruby_unbox_git_strarray(src));
 
   /* Invocation */
-  int native_return_value = git_strarray_copy(native_tgt, native_src);
+  int native_return_value = git_strarray_copy(&native_tgt, native_src);
+
+  /* Box out param: tgt */
+  mrb_value tgt = native_tgt == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_tgt);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return tgt;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -27790,14 +27785,13 @@ mrb_Git_git_tag_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_list */
-/* sha: 77c2ba20d888912596a766dca7c8ea641cf370a2cca975e8527c6943ebb0c7ff */
+/* sha: 5b75198b57b6e9a023aabadb001cbe7c345959f2a09063950f03e3215e728fd2 */
 #if BIND_git_tag_list_FUNCTION
-#define git_tag_list_REQUIRED_ARGC 2
+#define git_tag_list_REQUIRED_ARGC 1
 #define git_tag_list_OPTIONAL_ARGC 0
 /* git_tag_list
  *
  * Parameters:
- * - tag_names: git_strarray *
  * - repo: git_repository *
  * Return Type: int
  */
@@ -27805,47 +27799,42 @@ mrb_value
 mrb_Git_git_tag_list(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value tag_names;
+  git_strarray * native_tag_names = (git_strarray*)calloc(1, sizeof(git_strarray));
   mrb_value repo;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &tag_names, &repo);
+  mrb_get_args(mrb, "o", &repo);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, tag_names, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: tag_names */
-  git_strarray * native_tag_names = (mrb_nil_p(tag_names) ? NULL : mruby_unbox_git_strarray(tag_names));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
   /* Invocation */
-  int native_return_value = git_tag_list(native_tag_names, native_repo);
+  int native_return_value = git_tag_list(&native_tag_names, native_repo);
+
+  /* Box out param: tag_names */
+  mrb_value tag_names = native_tag_names == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_tag_names);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return tag_names;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_list_match */
-/* sha: 32cf32d1c3cf3c1a0b73cf6bc2e3699265fb3557df19bb792d288f2c304e10d0 */
+/* sha: b10512e2ab493698b65759840948f963904a6dff01413b766f0cb10b11168fa4 */
 #if BIND_git_tag_list_match_FUNCTION
-#define git_tag_list_match_REQUIRED_ARGC 3
+#define git_tag_list_match_REQUIRED_ARGC 2
 #define git_tag_list_match_OPTIONAL_ARGC 0
 /* git_tag_list_match
  *
  * Parameters:
- * - tag_names: git_strarray *
  * - pattern: const char *
  * - repo: git_repository *
  * Return Type: int
@@ -27854,35 +27843,31 @@ mrb_value
 mrb_Git_git_tag_list_match(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value tag_names;
+  git_strarray * native_tag_names = (git_strarray*)calloc(1, sizeof(git_strarray));
   char * native_pattern = NULL;
   mrb_value repo;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozo", &tag_names, &native_pattern, &repo);
+  mrb_get_args(mrb, "zo", &native_pattern, &repo);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, tag_names, Strarray_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Strarray expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
 
-  /* Unbox param: tag_names */
-  git_strarray * native_tag_names = (mrb_nil_p(tag_names) ? NULL : mruby_unbox_git_strarray(tag_names));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
   /* Invocation */
-  int native_return_value = git_tag_list_match(native_tag_names, native_pattern, native_repo);
+  int native_return_value = git_tag_list_match(&native_tag_names, native_pattern, native_repo);
+
+  /* Box out param: tag_names */
+  mrb_value tag_names = native_tag_names == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, native_tag_names);
 
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return tag_names;
 }
 #endif
 /* MRUBY_BINDING_END */

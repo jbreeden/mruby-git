@@ -40,9 +40,11 @@ mrb_value
 mrb_Git_Strarray_get_strings(mrb_state* mrb, mrb_value self) {
   git_strarray * native_self = mruby_unbox_git_strarray(self);
 
+  mrb_value strings = mrb_ary_new(mrb);
   char ** native_strings = native_self->strings;
-
-  mrb_value strings = TODO_mruby_box_char_PTR_PTR(mrb, native_strings);
+  for (int i = 0; i < native_self->count; ++i) {
+    mrb_ary_push(mrb, strings, mrb_str_new_cstr(mrb, native_strings[i]));
+  }
 
   return strings;
 }

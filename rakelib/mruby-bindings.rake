@@ -30,7 +30,7 @@ namespace :bindings do
       binding.pry
     end
   end
-
+  
   desc 'Generate bindings'
   task :generate do
     cmd = ['mrbind generate']

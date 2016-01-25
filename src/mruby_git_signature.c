@@ -42,7 +42,7 @@ mrb_Git_Signature_get_name(mrb_state* mrb, mrb_value self) {
 
   char * native_name = native_self->name;
 
-  mrb_value name = TODO_mruby_box_char_PTR(mrb, native_name);
+  mrb_value name = mrb_str_new_cstr(mrb, native_name);
 
   return name;
 }
@@ -92,7 +92,7 @@ mrb_Git_Signature_get_email(mrb_state* mrb, mrb_value self) {
 
   char * native_email = native_self->email;
 
-  mrb_value email = TODO_mruby_box_char_PTR(mrb, native_email);
+  mrb_value email = mrb_str_new_cstr(mrb, native_email);
 
   return email;
 }

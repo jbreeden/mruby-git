@@ -66,7 +66,7 @@
 #define BIND_git_commit_author_FUNCTION TRUE
 #define BIND_git_commit_body_FUNCTION TRUE
 #define BIND_git_commit_committer_FUNCTION TRUE
-#define BIND_git_commit_create_FUNCTION FALSE
+#define BIND_git_commit_create_FUNCTION TRUE
 #define BIND_git_commit_create_v_FUNCTION TRUE
 #define BIND_git_commit_free_FUNCTION TRUE
 #define BIND_git_commit_header_field_FUNCTION TRUE

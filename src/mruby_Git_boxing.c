@@ -600,6 +600,8 @@ static void free_git_buf(mrb_state* mrb, void* ptr) {
   if (box->belongs_to_ruby) {
     if (box->obj != NULL) {
       git_buf_free(box->obj);
+      /* git_buf_gree does not free the object, only its contents */
+      free(box->obj);
       box->obj = NULL;
     }
   }
@@ -4260,6 +4262,8 @@ static void free_git_oidarray(mrb_state* mrb, void* ptr) {
   if (box->belongs_to_ruby) {
     if (box->obj != NULL) {
       git_oidarray_free(box->obj);
+      /* git_oidarray_free does not free the object, only the contents */
+      free(box->obj);
       box->obj = NULL;
     }
   }
@@ -6151,6 +6155,8 @@ static void free_git_strarray(mrb_state* mrb, void* ptr) {
   if (box->belongs_to_ruby) {
     if (box->obj != NULL) {
       git_strarray_free(box->obj);
+      /* git_strarray_free doesn't free the object, only its contents */
+      free(box->obj);
       box->obj = NULL;
     }
   }
