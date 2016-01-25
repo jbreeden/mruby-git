@@ -37,7 +37,7 @@ void mrb_Git_Commit_init(mrb_state* mrb) {
 
 /* MRUBY_BINDING: Commit::class_definition */
 /* sha: 862e126147c7b0da857a2500a0c0605ed2018a5ba5462e1965b470aa4327c0ff */
-  struct RClass* Commit_class = mrb_define_class_under(mrb, Git_module(mrb), "Commit", mrb->object_class);
+  struct RClass* Commit_class = mrb_define_class_under(mrb, Git_module(mrb), "Commit", Object_class(mrb));
   MRB_SET_INSTANCE_TT(Commit_class, MRB_TT_DATA);
 /* MRUBY_BINDING_END */
 

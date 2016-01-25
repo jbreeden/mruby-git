@@ -37,7 +37,7 @@ void mrb_Git_Blob_init(mrb_state* mrb) {
 
 /* MRUBY_BINDING: Blob::class_definition */
 /* sha: b35bc6a3ea7d40f81b2c0ee35b582d4a50058685bd670da202bc606f85e83dd6 */
-  struct RClass* Blob_class = mrb_define_class_under(mrb, Git_module(mrb), "Blob", mrb->object_class);
+  struct RClass* Blob_class = mrb_define_class_under(mrb, Git_module(mrb), "Blob", Object_class(mrb));
   MRB_SET_INSTANCE_TT(Blob_class, MRB_TT_DATA);
 /* MRUBY_BINDING_END */
 

@@ -31,7 +31,7 @@
 #define BIND_git_blob_lookup_FUNCTION TRUE
 #define BIND_git_blob_lookup_prefix_FUNCTION TRUE
 #define BIND_git_blob_owner_FUNCTION TRUE
-#define BIND_git_blob_rawcontent_FUNCTION FALSE
+#define BIND_git_blob_rawcontent_FUNCTION TRUE
 #define BIND_git_blob_rawsize_FUNCTION TRUE
 #define BIND_git_branch_create_FUNCTION TRUE
 #define BIND_git_branch_create_from_annotated_FUNCTION TRUE

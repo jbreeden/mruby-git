@@ -37,7 +37,7 @@ void mrb_Git_Tree_init(mrb_state* mrb) {
 
 /* MRUBY_BINDING: Tree::class_definition */
 /* sha: e4e30deb472c9375a31f37eac38a218850d10095dbb2e665d1d402b9b00b9651 */
-  struct RClass* Tree_class = mrb_define_class_under(mrb, Git_module(mrb), "Tree", mrb->object_class);
+  struct RClass* Tree_class = mrb_define_class_under(mrb, Git_module(mrb), "Tree", Object_class(mrb));
   MRB_SET_INSTANCE_TT(Tree_class, MRB_TT_DATA);
 /* MRUBY_BINDING_END */
 

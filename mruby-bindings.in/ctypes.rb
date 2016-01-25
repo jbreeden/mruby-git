@@ -776,3 +776,33 @@ git_refdb_compress
   CTypes.set_fn_footer(fn, "RAISE_GIT_ERROR();")
   CTypes.set_fn_return_type(fn, CTypes['ignore'])
 end
+
+# Creation Methods & OIDs
+# -----------------------
+
+# creators = lib['FunctionDecls'].select { |p| p['name'].include?('create') }.map { |f| f['name'] } 
+# lib['ParmDecls'].select { |p| creators.include?(p['function'][/[a-z0-9_*]*$/i]) }.select { |p| p['type']['type_name'] == 'git_oid *' }.map { |p| [p['name'], p['function']] }
+
+CTypes.define('out:git_oid *') do
+  self.out_only = true
+  self.type_name = "git_oid"
+  self.recv_template = <<-EOS
+git_oid * %{value} = (git_oid*)calloc(1, sizeof(git_oid));
+EOS
+  self.invocation_arg_template = "%{value}"
+  self.boxing_fn.invocation_template = "mrb_value %{as} = %{box} == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, %{box});"
+end
+
+[["id", "git_blob_create_fromworkdir"],
+ ["id", "git_blob_create_fromdisk"],
+ ["id", "git_blob_create_fromchunks"],
+ ["id", "git_blob_create_frombuffer"],
+ ["id", "git_commit_create"],
+ ["id", "git_commit_create_v"],
+ ["out", "git_note_create"],
+ ["oid", "git_tag_create"],
+ ["oid", "git_tag_annotation_create"],
+ ["oid", "git_tag_create_frombuffer"],
+ ["oid", "git_tag_create_lightweight"]].each do |name, fn|
+   CTypes.set_fn_param_type(fn, name, CTypes['out:git_oid *'])
+end

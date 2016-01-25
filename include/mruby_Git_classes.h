@@ -461,11 +461,6 @@
 #define BIND_DiffStats_INITIALIZE FALSE
 
 #define BIND_Error_TYPE TRUE
-#define BIND_Error_INITIALIZE FALSE
-#define BIND_Error_message_FIELD_READER TRUE
-#define BIND_Error_message_FIELD_WRITER FALSE
-#define BIND_Error_klass_FIELD_READER TRUE
-#define BIND_Error_klass_FIELD_WRITER TRUE
 
 #define BIND_FetchOptions_TYPE TRUE
 #define BIND_FetchOptions_INITIALIZE TRUE

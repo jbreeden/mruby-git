@@ -318,104 +318,147 @@ rescue Git::Error => ex
   raise
 end
 # ```
+# ### Object Hierarchy
+# Git::Object acts like a "base class" for all of these types.
+# You can use `Git.object_lookup` to get an object regardless of type.
+# 
+# ```Ruby
+begin
+  oid = Git.oid_fromstr("a17678a74a41b8a649da1c1782fd63650be4b326")
+  commit = Git.object_lookup(repo, oid)
+  puts "Object lookup for commit returned a #{commit.class}" # => Git::Commit
+rescue Git::Error => ex
+  puts "Error looking up commit: #{ex.message}"
+  raise
+end
+
+begin
+  oid = Git.oid_fromstr("186fcd23ca6dc239b2d4e3c56981a76c6ad0c0bf")
+  tree = Git.object_lookup(repo, oid)
+  puts "Object lookup for tree returned a #{tree.class}" # => Git::Tree
+rescue Git::Error => ex
+  puts "Error looking up tree: #{ex.message}"
+  raise
+end
+
+begin
+  oid = Git.oid_fromstr("c815940f2e68aedd6870a5cc79f626f78385041f")
+  blob = Git.object_lookup(repo, oid)
+  puts "Object lookup for blob returned a #{blob.class}" # => Git::Blob
+rescue Git::Error => ex
+  puts "Error looking up blob: #{ex.message}"
+  raise
+end
+
+begin
+  oid = Git.oid_fromstr("e48f03632fea10a1af70889b39d27dd71c91eee8")
+  tag = Git.object_lookup(repo, oid)
+  puts "Object lookup for tag returned a #{tag.class}" # => Git::Tag
+rescue Git::Error => ex
+  puts "Error looking up tag: #{ex.message}"
+  raise
+end
+# ```
+#
+# ### Blobs
+# #### Content
+#
+# ```Ruby
+blob = Git.object_lookup(repo, Git.oid_fromstr("c815940f2e68aedd6870a5cc79f626f78385041f"))
+rawsize = Git::blob_rawsize(blob)
+rawcontent = Git::blob_rawcontent(blob)
+puts "Raw content of blob: \n#{rawcontent}"
+
+filtered_content = Git.blob_filtered_content(
+  blob,                # blob
+  "yargs.rb",          # path (for attribute-based filtering)
+  true)                # check if binary?
+puts "Filtered content of blob: \n#{filtered_content}"
+# ```
+#
+# #### Create
+# 
+# ```
+
+oid = Git.blob_create_fromworkdir(repo, "README.md")
+puts oid # => f561043483649a283f67d02ff99d403fa86cdb88
+
+oid = Git.blob_create_fromdisk(repo, "/etc/hosts")
+puts oid #=> e30a9d040bada9de35ddda5f8a5f6427be7b387f
+
+str = "# Hello there!"
+oid = Git.blob_create_frombuffer(repo, str)
+puts oid # => fad4d167a9db3d88ae591b2b4aad3bd7e3e9fe94
+# ```
+#
+# ### Trees
+# A tree object in libgit2 is more like a directory. It can represent a directory tree by containing references to other trees.
+# 
+# #### Lookups
+# Each commit has a tree, you can look them up by OID:
+#
+# ```Ruby
+oid = Git.oid_fromstr("a17678a74a41b8a649da1c1782fd63650be4b326")
+commit = Git.commit_lookup(repo, oid)
+tree = Git.commit_tree(commit)
+puts "Tree: #{tree}"
+# ```
+#
+# You can look them up by OID
+#
+# Trees can contain trees:
+# ```Ruby
+entry = Git.tree_entry_byindex(tree, 0)
+if Git.tree_entry_type(entry) == Git::OBJ_TREE
+  subtree = Git.tree_lookup(repo, Git.tree_entry_id(entry))
+end
+# ```
+# #### Tree Entries
+tree = Git.revparse_single(repo, "HEAD^{tree}")
+puts "Tree: #{tree}"
+
+count = Git.tree_entrycount(tree)
+puts "Count: #{count}"
+
+entry = Git.tree_entry_byindex(tree, 0)
+puts "Entry: #{entry}"
+
+name = Git.tree_entry_name(entry) # filename
+puts "Name: #{name}"
+
+objtype = Git.tree_entry_type(entry) # blob or tree
+puts "Object type: #{objtype}"
+
+mode = Git.tree_entry_filemode(entry) # *NIX filemode
+puts "Mode: #{mode}"
+
+## In C, you have to be careful to free this one,
+## unlike the results from most lookups. mruby-git
+## handles that for you.
+entry = Git.tree_entry_bypath(tree, "a/b/c.txt")
+# ```
+#
+# #### Walking
+# (Not yet supported)
+# ```RUBY
+##typedef struct { /* … */ } walk_data;
+##
+##int walk_cb(const char *root,
+##            const git_tree_entry *entry,
+##            void *payload)
+##{
+##  walk_data *d = (walk_data*)payload;
+##  /* … */
+##}
+##
+##git_object *obj = NULL;
+##int error = git_revparse_single(&obj, repo, "HEAD^{tree}");
+##git_tree *tree = (git_tree *)obj;
+##
+##walk_data d = {0};
+##error = git_tree_walk(tree, GIT_TREEWALK_PRE, walk_cb, &d);
+# ```
 __END__
-Casting
-git_object acts like a "base class" for all of these types.
-
-git_object *obj;
-int error = git_object_lookup(&obj, repo, &oid, GIT_OBJ_ANY);
-if (git_object_type(obj) == GIT_OBJ_COMMIT) {
-  /* This is relatively safe */
-  git_commit *commit = (git_commit*)obj;
-}
-/* etc. */
-(git_object_lookup, git_object_type, git_otype)
-
-Blobs
-Lookups
-git_blob *blob = NULL;
-int error = git_blob_lookup(&blob, repo, &oid);
-( git_blob_lookup )
-
-Content
-git_off_t rawsize = git_blob_rawsize(blob);
-const void *rawcontent = git_blob_rawcontent(blob);
-
-git_buf filtered_content = GIT_BUF_INIT;
-int error = git_blob_filtered_content(
-  &filtered_content,    /* output buffer */
-  blob,                 /* blob */
-  "README.md",          /* path (for attribute-based filtering) */
-  true);                /* check if binary? */
-git_buf_free(&filtered_content);
-( git_blob_rawsize, git_blob_rawcontent, git_blob_filtered_content )
-
-Create
-git_oid oid = 0;
-int error = git_blob_create_fromworkdir(&oid, repo, "README.md");
-error = git_blob_create_fromdisk(&oid, repo, "/etc/hosts");
-
-const char str[] = "# Hello there!";
-error = git_blob_create_frombuffer(&oid, repo, str, strlen(str));
-( git_blob_create_fromworkdir, git_blob_create_fromdisk, git_blob_create_frombuffer )
-
-Trees
-A tree object in libgit2 is more like a directory. It can represent a directory tree by containing references to other trees.
-
-Lookups
-Each commit has a tree:
-
-git_tree *tree = NULL;
-int error = git_commit_tree(&tree, commit);
-You can look them up by OID:
-
-git_tree *tree = NULL;
-int error = git_tree_lookup(&tree, repo, &oid);
-Trees can contain trees:
-
-const git_tree_entry *entry = git_tree_entry_byindex(tree, 0);
-if (git_tree_entry_type(entry) == GIT_OBJ_TREE) {
-  git_tree *subtree = NULL;
-  int error = git_tree_lookup(&subtree, repo, git_tree_entry_id(entry));
-}
-(git_commit_tree, git_tree_lookup, git_tree_entry_byindex, git_tree_entry_type)
-
-Tree Entries
-git_object *obj = NULL;
-int error = git_revparse_single(&obj, repo, "HEAD^{tree}");
-git_tree *tree = (git_tree *)obj;
-
-size_t count = git_tree_entrycount(tree);
-git_tree_entry *entry = git_tree_entry_byindex(tree, 0);
-
-const char *name = git_tree_entry_name(entry); /* filename */
-git_otype objtype = git_tree_entry_type(entry); /* blob or tree */
-git_filemode_t mode = git_tree_entry_filemode(entry); /* *NIX filemode */
-
-git_tree_entry *entry2 = NULL;
-error = git_tree_entry_bypath(&entry2, tree, "a/b/c.txt");
-git_tree_entry_free(entry2); /* caller has to free this one */
-(git_revparse_single, git_tree_entrycount, git_tree_entry_byindex, git_tree_entry_name, git_tree_entry_type, git_tree_entry_filemode, git_tree_entry_bypath, git_tree_entry_free)
-
-Walking
-typedef struct { /* … */ } walk_data;
-
-int walk_cb(const char *root,
-            const git_tree_entry *entry,
-            void *payload)
-{
-  walk_data *d = (walk_data*)payload;
-  /* … */
-}
-
-git_object *obj = NULL;
-int error = git_revparse_single(&obj, repo, "HEAD^{tree}");
-git_tree *tree = (git_tree *)obj;
-
-walk_data d = {0};
-error = git_tree_walk(tree, GIT_TREEWALK_PRE, walk_cb, &d);
-(git_revparse_single, git_tree_walk, git_treewalk_mode, git_treewalk_cb)
-
 Treebuilder
 Since trees in git are immutable we need a mechanism to build them. This method in libgit2 is the treebuilder. Just like the tree object, the treebuilder object represents a single directory containing other objects.
 

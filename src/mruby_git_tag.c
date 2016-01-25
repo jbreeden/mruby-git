@@ -37,7 +37,7 @@ void mrb_Git_Tag_init(mrb_state* mrb) {
 
 /* MRUBY_BINDING: Tag::class_definition */
 /* sha: 0272b3f9d3131c798597925f8e0667e9ed1cacb5ac61bcc95457188335d75ab3 */
-  struct RClass* Tag_class = mrb_define_class_under(mrb, Git_module(mrb), "Tag", mrb->object_class);
+  struct RClass* Tag_class = mrb_define_class_under(mrb, Git_module(mrb), "Tag", Object_class(mrb));
   MRB_SET_INSTANCE_TT(Tag_class, MRB_TT_DATA);
 /* MRUBY_BINDING_END */
 

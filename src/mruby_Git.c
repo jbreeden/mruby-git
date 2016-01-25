@@ -3,6 +3,29 @@
 /* MRUBY_BINDING: header */
 /* sha: user_defined */
 
+mrb_value
+mruby_git_giftwrap_object_virtual(mrb_state * mrb, git_object * native_object) {
+  mrb_value object = mrb_nil_value();
+  if (native_object == NULL) {
+    return object;
+  }
+  switch (git_object_type(native_object)) {
+  case GIT_OBJ_COMMIT:
+    object = mruby_giftwrap_git_commit(mrb, (git_commit*)native_object);
+    break;
+  case GIT_OBJ_TAG:
+    object = mruby_giftwrap_git_tag(mrb, (git_tag*)native_object);
+    break;
+  case GIT_OBJ_BLOB:
+    object = mruby_giftwrap_git_blob(mrb, (git_blob*)native_object);
+    break;
+  case GIT_OBJ_TREE:
+    object = mruby_giftwrap_git_tree(mrb, (git_tree*)native_object);
+    break;
+  }
+  return object;
+}
+
 static mrb_value
 mruby_git_last_error(mrb_state * mrb) {
   const git_error * last_err = giterr_last();
@@ -964,14 +987,13 @@ mrb_Git_git_blame_init_options(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_frombuffer */
-/* sha: af76937d798ff33a96a10bfd55d7e844ca4f32e1d96b8c3f8c4d36b4aa45cff5 */
+/* sha: d97e9e563efd2ff22c7dbd32d70024584cf2dd38e873afd7b03afcebc9b11788 */
 #if BIND_git_blob_create_frombuffer_FUNCTION
-#define git_blob_create_frombuffer_REQUIRED_ARGC 3
+#define git_blob_create_frombuffer_REQUIRED_ARGC 2
 #define git_blob_create_frombuffer_OPTIONAL_ARGC 0
 /* git_blob_create_frombuffer
  *
  * Parameters:
- * - id: git_oid *
  * - repo: git_repository *
  * - buffer: const void *
  * Return Type: int
@@ -980,25 +1002,18 @@ mrb_value
 mrb_Git_git_blob_create_frombuffer(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   mrb_value native_buffer;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooS", &id, &repo, &native_buffer);
+  mrb_get_args(mrb, "oS", &repo, &native_buffer);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -1006,22 +1021,24 @@ mrb_Git_git_blob_create_frombuffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_frombuffer(native_id, native_repo, RSTRING_PTR(native_buffer), RSTRING_LEN(native_buffer));
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_fromchunks */
-/* sha: 8ad045d7b4ad72fbab220f823f07e81154daa5d693ea07d2c10f9bc4704dda1a */
+/* sha: e03dd44ea11a369b6e29341c9965c15c1a4595f0ce2d5ca29994d2d190f69425 */
 #if BIND_git_blob_create_fromchunks_FUNCTION
-#define git_blob_create_fromchunks_REQUIRED_ARGC 5
+#define git_blob_create_fromchunks_REQUIRED_ARGC 4
 #define git_blob_create_fromchunks_OPTIONAL_ARGC 0
 /* git_blob_create_fromchunks
  *
  * Parameters:
- * - id: git_oid *
  * - repo: git_repository *
  * - hintpath: const char *
  * - callback: git_blob_chunk_cb
@@ -1032,29 +1049,22 @@ mrb_value
 mrb_Git_git_blob_create_fromchunks(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_hintpath = NULL;
   mrb_value callback;
   mrb_value payload;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozoo", &id, &repo, &native_hintpath, &callback, &payload);
+  mrb_get_args(mrb, "ozoo", &repo, &native_hintpath, &callback, &payload);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
   TODO_type_check_git_blob_chunk_cb(callback);
   TODO_type_check_void_PTR(payload);
-
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -1068,22 +1078,24 @@ mrb_Git_git_blob_create_fromchunks(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_fromchunks(native_id, native_repo, native_hintpath, native_callback, native_payload);
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_fromdisk */
-/* sha: 769a29bbdaf65a9fe59fd5fe38e1ad893055d71f21651aebfd1d9c3fd1c195b7 */
+/* sha: e0a7b51d4833d05c85e5b9fc701087b3715d11019b33e5e01588e66b371c0b62 */
 #if BIND_git_blob_create_fromdisk_FUNCTION
-#define git_blob_create_fromdisk_REQUIRED_ARGC 3
+#define git_blob_create_fromdisk_REQUIRED_ARGC 2
 #define git_blob_create_fromdisk_OPTIONAL_ARGC 0
 /* git_blob_create_fromdisk
  *
  * Parameters:
- * - id: git_oid *
  * - repo: git_repository *
  * - path: const char *
  * Return Type: int
@@ -1092,25 +1104,18 @@ mrb_value
 mrb_Git_git_blob_create_fromdisk(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_path = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &id, &repo, &native_path);
+  mrb_get_args(mrb, "oz", &repo, &native_path);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -1118,22 +1123,24 @@ mrb_Git_git_blob_create_fromdisk(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_fromdisk(native_id, native_repo, native_path);
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_blob_create_fromworkdir */
-/* sha: e6a983781642776c062f660471f9ce4a7f17d07c0db7a71274162f6336de9519 */
+/* sha: d9a1270d179c90e0c595656e3499b98e34e31fff3b13c3679d8c94810b602aae */
 #if BIND_git_blob_create_fromworkdir_FUNCTION
-#define git_blob_create_fromworkdir_REQUIRED_ARGC 3
+#define git_blob_create_fromworkdir_REQUIRED_ARGC 2
 #define git_blob_create_fromworkdir_OPTIONAL_ARGC 0
 /* git_blob_create_fromworkdir
  *
  * Parameters:
- * - id: git_oid *
  * - repo: git_repository *
  * - relative_path: const char *
  * Return Type: int
@@ -1142,25 +1149,18 @@ mrb_value
 mrb_Git_git_blob_create_fromworkdir(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_relative_path = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooz", &id, &repo, &native_relative_path);
+  mrb_get_args(mrb, "oz", &repo, &native_relative_path);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -1168,9 +1168,12 @@ mrb_Git_git_blob_create_fromworkdir(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_blob_create_fromworkdir(native_id, native_repo, native_relative_path);
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -1195,10 +1198,10 @@ mrb_Git_git_blob_filtered_content(mrb_state* mrb, mrb_value self) {
   git_buf * native_out = (git_buf*)calloc(1, sizeof(git_buf));
   mrb_value blob;
   char * native_as_path = NULL;
-  mrb_int native_check_for_binary_data;
+  mrb_bool native_check_for_binary_data;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozi", &blob, &native_as_path, &native_check_for_binary_data);
+  mrb_get_args(mrb, "ozb", &blob, &native_as_path, &native_check_for_binary_data);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, blob, Blob_class(mrb))) {
@@ -1508,7 +1511,7 @@ mrb_Git_git_blob_rawcontent(mrb_state* mrb, mrb_value self) {
   const void * native_return_value = git_blob_rawcontent(native_blob);
 
   /* Box the return value */
-  mrb_value return_value = TODO_mruby_box_void_PTR(mrb, native_return_value);
+  mrb_value return_value = mrb_str_new(mrb, native_return_value, git_blob_rawsize(native_blob));
   
   return return_value;
 }
@@ -3079,14 +3082,13 @@ mrb_Git_git_commit_committer(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_create */
-/* sha: f5ce7538a381ca200a041384b169ea1d50f0630f29b51d2b5e8eeee6cdd2c3a9 */
+/* sha: fe94a9c093a320218fc69eef120660a557bf7a7d60be6044007692c7fdd4c527 */
 #if BIND_git_commit_create_FUNCTION
-#define git_commit_create_REQUIRED_ARGC 10
+#define git_commit_create_REQUIRED_ARGC 9
 #define git_commit_create_OPTIONAL_ARGC 0
 /* git_commit_create
  *
  * Parameters:
- * - id: git_oid *
  * - repo: git_repository *
  * - update_ref: const char *
  * - author: const git_signature *
@@ -3102,7 +3104,7 @@ mrb_value
 mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_update_ref = NULL;
   mrb_value author;
@@ -3114,13 +3116,9 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
   mrb_value parents;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozoozzoio", &id, &repo, &native_update_ref, &author, &committer, &native_message_encoding, &native_message, &tree, &native_parent_count, &parents);
+  mrb_get_args(mrb, "ozoozzoio", &repo, &native_update_ref, &author, &committer, &native_message_encoding, &native_message, &tree, &native_parent_count, &parents);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -3138,9 +3136,6 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
     return mrb_nil_value();
   }
   TODO_type_check_git_commit_PTR_[](parents);
-
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -3160,22 +3155,24 @@ mrb_Git_git_commit_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_create(native_id, native_repo, native_update_ref, native_author, native_committer, native_message_encoding, native_message, native_tree, native_parent_count, native_parents);
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_commit_create_v */
-/* sha: 3110840df9d83f1ea4dd378fa41c773790944709dbd82afacef9001c71a3b41a */
+/* sha: 03cf5357c106c125569f18b641a9f9855a3901440338b408e8509c8b4bd9b43a */
 #if BIND_git_commit_create_v_FUNCTION
-#define git_commit_create_v_REQUIRED_ARGC 9
+#define git_commit_create_v_REQUIRED_ARGC 8
 #define git_commit_create_v_OPTIONAL_ARGC 0
 /* git_commit_create_v
  *
  * Parameters:
- * - id: git_oid *
  * - repo: git_repository *
  * - update_ref: const char *
  * - author: const git_signature *
@@ -3190,7 +3187,7 @@ mrb_value
 mrb_Git_git_commit_create_v(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_update_ref = NULL;
   mrb_value author;
@@ -3201,13 +3198,9 @@ mrb_Git_git_commit_create_v(mrb_state* mrb, mrb_value self) {
   mrb_int native_parent_count;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozoozzoi", &id, &repo, &native_update_ref, &author, &committer, &native_message_encoding, &native_message, &tree, &native_parent_count);
+  mrb_get_args(mrb, "ozoozzoi", &repo, &native_update_ref, &author, &committer, &native_message_encoding, &native_message, &tree, &native_parent_count);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -3225,9 +3218,6 @@ mrb_Git_git_commit_create_v(mrb_state* mrb, mrb_value self) {
     return mrb_nil_value();
   }
 
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
@@ -3243,9 +3233,12 @@ mrb_Git_git_commit_create_v(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_commit_create_v(native_id, native_repo, native_update_ref, native_author, native_committer, native_message_encoding, native_message, native_tree, native_parent_count);
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -11902,14 +11895,13 @@ mrb_Git_git_note_committer(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_create */
-/* sha: 5afe0bf16409e0fa0b571f3599e3c7b6377ec6428f6be05991225b1a90532c3c */
+/* sha: 424c40c30e5e0de3f91d1181ba5d1b6333a1e352aa3b0446468f85fc444c682a */
 #if BIND_git_note_create_FUNCTION
-#define git_note_create_REQUIRED_ARGC 8
+#define git_note_create_REQUIRED_ARGC 7
 #define git_note_create_OPTIONAL_ARGC 0
 /* git_note_create
  *
  * Parameters:
- * - out: git_oid *
  * - repo: git_repository *
  * - notes_ref: const char *
  * - author: const git_signature *
@@ -11923,7 +11915,7 @@ mrb_value
 mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value out;
+  git_oid * native_out = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_notes_ref = NULL;
   mrb_value author;
@@ -11933,13 +11925,9 @@ mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
   mrb_int native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozooozi", &out, &repo, &native_notes_ref, &author, &committer, &oid, &native_note, &native_force);
+  mrb_get_args(mrb, "ozooozi", &repo, &native_notes_ref, &author, &committer, &oid, &native_note, &native_force);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, out, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -11957,9 +11945,6 @@ mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
     return mrb_nil_value();
   }
 
-  /* Unbox param: out */
-  git_oid * native_out = (mrb_nil_p(out) ? NULL : mruby_unbox_git_oid(out));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
@@ -11975,9 +11960,12 @@ mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_note_create(native_out, native_repo, native_notes_ref, native_author, native_committer, native_oid, native_note, native_force);
 
+  /* Box out param: out */
+  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_out);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return out;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -12595,8 +12583,8 @@ mrb_Git_git_object_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING: git_object_lookup */
 /* sha: d5e6c6198d9626a9a3c5e4e1c9569f4910821ec9023c64c52e074256e6df2010 */
 #if BIND_git_object_lookup_FUNCTION
-#define git_object_lookup_REQUIRED_ARGC 3
-#define git_object_lookup_OPTIONAL_ARGC 0
+#define git_object_lookup_REQUIRED_ARGC 2
+#define git_object_lookup_OPTIONAL_ARGC 1
 /* git_object_lookup
  *
  * Parameters:
@@ -12612,10 +12600,10 @@ mrb_Git_git_object_lookup(mrb_state* mrb, mrb_value self) {
   git_object * native_object = NULL;
   mrb_value repo;
   mrb_value id;
-  mrb_int native_type;
+  mrb_int native_type = GIT_OBJ_ANY;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ooi", &repo, &id, &native_type);
+  mrb_get_args(mrb, "oo|i", &repo, &id, &native_type);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -12635,9 +12623,11 @@ mrb_Git_git_object_lookup(mrb_state* mrb, mrb_value self) {
 
   /* Invocation */
   int native_return_value = git_object_lookup(&native_object, native_repo, native_id, native_type);
-
-  /* Box out param: object */
-  mrb_value object = native_object == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_object);
+  
+  mrb_value object = mrb_nil_value();
+  if (native_return_value == 0) {
+    object = mruby_git_giftwrap_object_virtual(mrb, native_object);
+  }
 
   RAISE_GIT_ERROR();
 
@@ -24377,7 +24367,10 @@ mrb_Git_git_revparse_single(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_revparse_single(&native_out, native_repo, native_spec);
 
   /* Box out param: out */
-  mrb_value out = native_out == NULL ? mrb_nil_value() : mruby_giftwrap_git_object(mrb, native_out);
+  mrb_value out = mrb_nil_value();
+  if (native_return_value == 0) {
+    out = mruby_git_giftwrap_object_virtual(mrb, native_out);
+  }
 
   RAISE_GIT_ERROR();
 
@@ -27398,14 +27391,13 @@ mrb_Git_git_submodule_wd_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_annotation_create */
-/* sha: 4a3b00bf24337d571132fd51d405837c4e5b0268bbe7ff42243d2202d231da5a */
+/* sha: c401cc0e1f15a11c5b0dae659c9d6895a0e18681289d1d768cc27655e006f27a */
 #if BIND_git_tag_annotation_create_FUNCTION
-#define git_tag_annotation_create_REQUIRED_ARGC 6
+#define git_tag_annotation_create_REQUIRED_ARGC 5
 #define git_tag_annotation_create_OPTIONAL_ARGC 0
 /* git_tag_annotation_create
  *
  * Parameters:
- * - oid: git_oid *
  * - repo: git_repository *
  * - tag_name: const char *
  * - target: const git_object *
@@ -27417,7 +27409,7 @@ mrb_value
 mrb_Git_git_tag_annotation_create(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value oid;
+  git_oid * native_oid = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_tag_name = NULL;
   mrb_value target;
@@ -27425,13 +27417,9 @@ mrb_Git_git_tag_annotation_create(mrb_state* mrb, mrb_value self) {
   char * native_message = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozooz", &oid, &repo, &native_tag_name, &target, &tagger, &native_message);
+  mrb_get_args(mrb, "ozooz", &repo, &native_tag_name, &target, &tagger, &native_message);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, oid, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -27444,9 +27432,6 @@ mrb_Git_git_tag_annotation_create(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Signature expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: oid */
-  git_oid * native_oid = (mrb_nil_p(oid) ? NULL : mruby_unbox_git_oid(oid));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -27460,22 +27445,24 @@ mrb_Git_git_tag_annotation_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_annotation_create(native_oid, native_repo, native_tag_name, native_target, native_tagger, native_message);
 
+  /* Box out param: oid */
+  mrb_value oid = native_oid == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_oid);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return oid;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create */
-/* sha: 690c94b2696f93804d2de8e116262eab9e42f62281d1b688536c57e98148d3d3 */
+/* sha: 242a511425d1473e0ddaf582083d9566c93d0552230d86b47b7f65158e4261b2 */
 #if BIND_git_tag_create_FUNCTION
-#define git_tag_create_REQUIRED_ARGC 7
+#define git_tag_create_REQUIRED_ARGC 6
 #define git_tag_create_OPTIONAL_ARGC 0
 /* git_tag_create
  *
  * Parameters:
- * - oid: git_oid *
  * - repo: git_repository *
  * - tag_name: const char *
  * - target: const git_object *
@@ -27488,7 +27475,7 @@ mrb_value
 mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value oid;
+  git_oid * native_oid = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_tag_name = NULL;
   mrb_value target;
@@ -27497,13 +27484,9 @@ mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
   mrb_int native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozoozi", &oid, &repo, &native_tag_name, &target, &tagger, &native_message, &native_force);
+  mrb_get_args(mrb, "ozoozi", &repo, &native_tag_name, &target, &tagger, &native_message, &native_force);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, oid, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -27517,9 +27500,6 @@ mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
     return mrb_nil_value();
   }
 
-  /* Unbox param: oid */
-  git_oid * native_oid = (mrb_nil_p(oid) ? NULL : mruby_unbox_git_oid(oid));
-
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
 
@@ -27532,22 +27512,24 @@ mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_create(native_oid, native_repo, native_tag_name, native_target, native_tagger, native_message, native_force);
 
+  /* Box out param: oid */
+  mrb_value oid = native_oid == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_oid);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return oid;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create_frombuffer */
-/* sha: ad4fbf05c3c1e473bb4ce65b14f79571feb83aba608dc4d1ff095f5c4c18ed69 */
+/* sha: caa22206ea8bdf4643302abcf8f25e8653f378d8955bdcfe04e20db97fa1450e */
 #if BIND_git_tag_create_frombuffer_FUNCTION
-#define git_tag_create_frombuffer_REQUIRED_ARGC 4
+#define git_tag_create_frombuffer_REQUIRED_ARGC 3
 #define git_tag_create_frombuffer_OPTIONAL_ARGC 0
 /* git_tag_create_frombuffer
  *
  * Parameters:
- * - oid: git_oid *
  * - repo: git_repository *
  * - buffer: const char *
  * - force: int
@@ -27557,26 +27539,19 @@ mrb_value
 mrb_Git_git_tag_create_frombuffer(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value oid;
+  git_oid * native_oid = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_buffer = NULL;
   mrb_int native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozi", &oid, &repo, &native_buffer, &native_force);
+  mrb_get_args(mrb, "ozi", &repo, &native_buffer, &native_force);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, oid, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: oid */
-  git_oid * native_oid = (mrb_nil_p(oid) ? NULL : mruby_unbox_git_oid(oid));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -27584,22 +27559,24 @@ mrb_Git_git_tag_create_frombuffer(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_create_frombuffer(native_oid, native_repo, native_buffer, native_force);
 
+  /* Box out param: oid */
+  mrb_value oid = native_oid == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_oid);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return oid;
 }
 #endif
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create_lightweight */
-/* sha: f98531bacb1daa018faaf4f2cfb3fdc72c164f62996be3f8822354d7dc520956 */
+/* sha: 130f5b472ea66565d6694053663f3b13c9dfdbcbe0f0d718514da0dc4c9272f0 */
 #if BIND_git_tag_create_lightweight_FUNCTION
-#define git_tag_create_lightweight_REQUIRED_ARGC 5
+#define git_tag_create_lightweight_REQUIRED_ARGC 4
 #define git_tag_create_lightweight_OPTIONAL_ARGC 0
 /* git_tag_create_lightweight
  *
  * Parameters:
- * - oid: git_oid *
  * - repo: git_repository *
  * - tag_name: const char *
  * - target: const git_object *
@@ -27610,20 +27587,16 @@ mrb_value
 mrb_Git_git_tag_create_lightweight(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value oid;
+  git_oid * native_oid = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_tag_name = NULL;
   mrb_value target;
   mrb_int native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oozoi", &oid, &repo, &native_tag_name, &target, &native_force);
+  mrb_get_args(mrb, "ozoi", &repo, &native_tag_name, &target, &native_force);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, oid, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
@@ -27632,9 +27605,6 @@ mrb_Git_git_tag_create_lightweight(mrb_state* mrb, mrb_value self) {
     mrb_raise(mrb, E_TYPE_ERROR, "Object expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: oid */
-  git_oid * native_oid = (mrb_nil_p(oid) ? NULL : mruby_unbox_git_oid(oid));
 
   /* Unbox param: repo */
   git_repository * native_repo = (mrb_nil_p(repo) ? NULL : mruby_unbox_git_repository(repo));
@@ -27645,9 +27615,12 @@ mrb_Git_git_tag_create_lightweight(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_tag_create_lightweight(native_oid, native_repo, native_tag_name, native_target, native_force);
 
+  /* Box out param: oid */
+  mrb_value oid = native_oid == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_oid);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return oid;
 }
 #endif
 /* MRUBY_BINDING_END */
