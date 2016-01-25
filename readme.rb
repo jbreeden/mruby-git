@@ -516,6 +516,7 @@ puts "2nd ancestory: #{nth_ancestor}"
 #```
 #
 # #### Create
+# ```Ruby
 my_signature = Git.signature_now("Me", "me@example.com")
 
 parents = [Git.revparse_single(repo, "HEAD")]
