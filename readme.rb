@@ -692,53 +692,53 @@ puts "Matching tag: #{matching_tags.strings}"
 ##tag_data d = {0};
 ##int error = git_tag_foreach(repo, each_tag, &d);
 # ```
+# 
+# #### Annotation Properties
+#
+# ```Ruby
+puts "Tag target_id: #{Git.tag_target_id(tag)}"
+puts "Tag target_type: #{Git.tag_target_type(tag)}"
+puts "Tag name: #{Git.tag_name(tag)}"
+puts "Tag tagger: #{Git.tag_tagger(tag)}"
+puts "Tag message: #{Git.tag_message(tag)}"
+# ```
+#
+# #### Create (lightweight)
+#
+# ```Ruby
+target = Git.revparse_single(repo, "HEAD^{commit}")
+oid = Git.tag_create_lightweight(
+      repo,       # repository
+      "v2.3.4",   # name
+      target,     # target
+      false)      # force?
+# ```
+#
+# ### Create (annotated)
+#
+# ```Ruby
+target = Git.revparse_single(repo, "HEAD^{commit}")
+tagger = Git.signature_now(
+      "Ben Straub",       # name
+      "bs@github.com")    # email
+oid = Git.tag_create(
+      repo,               # repo
+      "v2.3.5",           # name
+      target,             # target
+      tagger,             # name/email/timestamp
+      "Released 10/5/11", # message
+      false)              # force?
+puts "Created tag: #{oid}"
+# ```
+#
+# #### Peeling
+#
+# ```Ruby
+obj = Git.tag_peel(tag)
+puts "Peeled tag: #{obj}"
+# ```
+#
 __END__
-Annotation Properties
-const git_oid *target_id = git_tag_target_id(tag);
-git_otype target_type = git_tag_target_type(tag);
-const char *tag_name = git_tag_name(tag);
-const git_signature *tagger = git_tag_tagger(tag);
-const char *message = git_tag_message(tag);
-( git_tag_target_id, git_tag_target_type, git_tag_name, git_tag_tagger, git_tag_message )
-
-Create (lightweight)
-git_oid oid = 0;
-git_object *target = NULL;
-
-int error = git_revparse_single(&target, repo, "HEAD^{commit}");
-error = git_tag_create_lightweight(
-      &oid,       /* target ID (see docs) */
-      repo,       /* repository */
-      "v2.3.4",   /* name */
-      target,     /* target */
-      false);     /* force? */
-( git_revparse_single, git_tag_create_lightweight )
-
-Create (annotated)
-git_oid oid = 0;
-git_object *target = NULL;
-git_signature *tagger = NULL;
-
-int error = git_revparse_single(&target, repo, "HEAD^{commit}");
-error = git_signature_now(
-      &tagger,            /* output */
-      "Ben Straub",       /* name */
-      "bs@github.com");   /* email */
-error = git_tag_create(
-      &oid,               /* new object id */
-      repo,               /* repo */
-      "v2.3.4",           /* name */
-      target,             /* target */
-      tagger,             /* name/email/timestamp */
-      "Released 10/5/11", /* message */
-      false);             /* force? */
-( git_revparse_single, git_signature_now, git_tag_create )
-
-Peeling
-git_object *dereferenced_target = NULL;
-int error = git_tag_peel(&dereferenced_target, tag);
-( git_tag_peel )
-
 Index
 Loading
 /* Each repository owns an index */

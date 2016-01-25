@@ -832,3 +832,26 @@ end
  ["tag_names", "git_tag_list_match"]].each do |name, fn|
   CTypes.set_fn_param_type(fn, name, CTypes['out:git_strarray *'])
 end
+
+# Convert force params to booleans
+# --------------------------------
+
+# lib['ParmDecls'].select { |p| p['name'] == 'force' }.map { |p| [p['name'], p['function']] }
+
+[["force", "git_branch_create"],
+ ["force", "git_branch_create_from_annotated"],
+ ["force", "git_branch_move"],
+ ["force", "git_config_add_file_ondisk"],
+ ["force", "git_index_read"],
+ ["force", "git_note_create"],
+ ["force", "git_reference_symbolic_create_matching"],
+ ["force", "git_reference_symbolic_create"],
+ ["force", "git_reference_create"],
+ ["force", "git_reference_create_matching"],
+ ["force", "git_reference_rename"],
+ ["force", "git_submodule_reload"],
+ ["force", "git_tag_create"],
+ ["force", "git_tag_create_frombuffer"],
+ ["force", "git_tag_create_lightweight"]].each do |name, fn|
+  CTypes.set_fn_param_type(fn, name, CTypes['bool'])
+end

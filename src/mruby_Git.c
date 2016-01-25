@@ -1578,10 +1578,10 @@ mrb_Git_git_branch_create(mrb_state* mrb, mrb_value self) {
   mrb_value repo;
   char * native_branch_name = NULL;
   mrb_value target;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozoi", &repo, &native_branch_name, &target, &native_force);
+  mrb_get_args(mrb, "ozob", &repo, &native_branch_name, &target, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -1634,10 +1634,10 @@ mrb_Git_git_branch_create_from_annotated(mrb_state* mrb, mrb_value self) {
   mrb_value repository;
   char * native_branch_name = NULL;
   mrb_value commit;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozoi", &repository, &native_branch_name, &commit, &native_force);
+  mrb_get_args(mrb, "ozob", &repository, &native_branch_name, &commit, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repository, Repository_class(mrb))) {
@@ -1873,7 +1873,7 @@ mrb_Git_git_branch_lookup(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_branch_move */
-/* sha: a07f5cd4ebda5cd04d528ad4a94ca9ae508f80704067169493b130d88e34ee83 */
+/* sha: a255874fe452f3d981ee4c655f2cf21cb9b0eeeeb4f65121e8979058da45b06d */
 #if BIND_git_branch_move_FUNCTION
 #define git_branch_move_REQUIRED_ARGC 3
 #define git_branch_move_OPTIONAL_ARGC 0
@@ -1892,10 +1892,10 @@ mrb_Git_git_branch_move(mrb_state* mrb, mrb_value self) {
   git_reference * native_out = NULL;
   mrb_value branch;
   char * native_new_branch_name = NULL;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozi", &branch, &native_new_branch_name, &native_force);
+  mrb_get_args(mrb, "ozb", &branch, &native_new_branch_name, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, branch, Reference_class(mrb))) {
@@ -4056,7 +4056,7 @@ mrb_Git_git_commit_tree_id(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_config_add_file_ondisk */
-/* sha: 8d95dcbe59bb786878b7521f45fe633a88dc6ea82b1ec728d10ad064eb423dc8 */
+/* sha: 0fd25a6dd22f45f76fb6e694d23e64e3de27ada377c3384f972592762f231889 */
 #if BIND_git_config_add_file_ondisk_FUNCTION
 #define git_config_add_file_ondisk_REQUIRED_ARGC 4
 #define git_config_add_file_ondisk_OPTIONAL_ARGC 0
@@ -4076,10 +4076,10 @@ mrb_Git_git_config_add_file_ondisk(mrb_state* mrb, mrb_value self) {
   mrb_value cfg;
   char * native_path = NULL;
   mrb_int native_level;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozii", &cfg, &native_path, &native_level, &native_force);
+  mrb_get_args(mrb, "ozib", &cfg, &native_path, &native_level, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, cfg, Config_class(mrb))) {
@@ -10036,7 +10036,7 @@ mrb_Git_git_index_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_index_read */
-/* sha: ec395d9cca9ba83812c5d94e6dc35f3908cc290f6d8344cbe6d297d2964c11d3 */
+/* sha: e85bcb950e56720e6807bb3d64dc847adb23e8f371dae433a79e9b37d4ce9bfe */
 #if BIND_git_index_read_FUNCTION
 #define git_index_read_REQUIRED_ARGC 2
 #define git_index_read_OPTIONAL_ARGC 0
@@ -10052,10 +10052,10 @@ mrb_Git_git_index_read(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
   mrb_value index;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oi", &index, &native_force);
+  mrb_get_args(mrb, "ob", &index, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, index, Index_class(mrb))) {
@@ -11930,7 +11930,7 @@ mrb_Git_git_note_committer(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_note_create */
-/* sha: c00e10f591080338a655ea77dcc7f5cfdc963ee59c176d00b7e15f398068395f */
+/* sha: 7dfdea41b9816b20fda813e4532f91a75cc78711be3bab388cf2009399bb1418 */
 #if BIND_git_note_create_FUNCTION
 #define git_note_create_REQUIRED_ARGC 7
 #define git_note_create_OPTIONAL_ARGC 0
@@ -11957,10 +11957,10 @@ mrb_Git_git_note_create(mrb_state* mrb, mrb_value self) {
   mrb_value committer;
   mrb_value oid;
   char * native_note = NULL;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozooozi", &repo, &native_notes_ref, &author, &committer, &oid, &native_note, &native_force);
+  mrb_get_args(mrb, "ozooozb", &repo, &native_notes_ref, &author, &committer, &oid, &native_note, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -19219,7 +19219,7 @@ mrb_Git_git_reference_remove(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_reference_rename */
-/* sha: f4cb1c699a5db55a1474438f2b675677036cf887edea6c9ca79b67a3f3eb1f4e */
+/* sha: 6b3a26c014e92f5d406a7a7b35e854b26342d7128b1e17fca12077cd20ea367e */
 #if BIND_git_reference_rename_FUNCTION
 #define git_reference_rename_REQUIRED_ARGC 4
 #define git_reference_rename_OPTIONAL_ARGC 0
@@ -19239,11 +19239,11 @@ mrb_Git_git_reference_rename(mrb_state* mrb, mrb_value self) {
   git_reference * native_new_ref = NULL;
   mrb_value ref;
   char * native_new_name = NULL;
-  mrb_int native_force;
+  mrb_bool native_force;
   char * native_log_message = NULL;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oziz", &ref, &native_new_name, &native_force, &native_log_message);
+  mrb_get_args(mrb, "ozbz", &ref, &native_new_name, &native_force, &native_log_message);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, ref, Reference_class(mrb))) {
@@ -26749,7 +26749,7 @@ mrb_Git_git_submodule_path(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_submodule_reload */
-/* sha: 5b51c27973804486ace9bc371fa4c1312b7c0ea9b5975131af926cb781b781c0 */
+/* sha: e76026209fe0eb3e570e01da52ac7d3f3117b953f4f24fda1e61fcbda935b561 */
 #if BIND_git_submodule_reload_FUNCTION
 #define git_submodule_reload_REQUIRED_ARGC 2
 #define git_submodule_reload_OPTIONAL_ARGC 0
@@ -26765,10 +26765,10 @@ mrb_Git_git_submodule_reload(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
   mrb_value submodule;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oi", &submodule, &native_force);
+  mrb_get_args(mrb, "ob", &submodule, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, submodule, Submodule_class(mrb))) {
@@ -27451,7 +27451,7 @@ mrb_Git_git_tag_annotation_create(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create */
-/* sha: 9fe9d8db07b3b0c4d6f9dd8a63915128bb43f54c41e96f9f8cb030488795f329 */
+/* sha: c44101d89ce1f849278bfbe0e3817024625c2391a9cef624e8e6e0a604fd3d1b */
 #if BIND_git_tag_create_FUNCTION
 #define git_tag_create_REQUIRED_ARGC 6
 #define git_tag_create_OPTIONAL_ARGC 0
@@ -27476,10 +27476,10 @@ mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
   mrb_value target;
   mrb_value tagger;
   char * native_message = NULL;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozoozi", &repo, &native_tag_name, &target, &tagger, &native_message, &native_force);
+  mrb_get_args(mrb, "ozoozb", &repo, &native_tag_name, &target, &tagger, &native_message, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -27518,7 +27518,7 @@ mrb_Git_git_tag_create(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_tag_create_frombuffer */
-/* sha: f07309243f58c9b7b54a712584e4a144d47db646e5b631bfa4e1398ca90f2000 */
+/* sha: 17dbc7e85b3fdf843d51ecd0617c6ca32ff7f65a17c355403ccd3ddd643f6e3e */
 #if BIND_git_tag_create_frombuffer_FUNCTION
 #define git_tag_create_frombuffer_REQUIRED_ARGC 3
 #define git_tag_create_frombuffer_OPTIONAL_ARGC 0
@@ -27537,10 +27537,10 @@ mrb_Git_git_tag_create_frombuffer(mrb_state* mrb, mrb_value self) {
   git_oid * native_oid = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value repo;
   char * native_buffer = NULL;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozi", &repo, &native_buffer, &native_force);
+  mrb_get_args(mrb, "ozb", &repo, &native_buffer, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
@@ -27586,10 +27586,10 @@ mrb_Git_git_tag_create_lightweight(mrb_state* mrb, mrb_value self) {
   mrb_value repo;
   char * native_tag_name = NULL;
   mrb_value target;
-  mrb_int native_force;
+  mrb_bool native_force;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "ozoi", &repo, &native_tag_name, &target, &native_force);
+  mrb_get_args(mrb, "ozob", &repo, &native_tag_name, &target, &native_force);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
