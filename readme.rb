@@ -620,6 +620,7 @@ puts "Done iterating"
 #
 # #### Iterator (glob)
 #
+# ```Ruby
 iter = Git.reference_iterator_glob_new(repo, "refs/heads/*")
 
 while ref_name = Git.reference_next_name(iter)
@@ -636,51 +637,62 @@ ref = Git.reference_create(
   oid,                 # target
   true,                # force?
 )                  # message param omitted (would be a string for the reflog)
-puts "Make new ref: #{ref}"
+puts "Made new ref: #{ref}"
 # puts "Made `direct` ref pointing to HEAD: #{ref}"
 # ```
+#
+# #### Create (symbolic)
+#
+# ```Ruby
+ref = Git.reference_symbolic_create(
+      repo,
+      "refs/heads/symbolic",     # name
+      "refs/heads/master",       # target
+      true,                      # force?
+      "Making a symbolic ref")   # Reflog message
+puts "Made new symbolic ref: #{ref}"
+# ```
+#
+# ### Tags
+#
+# #### Lookups (annotations)
+#
+# ```Ruby
+tag = Git.tag_lookup(repo, Git.object_id(Git.revparse_single(repo, "v1.0.0")))
+puts "Tag: #{tag}"
+# ```
+#
+# #### Listing (all)
+#
+# ```Ruby
+tags = Git.tag_list(repo)
+puts "Tags: #{tags.strings}"
+# ```
+#
+# #### Listing (glob)
+#
+# ```Ruby
+matching_tags = Git.tag_list_match("v1.*", repo)
+puts "Matching tag: #{matching_tags.strings}"
+# ```
+#
+# #### Foreach
+# 
+# (Not yet supported)
+#
+# ```Ruby
+##typedef struct { /* … */ } tag_data;
+##
+##int each_tag(const char *name, git_oid *oid, void *payload)
+##{
+##  tag_data *d = (tag_data*)payload;
+##  /* … */
+##}
+##
+##tag_data d = {0};
+##int error = git_tag_foreach(repo, each_tag, &d);
+# ```
 __END__
-
-(git_reference_create)
-
-Create (symbolic)
-git_reference *ref = NULL;
-int error = git_reference_symbolic_create(&ref, repo,
-      "refs/heads/symbolic",     /* name */
-      "refs/heads/master",       /* target */
-      true,                      /* force? */
-      NULL);                     /* the message for the reflog */
-(git_reference_symbolic_create)
-
-Tags
-Lookups (annotations)
-git_tag *tag = NULL;
-int error = git_tag_lookup(&tag, repo, &oid);
-(git_tag_lookup)
-
-Listing (all)
-git_strarray tags = {0};
-int error = git_tag_list(&tags, repo);
-(git_tag_list)
-
-Listing (glob)
-git_strarray tags = {0};
-int error = git_tag_list_match(&tags, "v0.*", repo);
-(git_tag_list_match)
-
-Foreach
-typedef struct { /* … */ } tag_data;
-
-int each_tag(const char *name, git_oid *oid, void *payload)
-{
-  tag_data *d = (tag_data*)payload;
-  /* … */
-}
-
-tag_data d = {0};
-int error = git_tag_foreach(repo, each_tag, &d);
-(git_tag_foreach)
-
 Annotation Properties
 const git_oid *target_id = git_tag_target_id(tag);
 git_otype target_type = git_tag_target_type(tag);

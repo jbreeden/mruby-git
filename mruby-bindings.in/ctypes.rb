@@ -816,7 +816,7 @@ CTypes.define("out:git_strarray *") do
   self.type_name = "git_strarray"
   self.recv_template = "git_strarray * %{value} = (git_strarray*)calloc(1, sizeof(git_strarray));"
   self.get_args_template = ""
-  self.invocation_arg_template = "&%{value}"
+  self.invocation_arg_template = "%{value}"
   self.boxing_fn.invocation_template = "mrb_value %{as} = %{box} == NULL ? mrb_nil_value() : mruby_giftwrap_git_strarray(mrb, %{box});"
   self.out_only = true
 end
