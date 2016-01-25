@@ -436,7 +436,7 @@ puts "Mode: #{mode}"
 ## In C, you have to be careful to free this one,
 ## unlike the results from most lookups. mruby-git
 ## handles that for you.
-entry = Git.tree_entry_bypath(tree, "a/b/c.txt")
+entry = Git.tree_entry_bypath(tree, "README.md")
 # ```
 #
 # #### Walking
@@ -459,32 +459,28 @@ entry = Git.tree_entry_bypath(tree, "a/b/c.txt")
 ##walk_data d = {0};
 ##error = git_tree_walk(tree, GIT_TREEWALK_PRE, walk_cb, &d);
 # ```
+# #### Treebuilder
+# Since trees in git are immutable we need a mechanism to build them. This method in libgit2 is the treebuilder. Just like the tree object, the treebuilder object represents a single directory containing other objects.
+# ```Ruby
+bld = Git.treebuilder_new(repo)
+
+## Add some entries
+obj = Git.revparse_single(repo, "HEAD:README.md")
+Git.treebuilder_insert(bld,
+                       "README.md",        # filename
+                       Git.object_id(obj), # OID
+                       Git::FILEMODE_BLOB)  # mode
+
+obj = Git.revparse_single(repo, "v1.0.0:yargs.rb")
+Git.treebuilder_insert(bld,
+                       "d.c",
+                       Git.object_id(obj),
+                       Git::FILEMODE_BLOB)
+
+oid = Git.treebuilder_write(bld)
+puts "Wrote tree #{oid}"
+# ```
 __END__
-Treebuilder
-Since trees in git are immutable we need a mechanism to build them. This method in libgit2 is the treebuilder. Just like the tree object, the treebuilder object represents a single directory containing other objects.
-
-git_treebuilder *bld = NULL;
-int error = git_treebuilder_create(&bld, NULL);
-
-/* Add some entries */
-git_object *obj = NULL;
-error = git_revparse_single(&obj, repo, "HEAD:README.md");
-error = git_treebuilder_insert(NULL, bld,
-                               "README.md",        /* filename */
-                               git_object_id(obj), /* OID */
-                               GIT_FILEMODE_BLOB); /* mode */
-git_object_free(obj);
-error = git_revparse_single(&obj, repo, "v0.1.0:foo/bar/baz.c");
-error = git_treebuilder_insert(NULL, bld,
-                               "d.c",
-                               git_object_id(obj),
-                               GIT_FILEMODE_BLOB);
-git_object_free(obj);
-
-git_oid oid = 0;
-error = git_treebuilder_write(&oid, repo, bld);
-git_treebuilder_free(bld);
-(git_revparse_single, git_object_free, git_treebuilder_create, git_treebuilder_insert, git_treebuilder_write, git_treebuilder_free)
 
 Commits
 Lookups

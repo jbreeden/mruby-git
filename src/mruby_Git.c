@@ -29798,7 +29798,9 @@ mrb_Git_git_treebuilder_insert(mrb_state* mrb, mrb_value self) {
   int native_return_value = git_treebuilder_insert(&native_out, native_bld, native_filename, native_id, native_filemode);
 
   /* Box out param: out */
-  mrb_value out = mruby_box_git_tree_entry(mrb, native_out);
+  git_tree_entry * out_entry_dup = NULL;
+  git_tree_entry_dup(&out_entry_dup, native_out);
+  mrb_value out = mruby_giftwrap_git_tree_entry(mrb, out_entry_dup);
 
   RAISE_GIT_ERROR();
 
@@ -29810,8 +29812,8 @@ mrb_Git_git_treebuilder_insert(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING: git_treebuilder_new */
 /* sha: f5b28c89081ccd78cf692b12961c22fc4e3f170465004d926752906746973342 */
 #if BIND_git_treebuilder_new_FUNCTION
-#define git_treebuilder_new_REQUIRED_ARGC 2
-#define git_treebuilder_new_OPTIONAL_ARGC 0
+#define git_treebuilder_new_REQUIRED_ARGC 1
+#define git_treebuilder_new_OPTIONAL_ARGC 1
 /* git_treebuilder_new
  *
  * Parameters:
@@ -29825,17 +29827,17 @@ mrb_Git_git_treebuilder_new(mrb_state* mrb, mrb_value self) {
 
   git_treebuilder * native_out = NULL;
   mrb_value repo;
-  mrb_value source;
+  mrb_value source = mrb_nil_value();
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &repo, &source);
+  mrb_get_args(mrb, "o|o", &repo, &source);
 
   /* Type checking */
   if (!mrb_obj_is_kind_of(mrb, repo, Repository_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Repository expected");
     return mrb_nil_value();
   }
-  if (!mrb_obj_is_kind_of(mrb, source, Tree_class(mrb))) {
+  if (!mrb_obj_is_kind_of(mrb, source, Tree_class(mrb)) && !mrb_nil_p(source)) {
     mrb_raise(mrb, E_TYPE_ERROR, "Tree expected");
     return mrb_nil_value();
   }
@@ -29901,14 +29903,13 @@ mrb_Git_git_treebuilder_remove(mrb_state* mrb, mrb_value self) {
 /* MRUBY_BINDING_END */
 
 /* MRUBY_BINDING: git_treebuilder_write */
-/* sha: 7068a4c887e6cbf1c22a0e72d4a1ae20f7fe6dd40a6d37c4fc1cf9eac5b7ca79 */
+/* sha: a68a7674df3bf5ed3399f11001303184e4db301320856a1ba1c692572beddfe8 */
 #if BIND_git_treebuilder_write_FUNCTION
-#define git_treebuilder_write_REQUIRED_ARGC 2
+#define git_treebuilder_write_REQUIRED_ARGC 1
 #define git_treebuilder_write_OPTIONAL_ARGC 0
 /* git_treebuilder_write
  *
  * Parameters:
- * - id: git_oid *
  * - bld: git_treebuilder *
  * Return Type: int
  */
@@ -29916,24 +29917,17 @@ mrb_value
 mrb_Git_git_treebuilder_write(mrb_state* mrb, mrb_value self) {
   CLEAR_GIT_ERROR();
 
-  mrb_value id;
+  git_oid * native_id = (git_oid*)calloc(1, sizeof(git_oid));
   mrb_value bld;
 
   /* Fetch the args */
-  mrb_get_args(mrb, "oo", &id, &bld);
+  mrb_get_args(mrb, "o", &bld);
 
   /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, id, Oid_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "Oid expected");
-    return mrb_nil_value();
-  }
   if (!mrb_obj_is_kind_of(mrb, bld, Treebuilder_class(mrb))) {
     mrb_raise(mrb, E_TYPE_ERROR, "Treebuilder expected");
     return mrb_nil_value();
   }
-
-  /* Unbox param: id */
-  git_oid * native_id = (mrb_nil_p(id) ? NULL : mruby_unbox_git_oid(id));
 
   /* Unbox param: bld */
   git_treebuilder * native_bld = (mrb_nil_p(bld) ? NULL : mruby_unbox_git_treebuilder(bld));
@@ -29941,9 +29935,12 @@ mrb_Git_git_treebuilder_write(mrb_state* mrb, mrb_value self) {
   /* Invocation */
   int native_return_value = git_treebuilder_write(native_id, native_bld);
 
+  /* Box out param: id */
+  mrb_value id = native_id == NULL ? mrb_nil_value() : mruby_giftwrap_git_oid(mrb, native_id);
+
   RAISE_GIT_ERROR();
 
-  return mrb_nil_value();
+  return id;
 }
 #endif
 /* MRUBY_BINDING_END */
@@ -30075,6 +30072,9 @@ void mrb_mruby_git_gem_init(mrb_state* mrb) {
 
 /* MRUBY_BINDING: pre_class_initializations */
 /* sha: user_defined */
+
+  /* Get this initialized first so subclasses can inherit */
+  mrb_Git_Object_init(mrb);
 
 /* MRUBY_BINDING_END */
 

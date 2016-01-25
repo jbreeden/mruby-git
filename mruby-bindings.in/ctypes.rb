@@ -803,6 +803,7 @@ end
  ["oid", "git_tag_create"],
  ["oid", "git_tag_annotation_create"],
  ["oid", "git_tag_create_frombuffer"],
- ["oid", "git_tag_create_lightweight"]].each do |name, fn|
+ ["oid", "git_tag_create_lightweight"],
+ ["id", "git_treebuilder_write"]].each do |name, fn|
    CTypes.set_fn_param_type(fn, name, CTypes['out:git_oid *'])
 end
