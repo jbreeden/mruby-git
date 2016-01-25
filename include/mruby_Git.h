@@ -59,8 +59,8 @@
 
 void raise_git_error(mrb_state * mrb);
 #define CLEAR_GIT_ERROR() giterr_clear();
-#define RAISE_GIT_ERROR() \
-if (giterr_last()) { \
+#define RAISE_GIT_ERROR(error) \
+if (error != 0) { \
   raise_git_error(mrb); \
   return mrb_nil_value(); \
 }

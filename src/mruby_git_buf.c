@@ -72,8 +72,8 @@ mrb_Git_Buf_replace(mrb_state * mrb, mrb_value self) {
   git_buf * native_self = mruby_unbox_git_buf(self);
   mrb_value str = mrb_nil_value();
   mrb_get_args(mrb, "S", str);
-  git_buf_set(native_self, RSTRING_PTR(str), RSTRING_LEN(str));
-  RAISE_GIT_ERROR();
+  int err = git_buf_set(native_self, RSTRING_PTR(str), RSTRING_LEN(str));
+  RAISE_GIT_ERROR(err);
   return str;
 }
 

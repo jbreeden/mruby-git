@@ -772,7 +772,7 @@ git_packbuilder_write_buf
 git_refdb_compress
 ].each do |fn|
   CTypes.set_fn_header(fn, "CLEAR_GIT_ERROR();");
-  CTypes.set_fn_footer(fn, "RAISE_GIT_ERROR();")
+  CTypes.set_fn_footer(fn, "RAISE_GIT_ERROR(native_return_value);")
   CTypes.set_fn_return_type(fn, CTypes['ignore'])
 end
 

@@ -562,6 +562,7 @@ puts "Reflist Strings: #{reflist.strings}"
 
 #### Foreach (refs)
 (Not yet supported)
+
 ```Ruby
 # typedef struct { /* … */ } ref_data;
 # 
@@ -577,6 +578,7 @@ puts "Reflist Strings: #{reflist.strings}"
 
 #### Foreach (names)
 (Not yet supported)
+
 ```Ruby
 #typedef struct { /* … */ } ref_data;
 #
@@ -589,8 +591,10 @@ puts "Reflist Strings: #{reflist.strings}"
 #ref_data d = {0};
 #int error = git_reference_foreach_name(repo, each_name_cb, &d);
 ```
+
 #### Foreach (glob)
 (Not yet supported)
+
 ```Ruby
 #typedef struct { /* … */ } ref_data;
 #
@@ -612,4 +616,26 @@ while ref = Git.reference_next(iter)
   puts "Ref iteration: #{ref}"
 end
 puts "Done iterating"
+```
+
+#### Iterator (glob)
+
+iter = Git.reference_iterator_glob_new(repo, "refs/heads/*")
+
+while ref_name = Git.reference_next_name(iter)
+  puts "Reference Name Iteration: #{ref_name}"
+end
+```
+#### Create (direct)
+
+```Ruby
+oid = Git.object_id(Git.revparse_single(repo, "HEAD"))
+ref = Git.reference_create(
+  repo,
+  "refs/heads/test/ing", # name
+  oid,                 # target
+  true,                # force?
+)                  # message param omitted (would be a string for the reflog)
+puts "Make new ref: #{ref}"
+puts "Made `direct` ref pointing to HEAD: #{ref}"
 ```
