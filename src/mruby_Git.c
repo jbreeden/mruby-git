@@ -25328,32 +25328,33 @@ mrb_Git_git_stash_apply(mrb_state* mrb, mrb_value self) {
  * - version: unsigned int
  * Return Type: int
  */
-mrb_value
-mrb_Git_git_stash_apply_init_options(mrb_state* mrb, mrb_value self) {
-  CLEAR_GIT_ERROR();
-
-  mrb_value opts;
-  mrb_int native_version;
-
-  /* Fetch the args */
-  mrb_get_args(mrb, "oi", &opts, &native_version);
-
-  /* Type checking */
-  if (!mrb_obj_is_kind_of(mrb, opts, StashApplyOptions_class(mrb))) {
-    mrb_raise(mrb, E_TYPE_ERROR, "StashApplyOptions expected");
-    return mrb_nil_value();
-  }
-
-  /* Unbox param: opts */
-  git_stash_apply_options * native_opts = (mrb_nil_p(opts) ? NULL : mruby_unbox_git_stash_apply_options(opts));
-
-  /* Invocation */
-  int native_return_value = git_stash_apply_init_options(native_opts, native_version);
-
-  RAISE_GIT_ERROR(native_return_value);
-
-  return mrb_nil_value();
-}
+////// TODO: This is not exposed by the shared library yet. (https://github.com/libgit2/libgit2/pull/3584)
+// mrb_value
+// mrb_Git_git_stash_apply_init_options(mrb_state* mrb, mrb_value self) {
+//   CLEAR_GIT_ERROR();
+// 
+//   mrb_value opts;
+//   mrb_int native_version;
+// 
+//   /* Fetch the args */
+//   mrb_get_args(mrb, "oi", &opts, &native_version);
+// 
+//   /* Type checking */
+//   if (!mrb_obj_is_kind_of(mrb, opts, StashApplyOptions_class(mrb))) {
+//     mrb_raise(mrb, E_TYPE_ERROR, "StashApplyOptions expected");
+//     return mrb_nil_value();
+//   }
+// 
+//   /* Unbox param: opts */
+//   git_stash_apply_options * native_opts = (mrb_nil_p(opts) ? NULL : mruby_unbox_git_stash_apply_options(opts));
+// 
+//   /* Invocation */
+//   int native_return_value = git_stash_apply_init_options(native_opts, native_version);
+// 
+//   RAISE_GIT_ERROR(native_return_value);
+// 
+//   return mrb_nil_value();
+// }
 #endif
 /* MRUBY_BINDING_END */
 

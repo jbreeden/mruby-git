@@ -19,7 +19,11 @@ mrb_value
 mrb_Git_StashApplyOptions_initialize(mrb_state* mrb, mrb_value self) {
   git_stash_apply_options* native_object = (git_stash_apply_options*)calloc(1, sizeof(git_stash_apply_options));
   mruby_gift_git_stash_apply_options_data_ptr(self, native_object);
-  git_stash_apply_init_options(native_object, GIT_STASH_APPLY_OPTIONS_VERSION);
+  
+  /* Hack around https://github.com/libgit2/libgit2/pull/3584 */
+  git_stash_apply_options init = GIT_STASH_APPLY_OPTIONS_INIT;
+  *native_object = init;
+  
   return self;
 }
 #endif
