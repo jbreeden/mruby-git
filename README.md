@@ -1,5 +1,5 @@
-mruby-git
-=========
+mruby-git (incomplete)
+======================
 
 Bindings to libgit2 for MRuby.
 
@@ -7,7 +7,8 @@ Tutorial
 ========
 
 The following tutorial was taken from https://libgit2.github.com/docs/guides/101-samples/
-and converted to match the MRuby api.
+and converted to match the MRuby api. (Note: this is a work in progress. The parts present
+here are the parts that are implemented - though not thoroughly tested).
 
 Initialize the library
 ----------------------
